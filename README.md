@@ -19,7 +19,6 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 ### [⬇ Download for Windows .EXE](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe)
 Installer VST3 · 6.8 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
 
-Installer · 6.8 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
 
 <br>
 
