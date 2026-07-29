@@ -1,7 +1,8 @@
 <div align="center">
+  
+**English** · [Русский](README.ru.md)
 
 # HOUZY
-**English** · [Русский](README.ru.md)
 
 **A next-generation mastering compressor**
 
