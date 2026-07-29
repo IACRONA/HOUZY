@@ -16,9 +16,10 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 
 <br>
 
-### [⬇ Download for Windows .EXE](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe)
-Installer VST3 · 6.8 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
+### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe) · [⬇ macOS VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [⬇ macOS AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip)
 
+Windows: installer · 6.8 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
+macOS: Universal (Apple Silicon + Intel) — **AU** is the one Logic and GarageBand use
 
 <br>
 
@@ -159,11 +160,26 @@ signals, and the pulse kernel is designed from a psychoacoustic model of hearing
 **Windows** — download `HOUZY-Setup.exe` and run it.
 The plugin lands in `C:\Program Files\Common Files\VST3`.
 
-**macOS** — download `HOUZY-Installer.pkg` and pick VST3 and/or AU (Logic, GarageBand).
+**macOS** — download the zip for the format your DAW uses, unpack it, and drag the
+bundle into the matching folder:
 
-> **macOS will warn you on first launch** — the plugin is not signed with an Apple
-> certificate. Right-click the `.pkg` → **Open** → Open.
-> Or: System Settings → Privacy & Security → "Open Anyway".
+| format | put it in | used by |
+|---|---|---|
+| `HOUZY.vst3` | `/Library/Audio/Plug-Ins/VST3/` | Ableton, Reaper, Cubase, Bitwig, FL |
+| `HOUZY.component` | `/Library/Audio/Plug-Ins/Components/` | Logic Pro, GarageBand |
+
+Both are Universal — Apple Silicon and Intel alike.
+
+> **macOS will block it on first launch** — the plugin is not signed with an Apple
+> certificate, and unsigned plugins are quarantined. Clear that with one command in
+> Terminal:
+>
+> ```bash
+> xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/VST3/HOUZY.vst3
+> xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/Components/HOUZY.component
+> ```
+>
+> Run only the line for the format you installed. Then restart your DAW and rescan.
 
 Building from source needs CMake ≥ 3.22 and C++17. JUCE is fetched automatically.
 
