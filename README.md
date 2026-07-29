@@ -13,7 +13,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
 
 </div>
-
+<img src="Houzy (1).png" width="740">
 ---
 
 ## The problem
