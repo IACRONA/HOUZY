@@ -1,0 +1,114 @@
+name: Build macOS (VST3 + AU + installer)
+
+# Builds HOUZY on GitHub's FREE macOS runners — no Mac needed. Produces a Universal
+# binary (Apple Silicon arm64 + Intel x86_64) plus a double-clickable .pkg installer.
+#
+# HOW TO USE:
+#   1. Push this repo to GitHub.
+#   2. Repo → "Actions" tab → "Build macOS (VST3 + AU + installer)" → Run workflow.
+#   3. Green tick → open the run → "Artifacts" at the bottom → download.
+#
+# WHAT YOU GET:
+#   HOUZY-macOS-installer  → HOUZY-Installer.pkg   (hand this to users)
+#   HOUZY-macOS-plugins    → the raw .vst3 / .component, for manual installs
+#
+# SIGNING — read this before shipping:
+#   This build is UNSIGNED. It runs, but Gatekeeper will warn on first open and some
+#   users will not get past that on their own. Tell them: right-click the .pkg → Open,
+#   or System Settings → Privacy & Security → "Open Anyway".
+#   Proper signing + notarisation needs an Apple Developer account ($99/yr). Once you
+#   have one, add the certificate as a repo secret and sign in a step here — nothing
+#   else in this file has to change.
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:   # lets you run it manually from the Actions tab
+
+jobs:
+  build-macos:
+    runs-on: macos-14   # Apple Silicon runner, cross-compiles Universal
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Written as one line on purpose. The folded-scalar form (`run: >` with the
+      # arguments wrapped underneath) is valid YAML but trips GitHub's parser here,
+      # which reports "error in your yaml syntax" and refuses to run the workflow at all.
+      - name: Configure (Universal arm64 + x86_64)
+        run: cmake -B build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.13
+
+      - name: Build VST3 + AU
+        run: cmake --build build --config Release --target HouseComp_VST3 HouseComp_AU --parallel 3
+
+      # The CMake TARGET is still called HouseComp_VST3 (renaming it would churn the
+      # whole build), but PRODUCT_NAME is HOUZY, so the bundles on disk are HOUZY.*.
+      # Everything below therefore searches for HOUZY, not HouseComp.
+      - name: Collect plugins
+        run: |
+          set -e
+          mkdir -p dist
+          VST3=$(find build -type d -name "HOUZY.vst3" | head -1)
+          AU=$(find build -type d -name "HOUZY.component" | head -1)
+          echo "VST3=$VST3"
+          echo "AU=$AU"
+          test -n "$VST3" || { echo "VST3 bundle not found"; exit 1; }
+          test -n "$AU"   || { echo "AU bundle not found";   exit 1; }
+          cp -R "$VST3" dist/
+          cp -R "$AU"  dist/
+          # Prove both slices are present. If this prints only one architecture the
+          # Universal configure above silently failed and Intel Macs would be left out.
+          lipo -info "dist/HOUZY.vst3/Contents/MacOS/HOUZY"
+          lipo -info "dist/HOUZY.component/Contents/MacOS/HOUZY"
+
+      - name: Build .pkg installer
+        run: |
+          set -e
+          # Two payload roots, because the two formats go to different folders and
+          # pkgbuild installs one root at one destination.
+          mkdir -p pkgroot/vst3 pkgroot/au
+          cp -R dist/HOUZY.vst3      pkgroot/vst3/
+          cp -R dist/HOUZY.component pkgroot/au/
+
+          pkgbuild --root pkgroot/vst3 --identifier com.acronaaudio.houzy.vst3 --version 3.9.0 --install-location "/Library/Audio/Plug-Ins/VST3" build/HOUZY-VST3.pkg
+
+          pkgbuild --root pkgroot/au --identifier com.acronaaudio.houzy.au --version 3.9.0 --install-location "/Library/Audio/Plug-Ins/Components" build/HOUZY-AU.pkg
+
+          # A distribution package wraps both so the user runs ONE file and can tick
+          # which formats to install.
+          #
+          # Written with printf rather than a heredoc: inside an indented YAML block a
+          # heredoc's terminator ends up indented too, bash then never recognises it,
+          # and the whole step swallows the rest of the script.
+          {
+            printf '%s\n' '<?xml version="1.0" encoding="utf-8"?>'
+            printf '%s\n' '<installer-gui-script minSpecVersion="2">'
+            printf '%s\n' '  <title>HOUZY</title>'
+            printf '%s\n' '  <organization>com.acronaaudio</organization>'
+            printf '%s\n' '  <options customize="always" require-scripts="false" hostArchitectures="arm64,x86_64"/>'
+            printf '%s\n' '  <choices-outline><line choice="vst3"/><line choice="au"/></choices-outline>'
+            printf '%s\n' '  <choice id="vst3" title="VST3" description="For FL Studio, Ableton, Reaper, Cubase, Bitwig."><pkg-ref id="com.acronaaudio.houzy.vst3"/></choice>'
+            printf '%s\n' '  <choice id="au" title="Audio Unit (AU)" description="For Logic Pro and GarageBand."><pkg-ref id="com.acronaaudio.houzy.au"/></choice>'
+            printf '%s\n' '  <pkg-ref id="com.acronaaudio.houzy.vst3" version="3.9.0">HOUZY-VST3.pkg</pkg-ref>'
+            printf '%s\n' '  <pkg-ref id="com.acronaaudio.houzy.au" version="3.9.0">HOUZY-AU.pkg</pkg-ref>'
+            printf '%s\n' '</installer-gui-script>'
+          } > distribution.xml
+
+          mkdir -p installer-out
+          productbuild --distribution distribution.xml --package-path build installer-out/HOUZY-Installer.pkg
+
+          ls -lh installer-out
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: HOUZY-macOS-installer
+          path: installer-out/HOUZY-Installer.pkg
+          if-no-files-found: error
+
+      - name: Upload raw plugins
+        uses: actions/upload-artifact@v4
+        with:
+          name: HOUZY-macOS-plugins
+          path: dist/**
+          if-no-files-found: error
