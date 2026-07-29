@@ -4,7 +4,7 @@
 
 # HOUZY
 
-### Мастеринг-компрессор нового поколения
+### Компрессор для мастера - нового поколения
 
 Три собственные разработки:
 **HOUZY** — компрессия без общего гейна · **ACR** — клиппер, который не подрубает верх · **CYCLES / BEATS** — атака в периодах волны, релиз в долях такта
@@ -15,8 +15,12 @@
 
 <br>
 
-### [⬇ Download for Windows .EXE](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe)
-Installer VST3 · 6.8 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
+### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe) · [⬇ macOS VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [⬇ macOS AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip)
+
+Windows: установщик · 6.8 МБ — или [VST3 архивом](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) для ручной установки
+macOS: Universal (Apple Silicon и Intel) — **AU** нужен для Logic и GarageBand
+
+<br>
 
 <img src="Houzy%20(1).png" width="820">
 
@@ -155,11 +159,26 @@ LTE, а ядро импульса спроектировано по психоа
 **Windows** — скачай `HOUZY-Setup.exe`, запусти, готово.
 Плагин встанет в `C:\Program Files\Common Files\VST3`.
 
-**macOS** — скачай `HOUZY-Installer.pkg`, выбери VST3 и/или AU (Logic, GarageBand).
+**macOS** — скачай архив под свой формат, распакуй и перетащи бандл в нужную папку:
 
-> **macOS покажет предупреждение при первом запуске** — плагин не подписан
-> сертификатом Apple. Правый клик по `.pkg` → **Открыть** → Открыть.
-> Или: Системные настройки → Конфиденциальность и безопасность → «Всё равно открыть».
+| формат | куда класть | для чего |
+|---|---|---|
+| `HOUZY.vst3` | `/Library/Audio/Plug-Ins/VST3/` | Ableton, Reaper, Cubase, Bitwig, FL |
+| `HOUZY.component` | `/Library/Audio/Plug-Ins/Components/` | Logic Pro, GarageBand |
+
+Оба Universal — работают и на Apple Silicon, и на Intel.
+
+> **macOS заблокирует плагин при первом запуске** — он не подписан сертификатом
+> Apple, а неподписанные плагины попадают в карантин. Снимается одной командой
+> в Терминале:
+>
+> ```bash
+> xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/VST3/HOUZY.vst3
+> xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/Components/HOUZY.component
+> ```
+>
+> Выполняй только строку для того формата, который поставил. Потом перезапусти
+> DAW и пересканируй плагины.
 
 Собирается из исходников: CMake ≥ 3.22 и C++17, JUCE подтянется сам.
 
@@ -188,3 +207,4 @@ cmake --build build --config Release
 **ACRONA AUDIO**
 
 </div>
+
