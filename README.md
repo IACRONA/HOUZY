@@ -1,5 +1,5 @@
 <div align="center">
-  
+
 **English** · [Русский](README.ru.md)
 
 # HOUZY
@@ -16,9 +16,16 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 
 <br>
 
+### [⬇ Download for Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe)
+
+Installer · 6.8 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
+
+<br>
+
 <img src="Houzy%20(1).png" width="820">
 
 </div>
+
 ---
 
 ## The problem
@@ -185,3 +192,4 @@ Full text in `installer/LICENSE_EN.txt`.
 **ACRONA AUDIO**
 
 </div>
+
