@@ -12,8 +12,11 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-4dd8ef?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
 
+<br>
+
+<img src="Houzy%20(1).png" width="820">
+
 </div>
-<img src="Houzy (1).png" width="740">
 ---
 
 ## The problem
