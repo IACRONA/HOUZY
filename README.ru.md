@@ -15,6 +15,8 @@
 
 <br>
 
+### [⬇ Download for Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe)
+
 <img src="Houzy%20(1).png" width="820">
 
 </div>
