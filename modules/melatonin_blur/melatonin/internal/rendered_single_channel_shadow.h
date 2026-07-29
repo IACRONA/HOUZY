@@ -1,0 +1,117 @@
+#pragma once
+#include "../blur_options.h"
+#include "juce_gui_basics/juce_gui_basics.h"
+
+#if MELATONIN_BLUR_USE_DIRECT2D
+    #include "../implementations/direct2d.h"
+#endif
+
+namespace melatonin
+{
+    // these are the parameters required to represent a single drop or inner shadow
+    // wish I could put these in shadows.h to help people
+    template <typename ValueType = int>
+
+    struct ShadowParameters
+    {
+        // one single color per shadow
+        juce::Colour color = juce::Colours::black;
+        ValueType radius = 1;
+        juce::Point<ValueType> offset = { 0, 0 };
+
+        // Spread literally just expands or contracts the *path* size
+        // Inverted for inner shadows
+        ValueType spread = 0;
+
+        // an inner shadow is just a modified drop shadow
+        bool inner = false;
+
+        // Needed for aggregate-style initialization
+        ShadowParameters (juce::Colour c, ValueType r, juce::Point<ValueType> o = {}, ValueType s = 0, bool i = false)
+            : color (c), radius (r), offset (o), spread (s), inner (i) {}
+
+        // round all non-int types
+        template <typename OtherType>
+        explicit ShadowParameters (const ShadowParameters<OtherType>& other)
+            : color (other.color),
+              radius (juce::roundToInt (other.radius)),
+              offset (other.offset.toInt()),
+              spread (juce::roundToInt (other.spread)),
+              inner (other.inner)
+        {}
+
+        // SFINAE needed to force when used in initializer lists to convert double/float to int
+        // Replace with requires when moving to C++20
+        template <typename FloatType,
+            typename = std::enable_if_t<std::is_floating_point_v<FloatType> && std::is_same_v<ValueType, int>>>
+        ShadowParameters (juce::Colour c, FloatType r, juce::Point<FloatType> o, FloatType s, bool i = false)
+            : ShadowParameters (ShadowParameters<FloatType> (c, r, o, s, i))
+        {}
+
+        ShadowParameters() = default;
+    };
+
+    // Then your alias
+    using ShadowParametersInt = ShadowParameters<>;
+
+    namespace internal
+    {
+        // encapsulates logic for rendering a path to inner/drop shadow
+        // the image is optimized to be as small as possible
+        // the path is always 0,0 in the image
+        class RenderedSingleChannelShadow
+        {
+        public:
+            ShadowParametersInt parameters;
+
+            explicit RenderedSingleChannelShadow (ShadowParametersInt p);
+
+            juce::Image& render (juce::Path& originAgnosticPath, float scale, bool stroked = false);
+
+            // Offset is added on the fly, it's not actually a part of the render
+            // and can change without invalidating cache
+            juce::Rectangle<int> getScaledBounds();
+            juce::Rectangle<int> getScaledPathBounds();
+
+            [[nodiscard]] const juce::Image& getImage();
+
+            [[nodiscard]] bool updateRadius (int radius);
+            [[nodiscard]] bool updateSpread (int spread);
+            [[nodiscard]] bool updateOffset (juce::Point<int> offset, float scale);
+            [[nodiscard]] bool updateColor (juce::Colour color);
+            [[nodiscard]] bool updateOpacity (float opacity);
+
+            // this doesn't re-render, just re-calculates position stuff
+            void updateScaledShadowBounds (float scale);
+
+        private:
+            // (Re)allocates the image(s) needed for the rasterized path. On D2D we
+            // need a separate mask image; everywhere else the path is rasterized
+            // directly into singleChannelRender. Returns the image to fill the path into.
+            juce::Image& prepareImagesForRender (juce::Rectangle<int> bounds, bool useDirect2D);
+
+            // Runs the blur. On D2D builds, tries D2D and falls back to the CPU
+            // implementation on failure.
+            void blurInto (juce::Image& dst, int radius, bool useDirect2D);
+
+           #if MELATONIN_BLUR_USE_DIRECT2D
+            juce::Image singleChannelMask;
+           #endif
+            juce::Image singleChannelRender;
+            juce::Rectangle<int> scaledShadowBounds;
+            juce::Rectangle<int> scaledPathBounds;
+
+            int scaledRadius = 0;
+            int scaledSpread = 0;
+
+            // Offsets are separately stored to translate placement in ARGB compositing.
+            juce::Point<int> scaledOffset;
+
+           #if MELATONIN_BLUR_USE_DIRECT2D
+            // Each shadow keeps its own D2D setup so radius/effect changes for one
+            // shadow don't churn another's cached kernel.
+            std::unique_ptr<melatonin::blur::Direct2DSingleChannelBlur> direct2DBlur;
+           #endif
+        };
+    }
+}
