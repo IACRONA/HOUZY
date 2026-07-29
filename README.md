@@ -1,7 +1,8 @@
 <div align="center">
 
 # HOUZY
-**English** · [Русский](README.ru.md)**
+**English** · [Русский](README.ru.md)
+
 **A next-generation mastering compressor**
 
 Three original technologies: **HOUZY** — compression with no shared gain,
