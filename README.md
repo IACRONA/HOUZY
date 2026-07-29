@@ -1,9 +1,9 @@
 <div align="center">
 
 # HOUZY
-
-**A next-generation mastering compressor**
 **English** · [Русский](README.ru.md)
+**A next-generation mastering compressor**
+
 Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
