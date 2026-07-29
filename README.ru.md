@@ -15,8 +15,8 @@
 
 <br>
 
-### [⬇ Download for Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe)
-Installer · 6.8 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
+### [⬇ Download for Windows EXE](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe)
+Installer VST3 · 6.8 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
 
 <img src="Houzy%20(1).png" width="820">
 
