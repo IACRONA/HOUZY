@@ -199,10 +199,30 @@ cmake --build build --config Release
 
 ---
 
-## What's new in 4.2
+## What's new
 
-A visual pass. **The sound is untouched** — every setting, default and preset behaves
-exactly as it did in 4.1, so existing projects open and play identically.
+### Two new controls
+
+- **GAIN MATCH** — matches the output to the input level so **BYPASS compares character
+  rather than loudness**. Without it the plugin is always louder, and "better" just
+  means "louder". Top right, above the meters; off by default
+- **PUNCH** — how much of the hit stays untouched. A sound that has just started is
+  normally not compressed at all: the reduction eases in, so the leading edge passes
+  through whole. This knob decides how much of that protection to take away — left for
+  a punchy, alive hit, right for flat and dense. It shares a row with DASH; click the
+  label to swap between them
+
+**ALL MIX is now 6 bands** instead of four, with two new splits at 650 and 3050 Hz:
+
+`SUB 0–160 · LOW 160–650 · LO-MID 650–1500 · MID 1500–3050 · HI-MID 3050–7000 · HIGH 7000+`
+
+One knob used to cover everything from 0 to 200 Hz, which meant the sub and the body of
+the kick were compressed together — exactly the pair you need to separate on a master.
+
+### The look
+
+**The sound is untouched** — every setting, default and preset behaves exactly as it
+did before, so existing projects open and play identically.
 
 - **Depth throughout.** One light source, from above. Every surface is either sunk into
   the panel or raised out of it, buttons press in when clicked, and the dB ticks on the
