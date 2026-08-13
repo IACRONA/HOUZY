@@ -10,15 +10,16 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Windows](https://img.shields.io/badge/Windows-VST3-4dd8ef?style=flat-square)]()
-[![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-4dd8ef?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.2-5fd0e2?style=flat-square)]()
+[![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
+[![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
 
 <br>
 
 ### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe) · [⬇ macOS VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [⬇ macOS AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip)
 
-Windows: installer · 6.8 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
+Windows: installer · 13 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
 macOS: Universal (Apple Silicon + Intel) — **AU** is the one Logic and GarageBand use
 
 <br>
@@ -146,9 +147,17 @@ signals, and the pulse kernel is designed from a psychoacoustic model of hearing
 
 ## What else is in there
 
+- **PUNCH** — how much of the hit stays untouched. A sound that has just started is
+  normally not compressed at all: the reduction eases in, so the leading edge passes
+  through whole. This knob decides how much of that protection to take away — left for
+  a punchy, alive hit, right for flat and dense
+- **GAIN MATCH** — matches the output to the input level so **BYPASS compares character
+  rather than loudness**. Without it the plugin is always louder, and "better" just
+  means "louder"
+- **DASH** — one knob takes the compressor from punchy to even
 - **Spectral limiter** — 6 bands, so a peak in the bass does not duck the highs
 - **Upward compression** — lifts the quiet parts: reverb tails, air, detail
-- **ALL MIX** — 4 bands with their own knobs when you want control per range
+- **ALL MIX** — 6 bands with their own knobs when you want control per range
 - **A / B** — two settings slots, compared at matched loudness
 - **Oversampling up to 64x**, honest RMS / LUFS meters, per-stage gain reduction graph
 - **English and Russian** interface, language follows the system on first run
@@ -187,6 +196,30 @@ Building from source needs CMake ≥ 3.22 and C++17. JUCE is fetched automatical
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --config Release
 ```
+
+---
+
+## What's new in 4.2
+
+A visual pass. **The sound is untouched** — every setting, default and preset behaves
+exactly as it did in 4.1, so existing projects open and play identically.
+
+- **Depth throughout.** One light source, from above. Every surface is either sunk into
+  the panel or raised out of it, buttons press in when clicked, and the dB ticks on the
+  meters are engraved into the track rather than drawn on top of it.
+- **ALL MIX now tells you when it is off.** Clicking a band knob while ALL MIX is
+  disabled pulses the switch that turns it on, with the knob you pressed glowing back in
+  time. Those knobs used to do nothing at all, which reads as broken rather than as
+  switched off.
+- **The meter scale is readable.** The dB numbers were below the contrast a label that
+  small needs.
+- **Corner and header controls tidied up.** A / B / RU are smaller, evenly spaced and
+  legible; the gaps between ALL MIX, BYPASS and LOOKAHEAD are equal in both languages
+  instead of one being 68 % wider than the other.
+- **Typography down to three sizes** from six — the old ones were too close together to
+  read as a hierarchy.
+
+*macOS builds in the current release predate this work.*
 
 ---
 
