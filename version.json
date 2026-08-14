@@ -1,0 +1,8 @@
+{
+  "version": "4.5.0",
+  "url": "https://github.com/IACRONA/HOUZY/releases",
+
+  "notes_ru": "Полосы ALL MIX теперь работают в полную силу — верхние ручки больше не молчат.\nRELEASE можно задавать в миллисекундах, а не только нотами.\nКнопка OFF останавливает картинку в центре, если компьютер загружен.\nПлагин стал заметно легче по нагрузке.",
+
+  "notes_en": "The ALL MIX bands now pull their weight — the upper knobs are no longer silent.\nRELEASE can be set in plain milliseconds, not only in note values.\nAn OFF button freezes the centre animation when your machine is busy.\nThe plugin is noticeably lighter on CPU."
+}
