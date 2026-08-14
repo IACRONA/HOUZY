@@ -1,12 +1,13 @@
 {
-  "version": "4.5.0",
+  "version": "4.3.1",
+
   "url_win":      "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe",
   "url_mac_vst3": "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip",
   "url_mac_au":   "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip",
   "url_en":       "https://github.com/IACRONA/HOUZY",
   "url_ru":       "https://github.com/IACRONA/HOUZY",
 
-  "notes_ru": "Полосы ALL MIX теперь работают в полную силу — верхние ручки больше не молчат.\nRELEASE можно задавать в миллисекундах, а не только нотами.\nКнопка OFF останавливает картинку в центре, если компьютер загружен.\nПлагин стал заметно легче по нагрузке.",
+  "notes_ru": "Плашка обновления больше не пропадает, пока вы не поставите новую версию.\nПри выборе видно, что именно изменилось.\nПроверка стала чаще — раз в 8 часов вместо суток.",
 
-  "notes_en": "The ALL MIX bands now pull their weight — the upper knobs are no longer silent.\nRELEASE can be set in plain milliseconds, not only in note values.\nAn OFF button freezes the centre animation when your machine is busy.\nThe plugin is noticeably lighter on CPU."
+  "notes_en": "The update notice no longer disappears until you actually install.\nThe download card now shows what changed.\nChecks run every 8 hours instead of once a day."
 }
