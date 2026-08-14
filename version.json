@@ -1,6 +1,10 @@
 {
   "version": "4.5.0",
-  "url": "https://github.com/IACRONA/HOUZY/releases",
+  "url_win":      "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe",
+  "url_mac_vst3": "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip",
+  "url_mac_au":   "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip",
+  "url_en":       "https://github.com/IACRONA/HOUZY/blob/main/README.md",
+  "url_ru":       "https://github.com/IACRONA/HOUZY/blob/main/README.ru.md",
 
   "notes_ru": "Полосы ALL MIX теперь работают в полную силу — верхние ручки больше не молчат.\nRELEASE можно задавать в миллисекундах, а не только нотами.\nКнопка OFF останавливает картинку в центре, если компьютер загружен.\nПлагин стал заметно легче по нагрузке.",
 

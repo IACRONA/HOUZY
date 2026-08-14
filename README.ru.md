@@ -4,12 +4,14 @@
 
 # HOUZY
 
+<sup>**v4.3** · 14 августа 2026</sup>
+
 ### Компрессор для мастера - нового поколения
 
 Три собственные разработки:
 **HOUZY** — компрессия без общего гейна · **ACR** — клиппер, который не подрубает верх · **CYCLES / BEATS** — атака в периодах волны, релиз в долях такта
 
-[![Версия](https://img.shields.io/badge/версия-4.2-5fd0e2?style=flat-square)]()
+[![Версия](https://img.shields.io/badge/версия-4.3-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/цена-бесплатно-3ddc84?style=flat-square)]()

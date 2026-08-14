@@ -4,13 +4,15 @@
 
 # HOUZY
 
+<sup>**v4.3** · 14 August 2026</sup>
+
 **A next-generation mastering compressor**
 
 Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.2-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.3-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
