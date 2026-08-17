@@ -1,5 +1,5 @@
 {
-  "version": "4.4.0",
+  "version": "4.4.1",
 
   "url_win":      "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe",
   "url_mac_vst3": "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip",
@@ -7,7 +7,7 @@
   "url_en":       "https://github.com/IACRONA/HOUZY",
   "url_ru":       "https://github.com/IACRONA/HOUZY",
 
-  "notes_ru": "Режим клиппера ACR наконец делает то, что обещал. Из-за ошибки в расчёте он вёл себя точно так же, как HI-Q, при этом честно добавляя свою задержку. Теперь он работает: верх на ударах кика сохраняется заметно лучше, а атака остаётся чистой.\nУбрана неровность на плотном материале. Клиппер перестраивался слишком резко, и на насыщенном миксе это слышалось как подрагивание звука.",
+  "notes_ru": "Убраны провалы звука при переключении режимов. Смена клиппера, оверсэмплинга или режима лимитера на ходу выбивала короткий провал — он был похож на перегрузку процессора, но ей не был: плагин стирал звук, который в этот момент был у него внутри. Теперь переключается чисто.\nРежим клиппера ACR наконец делает то, что обещал. Из-за ошибки в расчёте он звучал ровно как HI-Q, при этом честно добавляя свою задержку. Теперь верх на ударах кика сохраняется заметно лучше, а атака остаётся чистой.\nУбрана неровность на плотном материале — на насыщенном миксе клиппер подрагивал.\nGAIN MATCH больше не выпускает сигнал выше нуля.\nГрафик сжатия переделан: клиппер стал полноценной кривой, а не полоской у нижнего края, и шкала теперь под реальный мастеринг — видно даже слабое сжатие.",
 
-  "notes_en": "The ACR clipper finally does what it promised. A calculation error made it behave exactly like HI-Q while still adding its own latency. It now works: the top end survives kick hits noticeably better, and transients stay clean.\nUnevenness on dense material is gone. The clipper was retuning itself too abruptly, which on a busy mix came through as a wobble in the sound."
+  "notes_en": "Mode switching no longer drops out. Changing the clipper, the oversampling or the limiter mode while playing punched a short gap in the sound. It resembled a CPU overload but was not one: the plugin was erasing audio it still had in flight. Switching is clean now.\nThe ACR clipper finally does what it promised. A calculation error made it sound exactly like HI-Q while still adding its own latency. The top end now survives kick hits noticeably better, and transients stay clean.\nUnevenness on dense material is gone - the clipper used to wobble on a busy mix.\nGAIN MATCH can no longer push the signal above zero.\nThe gain-reduction graph was rebuilt: the clipper is a full curve instead of a strip along the bottom edge, and the scale now matches real mastering, so even gentle compression is visible."
 }

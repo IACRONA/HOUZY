@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.4.0** · 17 August 2026</sup>
+<sup>**v4.4.1** · 17 August 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.4.0-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.4.1-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -208,16 +208,24 @@ cmake --build build --config Release
 
 ## What's new
 
-## v4.4.0 · 17 August 2026
+## v4.4.1 · 17 August 2026
 
-- **The ACR clipper finally does what it promised.** A calculation error left it behaving
-  exactly like HI-Q — identical output, while still adding its own latency. It now works
-  as designed: the top end survives kick hits noticeably better, and the leading edge of
-  a transient stays clean. If you have been using ACR, this is the first time you are
-  actually hearing it
+- **Switching modes no longer drops the sound out.** Changing the clipper, the
+  oversampling or the limiter mode while the track played punched a short gap in the
+  audio. It sounded like the CPU giving up, but it was not: the plugin was erasing
+  audio it still had in flight. Every one of those switches is clean now
+- **The ACR clipper finally does what it promised.** A calculation error left it
+  behaving exactly like HI-Q — identical output, while still adding its own latency. It
+  now works as designed: the top end survives kick hits noticeably better, and the
+  leading edge of a transient stays clean. If you have been using ACR, this is the first
+  time you are actually hearing it
 - **Unevenness on dense material is gone.** The clipper was retuning its own shape too
-  abruptly, and on a busy mix that came through as a wobble in the sound. It now settles
-  smoothly, with no loss of the top end it exists to protect
+  abruptly, and on a busy mix that came through as a wobble in the sound
+- **GAIN MATCH can no longer push the signal above zero.** It was allowed to turn the
+  output up, and doing that after the clipper is what let peaks over the ceiling
+- **The gain-reduction graph was rebuilt.** The clipper is a proper curve now instead of
+  a few pixels along the bottom edge, and the scale matches what a master actually does,
+  so gentle compression reads as movement rather than a flat line
 
 *ACR now removes peaks for real, so the output sits about 0.3 dB quieter than before —
 that is the stage doing its job rather than passing the work downstream.*
