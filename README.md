@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.3.1** · 14 August 2026</sup>
+<sup>**v4.4.0** · 17 August 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.3.1-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.4.0-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -23,6 +23,11 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 
 Windows: installer · 13 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
 macOS: Universal (Apple Silicon + Intel) — **AU** is the one Logic and GarageBand use
+
+> **macOS is currently on 3.9 and an update is on the way** — a fresh build lands
+> shortly. The macOS version is compiled on a real Mac rather than automatically, so it
+> trails Windows. The current build works; it simply does not have the newer controls
+> or the ACR fix yet.
 
 <br>
 
@@ -202,6 +207,20 @@ cmake --build build --config Release
 ---
 
 ## What's new
+
+## v4.4.0 · 17 August 2026
+
+- **The ACR clipper finally does what it promised.** A calculation error left it behaving
+  exactly like HI-Q — identical output, while still adding its own latency. It now works
+  as designed: the top end survives kick hits noticeably better, and the leading edge of
+  a transient stays clean. If you have been using ACR, this is the first time you are
+  actually hearing it
+- **Unevenness on dense material is gone.** The clipper was retuning its own shape too
+  abruptly, and on a busy mix that came through as a wobble in the sound. It now settles
+  smoothly, with no loss of the top end it exists to protect
+
+*ACR now removes peaks for real, so the output sits about 0.3 dB quieter than before —
+that is the stage doing its job rather than passing the work downstream.*
 
 ## v4.3.1 · 14 August 2026
 
