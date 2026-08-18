@@ -26,7 +26,7 @@ macOS: installer · 42 MB — puts VST3 and AU where they belong. Or the bundles
 
 <br>
 
-<img src="Houzy%20(1).png" width="820">
+<img src="panel.jpg" width="820" alt="HOUZY">
 
 </div>
 

@@ -25,7 +25,7 @@ macOS: установщик · 42 МБ — сам поставит VST3 и AU. �
 
 <br>
 
-<img src="Houzy%20(1).png" width="820">
+<img src="panel.jpg" width="820" alt="HOUZY">
 
 </div>
 
