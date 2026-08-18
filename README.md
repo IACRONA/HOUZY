@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.4.1** · 17 August 2026</sup>
+<sup>**v4.4.2** · 18 August 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.4.1-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.4.2-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -149,10 +149,6 @@ signals, and the pulse kernel is designed from a psychoacoustic model of hearing
 
 ## What else is in there
 
-- **PUNCH** — how much of the hit stays untouched. A sound that has just started is
-  normally not compressed at all: the reduction eases in, so the leading edge passes
-  through whole. This knob decides how much of that protection to take away — left for
-  a punchy, alive hit, right for flat and dense
 - **GAIN MATCH** — matches the output to the input level so **BYPASS compares character
   rather than loudness**. Without it the plugin is always louder, and "better" just
   means "louder"
@@ -218,6 +214,23 @@ cmake --build build --config Release
 
 ## What's new
 
+## v4.4.2 · 18 August 2026
+
+- **CLIP SHAPE is warm now.** The old curve was symmetrical, and a symmetrical curve can
+  only produce hard, glassy overtones — which is exactly where the extra top end came
+  from. It now behaves like a tube stage: a soft colour appears while the harshness
+  measurably goes *down*. Loudness stays matched, as it always did
+- **DASH responds evenly across its whole travel.** Almost all of its effect used to sit
+  in the first quarter, with the rest of the knob barely answering. Every turn now gives
+  the same amount of change
+- **The PUNCH knob is gone.** Measurement showed that at any setting other than zero it
+  reproduced the disabled behaviour exactly — it was doing nothing. DASH handles evenness
+  on its own now. Projects saved with PUNCH open and play back unchanged
+- **CHARACTER no longer disappears in HOUZY.** It stays in place, dimmed, so you can see
+  the control exists and simply does not apply in that engine
+- **The main AMOUNT knob turns more smoothly and precisely**
+
+
 ## v4.4.1 · 17 August 2026
 
 - **Switching modes no longer drops the sound out.** Changing the clipper, the
@@ -250,50 +263,6 @@ that is the stage doing its job rather than passing the work downstream.*
 - **The installer filename carries the version** — `HOUZY-4.3.1-Setup.exe`. A month
   later you can tell which of the downloaded files is the recent one without opening
   its properties
-
-## v4.3 · 14 August 2026
-
-### Two new controls
-
-- **GAIN MATCH** — matches the output to the input level so **BYPASS compares character
-  rather than loudness**. Without it the plugin is always louder, and "better" just
-  means "louder". Top right, above the meters; off by default
-- **PUNCH** — how much of the hit stays untouched. A sound that has just started is
-  normally not compressed at all: the reduction eases in, so the leading edge passes
-  through whole. This knob decides how much of that protection to take away — left for
-  a punchy, alive hit, right for flat and dense. It shares a row with DASH; click the
-  label to swap between them
-
-**ALL MIX is now 6 bands** instead of four, with two new splits at 650 and 3050 Hz:
-
-`SUB 0–160 · LOW 160–650 · LO-MID 650–1500 · MID 1500–3050 · HI-MID 3050–7000 · HIGH 7000+`
-
-One knob used to cover everything from 0 to 200 Hz, which meant the sub and the body of
-the kick were compressed together — exactly the pair you need to separate on a master.
-
-### The look
-
-**The sound is untouched** — every setting, default and preset behaves exactly as it
-did before, so existing projects open and play identically.
-
-- **Depth throughout.** One light source, from above. Every surface is either sunk into
-  the panel or raised out of it, buttons press in when clicked, and the dB ticks on the
-  meters are engraved into the track rather than drawn on top of it.
-- **ALL MIX now tells you when it is off.** Clicking a band knob while ALL MIX is
-  disabled pulses the switch that turns it on, with the knob you pressed glowing back in
-  time. Those knobs used to do nothing at all, which reads as broken rather than as
-  switched off.
-- **The meter scale is readable.** The dB numbers were below the contrast a label that
-  small needs.
-- **Corner and header controls tidied up.** A / B / RU are smaller, evenly spaced and
-  legible; the gaps between ALL MIX, BYPASS and LOOKAHEAD are equal in both languages
-  instead of one being 68 % wider than the other.
-- **Typography down to three sizes** from six — the old ones were too close together to
-  read as a hierarchy.
-
-*macOS builds in the current release predate this work.*
-
----
 
 ## Licence
 
