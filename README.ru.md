@@ -18,15 +18,10 @@
 
 <br>
 
-### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe) · [⬇ macOS VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [⬇ macOS AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip)
+### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe) · [⬇ macOS установщик](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
 
 Windows: установщик · 13 МБ — или [VST3 архивом](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) для ручной установки
-macOS: Universal (Apple Silicon и Intel) — **AU** нужен для Logic и GarageBand
-
-> **Версия для macOS сейчас 3.9, обновление уже готовится** — свежая сборка появится
-> в ближайшее время. Под macOS плагин компилируется на живом Mac, а не автоматически,
-> поэтому выходит позже Windows. Текущая сборка работает; в ней просто пока нет новых
-> ручек и починки ACR.
+macOS: установщик · 42 МБ — сам поставит VST3 и AU. Или бандлы отдельно: [VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip) — **AU** нужен для Logic и GarageBand
 
 <br>
 
@@ -192,27 +187,42 @@ LTE, а ядро импульса спроектировано по психоа
 **Windows** — скачай `HOUZY-Setup.exe`, запусти, готово.
 Плагин встанет в `C:\Program Files\Common Files\VST3`.
 
-**macOS** — скачай архив под свой формат, распакуй и перетащи бандл в нужную папку:
+**macOS** — скачай `HOUZY-Installer.pkg`, двойной клик, отметь галочками
+нужные форматы. Установщик сам положит их куда надо.
+
+> **Система заблокирует пакет при первом запуске** — он не подписан сертификатом
+> Apple, а неподписанное macOS отправляет в карантин. Обходится так:
+> **правый клик по файлу → «Открыть» → «Открыть»** ещё раз в предупреждении.
+> Либо: Системные настройки → Конфиденциальность и безопасность → внизу
+> «Всё равно открыть».
+>
+> Это не поломка и не вирус — так система ведёт себя с любым неподписанным
+> установщиком.
+
+Оба формата Universal — работают и на Apple Silicon, и на Intel.
+**AU** нужен для Logic и GarageBand, **VST3** — для всего остального.
+
+<details>
+<summary>Поставить вручную, без установщика</summary>
+
+Скачай архив под свой формат, распакуй и перетащи бандл в нужную папку:
 
 | формат | куда класть | для чего |
 |---|---|---|
 | `HOUZY.vst3` | `/Library/Audio/Plug-Ins/VST3/` | Ableton, Reaper, Cubase, Bitwig, FL |
 | `HOUZY.component` | `/Library/Audio/Plug-Ins/Components/` | Logic Pro, GarageBand |
 
-Оба Universal — работают и на Apple Silicon, и на Intel.
+Карантин при ручной установке снимается командой в Терминале — только для того
+формата, который поставил:
 
-> **macOS заблокирует плагин при первом запуске** — он не подписан сертификатом
-> Apple, а неподписанные плагины попадают в карантин. Снимается одной командой
-> в Терминале:
->
-> ```bash
-> xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/VST3/HOUZY.vst3
-> xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/Components/HOUZY.component
-> ```
->
-> Выполняй только строку для того формата, который поставил. Потом перезапусти
-> DAW и пересканируй плагины.
+```bash
+xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/VST3/HOUZY.vst3
+xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/Components/HOUZY.component
+```
 
+Потом перезапусти DAW и пересканируй плагины.
+
+</details>
 Собирается из исходников: CMake ≥ 3.22 и C++17, JUCE подтянется сам.
 
 ```bash
