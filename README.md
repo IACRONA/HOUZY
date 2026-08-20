@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.4.2** · 18 August 2026</sup>
+<sup>**v4.4.3** · 20 August 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.4.2-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.4.3-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -214,6 +214,25 @@ cmake --build build --config Release
 
 ## What's new
 
+## v4.4.3 · 20 August 2026
+
+- **The graph shows the audio now.** The signal enters on the right as it arrived and
+  leaves on the left processed — the difference between the two halves is what the
+  plugin did to it, read directly off the picture
+- **The output is drawn exactly as it lands in the track.** It used to be captured one
+  stage early, so the loudest moments appeared taller on screen than they came out in
+  the render
+- **The trace no longer stutters.** It moved in jerks because the picture refreshed on
+  one clock while the data arrived on another; the graph now has its own and scrolls
+  evenly
+- **The compression scale is finer, and labelled.** The half a dB and one dB you
+  actually work with are visible instead of being lost, and depth can be read rather
+  than guessed from the shape
+- **Two readouts left the corner.** They repeated what the picture already showed, and
+  sitting side by side they were computed differently — which was misleading rather
+  than informative
+
+
 ## v4.4.2 · 18 August 2026
 
 - **CLIP SHAPE is warm now.** The old curve was symmetrical, and a symmetrical curve can
@@ -252,17 +271,6 @@ cmake --build build --config Release
 
 *ACR now removes peaks for real, so the output sits about 0.3 dB quieter than before —
 that is the stage doing its job rather than passing the work downstream.*
-
-## v4.3.1 · 14 August 2026
-
-- **The plugin tells you when there is a new version.** **UPDATE** lights up in the top
-  left; clicking it asks which system you are on — Windows, macOS VST3 or macOS AU — so
-  a Mac user is never handed a Windows file. The notice stays lit until you actually
-  update. Switch it off with the checkbox in the ACRONA card; the only thing that leaves
-  your machine is a request for the version number, with no statistics and no identifiers
-- **The installer filename carries the version** — `HOUZY-4.3.1-Setup.exe`. A month
-  later you can tell which of the downloaded files is the recent one without opening
-  its properties
 
 ## Licence
 
