@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.4.3** · 20 August 2026</sup>
+<sup>**v4.5.0** · 1 September 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.4.3-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.5.0-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -23,6 +23,9 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 
 Windows: installer · 13 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
 macOS: installer · 42 MB — puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use
+
+> **macOS is currently on 4.4.2** — two releases behind. It works exactly as it always
+> has; it simply does not have the newer AUTO GAIN yet. A Mac build follows.
 
 <br>
 
@@ -214,6 +217,19 @@ cmake --build build --config Release
 
 ## What's new
 
+## v4.5.0 · 1 September 2026
+
+- **AUTO GAIN gives back the right amount now.** The plugin used to guess how much
+  loudness the compression had cost from the knob position alone, and it guessed badly:
+  on real material it was handing back 15 dB where about 1 dB had actually been taken.
+  It measures the loss instead, so what comes back matches what went
+- **And you can switch it off.** There is a new AUTO GAIN button under COMPRESSION.
+  Turn it off and the plugin adds no level at all - the sound is only compressed, and
+  you set the level yourself with INPUT. Useful when you want to hear what the
+  compression is doing rather than hearing it get louder
+- **The INPUT knob works properly again.** It had stopped moving the output at all,
+  because the loudness compensation was quietly undoing whatever you added
+
 ## v4.4.3 · 20 August 2026
 
 - **The graph shows the audio now.** The signal enters on the right as it arrived and
@@ -249,39 +265,6 @@ cmake --build build --config Release
   the control exists and simply does not apply in that engine
 - **The main AMOUNT knob turns more smoothly and precisely**
 
-
-## v4.4.1 · 17 August 2026
-
-- **Switching modes no longer drops the sound out.** Changing the clipper, the
-  oversampling or the limiter mode while the track played punched a short gap in the
-  audio. It sounded like the CPU giving up, but it was not: the plugin was erasing
-  audio it still had in flight. Every one of those switches is clean now
-- **The ACR clipper finally does what it promised.** A calculation error left it
-  behaving exactly like HI-Q — identical output, while still adding its own latency. It
-  now works as designed: the top end survives kick hits noticeably better, and the
-  leading edge of a transient stays clean. If you have been using ACR, this is the first
-  time you are actually hearing it
-- **Unevenness on dense material is gone.** The clipper was retuning its own shape too
-  abruptly, and on a busy mix that came through as a wobble in the sound
-- **GAIN MATCH can no longer push the signal above zero.** It was allowed to turn the
-  output up, and doing that after the clipper is what let peaks over the ceiling
-- **The gain-reduction graph was rebuilt.** The clipper is a proper curve now instead of
-  a few pixels along the bottom edge, and the scale matches what a master actually does,
-  so gentle compression reads as movement rather than a flat line
-
-*ACR now removes peaks for real, so the output sits about 0.3 dB quieter than before —
-that is the stage doing its job rather than passing the work downstream.*
-
-## Licence
-
-**Free.** Music made with HOUZY can be sold and released with no royalties and no
-credit required.
-
-You may not: sell the plugin itself, include it in paid bundles, present it as your own
-work, modify and redistribute it, or borrow the processing methods used in it for other
-products.
-
-Full text in `installer/LICENSE_EN.txt`.
 
 ---
 
