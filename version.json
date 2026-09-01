@@ -1,5 +1,5 @@
 {
-  "version": "4.5.0",
+  "version": "4.5.1",
 
   "url_win":      "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe",
   "url_mac_vst3": "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip",
@@ -7,7 +7,7 @@
   "url_en":       "https://github.com/IACRONA/HOUZY",
   "url_ru":       "https://github.com/IACRONA/HOUZY",
 
-  "notes_ru": "AUTO GAIN теперь честно компенсирует громкость: плагин возвращает ровно столько, сколько забрал компрессор. Появилась кнопка под COMPRESSION - её можно выключить, и тогда громкость не добавляется вообще, а уровень вы выставляете ручкой INPUT.",
+  "notes_ru": "Плагин больше не сбивается с громкости после перемотки: раньше в первые доли секунды уровень мог быть неверным, потому что компенсация ещё считала по предыдущему куску трека.",
 
-  "notes_en": "AUTO GAIN now compensates loudness honestly: the plugin gives back exactly what the compressor took away. There is a new button under COMPRESSION - switch it off and no level is added at all, so you set the level yourself with the INPUT knob."
+  "notes_en": "The plugin no longer loses its level after a transport jump: the first moments after a locate could come out at the wrong loudness, because the compensation was still working from the previous section."
 }

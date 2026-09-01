@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.5.0** · 1 September 2026</sup>
+<sup>**v4.5.1** · 1 September 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.5.0-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.5.1-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -24,7 +24,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 Windows: installer · 13 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
 macOS: installer · 42 MB — puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use
 
-> **macOS is currently on 4.4.2** — two releases behind. It works exactly as it always
+> **macOS is currently on 4.4.2** — a few releases behind. It works exactly as it always
 > has; it simply does not have the newer AUTO GAIN yet. A Mac build follows.
 
 <br>
@@ -217,6 +217,12 @@ cmake --build build --config Release
 
 ## What's new
 
+## v4.5.1 · 1 September 2026
+
+- **The level no longer slips after a transport jump.** Skipping to another part of the
+  track could leave the first moments at the wrong loudness, because the loudness
+  compensation was still working from the section you had just left
+
 ## v4.5.0 · 1 September 2026
 
 - **AUTO GAIN gives back the right amount now.** The plugin used to guess how much
@@ -247,23 +253,6 @@ cmake --build build --config Release
 - **Two readouts left the corner.** They repeated what the picture already showed, and
   sitting side by side they were computed differently — which was misleading rather
   than informative
-
-
-## v4.4.2 · 18 August 2026
-
-- **CLIP SHAPE is warm now.** The old curve was symmetrical, and a symmetrical curve can
-  only produce hard, glassy overtones — which is exactly where the extra top end came
-  from. It now behaves like a tube stage: a soft colour appears while the harshness
-  measurably goes *down*. Loudness stays matched, as it always did
-- **DASH responds evenly across its whole travel.** Almost all of its effect used to sit
-  in the first quarter, with the rest of the knob barely answering. Every turn now gives
-  the same amount of change
-- **The PUNCH knob is gone.** Measurement showed that at any setting other than zero it
-  reproduced the disabled behaviour exactly — it was doing nothing. DASH handles evenness
-  on its own now. Projects saved with PUNCH open and play back unchanged
-- **CHARACTER no longer disappears in HOUZY.** It stays in place, dimmed, so you can see
-  the control exists and simply does not apply in that engine
-- **The main AMOUNT knob turns more smoothly and precisely**
 
 
 ---
