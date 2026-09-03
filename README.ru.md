@@ -18,10 +18,13 @@
 
 <br>
 
-### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) · [⬇ macOS установщик](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
+### [⬇ Windows · VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-VST3-Windows.zip) · [⬇ Windows · установщик](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-Windows-Installer.zip) · [⬇ macOS](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-Installer.pkg)
 
-Windows: плагин архивом · 12 МБ — распакуй и положи папку `HOUZY.vst3` в `C:\Program Files\Common Files\VST3\`, потом пересканируй плагины в DAW. Есть и [установщик](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Windows-Installer.zip), если так удобнее
-macOS: установщик · 42 МБ — сам поставит VST3 и AU. Или бандлы отдельно: [VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip) — **AU** нужен для Logic и GarageBand
+**Windows · VST3** — 12 МБ. Распакуй и положи папку `HOUZY.vst3` в `C:\Program Files\Common Files\VST3\`, потом пересканируй плагины в DAW.
+
+**Windows · установщик** — 13 МБ. Сделает то же самое за тебя.
+
+**macOS** — установщик на 42 МБ, сам поставит VST3 и AU. Или бандлы отдельно: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** нужен для Logic и GarageBand.
 
 > **Версия для macOS сейчас 4.4.2** — на несколько выпусков позади. Она работает как и
 > работала, в ней просто пока нет нового AUTO GAIN. Сборка под Mac будет позже.

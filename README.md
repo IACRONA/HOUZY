@@ -19,10 +19,13 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 
 <br>
 
-### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) · [⬇ macOS installer](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
+### [⬇ Windows · VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-VST3-Windows.zip) · [⬇ Windows · installer](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-Windows-Installer.zip) · [⬇ macOS](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-Installer.pkg)
 
-Windows: the plugin as a zip · 12 MB — unzip and drop the `HOUZY.vst3` folder into `C:\Program Files\Common Files\VST3\`, then rescan plugins in your DAW. There's also [an installer](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Windows-Installer.zip) if you prefer one
-macOS: installer · 42 MB — puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use
+**Windows · VST3** — 12 MB. Unzip and drop the `HOUZY.vst3` folder into `C:\Program Files\Common Files\VST3\`, then rescan plugins in your DAW.
+
+**Windows · installer** — 13 MB. Does the same thing for you.
+
+**macOS** — 42 MB installer, puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use.
 
 > **macOS is currently on 4.4.2** — a few releases behind. It works exactly as it always
 > has; it simply does not have the newer AUTO GAIN yet. A Mac build follows.
