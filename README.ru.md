@@ -18,20 +18,19 @@
 
 <br>
 
-### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Windows-Installer.zip) · [⬇ macOS установщик](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
+### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) · [⬇ macOS установщик](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
 
-Windows: архив · 13 МБ — распакуй и запусти установщик внутри. Или возьми [сам плагин](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) и скопируй в папку VST3 руками
+Windows: плагин архивом · 12 МБ — распакуй и положи папку `HOUZY.vst3` в `C:\Program Files\Common Files\VST3\`, потом пересканируй плагины в DAW. Есть и [установщик](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Windows-Installer.zip), если так удобнее
 macOS: установщик · 42 МБ — сам поставит VST3 и AU. Или бандлы отдельно: [VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip) — **AU** нужен для Logic и GarageBand
 
 > **Версия для macOS сейчас 4.4.2** — на несколько выпусков позади. Она работает как и
 > работала, в ней просто пока нет нового AUTO GAIN. Сборка под Mac будет позже.
 
-> **Windows может предупредить при запуске установщика** («Система Windows защитила
-> ваш компьютер» — нажми *Подробнее* > *Выполнить в любом случае*). Установщик пока
-> без цифровой подписи, а Windows помечает так любой неподписанный установщик от
-> небольшого разработчика, что бы внутри ни было. Сертификат планируется к
-> коммерческому релизу; пока архив выше снимает блокировку при скачивании, а сам
-> файл можно проверить на [VirusTotal](https://www.virustotal.com).
+> **Про установщик.** Он пока без цифровой подписи, поэтому Windows Defender и ещё
+> пара сканеров его помечают — все срабатывания машинные, по догадке (66 движков из
+> 69 на VirusTotal считают файл чистым), и вызваны неподписанным Inno Setup, а не
+> содержимым. Обычный архив выше эту проблему обходит совсем: в нём только папка
+> плагина и ничего исполняемого. Сертификат планируется к коммерческому релизу.
 
 <br>
 

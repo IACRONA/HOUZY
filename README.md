@@ -19,19 +19,20 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 
 <br>
 
-### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Windows-Installer.zip) · [⬇ macOS installer](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
+### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) · [⬇ macOS installer](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
 
-Windows: zip · 13 MB — unzip and run the installer inside. Or take [the plugin on its own](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) and copy it to your VST3 folder by hand
+Windows: the plugin as a zip · 12 MB — unzip and drop the `HOUZY.vst3` folder into `C:\Program Files\Common Files\VST3\`, then rescan plugins in your DAW. There's also [an installer](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Windows-Installer.zip) if you prefer one
 macOS: installer · 42 MB — puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use
 
 > **macOS is currently on 4.4.2** — a few releases behind. It works exactly as it always
 > has; it simply does not have the newer AUTO GAIN yet. A Mac build follows.
 
-> **Windows may warn when you run the installer** ("Windows protected your PC" —
-> click *More info* > *Run anyway*). It isn't code-signed yet, and Windows flags every
-> unsigned installer from a small developer whatever is inside it. A certificate is
-> planned for the commercial release; until then the zip above avoids the download
-> block, and you can check the file on [VirusTotal](https://www.virustotal.com) first.
+> **A note on the installer.** It isn't code-signed yet, so Windows Defender and a
+> couple of other scanners flag it — all of them machine-learning guesses (66 of 69
+> engines on VirusTotal report it clean), triggered by an unsigned Inno Setup file
+> rather than by anything in it. The plain zip above sidesteps this entirely: it holds
+> the plugin folder and nothing executable. A signing certificate is planned for the
+> commercial release.
 
 <br>
 
