@@ -18,13 +18,20 @@
 
 <br>
 
-### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe) · [⬇ macOS установщик](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
+### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Windows-Installer.zip) · [⬇ macOS установщик](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
 
-Windows: установщик · 13 МБ — или [VST3 архивом](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) для ручной установки
+Windows: архив · 13 МБ — распакуй и запусти установщик внутри. Или возьми [сам плагин](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) и скопируй в папку VST3 руками
 macOS: установщик · 42 МБ — сам поставит VST3 и AU. Или бандлы отдельно: [VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip) — **AU** нужен для Logic и GarageBand
 
 > **Версия для macOS сейчас 4.4.2** — на несколько выпусков позади. Она работает как и
 > работала, в ней просто пока нет нового AUTO GAIN. Сборка под Mac будет позже.
+
+> **Windows может предупредить при запуске установщика** («Система Windows защитила
+> ваш компьютер» — нажми *Подробнее* > *Выполнить в любом случае*). Установщик пока
+> без цифровой подписи, а Windows помечает так любой неподписанный установщик от
+> небольшого разработчика, что бы внутри ни было. Сертификат планируется к
+> коммерческому релизу; пока архив выше снимает блокировку при скачивании, а сам
+> файл можно проверить на [VirusTotal](https://www.virustotal.com).
 
 <br>
 

@@ -19,13 +19,19 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 
 <br>
 
-### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe) · [⬇ macOS installer](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
+### [⬇ Windows](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Windows-Installer.zip) · [⬇ macOS installer](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Installer.pkg)
 
-Windows: installer · 13 MB — or [VST3 as a zip](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) for a manual install
+Windows: zip · 13 MB — unzip and run the installer inside. Or take [the plugin on its own](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-VST3-Windows.zip) and copy it to your VST3 folder by hand
 macOS: installer · 42 MB — puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use
 
 > **macOS is currently on 4.4.2** — a few releases behind. It works exactly as it always
 > has; it simply does not have the newer AUTO GAIN yet. A Mac build follows.
+
+> **Windows may warn when you run the installer** ("Windows protected your PC" —
+> click *More info* > *Run anyway*). It isn't code-signed yet, and Windows flags every
+> unsigned installer from a small developer whatever is inside it. A certificate is
+> planned for the commercial release; until then the zip above avoids the download
+> block, and you can check the file on [VirusTotal](https://www.virustotal.com) first.
 
 <br>
 
