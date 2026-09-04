@@ -26,7 +26,7 @@
 
 **macOS** — установщик на 42 МБ, сам поставит VST3 и AU. Или бандлы отдельно: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** нужен для Logic и GarageBand.
 
-> **Версия для macOS сейчас 4.4.2** — на несколько выпусков позади. Она работает как и
+> **Версия для macOS сейчас 4.4.1** — на несколько выпусков позади. Она работает как и
 > работала, в ней просто пока нет нового AUTO GAIN. Сборка под Mac будет позже.
 
 > **Про установщик.** Он пока без цифровой подписи, поэтому Windows Defender и ещё
