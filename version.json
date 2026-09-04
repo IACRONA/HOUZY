@@ -1,5 +1,5 @@
 {
-  "version": "4.5.1",
+  "version": "4.5.2",
 
   "url_win":      "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe",
   "url_mac_vst3": "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip",
@@ -7,7 +7,7 @@
   "url_en":       "https://github.com/IACRONA/HOUZY",
   "url_ru":       "https://github.com/IACRONA/HOUZY",
 
-  "notes_ru": "Плагин больше не сбивается с громкости после перемотки: раньше в первые доли секунды уровень мог быть неверным, потому что компенсация ещё считала по предыдущему куску трека.",
+  "notes_ru": "Убран рывок громкости в самом начале трека. Первый звук после запуска сжимался заметно сильнее всего остального - плагин определял громкость материала по краю первой ноты, ещё до того как она успевала прозвучать, и следующие полсекунды подстраивался. Теперь уровень определяется сразу.",
 
-  "notes_en": "The plugin no longer loses its level after a transport jump: the first moments after a locate could come out at the wrong loudness, because the compensation was still working from the previous section."
+  "notes_en": "Fixed a jump in level at the very start of playback. The first sound was compressed noticeably harder than everything after it: the plugin was judging how loud your material is from the leading edge of the first note, before it had properly arrived, then spent half a second catching up. It now reads the level straight away."
 }

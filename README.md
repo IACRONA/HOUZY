@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.5.1** · 1 September 2026</sup>
+<sup>**v4.5.2** · 4 September 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.5.1-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.5.2-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -227,6 +227,15 @@ cmake --build build --config Release
 
 ## What's new
 
+## v4.5.2 · 4 September 2026
+
+- **The start of a track no longer jumps.** The first sound after you hit play was
+  being compressed noticeably harder than everything that followed it, which came
+  through as a pump right at the top of the track. The plugin was judging how loud
+  your material is from the leading edge of the very first note — before it had
+  properly arrived — and then spent about half a second catching up. It now reads
+  the level straight away, so the opening bar is treated the same as the rest
+
 ## v4.5.1 · 1 September 2026
 
 - **The level no longer slips after a transport jump.** Skipping to another part of the
@@ -245,25 +254,6 @@ cmake --build build --config Release
   compression is doing rather than hearing it get louder
 - **The INPUT knob works properly again.** It had stopped moving the output at all,
   because the loudness compensation was quietly undoing whatever you added
-
-## v4.4.3 · 20 August 2026
-
-- **The graph shows the audio now.** The signal enters on the right as it arrived and
-  leaves on the left processed — the difference between the two halves is what the
-  plugin did to it, read directly off the picture
-- **The output is drawn exactly as it lands in the track.** It used to be captured one
-  stage early, so the loudest moments appeared taller on screen than they came out in
-  the render
-- **The trace no longer stutters.** It moved in jerks because the picture refreshed on
-  one clock while the data arrived on another; the graph now has its own and scrolls
-  evenly
-- **The compression scale is finer, and labelled.** The half a dB and one dB you
-  actually work with are visible instead of being lost, and depth can be read rather
-  than guessed from the shape
-- **Two readouts left the corner.** They repeated what the picture already showed, and
-  sitting side by side they were computed differently — which was misleading rather
-  than informative
-
 
 ---
 
