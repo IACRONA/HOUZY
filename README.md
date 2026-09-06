@@ -27,9 +27,6 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 
 **macOS** — 42 MB installer, puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use.
 
-> **macOS is currently on 4.4.1** — a few releases behind. It works exactly as it always
-> has; it simply does not have the newer AUTO GAIN yet. A Mac build follows.
-
 > **A note on the installer.** It isn't code-signed yet, so Windows Defender and a
 > couple of other scanners flag it — all of them machine-learning guesses (66 of 69
 > engines on VirusTotal report it clean), triggered by an unsigned Inno Setup file
