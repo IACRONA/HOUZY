@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.5.2** · 4 September 2026</sup>
+<sup>**v4.6.0** · 7 September 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.5.2-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.6.0-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -26,6 +26,10 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **Windows · installer** — 13 MB. Does the same thing for you.
 
 **macOS** — 42 MB installer, puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use.
+
+> **macOS is currently on 4.5.2** — one release behind. Everything in it works; it
+> just doesn't have the 4.6.0 changes yet. The Mac build is made on an actual Mac, so
+> it follows a little later.
 
 > **A note on the installer.** It isn't code-signed yet, so Windows Defender and a
 > couple of other scanners flag it — all of them machine-learning guesses (66 of 69
@@ -224,6 +228,24 @@ cmake --build build --config Release
 
 ## What's new
 
+## v4.6.0 · 7 September 2026
+
+- **Ready-made settings.** A new PRESETS button under A/B opens a list of five, from
+  gentle to dense. It stays open after you pick one, so you can click through them and
+  compare on the same bar of music rather than reopening the menu every time — and if it
+  covers a knob you need, drag it aside by the top strip
+- **Cleaner highs on dense material.** The ACR clipper removed peaks in a fixed number
+  of passes, and on hat-heavy music that was not enough: whatever was left got cut off
+  harshly, which came through as a slight overdrive on the top end. It now keeps working
+  until nothing is left to remove, however long that takes
+- **What you hear while mixing now matches the file you export.** The plugin used to
+  work less thoroughly during playback than it did on export, so the top end you were
+  judging was dirtier than the one you ended up with
+- **OFF is now UI OFF, and it remembers.** The button that freezes the centre animation
+  kept forgetting its setting every time the window closed
+- **OVERSAMPLE starts at 4x.** The 1x and 2x settings are greyed out — below 4x the
+  clipping quality dropped off enough that they were never the right choice
+
 ## v4.5.2 · 4 September 2026
 
 - **The start of a track no longer jumps.** The first sound after you hit play was
@@ -238,19 +260,6 @@ cmake --build build --config Release
 - **The level no longer slips after a transport jump.** Skipping to another part of the
   track could leave the first moments at the wrong loudness, because the loudness
   compensation was still working from the section you had just left
-
-## v4.5.0 · 1 September 2026
-
-- **AUTO GAIN gives back the right amount now.** The plugin used to guess how much
-  loudness the compression had cost from the knob position alone, and it guessed badly:
-  on real material it was handing back 15 dB where about 1 dB had actually been taken.
-  It measures the loss instead, so what comes back matches what went
-- **And you can switch it off.** There is a new AUTO GAIN button under COMPRESSION.
-  Turn it off and the plugin adds no level at all - the sound is only compressed, and
-  you set the level yourself with INPUT. Useful when you want to hear what the
-  compression is doing rather than hearing it get louder
-- **The INPUT knob works properly again.** It had stopped moving the output at all,
-  because the loudness compensation was quietly undoing whatever you added
 
 ---
 
