@@ -26,10 +26,6 @@
 
 **macOS** — установщик на 42 МБ, сам поставит VST3 и AU. Или бандлы отдельно: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** нужен для Logic и GarageBand.
 
-> **Версия для macOS сейчас 4.5.2** — на два выпуска позади. Всё в ней работает,
-> просто пока нет изменений из 4.6.0 и 4.7.0. Сборка для Mac делается на живом Mac,
-> поэтому выходит чуть позже.
-
 > **Про установщик.** Он пока без цифровой подписи, поэтому Windows Defender и ещё
 > пара сканеров его помечают — все срабатывания машинные, по догадке (66 движков из
 > 69 на VirusTotal считают файл чистым), и вызваны неподписанным Inno Setup, а не
