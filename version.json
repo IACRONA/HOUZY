@@ -1,6 +1,6 @@
 {
-  "version":     "4.6.0",
-  "version_win": "4.6.0",
+  "version":     "4.7.0",
+  "version_win": "4.7.0",
   "version_mac": "4.5.2",
 
   "url_win":      "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe",
@@ -9,7 +9,7 @@
   "url_en":       "https://github.com/IACRONA/HOUZY",
   "url_ru":       "https://github.com/IACRONA/HOUZY",
 
-  "notes_ru": "Появились готовые настройки. Кнопка PRESETS под A/B открывает список из пяти вариантов - от мягкого к плотному. Список не закрывается после выбора, поэтому можно щёлкать по ним и сравнивать на слух, а если он мешает - перетащить за верхнюю полоску.\n\nЧище верх на плотном материале. Клиппер ACR раньше снимал пики за фиксированное число подходов, и на хэтах ему этого не хватало - остаток дорезался грубо, что слышалось как лёгкий перегруз. Теперь он работает до конца, сколько бы ни потребовалось.\n\nПрослушивание и готовый файл теперь звучат одинаково. Раньше при сведении плагин работал экономнее, чем при экспорте, и настраивать приходилось по тому, что не совпадает с результатом.\n\nКнопка OFF стала UI OFF и запоминает своё положение между запусками.\n\nМинимальное значение OVERSAMPLE теперь 4x - ниже качество среза заметно падало.",
+  "notes_ru": "Появились отдельные ручки громкости для каждой полосы. В режиме ALL MIX рядом с ручкой сжатия теперь стоит тонкая полоска — она поднимает или опускает свой диапазон до того, как до него доберётся компрессор. Нужна, когда полоса слишком тихая и компрессор её просто не замечает, или наоборот перебивает соседние.\n\nРежим T7 временно убран с панели. Он был экспериментальным и не доведён до конца — чтобы не путал. Всё, что вы настроили в T6 и SMART, работает как прежде.",
 
-  "notes_en": "Ready-made settings. The PRESETS button under A/B opens a list of five, from gentle to dense. It stays open after you pick one, so you can click through them and compare by ear, and you can drag it aside by the top strip if it covers something.\n\nCleaner highs on dense material. The ACR clipper used to remove peaks in a fixed number of passes, which was not enough for hats - the remainder was cut off harshly and could be heard as a slight overdrive. It now works until the job is done, however long that takes.\n\nWhat you hear while mixing now matches the exported file. The plugin used to work less thoroughly during playback than on export, so you were tuning against something that did not match the result.\n\nThe OFF button is now UI OFF and remembers its setting between sessions.\n\nThe lowest OVERSAMPLE setting is now 4x - below that the clipping quality dropped noticeably."
+  "notes_en": "Each band now has its own level control. In ALL MIX mode a thin strip sits next to every compression knob and raises or lowers that range before the compressor reaches it. Useful when a band is too quiet for the compressor to react to it at all, or loud enough to trample the ones around it.\n\nThe T7 mode has been taken off the panel for now. It was experimental and unfinished, so it was only causing confusion. Everything you set up in T6 and SMART works exactly as before."
 }

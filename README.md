@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.6.0** · 7 September 2026</sup>
+<sup>**v4.7.0** · 16 September 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.6.0-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.7.0-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -27,9 +27,9 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 
 **macOS** — 42 MB installer, puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use.
 
-> **macOS is currently on 4.5.2** — one release behind. Everything in it works; it
-> just doesn't have the 4.6.0 changes yet. The Mac build is made on an actual Mac, so
-> it follows a little later.
+> **macOS is currently on 4.5.2** — two releases behind. Everything in it works; it
+> just doesn't have the 4.6.0 or 4.7.0 changes yet. The Mac build is made on an actual
+> Mac, so it follows a little later.
 
 > **A note on the installer.** It isn't code-signed yet, so Windows Defender and a
 > couple of other scanners flag it — all of them machine-learning guesses (66 of 69
@@ -228,6 +228,18 @@ cmake --build build --config Release
 
 ## What's new
 
+## v4.7.0 · 16 September 2026
+
+- **Every band now has its own level control.** In ALL MIX mode a thin strip sits beside
+  each compression knob and raises or lowers that range *before* the compressor gets to
+  it. That is the useful part: a band too quiet for the compressor to react to can be
+  brought up until it does, and one loud enough to trample everything around it can be
+  pulled back — without touching how hard any of them is squeezed
+- **T7 has been taken off the panel.** It was an experiment that never reached the
+  finish line, and leaving it on the switch only invited people to pick something
+  unfinished. SMART and T6 are unchanged, and anything you already set up still sounds
+  exactly the same
+
 ## v4.6.0 · 7 September 2026
 
 - **Ready-made settings.** A new PRESETS button under A/B opens a list of five, from
@@ -254,12 +266,6 @@ cmake --build build --config Release
   your material is from the leading edge of the very first note — before it had
   properly arrived — and then spent about half a second catching up. It now reads
   the level straight away, so the opening bar is treated the same as the rest
-
-## v4.5.1 · 1 September 2026
-
-- **The level no longer slips after a transport jump.** Skipping to another part of the
-  track could leave the first moments at the wrong loudness, because the loudness
-  compensation was still working from the section you had just left
 
 ---
 
