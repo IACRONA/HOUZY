@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.7.0** · 16 September 2026</sup>
+<sup>**v4.7.1** · 24 September 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.7.0-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.7.1-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -26,6 +26,10 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **Windows · installer** — 13 MB. Does the same thing for you.
 
 **macOS** — 42 MB installer, puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use.
+
+> **macOS is currently on 4.7.0** — one release behind. Everything in it works; it just
+> doesn't have the 4.7.1 timing fix yet. The Mac build is made on an actual Mac, so it
+> follows a little later.
 
 > **A note on the installer.** It isn't code-signed yet, so Windows Defender and a
 > couple of other scanners flag it — all of them machine-learning guesses (66 of 69
@@ -224,6 +228,14 @@ cmake --build build --config Release
 
 ## What's new
 
+## v4.7.1 · 24 September 2026
+
+- **HOUZY now plays exactly in time with the rest of your project.** It was telling
+  your DAW that it delayed the sound by 25 ms more than it really did, so the DAW
+  played it that much early. On the master bus you would hardly notice, but on a
+  single track, a drum bus or in parallel processing it smeared every hit into a
+  doubled attack. The sound of the plugin itself has not changed — only its timing
+
 ## v4.7.0 · 16 September 2026
 
 - **Every band now has its own level control.** In ALL MIX mode a thin strip sits beside
@@ -253,15 +265,6 @@ cmake --build build --config Release
   kept forgetting its setting every time the window closed
 - **OVERSAMPLE starts at 4x.** The 1x and 2x settings are greyed out — below 4x the
   clipping quality dropped off enough that they were never the right choice
-
-## v4.5.2 · 4 September 2026
-
-- **The start of a track no longer jumps.** The first sound after you hit play was
-  being compressed noticeably harder than everything that followed it, which came
-  through as a pump right at the top of the track. The plugin was judging how loud
-  your material is from the leading edge of the very first note — before it had
-  properly arrived — and then spent about half a second catching up. It now reads
-  the level straight away, so the opening bar is treated the same as the rest
 
 ---
 
