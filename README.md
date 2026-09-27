@@ -4,7 +4,7 @@
 
 # HOUZY
 
-<sup>**v4.7.1** · 24 September 2026</sup>
+<sup>**v4.8.0** · 27 September 2026</sup>
 
 **A next-generation mastering compressor**
 
@@ -12,7 +12,7 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
 
-[![Version](https://img.shields.io/badge/version-4.7.1-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.8.0-5fd0e2?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
@@ -27,9 +27,9 @@ Three original technologies: **HOUZY** — compression with no shared gain,
 
 **macOS** — 42 MB installer, puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use.
 
-> **macOS is currently on 4.7.0** — one release behind. Everything in it works; it just
-> doesn't have the 4.7.1 timing fix yet. The Mac build is made on an actual Mac, so it
-> follows a little later.
+> **macOS is currently on 4.7.0** — two releases behind. Everything in it works; it just
+> doesn't have the 4.7.1 timing fix or the 4.8.0 changes yet. The Mac build is made on an
+> actual Mac, so it follows a little later.
 
 > **A note on the installer.** It isn't code-signed yet, so Windows Defender and a
 > couple of other scanners flag it — all of them machine-learning guesses (66 of 69
@@ -228,6 +228,46 @@ cmake --build build --config Release
 
 ## What's new
 
+## v4.8.0 · 27 September 2026
+
+- **AUTO GAIN now really gives back what HOUZY takes.** In HOUZY mode the button was
+  measuring the sound after it had already been compressed, so it saw no loss and
+  returned almost nothing. It now measures before and after, like everywhere else.
+  **This means HOUZY can play louder in projects you already have** — up to about
+  2 dB at the default setting on an open mix, more at higher COMPRESSION, and hardly
+  any change on a track that is already loud. That is the level it was always meant
+  to hold; if you liked it where it was, pull OUTPUT down to match
+- **New TP button on the OUTPUT knob — true peak.** Normally the ceiling is kept on
+  every sample, but the waveform can still swing slightly past it *between* samples,
+  which some streaming services and converters count as clipping. TP catches those
+  too. It is off by default, costs a tiny delay, and is worth switching on for the
+  final export
+- **No more clicks and gaps when switching.** Every mode switch used to click, and
+  going between HOUZY and CLASSIC or MODERN dropped the sound for a moment. Both are
+  gone. Turning COMPRESSION while the music plays no longer jumps either
+- **The low end is back at CLIP SHAPE 0.** The knob at zero was quietly trimming the
+  deep sub. Now zero means untouched
+- **No more crunch or kick clicks on a hot track.** Bringing an almost-finished track
+  up to 0 dB with INPUT used to make it crunch, and later tick on every kick. The
+  limiter was letting the kick's peaks slip past it, and the clipper after it was
+  slicing them. Now every stage does its own job: the limiter really holds the
+  ceiling and takes the bass and the body of the kick with a smooth gain, while the
+  clipper comes first and only shaves the short peaks in the very top, where the hats
+  hide it. COMPRESSION thickens the sound instead of flattening it, and the kick keeps
+  its punch
+- **Fixed a crash** in hosts that suddenly send a bigger chunk of audio than they
+  announced, and the sound no longer depends on your buffer size at all
+- **Reopening a new project no longer changes it.** A project saved straight away
+  could come back with AUTO GAIN switched on or a different RELEASE note
+- **UPWARD works at COMPRESSION 0,** and BYPASS now passes the untouched sound
+  completely
+- **Clearer buttons.** AUTO GAIN, AUTO and TP used to stay lit under the mouse after
+  you switched them off; now they go grey at once, with a short flash to confirm the
+  click. Double-clicking a band knob in ALL MIX returns it to where COMPRESSION had
+  put it, not to a fixed 20
+- **Nearly half the CPU of 4.7.1,** and about four times lighter at small buffer
+  sizes. The speed-up on its own changes not a single sample of the sound
+
 ## v4.7.1 · 24 September 2026
 
 - **HOUZY now plays exactly in time with the rest of your project.** It was telling
@@ -247,24 +287,6 @@ cmake --build build --config Release
   finish line, and leaving it on the switch only invited people to pick something
   unfinished. SMART and T6 are unchanged, and anything you already set up still sounds
   exactly the same
-
-## v4.6.0 · 7 September 2026
-
-- **Ready-made settings.** A new PRESETS button under A/B opens a list of five, from
-  gentle to dense. It stays open after you pick one, so you can click through them and
-  compare on the same bar of music rather than reopening the menu every time — and if it
-  covers a knob you need, drag it aside by the top strip
-- **Cleaner highs on dense material.** The ACR clipper removed peaks in a fixed number
-  of passes, and on hat-heavy music that was not enough: whatever was left got cut off
-  harshly, which came through as a slight overdrive on the top end. It now keeps working
-  until nothing is left to remove, however long that takes
-- **What you hear while mixing now matches the file you export.** The plugin used to
-  work less thoroughly during playback than it did on export, so the top end you were
-  judging was dirtier than the one you ended up with
-- **OFF is now UI OFF, and it remembers.** The button that freezes the centre animation
-  kept forgetting its setting every time the window closed
-- **OVERSAMPLE starts at 4x.** The 1x and 2x settings are greyed out — below 4x the
-  clipping quality dropped off enough that they were never the right choice
 
 ---
 

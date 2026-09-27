@@ -1,6 +1,6 @@
 {
-  "version":     "4.7.1",
-  "version_win": "4.7.1",
+  "version":     "4.8.0",
+  "version_win": "4.8.0",
   "version_mac": "4.7.0",
 
   "url_win":      "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe",
@@ -9,7 +9,7 @@
   "url_en":       "https://github.com/IACRONA/HOUZY",
   "url_ru":       "https://github.com/IACRONA/HOUZY",
 
-  "notes_ru": "HOUZY теперь звучит точно в такт со всем проектом. Плагин сообщал программе, что задерживает звук на 25 мс больше, чем на самом деле, и программа выводила его раньше остальных дорожек. На мастере это было почти незаметно, а на отдельной дорожке, на шине ударных или при параллельной обработке давало размазанный, «двойной» удар. Сам звук плагина не менялся — только время.",
+  "notes_ru": "AUTO GAIN в HOUZY возвращает потерю; кнопка TP; без щелчков при переключении; меньше нагрузка",
 
-  "notes_en": "HOUZY now plays exactly in time with the rest of your project. It was telling your DAW it delayed the sound by 25 ms more than it really did, so the DAW played it that much early. On the master bus you would hardly notice, but on a single track, a drum bus or in parallel processing it smeared the hits into a doubled attack. The sound of the plugin itself has not changed - only its timing."
+  "notes_en": "AUTO GAIN in HOUZY gives the level back; TP button; no clicks when switching; lighter on CPU"
 }
