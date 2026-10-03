@@ -8,7 +8,7 @@
 
 **A next-generation mastering compressor**
 
-Three original technologies: **HOUZY** — compression with no shared gain,
+Three original technologies: **HOUZY** — loud sounds don't drag the rest down, and the compression stays equally steady in loud and quiet parts,
 **ACR** — a clipper that stops chopping the highs,
 **CYCLES / NOTE** — attack in wave cycles and release in beat fractions or milliseconds.
 
@@ -105,12 +105,19 @@ still a single number for an entire band.
 
 ---
 
-## HOUZY — compression with no shared gain
+## HOUZY — even compression across every frequency in the track
 
 The sound is taken apart into **individual tones**, and each one's loudness is evened
-out by its own envelope. **There is no shared gain, so there is nothing to pump.**
+out by its own envelope. **Loud sounds don't drag the rest down, and the compressor
+compresses sounds equally steadily, regardless of how loud any frequency in the mix
+is.** Say the track has a loud kick, low end or midrange — the compressor will squeeze
+the lows and the highs just the same.
 
-Pumping is not treated here. It cannot happen.
+Worth knowing: **there is no threshold here.** The compressor analyses every part of the
+track separately and compresses every tone — kick, drums or vocal — the same way,
+regardless of its loudness. Then the level is raised back automatically (make-up gain),
+which gives you a well and densely compressed track. The compressor can be used not
+only on the master, but the CPU load will grow.
 
 **What that buys you:**
 
