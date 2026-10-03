@@ -10,39 +10,79 @@
 
 Three original technologies: **HOUZY** — compression with no shared gain,
 **ACR** — a clipper that stops chopping the highs,
-**CYCLES / BEATS** — attack in wave cycles and release in beat fractions.
+**CYCLES / NOTE** — attack in wave cycles and release in beat fractions or milliseconds.
 
-[![Version](https://img.shields.io/badge/version-4.8.0-5fd0e2?style=flat-square)]()
-[![Windows](https://img.shields.io/badge/Windows-VST3-5fd0e2?style=flat-square)]()
-[![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-5fd0e2?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-4.8.0-8dcad4?style=flat-square)]()
+[![Windows](https://img.shields.io/badge/Windows-VST3-8dcad4?style=flat-square)]()
+[![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-8dcad4?style=flat-square)]()
 [![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
 
 <br>
 
 ### [⬇ Windows · VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-VST3-Windows.zip) · [⬇ Windows · installer](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-Windows-Installer.zip) · [⬇ macOS](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-Installer.pkg)
 
-**Windows · VST3** — 12 MB. Unzip and drop the `HOUZY.vst3` folder into `C:\Program Files\Common Files\VST3\`, then rescan plugins in your DAW.
+**Windows · VST3** — unzip and drop the `HOUZY.vst3` folder into `C:\Program Files\Common Files\VST3\`, then rescan plugins in your DAW.
 
-**Windows · installer** — 13 MB. Does the same thing for you.
+**Windows · installer** — does the same thing for you.
 
-**macOS** — 42 MB installer, puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use.
+**macOS** — the installer puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use.
 
 > **macOS is currently on 4.7.0** — two releases behind. Everything in it works; it just
-> doesn't have the 4.7.1 timing fix or the 4.8.0 changes yet. The Mac build is made on an
+> doesn't have the changes from 4.7.1 and 4.8.0 yet. The Mac build is made on an
 > actual Mac, so it follows a little later.
 
-> **A note on the installer.** It isn't code-signed yet, so Windows Defender and a
-> couple of other scanners flag it — all of them machine-learning guesses (66 of 69
-> engines on VirusTotal report it clean), triggered by an unsigned Inno Setup file
-> rather than by anything in it. The plain zip above sidesteps this entirely: it holds
-> the plugin folder and nothing executable. A signing certificate is planned for the
-> commercial release.
+> **A note on the installer.** It isn't code-signed yet, so Windows may show
+> "Windows protected your PC" — click **More info → Run anyway**. Some scanners flag
+> unsigned Inno Setup files by machine-learning guess, not because of anything inside.
+> The plain zip above sidesteps this entirely: it holds the plugin folder and nothing
+> executable. Code signing is planned for the commercial release.
+
+**Works on:** Windows 10 / 11 (64-bit) · macOS, Apple Silicon and Intel.
 
 <br>
 
-<img src="panel.jpg" width="820" alt="HOUZY">
+<img src="panel.jpg" width="820" alt="HOUZY 4.8">
+
+<sub>HOUZY 4.8 — free, available above</sub>
+
+<br><br>
+
+## ✦ Coming soon — HOUZY 5
+
+**This is what version 5 looks like.**
+A completely new design in the **Liquid Glass** style — the direction modern
+interfaces are moving in: translucent glass panels with the background showing
+through, soft light along every edge, knob tips that stretch like a drop of liquid,
+and a living liquid sphere in the centre that breathes with your music.
+
+**HOUZY 5 will be a paid release.**
+**Version 4.8 stays free** — it remains available right here and will keep getting
+updates.
+
+<br>
+
+<img src="version5.png" width="820" alt="HOUZY 5 — Liquid Glass design">
+
+<sub>HOUZY 5 — Liquid Glass design · coming soon</sub>
 
 </div>
+
+<details>
+<summary><b>What else is coming in HOUZY 5</b></summary>
+
+- **Make it yours** — five backgrounds under **THEMES**, four colours of the liquid sphere
+  under **UI**, or UI OFF to keep the centre still
+- **Meters you can trust** — RMS and LUFS exactly to the broadcast standard
+  (ITU-R BS.1770-4), correct readings on mono tracks, and far more accurate A/B level
+  matching
+- **More stable** — no more crash when closing the plugin window, protection against
+  broken or extremely loud samples at the input, safe handling of unusual buffers
+- **PUNCH from 0 to 100**, where 0 means "follow DASH"; old projects convert
+  automatically and sound the same
+- **Shorter, clearer tooltips**, also shown when hovering a knob's name
+- **Smoother panel** while a track is playing
+
+</details>
 
 ---
 
@@ -60,7 +100,7 @@ Every classic complaint follows from that:
 - **the bass gets dirty** — multiplication is modulation: the gain moves, and sidebands
   grow around a 50 Hz kick. The compressor ruins the very thing it was evening out.
 
-Multiband does not fix this. It gives you four numbers instead of one, but each is
+Multiband does not fix this. It gives you a few numbers instead of one, but each is
 still a single number for an entire band.
 
 ---
@@ -81,11 +121,17 @@ Pumping is not treated here. It cannot happen.
 | **Punch survives per tone** | A tone that has only just appeared is not compressed. The body of the kick can be crushed while its leading edge stays untouched. |
 | **The bass cannot be modulated** | Attack is measured in **wave cycles**, not milliseconds, and can never physically become faster than half a cycle. |
 
+HOUZY is the default engine. Two classic engines are still on the switch:
+**CLASSIC** (denser, one line, a little louder) and **MODERN** (softer and more
+dynamic, cleaner low end). The plugin's delay is the same in all three, so switching
+never makes your DAW re-sync the track.
+
 ---
 
-## CYCLES and BEATS — attack and release, reinvented
+## CYCLES and NOTE / MS — attack and release, reinvented
 
-The millisecond is a poor unit for both. That follows from arithmetic, not taste.
+The millisecond is a poor unit for attack, and not always the right one for release.
+That follows from arithmetic, not taste.
 
 ### Attack in wave cycles, not milliseconds
 
@@ -105,34 +151,36 @@ turns itself into the right number of milliseconds at every frequency.
 
 The knob is labelled **CYCLES**.
 
-### Release in beat fractions, not milliseconds
+### Release in beat fractions — or in milliseconds
 
 A release dialled in at 128 BPM is wrong at 124: the beat has moved, the milliseconds
-have not. The compressor stops landing with the music, and it reads as a mix that will
-not sit together.
+have not. So the release has **two units**, switched by **clicking the label** above
+the knob:
 
-**HOUZY takes the tempo from the project settings** — the host reports the number you
-set, rather than guessing it from the audio. The release is a fraction of a bar and
-does not drift when the tempo changes.
+- **NOTE** — a fraction of a bar. **HOUZY takes the tempo from your project settings**
+  (the host reports the number you set rather than guessing it from the audio), so the
+  release stays on the beat when the tempo changes. Any tempo works;
+- **MS** — plain milliseconds, 20…1200, continuously. **This is the default.**
 
-> Works at **any tempo** — 60 or 190 alike. A beat fraction stays a beat fraction, and
-> the plugin does the conversion.
+### AUTO — the plugin sets the time itself
 
-The knob is labelled **BEATS**.
+On by default. The plugin measures how long the material actually rings and uses that
+time. That is a measurement, not a guess — how long a sound rings is a fact about the
+audio, unlike the shape of an attack, which is a matter of taste. That is why ATTACK
+deliberately has no such button.
+
+In **MS** it is more precise: the measured time is used as is, while in NOTE it has to
+be rounded to the nearest beat fraction. While AUTO is on, the knob shows the time it
+picked.
 
 ### BEAT | SMART
 
 A switch sits under the release knob:
 
-- **BEAT** — exactly the beat fraction you asked for;
-- **SMART** — that fraction as a **maximum**: a tone that has already died away is let
+- **BEAT** — exactly the release you asked for;
+- **SMART** — that release as a **maximum**: a tone that has already died away is let
   go early instead of holding an empty pause. You hear it on a skipped kick and on
-  syncopation.
-
-There is also **AUTO**: the plugin measures how long the material actually rings and
-picks the nearest note value. That is a measurement, not a guess — how long a sound
-rings is a fact about the audio, unlike the shape of an attack, which is a matter of
-taste. That is why ATTACK deliberately has no such button.
+  syncopation. **Default.**
 
 ---
 
@@ -149,50 +197,68 @@ duller and grittier the top end gets.**
 *where* the error sits in the spectrum.
 
 **Instead of slicing, ACR subtracts a short pulse** placed exactly at the peak. The
-pulse's spectrum is shaped so the distortion lands where the kick itself masks it. The
-peak comes off just as flat, but the top end survives.
+pulse's spectrum is shaped so the distortion lands in the top of the spectrum, where
+the hats and the attack of the kick mask it.
 
 The technique is borrowed from mobile network transmitters, where it is applied to LTE
 signals, and the pulse kernel is designed from a psychoacoustic model of hearing.
 
-> **ACR and a plain clipper match in loudness** — you can compare them directly with no
-> level matching. That is not luck: with equal weights the pulse degenerates into
-> exactly an ordinary hard clip, which has been verified numerically.
+ACR is the default. **HI-Q** — a conventional oversampled clipper — is the other
+position of the switch.
 
 ---
 
 ## What else is in there
 
+- **AUTO GAIN** (on by default) — measures how much the compression took and gives back
+  exactly that, so the output stays as loud as the input. Switch it off and nothing is
+  added back: you set the level with INPUT
+- **Spectral limiter** — SMART (3 bands) or T6 (6 bands), so a peak in the bass does
+  not duck the highs
 - **GAIN MATCH** — matches the output to the input level so **BYPASS compares character
   rather than loudness**. Without it the plugin is always louder, and "better" just
   means "louder"
-- **DASH** — one knob takes the compressor from punchy to even
-- **Spectral limiter** — 6 bands, so a peak in the bass does not duck the highs
-- **Upward compression** — lifts the quiet parts: reverb tails, air, detail
-- **ALL MIX** — 6 bands with their own knobs when you want control per range
+- **DASH** — one knob takes the compressor from punchy to even. **PUNCH** shares its row
+  (click the label to swap): how much of each hit is left untouched
+- **UPWARD** — upward compression: lifts the quiet parts — reverb tails, air, detail
+- **CLIP SHAPE** — in HOUZY, a light saturation across the whole spectrum with automatic
+  level compensation; in CLASSIC / MODERN, how soft the clipper cuts
+- **CHARACTER** — softer to the left, denser to the right
+- **ALL MIX** — 6 bands (SUB · LOW · LO-MID · MID · HI-MID · HIGH) with their own
+  compression knobs and their own level (−6…+6 dB) feeding each band
+- **TP** — true peak on the OUTPUT knob, for the final export to streaming and MP3
+- **PRESETS** — SNOOZE, SMOOTH, SMOOTHIE, SUSHI, SQUISHY, from gentle to dense. The list
+  stays open so you can click through and compare by ear. Presets move only the
+  compression knobs; your engine, clipper and limiter stay as you set them
 - **A / B** — two settings slots, compared at matched loudness
-- **Oversampling up to 64x**, honest RMS / LUFS meters, per-stage gain reduction graph
+- **Oversampling 4x…64x** (16x by default), **LOOKAHEAD** for the limiter
+- **Meters** — RMS and LUFS, a gain-reduction graph per stage and a live waveform
 - **English and Russian** interface, language follows the system on first run
+- **Update check** — a small UPDATE badge lights up when a new version is out; it can be
+  switched off in the ACRONA AUDIO card
+
+> HOUZY looks ahead, so it delays the sound by about 80 ms (at 48 kHz). Your DAW
+> compensates this automatically, and the delay never changes while you play.
 
 ---
 
 ## Installing
 
-**Windows** — download `HOUZY-Setup.exe` and run it.
+**Windows** — run `HOUZY-Setup.exe` from the installer zip.
 The plugin lands in `C:\Program Files\Common Files\VST3`.
 
 **macOS** — download `HOUZY-Installer.pkg`, double-click it, and tick the formats
 you want. The installer puts them where they belong.
 
 > **The system will block the package on first launch** — it is not signed with an Apple
-> certificate, and macOS quarantines anything unsigned. Get past it with
+> certificate yet, and macOS quarantines anything unsigned. Get past it with
 > **right-click the file → Open → Open** again in the warning. Or: System Settings →
 > Privacy & Security → "Open Anyway" at the bottom.
 >
 > Nothing is broken and nothing is infected — macOS treats every unsigned installer
 > this way.
 
-Both formats are Universal — Apple Silicon and Intel alike.
+Both Mac formats are Universal — Apple Silicon and Intel alike.
 **AU** is the one Logic and GarageBand use, **VST3** is for everything else.
 
 <details>
@@ -217,12 +283,9 @@ xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/Components/HOUZY.componen
 Then restart your DAW and rescan.
 
 </details>
-Building from source needs CMake ≥ 3.22 and C++17. JUCE is fetched automatically.
 
-```bash
-cmake -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --config Release
-```
+**Close your DAW before installing or updating** — a running DAW keeps the plugin file
+locked.
 
 ---
 
@@ -230,63 +293,33 @@ cmake --build build --config Release
 
 ## v4.8.0 · 27 September 2026
 
-- **AUTO GAIN now really gives back what HOUZY takes.** In HOUZY mode the button was
-  measuring the sound after it had already been compressed, so it saw no loss and
-  returned almost nothing. It now measures before and after, like everywhere else.
-  **This means HOUZY can play louder in projects you already have** — up to about
-  2 dB at the default setting on an open mix, more at higher COMPRESSION, and hardly
-  any change on a track that is already loud. That is the level it was always meant
-  to hold; if you liked it where it was, pull OUTPUT down to match
-- **New TP button on the OUTPUT knob — true peak.** Normally the ceiling is kept on
-  every sample, but the waveform can still swing slightly past it *between* samples,
-  which some streaming services and converters count as clipping. TP catches those
-  too. It is off by default, costs a tiny delay, and is worth switching on for the
-  final export
-- **No more clicks and gaps when switching.** Every mode switch used to click, and
-  going between HOUZY and CLASSIC or MODERN dropped the sound for a moment. Both are
-  gone. Turning COMPRESSION while the music plays no longer jumps either
-- **The low end is back at CLIP SHAPE 0.** The knob at zero was quietly trimming the
-  deep sub. Now zero means untouched
-- **No more crunch or kick clicks on a hot track.** Bringing an almost-finished track
-  up to 0 dB with INPUT used to make it crunch, and later tick on every kick. The
-  limiter was letting the kick's peaks slip past it, and the clipper after it was
-  slicing them. Now every stage does its own job: the limiter really holds the
-  ceiling and takes the bass and the body of the kick with a smooth gain, while the
-  clipper comes first and only shaves the short peaks in the very top, where the hats
-  hide it. COMPRESSION thickens the sound instead of flattening it, and the kick keeps
-  its punch
-- **Fixed a crash** in hosts that suddenly send a bigger chunk of audio than they
-  announced, and the sound no longer depends on your buffer size at all
-- **Reopening a new project no longer changes it.** A project saved straight away
-  could come back with AUTO GAIN switched on or a different RELEASE note
-- **UPWARD works at COMPRESSION 0,** and BYPASS now passes the untouched sound
-  completely
-- **Clearer buttons.** AUTO GAIN, AUTO and TP used to stay lit under the mouse after
-  you switched them off; now they go grey at once, with a short flash to confirm the
-  click. Double-clicking a band knob in ALL MIX returns it to where COMPRESSION had
-  put it, not to a fixed 20
-- **Nearly half the CPU of 4.7.1,** and about four times lighter at small buffer
-  sizes. The speed-up on its own changes not a single sample of the sound
+- **AUTO GAIN now really gives back what HOUZY takes.** In HOUZY mode it saw no loss
+  and returned almost nothing. **HOUZY can therefore play louder in projects you
+  already have** — up to about 2 dB at the default setting on an open mix. If you
+  liked it where it was, pull OUTPUT down to match
+- **New TP button on the OUTPUT knob — true peak** for the final export
+- **No more clicks and gaps when switching modes,** and turning COMPRESSION while
+  playing no longer jumps
+- **No more crunch or kick clicks on a hot track** — the clipper now takes only the
+  short peaks at the very top and the limiter takes the bass and the body of the kick
+- **The low end is back at CLIP SHAPE 0,** crash fix for hosts sending bigger chunks
+  than announced, and nearly half the CPU of 4.7.1
 
 ## v4.7.1 · 24 September 2026
 
 - **HOUZY now plays exactly in time with the rest of your project.** It was telling
   your DAW that it delayed the sound by 25 ms more than it really did, so the DAW
-  played it that much early. On the master bus you would hardly notice, but on a
-  single track, a drum bus or in parallel processing it smeared every hit into a
-  doubled attack. The sound of the plugin itself has not changed — only its timing
+  played it that much early. On a single track, a drum bus or in parallel processing
+  that smeared every hit into a doubled attack. The sound itself has not changed
 
 ## v4.7.0 · 16 September 2026
 
-- **Every band now has its own level control.** In ALL MIX mode a thin strip sits beside
-  each compression knob and raises or lowers that range *before* the compressor gets to
-  it. That is the useful part: a band too quiet for the compressor to react to can be
-  brought up until it does, and one loud enough to trample everything around it can be
-  pulled back — without touching how hard any of them is squeezed
-- **T7 has been taken off the panel.** It was an experiment that never reached the
-  finish line, and leaving it on the switch only invited people to pick something
-  unfinished. SMART and T6 are unchanged, and anything you already set up still sounds
-  exactly the same
+- **Every band now has its own level control.** In ALL MIX mode a thin strip beside
+  each compression knob raises or lowers that range *before* the compressor gets to it —
+  a band too quiet to be compressed can be brought up, one that tramples its neighbours
+  pulled back
+- **T7 has been taken off the panel.** It was an unfinished experiment. SMART and T6 are
+  unchanged, and anything you already set up sounds exactly the same
 
 ---
 
@@ -295,4 +328,3 @@ cmake --build build --config Release
 **ACRONA AUDIO**
 
 </div>
-
