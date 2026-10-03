@@ -113,7 +113,9 @@ compresses sounds equally steadily, regardless of how loud any frequency in the 
 is.** Say the track has a loud kick, low end or midrange — the compressor will squeeze
 the lows and the highs just the same.
 
-Worth knowing: **there is no threshold here.** The compressor analyses every part of the
+Worth knowing: **the threshold here is automatic** — it sets itself from the loudest
+sound and moves along with the track. **The release is automatic too** (AUTO): the
+plugin measures how fast the sounds in the track fade out and sets the time itself. The compressor analyses every part of the
 track separately and compresses every tone — kick, drums or vocal — the same way,
 regardless of its loudness. Then the level is raised back automatically (make-up gain),
 which gives you a well and densely compressed track. The compressor can be used not
@@ -123,10 +125,12 @@ only on the master, but the CPU load will grow.
 
 | | |
 |---|---|
-| **No frequency drags the others down** | The kick and the hat are different tones with different envelopes. The kick can be squeezed as hard as you like and the top end never notices. |
-| **The detector can finally see** | Every tone arrives with its own frequency, so loudness is judged with a hearing weighting — the same curve used by LUFS meters. |
-| **Punch survives per tone** | A tone that has only just appeared is not compressed. The body of the kick can be crushed while its leading edge stays untouched. |
-| **The bass cannot be modulated** | Attack is measured in **wave cycles**, not milliseconds, and can never physically become faster than half a cycle. |
+| **Loud doesn't drag the rest down** | A loud kick or bass doesn't make the hats, vocal and highs dip. |
+| **Lows and highs compressed the same** | Whatever is louder in the track — lows or mids — every frequency is compressed the same way. |
+| **Automatic threshold** | The threshold sets itself from the loudest sound and moves along with the track. Every tone — kick, drums, vocal — is analysed separately. |
+| **Automatic release** | AUTO measures how fast the sounds in the track fade out and sets the release time itself. |
+| **A dense track right away** | After compression the level is raised back automatically, so the track comes out dense. |
+| **Not just for mastering** | Use it on any track or bus, but the CPU load will be higher. |
 
 HOUZY is the default engine. Two classic engines are still on the switch:
 **CLASSIC** (denser, one line, a little louder) and **MODERN** (softer and more
@@ -171,8 +175,8 @@ the knob:
 
 ### AUTO — the plugin sets the time itself
 
-On by default. The plugin measures how long the material actually rings and uses that
-time. That is a measurement, not a guess — how long a sound rings is a fact about the
+On by default. The plugin measures how fast the sounds in the track actually fade out
+and uses that time. That is a measurement, not a guess — how fast a sound fades is a fact about the
 audio, unlike the shape of an attack, which is a matter of taste. That is why ATTACK
 deliberately has no such button.
 
