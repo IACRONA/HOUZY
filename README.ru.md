@@ -39,6 +39,7 @@
 **Работает на:** Windows 10 / 11 (64-бит) · macOS, Apple Silicon и Intel.
 
 ### [📖 Руководство к использованию](MANUAL.ru.md)
+<sub>[English](MANUAL.md) · [Español](MANUAL.es.md) · [Português](MANUAL.pt-BR.md)</sub>
 
 <br>
 

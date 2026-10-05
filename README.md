@@ -40,6 +40,7 @@ Three original technologies: **HOUZY** — loud sounds don't drag the rest down,
 **Works on:** Windows 10 / 11 (64-bit) · macOS, Apple Silicon and Intel.
 
 ### [📖 User manual](MANUAL.md)
+<sub>[Русский](MANUAL.ru.md) · [Español](MANUAL.es.md) · [Português](MANUAL.pt-BR.md)</sub>
 
 <br>
 

@@ -1,6 +1,6 @@
 <div align="center">
 
-**Русский** · [English](MANUAL.md)
+[English](MANUAL.md) · **Русский** · [Español](MANUAL.es.md) · [Português](MANUAL.pt-BR.md)
 
 # Руководство к использованию HOUZY
 
