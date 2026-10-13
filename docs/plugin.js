@@ -246,8 +246,10 @@
     drawLive();
   }
   function size() {
-    var r = panel.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 3);
-    var w = Math.round(r.width * dpr), h = Math.round(r.height * dpr);
+    // the LAYOUT size, not getBoundingClientRect: the window lands tilted and scaled (site.js), and a resize during that
+    // animation sized the canvas to the tilted box - everything drawn on it then stretched and slid down
+    var dpr = Math.min(window.devicePixelRatio || 1, 3);
+    var w = Math.round(panel.offsetWidth * dpr), h = Math.round(panel.offsetHeight * dpr);
     if (cv.width === w && cv.height === h) return;   // assigning a size wipes the canvas, even the same size
     cv.width = w; cv.height = h; lastSig = '';      // wiped: the loop must redraw (zoom can keep the width and change only the height)
   }
