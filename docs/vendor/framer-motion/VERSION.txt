@@ -1,0 +1,1 @@
+framer-motion 14.1.0 (MIT) - dist/dom.js (Motion.animate, spring, stagger, inView, scroll, hover, press) and dist/dom-mini.js.

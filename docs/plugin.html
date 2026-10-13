@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Try the HOUZY 5 Mastering Compressor in Your Browser | ACRONA AUDIO</title>
+<meta name="description" content="Play with the real HOUZY 5 mastering compressor interface in your browser and hear it on your own track. MP3 or WAV, nothing is uploaded.">
+<meta name="theme-color" content="#e7e7ef">
+<link rel="canonical" href="https://acronaaudio.shop/plugin.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
+<meta property="og:url" content="https://acronaaudio.shop/plugin.html">
+<meta property="og:title" content="Try the HOUZY 5 Mastering Compressor in Your Browser | ACRONA AUDIO">
+<meta property="og:description" content="Play with the real HOUZY 5 mastering compressor interface in your browser and hear it on your own track. MP3 or WAV, nothing is uploaded.">
+<meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
+<meta property="og:image:width" content="1640">
+<meta property="og:image:height" content="912">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+<script>document.documentElement.classList.add('pt')</script>
+<script src="vendor/framer-motion/dom.js" defer></script>
+<script src="orb.js" defer></script>
+<script src="site.js" defer></script>
+<script src="plugin.js" defer></script>
+<script src="houzy-live.js" defer></script>
+<script src="buy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="brand" href="index.html" aria-label="HOUZY home">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg>
+    <b>HOUZY</b><small>ACRONA AUDIO</small>
+  </a>
+  <div class="navpanel">
+    <nav class="menu" aria-label="Main">
+      <a href="index.html#top">Technology</a>
+      <a href="manual.html">Manual</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="try">
+  <div class="head glass">
+      <h1 class="hero-title"><span class="kick">Try the HOUZY mastering compressor</span><span class="t">Even compression across every frequency.</span></h1>
+      <p class="lead">When you compress, a loud kick or bass no longer drags the rest of the instruments along with it.</p>
+    </div>
+  <div class="plugin" id="panel" role="img" aria-label="The HOUZY 5 plugin window">
+    <img src="img/plugin/t1/chrome.webp" width="1480" height="1000" alt="">
+    <div class="porb" aria-hidden="true"></div>
+    <canvas id="live" aria-hidden="true"></canvas>
+    <div class="live-toast" role="status" aria-live="polite"></div>
+  </div>
+  <div class="live glass" id="live-ui">
+      <label class="cta live-pick" aria-label="Upload your track (MP3 or WAV)">
+      <input type="file" accept=".mp3,.wav,audio/mpeg,audio/wav,audio/x-wav" hidden>
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 14V3M5.5 7.5 10 3l4.5 4.5M3 13v3.5h14V13"/></svg>
+      <span>Upload</span>
+    </label>
+    <p class="live-note"><b>Try HOUZY 5 on your own track</b>MP3 / WAV · plays in your browser, never uploaded</p>
+      <label class="live-amount">AMOUNT <input type="range" min="0" max="100" step="1" value="0" aria-label="Amount"><output>0</output></label>
+    <div class="live-progress" hidden><i></i><span></span></div>
+    <div class="live-row" hidden>
+      <button class="pill live-play" type="button">Play</button>
+      <div class="live-track"><span class="live-name"></span><div class="live-bar" role="slider" aria-label="Position"><i></i></div></div>
+      <span class="live-time">0:00</span>
+      <button class="pill live-ab" type="button" aria-pressed="false" title="Compare with the original">HOUZY</button>
+      <button class="pill live-clear" type="button">Clear</button>
+    </div>
+  </div>
+    <div class="buy-row"><button class="cta buy buy-big" type="button">Buy HOUZY</button></div>
+  <p class="note">The demo runs the HOUZY engine with SMART / T6 and up to 16x oversampling. T8, CLASSIC, MODERN, 32x / 64x, UPWARD, CHARACTER, CLIP SHAPE and DASH are in the full version.</p>
+</main>
+</body>
+</html>

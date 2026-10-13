@@ -2,121 +2,194 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy Policy — HOUZY by ACRONA AUDIO</title>
-<style>
-  :root { --bg:#0e1416; --text:#d9e8eb; --dim:#a4bcc4; --accent:#8dcad4; --line:#24353a; }
-  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
-  main { max-width:760px; margin:0 auto; padding:40px 16px 64px; }
-  h1 { font-size:28px; margin:0 0 4px; }
-  h2 { font-size:19px; margin:32px 0 8px; color:var(--accent); }
-  p, li { color:var(--text); }
-  .dim { color:var(--dim); font-size:14px; }
-  a { color:var(--accent); }
-  hr { border:0; border-top:1px solid var(--line); margin:48px 0; }
-  nav { margin-bottom:24px; font-size:14px; }
-</style>
+<meta name="description" content="How HOUZY and this website handle personal data: no audio leaves your computer, no analytics, your GDPR and CCPA rights.">
+<meta name="theme-color" content="#e7e7ef">
+<link rel="canonical" href="https://acronaaudio.shop/privacy.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+<script>document.documentElement.classList.add('pt')</script>
+<script src="vendor/framer-motion/dom.js" defer></script>
+<script src="site.js" defer></script>
 </head>
 <body>
-<main>
-<nav><a href="index.html">HOUZY</a> · <a href="#en">English</a> · <a href="#ru">Русский</a></nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="brand" href="index.html" aria-label="HOUZY home">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg>
+    <b>HOUZY</b><small>ACRONA AUDIO</small>
+  </a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Open menu">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" aria-label="Menu">
+    <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
+  </label>
+  <div class="navpanel">
+    <nav class="menu" aria-label="Main">
+      <a href="index.html#houzy">Technology</a>
+      <a href="manual.html">Manual</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="pill" href="mailto:acrona.war@gmail.com?subject=HOUZY%205%20%E2%80%94%20let%20me%20know">Notify me</a>
+  </div>
+</header>
 
-<section id="en">
-<h1>Privacy Policy</h1>
-<p class="dim">HOUZY audio plugin by ACRONA AUDIO · Effective 2 October 2026</p>
+<main id="main" class="legal">
+  <div class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="meta">HOUZY · ACRONA AUDIO · Effective 12 October 2026 · Last updated 12 October 2026</p>
+    <nav class="glass toc" aria-label="Contents"><ol>
+      <li><a href="#who">Who is responsible</a></li>
+      <li><a href="#website">This website</a></li>
+      <li><a href="#plugin">The HOUZY plugin</a></li>
+      <li><a href="#purchases">Purchases</a></li>
+      <li><a href="#bases">Legal bases</a></li>
+      <li><a href="#recipients">Who receives data</a></li>
+      <li><a href="#transfers">International transfers</a></li>
+      <li><a href="#retention">How long we keep data</a></li>
+      <li><a href="#rights">Your rights</a></li>
+      <li><a href="#children">Children</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+    </ol></nav>
+    <div class="prose">
 
-<p>HOUZY is an audio plugin. It processes your audio entirely on your computer — no audio ever leaves your machine.
-This page explains the small amount of data the plugin and its sales and licensing partners handle, and why.</p>
+<p>HOUZY is an audio plugin. <b>It processes your audio entirely on your computer, and no audio ever leaves your machine.</b> This policy explains the small amount of personal data handled by this website, by the plugin, and by our sales and licensing partners: what it is, why, for how long, and what you can do about it.</p>
 
-<h2>Who we are</h2>
-<p>ACRONA AUDIO is an independent developer operated by an individual. Contact: <a href="mailto:CONTACT_EMAIL">CONTACT_EMAIL</a>.</p>
+<h2 id="who">Who is responsible</h2>
+<p>The controller of your personal data is <b>ACRONA AUDIO</b>, an independent developer operated by a private individual. Contact for every privacy question: <a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a> (Telegram: <a href="https://t.me/acronalife">@acronalife</a>). We have not appointed a data protection officer, because the law does not require one for an operation of this size.</p>
 
-<h2>1. Licence activation</h2>
-<p>When you activate HOUZY, start a trial, or when the plugin periodically confirms your licence (at most every 12 hours, only when online),
-it contacts our licensing provider <strong>Moonbase AS</strong> (Norway) and sends:</p>
+<h2 id="website">This website</h2>
+<h3>Hosting and server logs</h3>
+<p>The site is hosted on GitHub Pages by GitHub, Inc. When you open a page, GitHub's servers automatically process technical data such as your IP address, the date and time, the page requested, your browser and operating system. This is needed to deliver the site and keep it secure. We do not have access to these logs and do not combine them with other data. See the <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</p>
+<h3>Downloads</h3>
+<p>Download buttons fetch files from GitHub (<span class="code">raw.githubusercontent.com</span>), which receives your IP address in the same way.</p>
+<h3>Background video</h3>
+<p>The moving background on the home page is a video file served from this site itself, like the images and scripts. It is not loaded from any third party.</p>
+<h3>Font, only with your consent</h3>
+<p>If you click <b>Accept</b> in the consent banner, the site loads the <b>Sora</b> typeface from Google Fonts (Google Ireland Ltd. / Google LLC), which receives your IP address and browser details, see the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. If you choose <b>Necessary only</b>, nothing is loaded from Google and the site uses a system font. You can change your choice at any time with <b>Cookie settings</b> at the bottom of every page. Details are in the <a href="cookies.html">Cookie Policy</a>.</p>
+<h3>No analytics, no advertising</h3>
+<p>The site has no analytics, no tracking pixels, no advertising and no social-media plugins. Links to Telegram, Spotify and Yandex Music are plain links: nothing is sent to those services unless you click one, and then their own privacy policies apply.</p>
+<h3>When you write to us</h3>
+<p>If you email us, we process your email address, name and whatever you include in the message, only to answer you. Our mail is provided by Google (Gmail).</p>
+
+<h2 id="plugin">The HOUZY plugin</h2>
+<h3>Update check</h3>
+<p>Up to once every 8 hours the plugin downloads one small public file from GitHub to see whether a newer version exists. No personal identifiers are sent. As with any web request, GitHub can see your IP address. You can turn the check off in the ACRONA AUDIO card inside the plugin.</p>
+<h3>Licence activation (HOUZY 5 and later)</h3>
+<p>When you activate HOUZY, start a trial, or when the plugin confirms your licence (at most every 12 hours, and only when online), it contacts our licensing provider <b>Moonbase AS</b> (Norway) and sends:</p>
 <ul>
   <li>your licence key or voucher code;</li>
   <li>your computer's name;</li>
-  <li>a device identifier — a one-way hash derived from your computer's system information, used only to count activations per licence;</li>
+  <li>a device identifier: a one-way hash of your computer's system information, used only to count activations per licence;</li>
   <li>if you activate by signing in through the browser, the email address of your Moonbase account.</li>
 </ul>
-<p>The resulting licence file is stored locally in your user application-data folder. You can release a computer's activation at any time from the plugin's licence window.</p>
+<p>The licence file is stored on your computer in your user application-data folder. You can release a computer's activation at any time from the plugin's licence window. If you activate offline with a licence file, the plugin does not contact anyone.</p>
+<h3>Data that stays on your computer</h3>
+<p>Settings, the licence file, its backup and a small diagnostic log (<span class="code">licence.log</span>, at most 64 KB, without your licence key) are kept locally and are never sent automatically. The <b>REPORT</b> button only copies a summary to your clipboard. You decide whether to send it to us.</p>
 
-<h2>2. Purchases</h2>
-<p>Payments are processed by Moonbase (as merchant of record) or by an authorised reseller.
-They collect what is needed to complete the order — such as your name, email address, country and payment details — under their own privacy policies.
-We receive order details (name, email, country, product) to provide licences and support. We never see your full card details.</p>
+<h2 id="purchases">Purchases</h2>
+<p>Payments are processed by Moonbase as merchant of record, or by an authorised reseller. They collect what the order needs, such as your name, email address, country, billing address and payment details, under their own privacy policies (<a href="https://moonbase.sh/privacy">Moonbase Privacy Policy</a>). We receive the order details (name, email, country, product, order number) so we can provide licences, support and refunds, and meet accounting duties. <b>We never see your full card details.</b></p>
 
-<h2>3. Update check</h2>
-<p>Up to every 8 hours the plugin downloads one small public file from GitHub to see whether a newer version exists.
-No personal identifiers are sent. As with any web request, GitHub can see your IP address. You can turn this check off in the ACRONA AUDIO card inside the plugin.</p>
+<h2 id="bases">Legal bases</h2>
+<table>
+  <tr><th>Purpose</th><th>Legal basis (GDPR / UK GDPR)</th></tr>
+  <tr><td>Delivering the website, security logs</td><td>Legitimate interest in a working, secure site — Art. 6(1)(f)</td></tr>
+  <tr><td>Google Fonts</td><td>Your consent — Art. 6(1)(a), withdrawable at any time</td></tr>
+  <tr><td>Storing your consent choice in your browser</td><td>Strictly necessary to respect your choice, legal obligation — Art. 6(1)(c)</td></tr>
+  <tr><td>Update check</td><td>Legitimate interest in telling you about fixes; you can switch it off — Art. 6(1)(f)</td></tr>
+  <tr><td>Licence activation, trials, purchases, refunds</td><td>Performance of a contract with you — Art. 6(1)(b)</td></tr>
+  <tr><td>Keeping order records</td><td>Legal obligation (tax and accounting law) — Art. 6(1)(c)</td></tr>
+  <tr><td>Answering your emails</td><td>Contract or pre-contract steps, otherwise legitimate interest — Art. 6(1)(b)/(f)</td></tr>
+</table>
 
-<h2>4. What we do not do</h2>
+<h2 id="recipients">Who receives data</h2>
+<table>
+  <tr><th>Recipient</th><th>Role</th><th>Location</th></tr>
+  <tr><td>GitHub, Inc.</td><td>Website hosting, downloads, update file</td><td>USA</td></tr>
+  <tr><td>Google Ireland Ltd. / Google LLC</td><td>Fonts (with consent), email</td><td>EU / USA</td></tr>
+  <tr><td>Moonbase AS</td><td>Licensing, store, merchant of record</td><td>Norway (EEA)</td></tr>
+  <tr><td>Authorised resellers</td><td>Sales, if you buy through one</td><td>Varies</td></tr>
+</table>
+<p>We do not sell or rent personal data, and we do not share it for advertising. We disclose data to authorities only where the law requires it.</p>
+
+<h2 id="transfers">International transfers</h2>
+<p>Some recipients are in the USA or run global networks. Transfers rely on an adequacy decision (such as the EU–U.S. Data Privacy Framework, where the recipient is certified) or on the European Commission's Standard Contractual Clauses offered by these providers.</p>
+
+<h2 id="retention">How long we keep data</h2>
 <ul>
-  <li>No analytics, tracking or advertising.</li>
-  <li>We do not sell or share your data for marketing.</li>
-  <li>Diagnostic logs stay on your computer. The plugin's REPORT button only copies a summary (without your licence key) to your clipboard — you decide whether to send it to us.</li>
+  <li>Emails: as long as needed to help you, then deleted within 2 years of the last message, unless they relate to an order.</li>
+  <li>Order and licence records: while your licence is valid and for as long as tax and accounting law requires (usually 5–10 years).</li>
+  <li>Your consent choice: in your browser until you clear it or change it.</li>
+  <li>Server logs: kept by GitHub under its own policy; we hold none.</li>
 </ul>
 
-<h2>5. How long we keep data</h2>
-<p>Licence and order records are kept while your licence is valid and as long as required for accounting and tax obligations. Support emails are kept as long as needed to help you.</p>
-
-<h2>6. Your rights</h2>
-<p>You can ask us to access, correct or delete your personal data, or object to its processing, by writing to the contact address above.
-Data held by Moonbase or a reseller can also be requested from them directly. If you are in the EU/EEA or UK, you may also complain to your local data protection authority.</p>
-
-<h2>7. Changes</h2>
-<p>If this policy changes, the new version will be published on this page with a new effective date.</p>
-</section>
-
-<hr>
-
-<section id="ru" lang="ru">
-<h1>Политика конфиденциальности</h1>
-<p class="dim">Аудиоплагин HOUZY от ACRONA AUDIO · Действует с 2 октября 2026 г.</p>
-
-<p>HOUZY — аудиоплагин. Он обрабатывает звук полностью на вашем компьютере: звук никуда не отправляется.
-Здесь описано, какие немногие данные обрабатывают плагин и наши партнёры по продажам и лицензиям, и зачем.</p>
-
-<h2>Кто мы</h2>
-<p>ACRONA AUDIO — независимый разработчик, частное лицо. Связь: <a href="mailto:CONTACT_EMAIL">CONTACT_EMAIL</a>.</p>
-
-<h2>1. Активация лицензии</h2>
-<p>Когда вы активируете HOUZY, начинаете пробный период или когда плагин подтверждает лицензию (не чаще раза в 12 часов и только при подключении к интернету),
-он связывается с нашим поставщиком лицензий <strong>Moonbase AS</strong> (Норвегия) и передаёт:</p>
+<h2 id="rights">Your rights</h2>
+<p>Depending on where you live, you have the right to:</p>
 <ul>
-  <li>ключ лицензии или код ваучера;</li>
-  <li>имя вашего компьютера;</li>
-  <li>идентификатор устройства — необратимый хэш от системных данных компьютера; нужен только чтобы считать активации на одну лицензию;</li>
-  <li>если вы активируете через вход в браузере — адрес почты вашего аккаунта Moonbase.</li>
+  <li><b>access</b> the personal data we hold about you and get a copy;</li>
+  <li><b>correct</b> inaccurate data;</li>
+  <li><b>delete</b> your data ("right to be forgotten"), unless we must keep it by law;</li>
+  <li><b>restrict</b> or <b>object to</b> processing based on legitimate interest;</li>
+  <li><b>data portability</b>, receiving your data in a machine-readable format;</li>
+  <li><b>withdraw consent</b> at any time, without affecting earlier processing;</li>
+  <li><b>complain</b> to a data protection authority, in the EU/EEA in your country of residence or work, or in the UK to the ICO.</li>
 </ul>
-<p>Файл лицензии хранится на вашем компьютере в папке данных пользователя. Снять активацию с компьютера можно в любой момент в окне лицензии плагина.</p>
+<p><b>California and other US states:</b> we do not sell or "share" personal information for cross-context behavioural advertising, and we do not use sensitive personal information. You may request to know, correct or delete your information, and we will not discriminate against you for using these rights.</p>
+<p>To use any right, write to <a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a>. We answer within one month (sooner where local law requires), free of charge, and may ask you to confirm your identity first. Data held by Moonbase or a reseller can also be requested from them directly. We make no decisions about you by purely automated means that have legal or similarly significant effects.</p>
 
-<h2>2. Покупки</h2>
-<p>Оплату обрабатывает Moonbase (как продавец) или авторизованный дилер. Они собирают то, что нужно для заказа — имя, почту, страну, платёжные данные — по своим политикам конфиденциальности.
-Мы получаем данные заказа (имя, почта, страна, продукт), чтобы выдать лицензию и помочь с поддержкой. Полные данные карты мы не видим.</p>
+<h2 id="children">Children</h2>
+<p>The site and the plugin are not aimed at children under 16, and we do not knowingly collect their data. If you think a child has given us personal data, write to us and we will delete it.</p>
 
-<h2>3. Проверка обновлений</h2>
-<p>Не чаще раза в 8 часов плагин скачивает с GitHub один небольшой публичный файл, чтобы узнать, есть ли новая версия.
-Личные данные не передаются. Как при любом запросе в интернет, GitHub видит ваш IP-адрес. Проверку можно выключить в карточке ACRONA AUDIO в плагине.</p>
+<h2 id="security">Security</h2>
+<p>The site is served only over HTTPS. Licence files are written atomically with a backup copy, licence keys are never included in reports or logs, and access to order data is limited to us. No method of transfer or storage is 100% secure, but we take reasonable measures for an operation of this size.</p>
 
-<h2>4. Чего мы не делаем</h2>
-<ul>
-  <li>Никакой аналитики, отслеживания и рекламы.</li>
-  <li>Мы не продаём и не передаём ваши данные для маркетинга.</li>
-  <li>Журналы диагностики остаются на вашем компьютере. Кнопка ОТЧЁТ в плагине только копирует сводку (без ключа лицензии) в буфер обмена — отправлять ли её нам, решаете вы.</li>
-</ul>
+<h2 id="changes">Changes to this policy</h2>
+<p>If this policy changes, the new version is published on this page with a new date. For material changes we will also point it out on the home page or in the plugin's update notice.</p>
 
-<h2>5. Сколько храним</h2>
-<p>Данные лицензий и заказов — пока лицензия действует и сколько требуют бухгалтерский учёт и налоги. Письма в поддержку — сколько нужно, чтобы вам помочь.</p>
-
-<h2>6. Ваши права</h2>
-<p>Вы можете попросить доступ к своим данным, их исправление или удаление, или возразить против обработки — напишите на адрес выше.
-Данные, которые хранят Moonbase или дилер, можно запросить у них напрямую. Если вы в ЕС/ЕЭЗ или Великобритании, вы также можете обратиться в местный орган по защите данных.</p>
-
-<h2>7. Изменения</h2>
-<p>Если политика изменится, новая версия появится на этой странице с новой датой.</p>
-</section>
+    </div>
+  </div>
 </main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
+      <p>Mastering compressor by ACRONA AUDIO.<br><a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+        <li><a href="terms.html">Terms of Use &amp; Sale</a></li>
+        <li><a href="eula.html">Licence Agreement (EULA)</a></li>
+        <li><button class="linkbtn" type="button" data-consent="open">Cookie settings</button></li>
+      </ul>
+    </div>
+    <div>
+      <h4>ACRONA</h4>
+      <ul>
+        <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 ACRONA AUDIO. VST is a trademark of Steinberg Media Technologies GmbH. Audio Units, Logic Pro and macOS are trademarks of Apple Inc. Other names belong to their owners.</p>
+  </div>
+</footer>
+
+<div class="consent glass" id="consent" role="dialog" aria-labelledby="consent-h" hidden>
+  <h2 id="consent-h">Your privacy</h2>
+  <p>This site sets no tracking or advertising cookies. With your permission it loads the Sora font from Google Fonts, which receives your IP address. Without permission the site uses a system font. <a href="cookies.html">Cookie Policy</a></p>
+  <div class="row">
+    <button class="cta" type="button" data-consent="all">Accept</button>
+    <button class="pill" type="button" data-consent="necessary">Necessary only</button>
+  </div>
+</div>
 </body>
 </html>
