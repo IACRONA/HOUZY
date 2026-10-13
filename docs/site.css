@@ -258,7 +258,6 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 @keyframes pt-failsafe{to{opacity:1}}
 
 /* ---------- the live plugin window (plugin.js): on plugin.html and under the sphere on index.html ---------- */
-@font-face{font-family:'DrukWide';src:url(fonts/DrukWide.ttf) format('truetype');font-display:block}
 .try{padding:110px var(--pad) 60px;max-width:1240px;margin:0 auto}
 .try .head{text-align:center;margin:0 auto 24px}
 /* liquid glass card under the heading: the site glass (.glass = the plugin's CSS glass), sized to the text */
@@ -309,7 +308,7 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
   background:rgba(18,25,27,.72);-webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),inset 1px 1px 0 rgba(255,255,255,.35),0 14px 34px -12px rgba(0,0,0,.7)}
 .live-menu[hidden]{display:none}
-.live-menu button{all:unset;cursor:pointer;padding:6px 10px;border-radius:6px;font:clamp(8px,1vw,12px)/1.2 DrukWide,sans-serif;letter-spacing:.04em;color:#d9e8eb;transition:background .2s,transform .2s}
+.live-menu button{all:unset;cursor:pointer;padding:6px 10px;border-radius:6px;font:700 clamp(8px,1vw,12px)/1.2 Sora,system-ui,sans-serif;letter-spacing:.04em;color:#d9e8eb;transition:background .2s,transform .2s}
 .live-menu button:hover{background:rgba(141,202,212,.14);transform:scale(1.04)}
 .live-menu button.on{background:rgba(141,202,212,.22);color:#fff}
 .live-menu button:focus-visible{outline:1px solid #8dcad4}
@@ -382,7 +381,7 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 .try .live .live-pick svg{width:15px;height:15px}
 .try .live .live-note{display:grid;gap:1px;font-size:12px;line-height:1.35;color:var(--sub)}
 .try .live .live-note b{font-weight:normal;font-variation-settings:'wght' 650;font-size:14px;color:var(--ink)}
-.live-menu-head{margin:2px 10px 4px;font:clamp(7px,.8vw,10px)/1.2 DrukWide,sans-serif;letter-spacing:.08em;color:#8a9ca1}
+.live-menu-head{margin:2px 10px 4px;font:700 clamp(7px,.8vw,10px)/1.2 Sora,system-ui,sans-serif;letter-spacing:.08em;color:#8a9ca1}
 /* menus sized to the panel's own captions (the window is now near its native 740 px) */
 .live-menu{padding:5px;gap:1px;border-radius:9px;min-width:0}
 .live-menu button{padding:5px 12px 5px 9px;font-size:9px;border-radius:5px}

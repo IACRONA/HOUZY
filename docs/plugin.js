@@ -37,8 +37,8 @@
     SLIDERS.push({ id: 'gain' + i, param: ['complowgain', 'compbassgain', 'complomidgain', 'compmidgain', 'comphimidgain', 'comphighgain'][i], r: [p[0], p[1], 14, 58], min: -6, max: 6, v: 0, vertical: true });
   });
   var A0 = Math.PI * 1.2, A1 = Math.PI * 2.8;               // JUCE's default rotary range
-  // JUCE font height 11 (type::value) = ascent + descent; Druk Wide has 1018 + 259 per 1000 em -> CSS 8.61 px
-  var DIGIT_FONT = (11 * 1000 / (1018 + 259)).toFixed(2) + 'px DrukWide';
+  // the plugin draws these in Druk Wide (a paid font, not published): the site uses bold Sora of a similar size
+  var DIGIT_FONT = '700 10.5px Sora, system-ui, sans-serif';
   var all = KNOBS.concat(SLIDERS);
   all.forEach(function (c) { c.def = c.v; c.hover = 0; c.lag = (c.v - c.min) / (c.max - c.min); });
   KNOBS.forEach(function (c) {
@@ -146,7 +146,7 @@
     lineStroke(sh(p0, -w * 0.5), sh(pv, -w * 0.5), 0.7, 'rgba(255,255,255,0.35)');
     lineStroke(sh(p0, w * 0.32), sh(pv, w * 0.32), 1.0, lin(p0, pv, rgba(col, 0.15), rgba(brighter(col, 0.6), 0.75)));
   }
-  // drawDigits, kDigitStyle 3 (glass digits), Druk Wide type::value 11
+  // drawDigits, kDigitStyle 3 (glass digits)
   function digits(text, box, col) {
     ctx.font = DIGIT_FONT; ctx.textBaseline = 'middle'; ctx.textAlign = 'center';
     var x = box.x + box.w / 2, y = box.y + box.h / 2 + 0.5, topC = mix(col, WHITE, 0.55), botC = darker(col, 0.15);
@@ -477,7 +477,7 @@
 
   // ---- meters (drawMeter + meterRects) and the GR graph (drawGrGraph), fed by houzy-worklet.js ----
   var AMBER = [224, 162, 74], OVER = [255, 82, 82], CYAN_DIM = [68, 106, 113], TEXT = [217, 232, 235];
-  var COMBO_FONT = (8.8 * 1000 / (1018 + 259)).toFixed(2) + 'px DrukWide';
+  var COMBO_FONT = '700 8.5px Sora, system-ui, sans-serif';
   var meterState = [{ shown: -60, peak: -60, overUntil: 0 }, { shown: -60, peak: -60, overUntil: 0 }], compShown = 0, lastMs = 0;
   function drawMeter(r, st) {
     var x = r[0], y = r[1], w = r[2], h = r[3];
@@ -571,7 +571,7 @@
       ctx.shadowColor = rgba(CYAN, 0.9); ctx.shadowBlur = 8; ctx.fill(); ctx.shadowBlur = 0;
       ctx.fillStyle = 'rgba(10,14,16,0.45)';
       [R.bands, [214, 102, 400, 322], R.graph].forEach(function (z) { shape(z[0], z[1], z[2], z[3], 6, false); ctx.fill(); });
-      ctx.font = '26px DrukWide'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.font = '700 26px Sora, system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillStyle = 'rgba(217,232,235,0.85)'; ctx.fillText('BYPASS', 414, 270);
     }
   }
