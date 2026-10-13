@@ -440,7 +440,10 @@
   function inR(p, r) { return p[0] >= r[0] && p[0] <= r[0] + r[2] && p[1] >= r[1] && p[1] <= r[1] + r[3]; }
   function third(p, r) { return Math.min(2, Math.floor((p[0] - r[0]) / (r[2] / 3))); }
   function half(p, r) { return p[0] < r[0] + r[2] / 2 ? 0 : 1; }
+  // the click sound (site.js) for the switches and buttons drawn on the window; knobs are dragged, not clicked
+  var CLICK_ZONES = Object.keys(R).filter(function (k) { return ['bands', 'rms', 'lufs', 'graph'].indexOf(k) < 0; });
   function zoneClick(p) {
+    if (window.houzyUiSound && CLICK_ZONES.some(function (k) { return inR(p, R[k]); })) window.houzyUiSound('click');
     if (inR(p, R.presets)) { toggleMenu(presetMenu); return; }
     if (inR(p, R.themes)) { toggleMenu(themeMenu); return; }
     if (inR(p, R.ui)) { toggleMenu(uiMenu); return; }

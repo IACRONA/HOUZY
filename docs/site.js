@@ -6,6 +6,33 @@
   var M = window.Motion && window.Motion.animate ? window.Motion : null;
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
 
+  /* ---------- UI sounds: audio/click.wav on a click or tap of anything clickable, audio/grab.wav when a tendril grabs a card.
+     Silent while a track plays in the HOUZY demo (houzy-live.js sets window.houzyPlaying), back on pause or when it is cleared.
+     Browsers let a page make sound only after a click / tap / key (hover and scroll do not count), so grabs before that are
+     silent. The first such gesture plays the grab muted INSIDE it: Safari on iPhone unlocks an audio element only that way. */
+  var SND = { click: new Audio('audio/click.wav'), grab: new Audio('audio/grab.wav') }, lastSnd = {};
+  SND.click.volume = 1;                 // the click peaks at -17 dBFS
+  SND.grab.volume = 0.5;                // the grab peaks at -1 dBFS: half is plenty for a UI sound
+  Object.keys(SND).forEach(function (k) { SND[k].preload = 'auto'; });
+  function uiSound(k) {
+    var a = SND[k], now = performance.now();
+    if (window.houzyPlaying || now - (lastSnd[k] || 0) < 120) return;      // a fast run through chapters: no stutter
+    lastSnd[k] = now;
+    try { a.currentTime = 0; var p = a.play(); if (p) p.catch(function () {}); } catch (e) {}
+  }
+  window.houzyUiSound = uiSound;        // plugin.js: the switches drawn on the plugin window
+  function unlockGrab() {
+    ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { document.removeEventListener(t, unlockGrab, true); });
+    var a = SND.grab; a.muted = true;
+    var p = a.play(), done = function () { a.pause(); a.currentTime = 0; a.muted = false; };
+    if (p) p.then(done, function () { a.muted = false; }); else done();
+  }
+  ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { document.addEventListener(t, unlockGrab, true); });
+  // the click is played inside the click itself, which also unlocks it on iPhone
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('a, button, label, summary, [role="button"], .tab')) uiSound('click');
+  }, true);
+
   /* ---------- user agreement: asked once, before anything else ----------
      The first visit shows it as a card in the corner; the site stays usable, the card stays until "I agree".
      Not shown on the legal pages themselves. */
@@ -265,14 +292,7 @@
         upFingers[i].style.strokeWidth = f1(Math.max(2.5, thick * 0.2));
       });
     }
-    // the grab sound ("Houzy site.wav" -> audio/grab.wav), each time an arm closes on its card. Browsers let a page make
-    // sound only after the visitor has clicked, tapped or pressed a key on it, so grabs before that are silent.
-    var grabSnd = new Audio('audio/grab.wav'), lastGrab = 0;
-    grabSnd.preload = 'auto'; grabSnd.volume = 0.5;                // peaks at -1 dBFS: half is plenty for a UI sound
-    function grabSound() {
-      var now = performance.now(); if (now - lastGrab < 150) return; lastGrab = now;   // a fast scroll through chapters: no stutter
-      try { grabSnd.currentTime = 0; var p = grabSnd.play(); if (p) p.catch(function () {}); } catch (e) {}
-    }
+    var grabSound = function () { uiSound('grab'); };
     // phones: no side tendril (the chapters sit under the sphere), only the arm up to the card that is open on top
     function drawPhoneArm(dt) {
       arms.style.display = '';

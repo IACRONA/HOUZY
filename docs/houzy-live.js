@@ -135,12 +135,12 @@
     ctx.resume();
     src = ctx.createBufferSource(); src.buffer = track; src.loop = true;
     src.connect(node); src.start(0, offset);
-    startedAt = ctx.currentTime; playing = true; playBtn.textContent = 'Pause';
+    startedAt = ctx.currentTime; playing = window.houzyPlaying = true; playBtn.textContent = 'Pause';   // site.js: UI sounds stay quiet while a track plays
     tick();
   }
   function pause() {
     if (!playing) return;
-    offset = now(); src.stop(); src.disconnect(); src = null; playing = false; playBtn.textContent = 'Play';
+    offset = now(); src.stop(); src.disconnect(); src = null; playing = window.houzyPlaying = false; playBtn.textContent = 'Play';
   }
   function seek(t) { var was = playing; pause(); offset = Math.max(0, Math.min(t, track.duration - 0.01)); showTime(); if (was) play(); }
   function fmt(s) { s = Math.max(0, s | 0); return (s / 60 | 0) + ':' + ('0' + s % 60).slice(-2); }
@@ -153,7 +153,7 @@
   // Clear: stop, drop every reference to the audio so the browser frees it; nothing was ever stored
   function clearTrack(silent) {
     if (src) { try { src.stop(); } catch (e) {} src.disconnect(); src = null; }
-    playing = false; track = null; offset = 0; pick.value = '';
+    playing = window.houzyPlaying = false; track = null; offset = 0; pick.value = '';
     ui.classList.remove('has-track'); row.hidden = true; nameEl.textContent = '';
     playBtn.textContent = 'Play'; barFill.style.width = '0%';
     if (!silent) say('Track removed from this page. It was never uploaded anywhere.', 3200);
