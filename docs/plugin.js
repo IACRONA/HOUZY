@@ -579,6 +579,13 @@
   // ---- one loop: hover / liquid tips by elapsed time (τ 158 ms / 67 ms, WheelSlider); the sphere follows AMOUNT (updateOrb) ----
   var t0 = 0, prevAmt = prop(AMT), vYaw = 0, yaw = 0, onScreen = true, lastSig = '', lastMeters = null;
   if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { onScreen = e[0].isIntersecting; }).observe(panel);
+  // canvas text is drawn with whatever font exists at that moment: the first frame came out in the default serif until a hover
+  // redrew it. Ask for the font explicitly and draw again when it arrives (and once everything on the page has loaded).
+  if (document.fonts) {
+    var again = function () { lastSig = ''; };
+    document.fonts.load('700 10px Sora').then(again, again);
+    document.fonts.ready.then(again);
+  }
   (function loop(now) {
     if (!onScreen || document.hidden) { t0 = 0; sendChanged(); requestAnimationFrame(loop); return; }   // asleep off screen
     var dt = t0 ? Math.min(0.05, (now - t0) / 1000) : 0.016; t0 = now;

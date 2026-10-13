@@ -171,16 +171,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 
 @media (max-width:900px){
   .stage{height:auto}
-  .pin{position:relative;height:auto;overflow:visible;display:flex;flex-direction:column;align-items:center;padding:96px var(--pad) 20px;--orb:min(48vw,230px)}
-  .orb-wrap{order:1;margin:26px 0 30px}
-  .tabs{order:2;width:100%;flex-direction:row;flex-wrap:wrap;gap:8px;align-items:stretch!important}
-  .tabs.right{order:3;margin-top:8px}
+  .pin{position:relative;height:auto;overflow:visible;display:flex;flex-direction:column;align-items:center;padding:92px var(--pad) 20px;--orb:min(32vw,128px)}
+  /* phones: the reading card opens at the TOP, the smaller sphere stands centred under it and holds its edge
+     (the thin arm, site.js drawPhoneArm), the chapters are below; a computer keeps its own layout above */
+  .reader{order:1;width:100%;margin:0}
+  .orb-wrap{order:2;margin:38px 0 30px}
+  .tabs{order:3;width:100%;flex-direction:row;flex-wrap:wrap;gap:8px;align-items:stretch!important}
+  .tabs.right{order:4;margin-top:8px}
   .tab,.tabs.left .tab{flex:1 1 calc(50% - 8px);flex-direction:row;text-align:left;width:auto;min-height:56px;padding:10px 12px}
   .tt small{display:none}
-  .reader{order:4;margin-top:16px}
-  .panels{height:auto}
-  .panel{position:static;display:none}
-  .panel.is-active{display:block}
+  /* a fixed height, as on a computer: switching chapters never moves the sphere; long text scrolls inside the card */
+  .panels{height:clamp(230px,42svh,360px)}
 }
 
 /* ---------- sections under the stage ---------- */
@@ -424,7 +425,6 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 @keyframes tab-grab{0%{translate:0 0}35%{translate:var(--pull,0) 0}100%{translate:0 0}}
 .tabs.left .tab.grabbed{--pull:5px}
 .tabs.right .tab.grabbed{--pull:-5px}
-@media (max-width:900px){.arms{display:none}}
 /* the thin ring round the sphere and its glowing marker are gone: the graphite arm shows the chosen chapter now */
 .orb-ring{display:none}
 

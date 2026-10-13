@@ -120,7 +120,14 @@
     tabs.forEach(function (t, k) {
       t.addEventListener('mouseenter', function () { intent(k); });
       t.addEventListener('mouseleave', function () { clearTimeout(pend); });
-      t.addEventListener('click', function () { clearTimeout(pend); pick(k); });
+      t.addEventListener('click', function () {
+        clearTimeout(pend); pick(k);
+        // phones: the reading card is on top; bring it into view when a chapter below it is tapped
+        if (!isPinned() && reader) {
+          var rr = reader.getBoundingClientRect();
+          if (rr.top < 80 || rr.bottom > window.innerHeight) window.scrollTo({ top: window.scrollY + rr.top - 84, behavior: 'smooth' });
+        }
+      });
       t.addEventListener('focus', function () { pick(k); });
     });
     // pointing at the RING round the sphere (between 1 and 1.7 radii): the marker follows the pointer, that side opens.
@@ -193,12 +200,13 @@
       '<stop offset="1" stop-color="#1c2323"/></linearGradient></defs>' +
       '<path class="arm-ghost"/><path class="arm-up-body"/><path class="arm-up-hl"/>' +
       '<path class="arm-body"/><path class="arm-hl"/><path class="arm-hl2"/><path class="arm-glint"/>' +
-      '<path class="arm-finger"/><path class="arm-finger"/>';
+      '<path class="arm-finger"/><path class="arm-finger"/>' +
+      '<path class="arm-finger arm-up-finger"/><path class="arm-finger arm-up-finger"/>';
     pin.appendChild(arms);
     var Q = function (c) { return arms.querySelector(c); };
     var bodyEl = Q('.arm-body'), hlEl = Q('.arm-hl'), hl2El = Q('.arm-hl2'), glintEl = Q('.arm-glint'), ghostEl = Q('.arm-ghost'),
         upBody = Q('.arm-up-body'), upHl = Q('.arm-up-hl'), fingers = arms.querySelectorAll('.arm-finger'),
-        gradEl = Q('#armBody'), reader = pin.querySelector('.reader');
+        gradEl = Q('#armBody'), reader = pin.querySelector('.reader'), upFingers = arms.querySelectorAll('.arm-up-finger');
     var armFor = -1, reach = 0, reachV = 0, ghost = 0, flow = 0, grabbed = false, upPulse = 0, grip = 0, gripV = 0, lastGhost = '';
     var f1 = function (v) { return v.toFixed(1); };
     function bez(P, t) {
@@ -232,8 +240,50 @@
       var d = '', k; for (k = from; k <= to; k++) d += (k === from ? 'M' : 'L') + f1(pts[k][0]) + ' ' + f1(pts[k][1]); return d;
     };
     function cubic(s, c1, c2, e) { return 'M' + f1(s[0]) + ' ' + f1(s[1]) + 'C' + f1(c1[0]) + ' ' + f1(c1[1]) + ' ' + f1(c2[0]) + ' ' + f1(c2[1]) + ' ' + f1(e[0]) + ' ' + f1(e[1]); }
+    // The thinner arm up to the reading card. It grows out of the sphere with the same spring as the side arm, ends just
+    // INSIDE the card's lower edge (so no drop is left dangling under it, and the end no longer slides along the edge)
+    // and rests two short fingers along that edge once it has arrived. Phones draw only this arm.
+    function drawUp(dt, pr, wr, shown, thick, gripNow) {
+      var cx = wr.left - pr.left + wr.width / 2, cy = wr.top - pr.top + wr.height / 2;
+      var rd = reader && reader.getBoundingClientRect();
+      var U0 = [cx, cy - wr.height * 0.36], U1 = rd ? [cx, rd.bottom - pr.top - 2] : null;
+      if (!U1 || U1[1] > U0[1] - 10) {                     // no room between the card and the sphere: nothing stale is left on screen
+        upBody.setAttribute('d', ''); upHl.setAttribute('d', '');
+        upFingers[0].style.opacity = 0; upFingers[1].style.opacity = 0;
+        return;
+      }
+      upPulse = Math.max(0, upPulse - dt / 0.7);
+      var UP = [U0, [U0[0] + Math.sin(flow * 1.3) * 6, U0[1] - (U0[1] - U1[1]) * 0.4], [U1[0] - Math.sin(flow * 1.1) * 5, U1[1] + 26], U1];
+      var w = thick * (0.5 + 0.2 * upPulse), UT = tube(UP, shown, w, w * 0.75, flow + 1.7);
+      upBody.setAttribute('d', UT.d); upHl.setAttribute('d', line(UT.H, Math.round(UT.n * 0.25), UT.n));
+      upHl.style.strokeWidth = f1(Math.max(1, w * 0.16));
+      var g = clamp(gripNow, 0, 1.15), edge = U1[1] + 3.5, span = (10 + w) * Math.min(1, g);
+      [-1, 1].forEach(function (s, i) {
+        var tipF = [U1[0] + s * span, edge];
+        upFingers[i].setAttribute('d', cubic([U1[0], edge - 1], [U1[0] + s * span * 0.4, edge + 2], [U1[0] + s * span * 0.8, edge + 2.5], tipF));
+        upFingers[i].style.opacity = (shown > 0.97 ? Math.min(1, g * 1.5) : 0).toFixed(3);
+        upFingers[i].style.strokeWidth = f1(Math.max(2.5, thick * 0.2));
+      });
+    }
+    // phones: no side tendril (the chapters sit under the sphere), only the arm up to the card that is open on top
+    function drawPhoneArm(dt) {
+      arms.style.display = '';
+      var pr = pin.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
+      arms.setAttribute('viewBox', '0 0 ' + pr.width + ' ' + pr.height);
+      [bodyEl, hlEl, hl2El, glintEl, ghostEl].forEach(function (el) { el.setAttribute('d', ''); });
+      fingers[0].style.opacity = 0; fingers[1].style.opacity = 0;
+      if (armFor !== current) { armFor = current; reach = 0; reachV = 0; grabbed = false; upPulse = 1; }
+      var k = 120, c = 2 * Math.sqrt(k) * 0.6;
+      reachV += (k * (1 - reach) - c * reachV) * dt; reach += reachV * dt;
+      if (!grabbed && reach > 0.96) grabbed = true;
+      var gk = 200, gc = 2 * Math.sqrt(gk) * 0.55;
+      gripV += (gk * ((grabbed ? 1 : 0) - grip) - gc * gripV) * dt; grip += gripV * dt;
+      flow += dt;
+      drawUp(dt, pr, wr, clamp(reach, 0.02, 1), wr.width * 0.085, grip);
+    }
     function drawArms(dt, aDeg) {
-      if (!isPinned() || current < 0) { arms.style.display = 'none'; return; }
+      if (current < 0) { arms.style.display = 'none'; return; }
+      if (!isPinned()) { drawPhoneArm(dt); return; }
       arms.style.display = '';
       var pr = pin.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
       arms.setAttribute('viewBox', '0 0 ' + pr.width + ' ' + pr.height);
@@ -281,17 +331,8 @@
         ghostEl.setAttribute('d', lastGhost); ghostEl.style.opacity = (ghost * 0.85).toFixed(3);
         ghostEl.style.transformOrigin = f1(cx) + 'px ' + f1(cy) + 'px'; ghostEl.style.transform = 'scale(' + (0.55 + 0.45 * ghost).toFixed(3) + ')';
       } else ghostEl.style.opacity = 0;
-      // the thinner one up to the reading panel; it swells as the chapter changes
-      if (reader) {
-        var rd = reader.getBoundingClientRect(), U0 = [cx, cy - wr.height * 0.36], U1 = [cx + Math.sin(flow * 0.8) * 4, rd.bottom - pr.top + 2];
-        if (U1[1] < U0[1] - 10) {
-          upPulse = Math.max(0, upPulse - dt / 0.7);
-          var UP = [U0, [U0[0] + Math.sin(flow * 1.3) * 10, U0[1] - (U0[1] - U1[1]) * 0.4], [U1[0] - Math.sin(flow * 1.1) * 8, U1[1] + 26], U1];
-          var w = thick * (0.55 + 0.25 * upPulse), UT = tube(UP, 1, w, w * 0.6, flow + 1.7);
-          upBody.setAttribute('d', UT.d); upHl.setAttribute('d', line(UT.H, Math.round(UT.n * 0.25), UT.n));
-          upHl.style.strokeWidth = f1(Math.max(1, w * 0.16));
-        }
-      }
+      // the thinner one up to the reading panel: grows with the same reach, swells as the chapter changes
+      drawUp(dt, pr, wr, shown, thick, grip);
     }
 
     // Two critically damped springs, integrated by real time (no "fraction per frame"):
