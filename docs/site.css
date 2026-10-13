@@ -14,6 +14,11 @@
   --pad:clamp(16px,4vw,48px); --max:1160px; --radius:28px;
   --font:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
+/* Sora is served from this site (fonts/, variable 100..800): no Google request, so no consent banner is needed */
+@font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;src:url(fonts/Sora-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;src:url(fonts/Sora-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 *,*::before,*::after{box-sizing:border-box}
 /* the page colour lives on <html>: a background on <body> would paint over the fixed video (z-index −2) */
 html{scroll-behavior:smooth;background:radial-gradient(120% 80% at 50% 0%,#f1f1f7,var(--sky) 60%,var(--sky-2)) fixed var(--sky)}
@@ -246,12 +251,6 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 .prose th{color:var(--ink);font-weight:normal;font-variation-settings:'wght' 650}
 .prose .box{padding:18px 22px;margin:18px 0;border-radius:20px}
 
-/* ---------- cookie banner ---------- */
-.consent{position:fixed;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 16px);z-index:80;max-width:540px;margin-left:auto;padding:22px;background:rgba(255,255,255,.72)}
-.consent[hidden]{display:none}
-.consent h2{font-size:18px;margin:0 0 8px}
-.consent p{margin:0 0 16px;color:var(--sub);font-size:14px}
-.consent .row{display:flex;flex-wrap:wrap;gap:10px}
 
 /* page transitions: <html class="pt"> hides content until site.js fades it in; failsafe after 1.2 s.
    ponytail: motion runs for everyone, including the OS "reduce motion" setting (owner's decision, 12.10.2026). */

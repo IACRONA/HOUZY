@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cookie Policy — HOUZY by ACRONA AUDIO</title>
-<meta name="description" content="This site sets no tracking cookies. What it stores, what it loads with your consent, and how to change your choice.">
+<meta name="description" content="This site sets no tracking cookies. What it stores in your browser, and that it loads nothing from other companies.">
 <meta name="theme-color" content="#e7e7ef">
 <link rel="canonical" href="https://acronaaudio.shop/cookies.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -42,7 +42,7 @@
 <main id="main" class="legal">
   <div class="wrap">
     <h1>Cookie Policy</h1>
-    <p class="meta">HOUZY · ACRONA AUDIO · Effective 12 October 2026 · Last updated 12 October 2026</p>
+    <p class="meta">HOUZY · ACRONA AUDIO · Effective 12 October 2026 · Last updated 13 October 2026</p>
     <nav class="glass toc" aria-label="Contents"><ol>
       <li><a href="#what">What cookies and local storage are</a></li>
       <li><a href="#we-use">What this site stores</a></li>
@@ -61,22 +61,16 @@
 <h2 id="we-use">What this site stores</h2>
 <table>
   <tr><th>Name</th><th>Type</th><th>Purpose</th><th>Duration</th><th>Category</th></tr>
-  <tr><td><span class="code">houzy-consent</span></td><td>Local storage</td><td>Remembers your choice in the consent banner ("all" or "necessary"), so we don't ask on every page</td><td>Until you clear it or change your choice</td><td>Strictly necessary</td></tr>
+  <tr><td><span class="code">houzy-terms</span></td><td>Local storage</td><td>Remembers that you accepted the Terms of Use and the EULA, so we don't ask on every page</td><td>Until you clear it</td><td>Strictly necessary</td></tr>
 </table>
 <p>That is all. The site itself sets <b>no cookies</b>. GitHub Pages, our host, does not set cookies on visitors to this site.</p>
 
 <h2 id="third">External content</h2>
-<table>
-  <tr><th>Provider</th><th>What</th><th>Data received</th><th>Category</th></tr>
-  <tr><td>Google Fonts (Google)</td><td>Sora typeface</td><td>IP address, browser details, the requesting page</td><td>External media (consent)</td></tr>
-</table>
-<p>Neither request sets cookies, but both reveal your IP address to the provider. The font is loaded only after you click <b>Accept</b>; until then the site uses a system font. The background video is part of the page design and is streamed on every visit.</p>
+<p>None. The font (Sora), the images, the background video and the scripts are all served from this site itself. Nothing is loaded from other companies, so there is nothing to ask your consent for.</p>
 
-<h2 id="manage">How to change your choice</h2>
+<h2 id="manage">How to remove it</h2>
 <ul>
-  <li>Click <b>Cookie settings</b> at the bottom of any page and choose again. If you switch from <b>Accept</b> to <b>Necessary only</b>, the page reloads without the Google font.</li>
-  <li>Or clear this site's data in your browser settings. The banner will appear again on your next visit.</li>
-  <li>You can also block third-party content entirely with your browser or an extension. The site keeps working.</li>
+  <li>Clear this site's data in your browser settings. The agreement card will appear again on your next visit.</li>
 </ul>
 
 <h2 id="plugin">The plugin</h2>
@@ -102,7 +96,6 @@
         <li><a href="cookies.html">Cookie Policy</a></li>
         <li><a href="terms.html">Terms of Use &amp; Sale</a></li>
         <li><a href="eula.html">Licence Agreement (EULA)</a></li>
-        <li><button class="linkbtn" type="button" data-consent="open">Cookie settings</button></li>
       </ul>
     </div>
     <div>
@@ -116,13 +109,5 @@
   </div>
 </footer>
 
-<div class="consent glass" id="consent" role="dialog" aria-labelledby="consent-h" hidden>
-  <h2 id="consent-h">Your privacy</h2>
-  <p>This site sets no tracking or advertising cookies. With your permission it loads the Sora font from Google Fonts, which receives your IP address. Without permission the site uses a system font. <a href="cookies.html">Cookie Policy</a></p>
-  <div class="row">
-    <button class="cta" type="button" data-consent="all">Accept</button>
-    <button class="pill" type="button" data-consent="necessary">Necessary only</button>
-  </div>
-</div>
 </body>
 </html>

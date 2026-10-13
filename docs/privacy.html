@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy Policy — HOUZY by ACRONA AUDIO</title>
@@ -42,7 +42,7 @@
 <main id="main" class="legal">
   <div class="wrap">
     <h1>Privacy Policy</h1>
-    <p class="meta">HOUZY · ACRONA AUDIO · Effective 12 October 2026 · Last updated 12 October 2026</p>
+    <p class="meta">HOUZY · ACRONA AUDIO · Effective 12 October 2026 · Last updated 13 October 2026</p>
     <nav class="glass toc" aria-label="Contents"><ol>
       <li><a href="#who">Who is responsible</a></li>
       <li><a href="#website">This website</a></li>
@@ -71,8 +71,8 @@
 <p>Download buttons fetch files from GitHub (<span class="code">raw.githubusercontent.com</span>), which receives your IP address in the same way.</p>
 <h3>Background video</h3>
 <p>The moving background on the home page is a video file served from this site itself, like the images and scripts. It is not loaded from any third party.</p>
-<h3>Font, only with your consent</h3>
-<p>If you click <b>Accept</b> in the consent banner, the site loads the <b>Sora</b> typeface from Google Fonts (Google Ireland Ltd. / Google LLC), which receives your IP address and browser details, see the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. If you choose <b>Necessary only</b>, nothing is loaded from Google and the site uses a system font. You can change your choice at any time with <b>Cookie settings</b> at the bottom of every page. Details are in the <a href="cookies.html">Cookie Policy</a>.</p>
+<h3>Font</h3>
+<p>The <b>Sora</b> typeface is served from this site itself, like the images and scripts. Nothing is loaded from Google Fonts or any other font service.</p>
 <h3>No analytics, no advertising</h3>
 <p>The site has no analytics, no tracking pixels, no advertising and no social-media plugins. Links to Telegram, Spotify and Yandex Music are plain links: nothing is sent to those services unless you click one, and then their own privacy policies apply.</p>
 <h3>When you write to us</h3>
@@ -100,8 +100,7 @@
 <table>
   <tr><th>Purpose</th><th>Legal basis (GDPR / UK GDPR)</th></tr>
   <tr><td>Delivering the website, security logs</td><td>Legitimate interest in a working, secure site — Art. 6(1)(f)</td></tr>
-  <tr><td>Google Fonts</td><td>Your consent — Art. 6(1)(a), withdrawable at any time</td></tr>
-  <tr><td>Storing your consent choice in your browser</td><td>Strictly necessary to respect your choice, legal obligation — Art. 6(1)(c)</td></tr>
+  <tr><td>Remembering in your browser that you accepted the Terms</td><td>Strictly necessary for the service you asked for — Art. 6(1)(b)</td></tr>
   <tr><td>Update check</td><td>Legitimate interest in telling you about fixes; you can switch it off — Art. 6(1)(f)</td></tr>
   <tr><td>Licence activation, trials, purchases, refunds</td><td>Performance of a contract with you — Art. 6(1)(b)</td></tr>
   <tr><td>Keeping order records</td><td>Legal obligation (tax and accounting law) — Art. 6(1)(c)</td></tr>
@@ -112,7 +111,7 @@
 <table>
   <tr><th>Recipient</th><th>Role</th><th>Location</th></tr>
   <tr><td>GitHub, Inc.</td><td>Website hosting, downloads, update file</td><td>USA</td></tr>
-  <tr><td>Google Ireland Ltd. / Google LLC</td><td>Fonts (with consent), email</td><td>EU / USA</td></tr>
+  <tr><td>Google Ireland Ltd. / Google LLC</td><td>Email (Gmail)</td><td>EU / USA</td></tr>
   <tr><td>Moonbase AS</td><td>Licensing, store, merchant of record</td><td>Norway (EEA)</td></tr>
   <tr><td>Authorised resellers</td><td>Sales, if you buy through one</td><td>Varies</td></tr>
 </table>
@@ -125,7 +124,7 @@
 <ul>
   <li>Emails: as long as needed to help you, then deleted within 2 years of the last message, unless they relate to an order.</li>
   <li>Order and licence records: while your licence is valid and for as long as tax and accounting law requires (usually 5–10 years).</li>
-  <li>Your consent choice: in your browser until you clear it or change it.</li>
+  <li>Your acceptance of the Terms (a flag in your browser): until you clear it.</li>
   <li>Server logs: kept by GitHub under its own policy; we hold none.</li>
 </ul>
 
@@ -169,7 +168,6 @@
         <li><a href="cookies.html">Cookie Policy</a></li>
         <li><a href="terms.html">Terms of Use &amp; Sale</a></li>
         <li><a href="eula.html">Licence Agreement (EULA)</a></li>
-        <li><button class="linkbtn" type="button" data-consent="open">Cookie settings</button></li>
       </ul>
     </div>
     <div>
@@ -183,13 +181,5 @@
   </div>
 </footer>
 
-<div class="consent glass" id="consent" role="dialog" aria-labelledby="consent-h" hidden>
-  <h2 id="consent-h">Your privacy</h2>
-  <p>This site sets no tracking or advertising cookies. With your permission it loads the Sora font from Google Fonts, which receives your IP address. Without permission the site uses a system font. <a href="cookies.html">Cookie Policy</a></p>
-  <div class="row">
-    <button class="cta" type="button" data-consent="all">Accept</button>
-    <button class="pill" type="button" data-consent="necessary">Necessary only</button>
-  </div>
-</div>
 </body>
 </html>

@@ -6,34 +6,13 @@
   var M = window.Motion && window.Motion.animate ? window.Motion : null;
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
 
-  /* ---------- consent: only the Google font needs it ---------- */
-  var KEY = 'houzy-consent';           // "all" | "necessary" — strictly necessary: it only remembers the choice
-  function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
-  function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
-  var banner = document.getElementById('consent');
-  function loadFont() {
-    if (document.getElementById('ext-font')) return;
-    var l = document.createElement('link');
-    l.id = 'ext-font'; l.rel = 'stylesheet';
-    l.href = 'https://fonts.googleapis.com/css2?family=Sora:wght@100..900&display=swap';
-    document.head.appendChild(l);
-  }
-  function choose(v) {
-    var before = get(); set(v);
-    if (banner) banner.hidden = true;
-    if (v === 'all') loadFont(); else if (before === 'all') location.reload();
-  }
-  if (get() === 'all') loadFont();
-
   /* ---------- user agreement: asked once, before anything else ----------
      The first visit shows it as a card in the corner; the site stays usable, the card stays until "I agree".
-     Not shown on the legal pages themselves. The cookie banner waits until it is accepted. */
+     Not shown on the legal pages themselves. */
   var TERMS = 'houzy-terms', TERMS_V = '1';     // raise TERMS_V when the agreement changes: everyone is asked again
   var legal = /(terms|eula|privacy|cookies).html$/.test(location.pathname);
   function termsOk() { try { return localStorage.getItem(TERMS) === TERMS_V; } catch (e) { return true; } }
-  function showCookies() { if (!get() && banner) banner.hidden = false; }
-  if (termsOk() || legal) showCookies();
-  else {
+  if (!termsOk() && !legal) {
     var gate = document.createElement('div');
     gate.className = 'terms-gate';
     gate.innerHTML = '<div class="terms-card glass" role="dialog" aria-labelledby="terms-h">' +
@@ -45,17 +24,10 @@
     var agree = gate.querySelector('button');
     agree.addEventListener('click', function () {
       try { localStorage.setItem(TERMS, TERMS_V); } catch (e) {}
-      gate.classList.add('out'); setTimeout(function () { gate.remove(); showCookies(); }, 300);
+      gate.classList.add('out'); setTimeout(function () { gate.remove(); }, 300);
     });
   }
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-consent]');
-    if (t) {
-      e.preventDefault();
-      var v = t.getAttribute('data-consent');
-      if (v === 'open') { if (banner) { banner.hidden = false; banner.querySelector('button').focus(); } }
-      else choose(v);
-    }
     if (e.target.closest('.navpanel a')) { var n = document.getElementById('nav-open'); if (n) n.checked = false; }
     var b = e.target.closest('.btn,.pill,.cta');       // glass press flash
     if (b && e.detail) {
