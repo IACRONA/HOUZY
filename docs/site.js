@@ -265,6 +265,14 @@
         upFingers[i].style.strokeWidth = f1(Math.max(2.5, thick * 0.2));
       });
     }
+    // the grab sound ("Houzy site.wav" -> audio/grab.wav), each time an arm closes on its card. Browsers let a page make
+    // sound only after the visitor has clicked, tapped or pressed a key on it, so grabs before that are silent.
+    var grabSnd = new Audio('audio/grab.wav'), lastGrab = 0;
+    grabSnd.preload = 'auto'; grabSnd.volume = 0.5;                // peaks at -1 dBFS: half is plenty for a UI sound
+    function grabSound() {
+      var now = performance.now(); if (now - lastGrab < 150) return; lastGrab = now;   // a fast scroll through chapters: no stutter
+      try { grabSnd.currentTime = 0; var p = grabSnd.play(); if (p) p.catch(function () {}); } catch (e) {}
+    }
     // phones: no side tendril (the chapters sit under the sphere), only the arm up to the card that is open on top
     function drawPhoneArm(dt) {
       arms.style.display = '';
@@ -275,7 +283,7 @@
       if (armFor !== current) { armFor = current; reach = 0; reachV = 0; grabbed = false; upPulse = 1; }
       var k = 120, c = 2 * Math.sqrt(k) * 0.6;
       reachV += (k * (1 - reach) - c * reachV) * dt; reach += reachV * dt;
-      if (!grabbed && reach > 0.96) grabbed = true;
+      if (!grabbed && reach > 0.96) { grabbed = true; grabSound(); }
       var gk = 200, gc = 2 * Math.sqrt(gk) * 0.55;
       gripV += (gk * ((grabbed ? 1 : 0) - grip) - gc * gripV) * dt; grip += gripV * dt;
       flow += dt;
@@ -315,7 +323,7 @@
       var gl = glintEl.getTotalLength ? glintEl.getTotalLength() : 200;
       glintEl.style.strokeDasharray = '6 ' + f1(gl * 0.45); glintEl.style.strokeDashoffset = f1(-(flow * 140) % (gl * 0.45 + 6));
       glintEl.style.opacity = grabbed ? 0.95 : 0;
-      if (!grabbed && reach > 0.96) { grabbed = true; tab.classList.add('grabbed'); }
+      if (!grabbed && reach > 0.96) { grabbed = true; tab.classList.add('grabbed'); grabSound(); }
       // fingers: two curls of the same graphite close round the card's edge, above and below the grip
       var gk = 200, gc = 2 * Math.sqrt(gk) * 0.55;
       gripV += (gk * ((grabbed ? 1 : 0) - grip) - gc * gripV) * dt; grip += gripV * dt;
