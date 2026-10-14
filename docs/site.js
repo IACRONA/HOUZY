@@ -18,7 +18,7 @@
   };
   var T = window.houzyT;
 
-  /* ---------- UI sounds: audio/click.wav on a click or tap of anything clickable, audio/grab.wav when a tendril grabs a card.
+  /* ---------- UI sounds: audio/click.wav on a click or tap of anything clickable, audio/octopus.mp3 when a tendril grabs a chapter tab (the tabs themselves do not click).
      Silent while a track plays in the HOUZY demo (houzy-live.js sets window.houzyPlaying), back on pause or when it is cleared.
      Browsers let a page make sound only after a click / tap / key (hover and scroll do not count), so grabs before that are
      silent. The first such gesture plays the grab muted INSIDE it: Safari on iPhone unlocks an audio element only that way. */
@@ -27,7 +27,7 @@
   // while the context is suspended - a sound asked for before the first gesture is dropped, never played late as a burst.
   var AC = window.AudioContext || window.webkitAudioContext, actx = null, bufs = {}, lastSnd = {};
   var SND = { click: ['/audio/click.wav', 1],     // the click peaks at -17 dBFS
-              grab:  ['/audio/grab.wav', 0.5],    // peaks at -1 dBFS: half is plenty for a UI sound
+              grab:  ['/audio/octopus.mp3', 0.5], // the tendril grabs a chapter tab: octopus.mp3 (owner, 14.10), peaks at -0.7 dBFS: half
               buy:   ['/audio/buy.mp3', 0.354] };  // "bye.wav", on hovering a Buy key (buy.js): 50% quieter, then -3 dB more (owner, 13-14.10)
   function ctxOf() {
     if (actx || !AC) return actx;
@@ -69,7 +69,7 @@
   window.houzyUiSound = uiSound;        // plugin.js and buy.js: the switches drawn on the plugin window, the Buy keys
   // the click is played inside the click itself
   document.addEventListener('click', function (e) {
-    if (e.target.closest && !e.target.closest('.lang') && e.target.closest('a, button, label, summary, [role="button"], .tab')) uiSound('click');   // the language switch is silent (owner, 14.10)
+    if (e.target.closest && !e.target.closest('.lang, .tab') && e.target.closest('a, button, label, summary, [role="button"]')) uiSound('click');   // silent: the language switch; the chapter tabs - their one sound is the octopus grab (owner, 14.10)
   }, true);
 
   /* ---------- user agreement: asked once, before anything else ----------
