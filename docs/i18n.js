@@ -21,7 +21,9 @@
   var box = document.createElement('div'); box.className = 'lang';
   var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'lang-btn';
   btn.setAttribute('aria-haspopup', 'true'); btn.setAttribute('aria-expanded', 'false');
-  var code = document.createElement('span'); btn.appendChild(code);
+  btn.innerHTML = '<svg class="lang-globe" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.3"/><path d="M1.7 8h12.6M8 1.7c1.9 1.9 2.8 4 2.8 6.3S9.9 12.4 8 14.3C6.1 12.4 5.2 10.3 5.2 8S6.1 3.6 8 1.7z"/></svg>';
+  var code = document.createElement('span'); code.className = 'lang-code'; btn.appendChild(code);
+  var name = document.createElement('span'); name.className = 'lang-name'; btn.appendChild(name);   // phones: the full name
   var chev = document.createElement('i'); chev.className = 'lang-chev'; chev.setAttribute('aria-hidden', 'true'); btn.appendChild(chev);
   var menu = document.createElement('div'); menu.className = 'lang-menu'; menu.setAttribute('role', 'group');
   box.appendChild(btn); box.appendChild(menu);
@@ -40,6 +42,7 @@
   }
   function mark(l) {
     code.textContent = LANGS[indexOf(l)][1];
+    name.textContent = LANGS[indexOf(l)][2];
     btn.setAttribute('aria-label', T('Language') + ': ' + LANGS[indexOf(l)][2]); menu.setAttribute('aria-label', T('Language'));
     links.forEach(function (a) { a.setAttribute('aria-current', a.lang === l ? 'true' : 'false'); });
   }

@@ -88,8 +88,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .navpanel{--nav-gap:22px;display:flex;align-items:center;gap:var(--nav-gap)}
 .menu{position:relative;z-index:1;display:flex;gap:var(--nav-gap)}
 .menu a,.brand small,.lang-btn{white-space:nowrap}   /* a header item never breaks into two lines (ES / PT words are long) */
-@media (min-width:900px) and (max-width:1099px){.navpanel{--nav-gap:14px}.bar{gap:16px}}   /* 900-1100 px: ES / PT words fit in one row */
-@media (min-width:900px) and (max-width:999px){.navpanel{--nav-gap:12px}.menu a{font-size:13px}.brand small{letter-spacing:.12em}}
+@media (min-width:1000px) and (max-width:1099px){.navpanel{--nav-gap:14px}.bar{gap:16px}}   /* 1000-1100 px: ES / PT words fit in one row */
 .brand{z-index:1}
 /* the selection: a drop of liquid glass that flows between ACRONA AUDIO and the sections (site.js); not on phones (burger menu) */
 .bar-drop{position:absolute;left:0;top:0;width:0;height:0;border-radius:999px;pointer-events:none;z-index:0;opacity:0;transition:opacity .3s;
@@ -97,7 +96,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),inset 1.5px 1.5px 0 rgba(255,255,255,.95),inset 0 -6px 10px -6px rgba(141,222,235,.55),0 0 0 1.5px rgba(31,111,125,.5),0 8px 18px -8px rgba(20,82,93,.5)}
 .bar-drop.on{opacity:1}
 /* thin dividers between the sections and before the language button (desktop row only; the phone panel is a column) */
-@media (min-width:900px){.menu a{position:relative}
+@media (min-width:1000px){.menu a{position:relative}
   .menu a+a::before,.navpanel .lang::before{content:'';position:absolute;top:50%;left:calc(var(--nav-gap) / -2 - .5px);width:1px;height:16px;
     transform:translateY(-50%);pointer-events:none;background:linear-gradient(180deg,rgba(22,25,31,0),rgba(22,25,31,.22) 30%,rgba(22,25,31,.22) 70%,rgba(22,25,31,0))}}
 .menu a,.login{font-size:14px;color:var(--text);font-variation-settings:'wght' 540;transition:color .2s}
@@ -105,7 +104,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .login{padding:8px 16px;border-radius:999px;background:var(--glass);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);
   box-shadow:var(--rim),0 1px 2px rgba(30,34,50,.08),0 6px 16px -8px rgba(30,34,50,.25)}
 .navpanel .pill,.navpanel .cta{padding:9px 18px;font-size:14px;min-height:40px}
-@media (max-width:899px){
+/* the header folds into the burger below 1000 px (900-1000 was a squeezed row); the rest of the page keeps its 900 px step */
+@media (max-width:999px){
   .bar{padding:8px 8px 8px 16px}
   .bar-drop{display:none}
   .brand small{display:none}
@@ -423,6 +423,15 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 .terms-card p{margin:0 0 14px;font-size:14px;line-height:1.55;color:var(--text)}
 .terms-card .kicker{margin-bottom:6px}
 .terms-card .cta{padding:10px 22px;font-size:16px;min-height:40px}
+/* wide screens: a low strip at the bottom centre (text left, button right) instead of a tall card over the hero */
+@media (min-width:1000px){
+  .terms-gate{left:0;right:0;margin:0 auto;width:min(860px,calc(100% - 32px))}
+  .terms-card{display:grid;grid-template-columns:1fr auto;column-gap:28px;align-items:center;padding:16px 18px 16px 24px;background:rgba(255,255,255,.92)}   /* over the plugin picture the text needs a solid ground */
+  .terms-card .kicker{display:none}
+  .terms-card h2{font-size:16px;margin:0 0 2px}
+  .terms-card p{margin:0;font-size:13px;line-height:1.5}
+  .terms-card .cta{grid-column:2;grid-row:1 / span 2}
+}
 @keyframes terms-out{to{opacity:0;transform:translateY(10px)}}
 @keyframes terms-card{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
 
@@ -500,7 +509,7 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 }
 
 /* ---------- phones ---------- */
-@media (max-width:899px){
+@media (max-width:999px){
   /* the open menu reads over anything: almost opaque */
   .navpanel{background:rgba(250,250,253,.95)!important}
 }
@@ -524,8 +533,10 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 .lang{position:relative;z-index:5}
 .lang-btn{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:0 12px 0 14px;border:0;border-radius:999px;cursor:pointer;
   font:inherit;font-size:12px;letter-spacing:.08em;color:var(--ink);font-variation-settings:'wght' 650;
-  background:rgba(255,255,255,.45);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 1px 6px rgba(30,34,50,.08);transition:background .25s,box-shadow .25s}
-.lang-btn:hover,.lang.open .lang-btn{background:rgba(214,244,249,.75);box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),0 0 0 1.5px rgba(31,111,125,.35)}
+  background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px rgba(31,111,125,.26),0 1px 2px rgba(30,34,50,.06);transition:background .25s,box-shadow .25s}
+.lang-globe{width:14px;height:14px;fill:none;stroke:var(--accent-ink);stroke-width:1.3;flex:none}
+.lang-name{display:none}
+.lang-btn:hover,.lang.open .lang-btn{background:rgba(214,244,249,.75);box-shadow:inset 0 0 0 1px rgba(31,111,125,.45),0 2px 8px -3px rgba(20,82,93,.35)}
 .lang-chev{width:7px;height:7px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:translateY(-2px) rotate(45deg);
   transition:transform .3s cubic-bezier(.3,1.4,.5,1)}
 .lang.open .lang-chev{transform:translateY(2px) rotate(225deg)}
@@ -548,8 +559,10 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 .lang-menu a[aria-current="true"] b{color:var(--accent-ink)}
 @media (prefers-reduced-motion:reduce){.lang-menu,.lang-menu a,.lang-chev{transition:none}}
 /* phone (inside the burger panel): the button spans the panel, the list unfolds under it in the flow, not over the links */
-@media (max-width:899px){.lang{align-self:stretch;margin:8px 0 2px}
-  .lang-btn{width:100%;min-height:44px;justify-content:space-between;padding:0 16px;font-size:14px}
+@media (max-width:999px){.lang{align-self:stretch;margin:8px 0 2px}
+  .lang-btn{width:100%;min-height:44px;gap:10px;padding:0 16px;font-size:16px;letter-spacing:0;font-variation-settings:'wght' 540}
+  .lang-btn .lang-chev{margin-left:auto}.lang-globe{width:16px;height:16px}
+  .lang-code{display:none}.lang-name{display:inline}
   .lang-menu{position:static;min-width:0;margin-top:0;padding:0 2px;max-height:0;overflow:hidden;transform:none;background:none;box-shadow:none;
     -webkit-backdrop-filter:none;backdrop-filter:none;transition:max-height .35s cubic-bezier(.3,1,.5,1),opacity .2s,padding .35s,visibility 0s .35s}
   .lang.open .lang-menu{max-height:260px;padding:6px 2px 2px;transition:max-height .4s cubic-bezier(.3,1,.5,1),opacity .2s,padding .35s}
