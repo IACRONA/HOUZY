@@ -666,4 +666,72 @@
     window.addEventListener('resize', function () { dirty = true; });
     if (document.fonts) document.fonts.ready.then(function () { dirty = true; });   // the letters are measured in Sora
   })();
+
+  /* ---------- the header's selection: a DROP of liquid glass, like the selected key of the plugin's switches ----------
+     It sits under ACRONA AUDIO at the top of the page and flows to Technology / About / FAQ / Contact as the page scrolls
+     to them (to Manual on the manual page). Like SegmentedSwitch in the plugin: the leading edge runs ahead, the trailing
+     one follows, and the drop thins across while it stretches, then gathers on the new place. Time based, no bounce. */
+  (function () {
+    var bar = document.querySelector('.bar'), small = bar && bar.querySelector('.brand small');
+    var links = bar ? [].slice.call(bar.querySelectorAll('.menu a')) : [];
+    if (!bar || !small || !links.length) return;
+    var items = [small].concat(links);
+    var at = function (end) { for (var i = 1; i < items.length; i++) if (items[i].getAttribute('href').slice(-end.length) === end) return i; return 0; };
+    var IDX = { tech: at('#top'), manual: at('manual.html'), about: at('#about'), faq: at('#faq'), contact: at('#contact') };
+    var drop = document.createElement('i'); drop.className = 'bar-drop'; drop.setAttribute('aria-hidden', 'true');
+    bar.insertBefore(drop, bar.firstChild);
+    var PADX = 12, PADY = 5, L = 0, R = 0, tL = 0, tR = 0, tTop = 0, tH = 0, cur = -1, lock = -1, lockUntil = 0, running = false, last = 0;
+
+    function place(i) {
+      var br = bar.getBoundingClientRect(), r = items[i].getBoundingClientRect();
+      var px = i === 0 ? 7 : PADX;                                          // ACRONA AUDIO sits close to HOUZY: a tighter drop
+      tL = r.left - br.left - px; tR = r.right - br.left + px; tTop = r.top - br.top - PADY; tH = r.height + 2 * PADY;
+    }
+    function draw() {
+      var w = R - L, tw = Math.max(1, tR - tL);
+      var stretch = Math.min(1, Math.max(0, (w - tw) / (tw * 1.5)));      // how far the drop is pulled out
+      var h = tH * (1 - 0.28 * stretch);                                   // narrower across while it flows (as in the plugin)
+      drop.style.width = w.toFixed(1) + 'px'; drop.style.height = h.toFixed(1) + 'px';
+      drop.style.transform = 'translate(' + L.toFixed(1) + 'px,' + (tTop + (tH - h) / 2).toFixed(1) + 'px)';
+    }
+    function frame(now) {
+      var dt = last ? Math.min(0.05, (now - last) / 1000) : 0.016; last = now;
+      var kLead = 1 - Math.exp(-dt / 0.045), kTrail = 1 - Math.exp(-dt / 0.13);
+      var right = (tL + tR) >= (L + R);                                    // moving right: the right edge leads
+      R += (tR - R) * (right ? kLead : kTrail);
+      L += (tL - L) * (right ? kTrail : kLead);
+      draw();
+      if (Math.abs(R - tR) < 0.15 && Math.abs(L - tL) < 0.15) { R = tR; L = tL; draw(); running = false; last = 0; return; }
+      requestAnimationFrame(frame);
+    }
+    function go(i, instant) {
+      place(i);
+      if (instant || cur < 0) { L = tL; R = tR; draw(); drop.classList.add('on'); }
+      else if (!running) { running = true; last = 0; requestAnimationFrame(frame); }
+      cur = i;
+    }
+    function which() {
+      if (/manual\.html$/.test(location.pathname)) return IDX.manual;
+      var vh = window.innerHeight * 0.4, top = function (s) { var e = document.querySelector(s); return e ? e.getBoundingClientRect().top : Infinity; };
+      if (top('#contact') <= vh) return IDX.contact;
+      if (top('#faq') <= vh) return IDX.faq;
+      if (top('#about') <= vh) return IDX.about;
+      if (top('.stage') <= vh) return IDX.tech;
+      return 0;
+    }
+    var pending = false;
+    function update() {
+      pending = false;
+      var want = performance.now() < lockUntil ? lock : which();           // after a click the drop goes straight to its item
+      if (want !== cur) go(want);
+    }
+    function ask() { if (!pending) { pending = true; requestAnimationFrame(update); } }
+    items.forEach(function (el, i) {
+      el.addEventListener('click', function () { lock = i; lockUntil = performance.now() + 1100; ask(); });
+    });
+    window.addEventListener('scroll', ask, { passive: true });
+    window.addEventListener('resize', function () { if (cur >= 0) { place(cur); L = tL; R = tR; draw(); } });
+    if (document.fonts) document.fonts.ready.then(function () { if (cur >= 0) { place(cur); L = tL; R = tR; draw(); } });
+    go(which(), true);
+  })();
 })();

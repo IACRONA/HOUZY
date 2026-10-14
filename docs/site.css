@@ -83,7 +83,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .scrim{display:none;position:fixed;inset:0;z-index:-1}
 .burger{display:none}
 .navpanel{display:flex;align-items:center;gap:22px}
-.menu{display:flex;gap:22px}
+.menu{position:relative;z-index:1;display:flex;gap:22px}
+.brand{z-index:1}
+/* the selection: a drop of liquid glass that flows between ACRONA AUDIO and the sections (site.js); not on phones (burger menu) */
+.bar-drop{position:absolute;left:0;top:0;width:0;height:0;border-radius:999px;pointer-events:none;z-index:0;opacity:0;transition:opacity .3s;
+  background:linear-gradient(180deg,rgba(214,244,249,.95),rgba(150,214,226,.42));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),inset 1.5px 1.5px 0 rgba(255,255,255,.95),inset 0 -6px 10px -6px rgba(141,222,235,.55),0 0 0 1.5px rgba(31,111,125,.5),0 8px 18px -8px rgba(20,82,93,.5)}
+.bar-drop.on{opacity:1}
 .menu a,.login{font-size:14px;color:var(--text);font-variation-settings:'wght' 540;transition:color .2s}
 .menu a:hover,.login:hover{color:var(--accent-ink)}
 .login{padding:8px 16px;border-radius:999px;background:var(--glass);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);
@@ -91,6 +97,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .navpanel .pill,.navpanel .cta{padding:9px 18px;font-size:14px;min-height:40px}
 @media (max-width:899px){
   .bar{padding:8px 8px 8px 16px}
+  .bar-drop{display:none}
   .brand small{display:none}
   .burger{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;cursor:pointer;background:var(--glass-strong);box-shadow:var(--rim)}
   .burger svg{width:20px;height:auto;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round}
