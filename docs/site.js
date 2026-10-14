@@ -16,7 +16,9 @@
   Object.keys(SND).forEach(function (k) { SND[k].preload = 'auto'; });
   function uiSound(k) {
     var a = SND[k], now = performance.now();
-    if (window.houzyPlaying || now - (lastSnd[k] || 0) < 120) return;      // a fast run through chapters: no stutter
+    // quiet while the demo track is audible; when it goes quiet (the gap before it loops, a break, its end) they are back
+    var quietTrack = window.houzyMeters && window.houzyMeters[0] < -45;
+    if ((window.houzyPlaying && !quietTrack) || now - (lastSnd[k] || 0) < 120) return;      // a fast run through chapters: no stutter
     lastSnd[k] = now;
     try { a.currentTime = 0; var p = a.play(); if (p) p.catch(function () {}); } catch (e) {}
   }

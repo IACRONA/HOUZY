@@ -101,6 +101,21 @@
     load(file.name, function () { return readFile(file); });
   });
 
+  // The demo plays at most the first 75 s of a track (fading out over 50 ms where it is cut), then 1.2 s of silence before
+  // it loops. The engine (.wasm, web/houzy_web.cpp) enforces the same 75 s on its own: after 75 s of music without a 1 s
+  // pause it goes silent, so a longer track fed to it from the console does not get past the limit either.
+  var DEMO_S = 75, GAP_S = 1.2;
+  function demoCut(buf) {
+    var sr = buf.sampleRate, n = Math.min(buf.length, Math.round(DEMO_S * sr)), fade = Math.round(0.05 * sr);
+    var out = ctx.createBuffer(buf.numberOfChannels, n + Math.round(GAP_S * sr), sr);
+    for (var c = 0; c < buf.numberOfChannels; c++) {
+      var d = out.getChannelData(c);
+      d.set(buf.getChannelData(c).subarray(0, n));
+      if (buf.length > n) for (var i = 0; i < fade; i++) d[n - 1 - i] *= i / fade;   // cut mid-track: fade, no click
+    }
+    return out;
+  }
+
   // one path for an uploaded file: engine, bytes, decode, play
   async function load(name, getBytes) {
     clearTrack(true);
@@ -108,10 +123,12 @@
       await startEngine();
       var bytes = await getBytes();
       progress(null, 'Decoding ' + name + '…');
-      track = await ctx.decodeAudioData(bytes);
+      var full = await ctx.decodeAudioData(bytes);
       bytes = null;
+      track = demoCut(full);
+      nameEl.textContent = name + (full.duration > DEMO_S ? ' — demo: first 1:15 of ' + fmt(full.duration) : ' — demo');
+      full = null;                 // only the 75 s demo stays in memory
       prog.hidden = true;
-      nameEl.textContent = name;
       ui.classList.add('has-track'); row.hidden = false;
       offset = 0; showTime();
       play();
@@ -146,7 +163,8 @@
   function fmt(s) { s = Math.max(0, s | 0); return (s / 60 | 0) + ':' + ('0' + s % 60).slice(-2); }
   function showTime() {
     if (!track) return;
-    var t = now(); barFill.style.width = (t / track.duration * 100) + '%'; timeEl.textContent = fmt(t) + ' / ' + fmt(track.duration);
+    var t = now(), len = track.duration - GAP_S;   // the 1.2 s gap before the loop is not part of the shown length
+    barFill.style.width = (t / track.duration * 100) + '%'; timeEl.textContent = fmt(Math.min(t, len)) + ' / ' + fmt(len);
   }
   function tick() { if (!playing) return; showTime(); requestAnimationFrame(tick); }
 
