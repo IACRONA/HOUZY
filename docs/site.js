@@ -10,9 +10,10 @@
      Silent while a track plays in the HOUZY demo (houzy-live.js sets window.houzyPlaying), back on pause or when it is cleared.
      Browsers let a page make sound only after a click / tap / key (hover and scroll do not count), so grabs before that are
      silent. The first such gesture plays the grab muted INSIDE it: Safari on iPhone unlocks an audio element only that way. */
-  var SND = { click: new Audio('audio/click.wav'), grab: new Audio('audio/grab.wav') }, lastSnd = {};
+  var SND = { click: new Audio('audio/click.wav'), grab: new Audio('audio/grab.wav'), buy: new Audio('audio/buy.mp3') }, lastSnd = {};
   SND.click.volume = 1;                 // the click peaks at -17 dBFS
   SND.grab.volume = 0.5;                // the grab peaks at -1 dBFS: half is plenty for a UI sound
+  SND.buy.volume = 1;                   // "bye.wav" (silence at the end trimmed), on hovering a Buy key - buy.js
   Object.keys(SND).forEach(function (k) { SND[k].preload = 'auto'; });
   function uiSound(k) {
     var a = SND[k], now = performance.now();

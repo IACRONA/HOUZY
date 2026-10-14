@@ -63,7 +63,11 @@
     var cv = document.createElement('canvas'); cv.className = 'buy-fx'; cv.setAttribute('aria-hidden', 'true');
     el.appendChild(cv);
     var st = { el: el, cv: cv, c: cv.getContext('2d'), hover: false, glow: 0, t0: 0 };
-    el.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { st.hover = true; wake(); } });
+    el.addEventListener('pointerenter', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      st.hover = true; wake();
+      if (window.houzyUiSound) window.houzyUiSound('buy');   // site.js: quiet while the demo track is audible
+    });
     el.addEventListener('pointerleave', function () { st.hover = false; wake(); });
     el.addEventListener('focus', function () { st.hover = true; wake(); });
     el.addEventListener('blur', function () { st.hover = false; wake(); });
