@@ -10,28 +10,52 @@
      Silent while a track plays in the HOUZY demo (houzy-live.js sets window.houzyPlaying), back on pause or when it is cleared.
      Browsers let a page make sound only after a click / tap / key (hover and scroll do not count), so grabs before that are
      silent. The first such gesture plays the grab muted INSIDE it: Safari on iPhone unlocks an audio element only that way. */
-  var SND = { click: new Audio('audio/click.wav'), grab: new Audio('audio/grab.wav'), buy: new Audio('audio/buy.mp3') }, lastSnd = {};
-  SND.click.volume = 1;                 // the click peaks at -17 dBFS
-  SND.grab.volume = 0.5;                // the grab peaks at -1 dBFS: half is plenty for a UI sound
-  SND.buy.volume = 0.5;                 // "bye.wav" (silence at the end trimmed), on hovering a Buy key - buy.js; 50% quieter (13.10, owner)
-  Object.keys(SND).forEach(function (k) { SND[k].preload = 'auto'; });
+  // Web Audio, not <audio> elements: the three files are fetched and decoded at once, so a sound starts the instant it is asked
+  // for; ONE gesture (pointer down, key, tap) resumes the context for every sound, on iPhone too. Nothing is ever scheduled
+  // while the context is suspended - a sound asked for before the first gesture is dropped, never played late as a burst.
+  var AC = window.AudioContext || window.webkitAudioContext, actx = null, bufs = {}, lastSnd = {};
+  var SND = { click: ['audio/click.wav', 1],     // the click peaks at -17 dBFS
+              grab:  ['audio/grab.wav', 0.5],    // peaks at -1 dBFS: half is plenty for a UI sound
+              buy:   ['audio/buy.mp3', 0.5] };   // "bye.wav", on hovering a Buy key (buy.js); 50% quieter (owner, 13.10)
+  function ctxOf() {
+    if (actx || !AC) return actx;
+    try { actx = new AC({ latencyHint: 'interactive' }); } catch (e) { AC = null; return null; }
+    Object.keys(SND).forEach(function (k) {
+      fetch(SND[k][0]).then(function (r) { return r.arrayBuffer(); }).then(function (ab) {
+        return new Promise(function (ok, fail) { actx.decodeAudioData(ab, ok, fail); });   // callback form: old Safari has no promise
+      }).then(function (b) { bufs[k] = b; }).catch(function () {});
+    });
+    return actx;
+  }
+  var GESTURES = ['pointerdown', 'mousedown', 'keydown', 'touchstart', 'touchend', 'click'];
+  function unlock() {
+    var c = ctxOf(); if (!c) return;
+    if (c.state !== 'running') {
+      c.resume().catch(function () {});
+      try { var s = c.createBufferSource(); s.buffer = c.createBuffer(1, 1, 22050); s.connect(c.destination); s.start(0); } catch (e) {}  // iPhone
+    }
+    if (c.state === 'running') GESTURES.forEach(function (t) { document.removeEventListener(t, unlock, true); });
+  }
+  GESTURES.forEach(function (t) { document.addEventListener(t, unlock, true); });
+  ctxOf();                              // fetch + decode now (a suspended context may already do that)
   function uiSound(k) {
-    var a = SND[k], now = performance.now();
+    var now = performance.now();
     // quiet while the demo track is audible; when it goes quiet (the gap before it loops, a break, its end) they are back
     var quietTrack = window.houzyMeters && window.houzyMeters[0] < -45;
     if ((window.houzyPlaying && !quietTrack) || now - (lastSnd[k] || 0) < 120) return;      // a fast run through chapters: no stutter
-    lastSnd[k] = now;
-    try { a.currentTime = 0; var p = a.play(); if (p) p.catch(function () {}); } catch (e) {}
+    var c = ctxOf(), b = bufs[k];
+    if (!c || !b) return;
+    var start = function () {
+      if (c.state !== 'running' || performance.now() - now > 300) return;                   // too late to still mean anything
+      lastSnd[k] = performance.now();
+      var s = c.createBufferSource(), g = c.createGain();
+      s.buffer = b; g.gain.value = SND[k][1]; s.connect(g); g.connect(c.destination); s.start(0);
+    };
+    if (c.state === 'running') start();
+    else c.resume().then(start, function () {});       // inside a click this runs a few ms later; with no gesture it never does
   }
-  window.houzyUiSound = uiSound;        // plugin.js: the switches drawn on the plugin window
-  function unlockGrab() {
-    ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { document.removeEventListener(t, unlockGrab, true); });
-    var a = SND.grab; a.muted = true;
-    var p = a.play(), done = function () { a.pause(); a.currentTime = 0; a.muted = false; };
-    if (p) p.then(done, function () { a.muted = false; }); else done();
-  }
-  ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { document.addEventListener(t, unlockGrab, true); });
-  // the click is played inside the click itself, which also unlocks it on iPhone
+  window.houzyUiSound = uiSound;        // plugin.js and buy.js: the switches drawn on the plugin window, the Buy keys
+  // the click is played inside the click itself
   document.addEventListener('click', function (e) {
     if (e.target.closest && e.target.closest('a, button, label, summary, [role="button"], .tab')) uiSound('click');
   }, true);
