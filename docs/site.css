@@ -87,6 +87,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .burger{display:none}
 .navpanel{display:flex;align-items:center;gap:22px}
 .menu{position:relative;z-index:1;display:flex;gap:22px}
+.menu a,.brand small,.lang-btn{white-space:nowrap}   /* a header item never breaks into two lines (ES / PT words are long) */
+@media (min-width:900px) and (max-width:1099px){.navpanel,.menu{gap:14px}.bar{gap:16px}}   /* 900-1100 px: ES / PT words fit in one row */
+@media (min-width:900px) and (max-width:999px){.navpanel,.menu{gap:12px}.menu a{font-size:13px}.brand small{letter-spacing:.12em}}
 .brand{z-index:1}
 /* the selection: a drop of liquid glass that flows between ACRONA AUDIO and the sections (site.js); not on phones (burger menu) */
 .bar-drop{position:absolute;left:0;top:0;width:0;height:0;border-radius:999px;pointer-events:none;z-index:0;opacity:0;transition:opacity .3s;
@@ -540,4 +543,10 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),0 0 0 1px rgba(31,111,125,.3)}
 .lang-menu a[aria-current="true"] b{color:var(--accent-ink)}
 @media (prefers-reduced-motion:reduce){.lang-menu,.lang-menu a,.lang-chev{transition:none}}
-@media (max-width:899px){.lang{align-self:flex-start;margin:8px 0 4px 14px}.lang-btn{min-height:44px}.lang-menu{left:0;right:auto;transform-origin:top left}.lang-menu a{min-height:44px}}
+/* phone (inside the burger panel): the button spans the panel, the list unfolds under it in the flow, not over the links */
+@media (max-width:899px){.lang{align-self:stretch;margin:8px 0 2px}
+  .lang-btn{width:100%;min-height:44px;justify-content:space-between;padding:0 16px;font-size:14px}
+  .lang-menu{position:static;min-width:0;margin-top:0;padding:0 2px;max-height:0;overflow:hidden;transform:none;background:none;box-shadow:none;
+    -webkit-backdrop-filter:none;backdrop-filter:none;transition:max-height .35s cubic-bezier(.3,1,.5,1),opacity .2s,padding .35s,visibility 0s .35s}
+  .lang.open .lang-menu{max-height:260px;padding:6px 2px 2px;transition:max-height .4s cubic-bezier(.3,1,.5,1),opacity .2s,padding .35s}
+  .lang-menu a{min-height:44px;font-size:16px}}

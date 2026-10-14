@@ -31,6 +31,13 @@
     menu.appendChild(a); return a;
   });
   nav.insertBefore(box, nav.querySelector('.buy') || null);
+  // an old stylesheet from the browser cache (a page cached before this switch existed) has no rules for the menu, and the four
+  // languages would spill into the header as a row of text: hide the switch and fetch the current stylesheet.
+  if (getComputedStyle(menu).flexDirection !== 'column') {
+    box.style.visibility = 'hidden';
+    var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/site.css?v=' + Date.now();
+    css.onload = function () { box.style.visibility = ''; }; document.head.appendChild(css);
+  }
   function mark(l) {
     code.textContent = LANGS[indexOf(l)][1];
     btn.setAttribute('aria-label', T('Language') + ': ' + LANGS[indexOf(l)][2]); menu.setAttribute('aria-label', T('Language'));
