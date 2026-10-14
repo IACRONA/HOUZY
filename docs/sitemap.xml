@@ -1,10 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://acronaaudio.shop/</loc><lastmod>2026-10-13</lastmod><priority>1.0</priority></url>
-  <url><loc>https://acronaaudio.shop/plugin.html</loc><lastmod>2026-10-13</lastmod><priority>0.8</priority></url>
-  <url><loc>https://acronaaudio.shop/manual.html</loc><lastmod>2026-10-13</lastmod><priority>0.7</priority></url>
-  <url><loc>https://acronaaudio.shop/privacy.html</loc><lastmod>2026-10-13</lastmod><priority>0.2</priority></url>
-  <url><loc>https://acronaaudio.shop/cookies.html</loc><lastmod>2026-10-13</lastmod><priority>0.2</priority></url>
-  <url><loc>https://acronaaudio.shop/terms.html</loc><lastmod>2026-10-13</lastmod><priority>0.2</priority></url>
-  <url><loc>https://acronaaudio.shop/eula.html</loc><lastmod>2026-10-13</lastmod><priority>0.2</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://acronaaudio.shop/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://acronaaudio.shop/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/"/>
+    <lastmod>2026-10-14</lastmod><priority>1.0</priority></url>
+  <url><loc>https://acronaaudio.shop/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://acronaaudio.shop/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/"/>
+    <lastmod>2026-10-14</lastmod><priority>1.0</priority></url>
+  <url><loc>https://acronaaudio.shop/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://acronaaudio.shop/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/"/>
+    <lastmod>2026-10-14</lastmod><priority>1.0</priority></url>
+  <url><loc>https://acronaaudio.shop/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://acronaaudio.shop/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/"/>
+    <lastmod>2026-10-14</lastmod><priority>1.0</priority></url>
+  <url><loc>https://acronaaudio.shop/plugin.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://acronaaudio.shop/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/plugin.html"/>
+    <lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
+  <url><loc>https://acronaaudio.shop/ru/plugin.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://acronaaudio.shop/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/plugin.html"/>
+    <lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
+  <url><loc>https://acronaaudio.shop/es/plugin.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://acronaaudio.shop/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/plugin.html"/>
+    <lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
+  <url><loc>https://acronaaudio.shop/pt/plugin.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://acronaaudio.shop/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/plugin.html"/>
+    <lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
+  <url><loc>https://acronaaudio.shop/manual.html</loc><lastmod>2026-10-14</lastmod><priority>0.7</priority></url>
+  <url><loc>https://acronaaudio.shop/privacy.html</loc><lastmod>2026-10-14</lastmod><priority>0.2</priority></url>
+  <url><loc>https://acronaaudio.shop/cookies.html</loc><lastmod>2026-10-14</lastmod><priority>0.2</priority></url>
+  <url><loc>https://acronaaudio.shop/terms.html</loc><lastmod>2026-10-14</lastmod><priority>0.2</priority></url>
+  <url><loc>https://acronaaudio.shop/eula.html</loc><lastmod>2026-10-14</lastmod><priority>0.2</priority></url>
 </urlset>

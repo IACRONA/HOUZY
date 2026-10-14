@@ -43,12 +43,13 @@
   }
 
   // the "Coming soon" bubble, one for the page
-  var tip = document.createElement('div'); tip.className = 'buy-tip'; tip.setAttribute('role', 'status'); tip.textContent = 'Coming soon';
+  var tip = document.createElement('div'); tip.className = 'buy-tip'; tip.setAttribute('role', 'status'); tip.textContent = window.houzyT ? window.houzyT('Coming soon') : 'Coming soon';
   document.body.appendChild(tip);
   var tipTimer = 0;
   function showTip(el) {
     var r = el.getBoundingClientRect();
     tip.style.left = (r.left + r.width / 2) + 'px'; tip.style.top = (r.bottom + 10) + 'px';
+    if (window.houzyT) tip.textContent = window.houzyT('Coming soon');
     tip.classList.add('on'); clearTimeout(tipTimer); tipTimer = setTimeout(function () { tip.classList.remove('on'); }, 1800);
   }
 

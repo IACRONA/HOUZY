@@ -9,6 +9,7 @@
       progText = $('.live-progress span'), playBtn = $('.live-play'), abBtn = $('.live-ab'), clearBtn = $('.live-clear'),
       bar = $('.live-bar'), barFill = $('.live-bar i'), timeEl = $('.live-time'), nameEl = $('.live-name');
   var toast = document.querySelector('.live-toast');
+  var T = function (s, v) { return window.houzyT ? window.houzyT(s, v) : s; };   // site.js: the page language
 
   var ctx = null, node = null, track = null, src = null, startedAt = 0, offset = 0, playing = false, bypass = false;
   var params = {};          // last value of every knob: replayed into a freshly started engine
@@ -32,14 +33,14 @@
     params[id] = value;
     send(id, value);
   };
-  window.houzyLocked = function (what) { say(what + ' — only in the full version'); };
+  window.houzyLocked = function (what) { say(T('{what} — only in the full version', { what: T(what) })); };
   window.houzySay = function (text) { say(text); };
   window.houzyBypass = function () { setBypass(!bypass); };
 
   function setBypass(on) {
     bypass = on; params.bypass = on ? 1 : 0; send('bypass', params.bypass);
     abBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    abBtn.textContent = on ? 'Original' : 'HOUZY';
+    abBtn.textContent = on ? T('Original') : 'HOUZY';
     document.dispatchEvent(new CustomEvent('houzy-bypass', { detail: on }));
   }
 
@@ -50,18 +51,18 @@
     engineReady = (async function () {
       ctx = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
       // browsers give a page AudioWorklet only over https (or on localhost): say so instead of blaming the browser
-      if (!ctx.audioWorklet) throw new Error(window.isSecureContext ? 'this browser has no AudioWorklet' : 'the live demo needs the secure (https) version of this page');
-      var res = await fetch('houzy-engine.wasm');
-      if (!res.ok) throw new Error('engine not found');
+      if (!ctx.audioWorklet) throw new Error(window.isSecureContext ? T('this browser has no AudioWorklet') : T('the live demo needs the secure (https) version of this page'));
+      var res = await fetch('/houzy-engine.wasm');
+      if (!res.ok) throw new Error(T('engine not found'));
       var total = +res.headers.get('content-length') || 0, got = 0, parts = [], reader = res.body.getReader();
       for (;;) {
         var r = await reader.read(); if (r.done) break;
         parts.push(r.value); got += r.value.length;
-        progress(total ? got / total : null, 'Loading the HOUZY engine…');
+        progress(total ? got / total : null, T('Loading the HOUZY engine…'));
       }
       var wasm = new Uint8Array(got), at = 0;
       parts.forEach(function (p) { wasm.set(p, at); at += p.length; });
-      await ctx.audioWorklet.addModule('houzy-worklet.js');
+      await ctx.audioWorklet.addModule('/houzy-worklet.js');
       node = new AudioWorkletNode(ctx, 'houzy', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [2],
         processorOptions: { wasm: wasm.buffer, host: location.hostname } });
       node.connect(ctx.destination);
@@ -70,7 +71,7 @@
           var m = e.data;
           if (m.type === 'ready') ok();
           else if (m.type === 'error') fail(new Error(m.message));
-          else if (m.type === 'locked') say(LOCKED[m.id] || 'Only in the full version');
+          else if (m.type === 'locked') say(LOCKED[m.id] ? T('{what} — only in the full version', { what: T(LOCKED[m.id]) }) : T('Only in the full version'));
           else if (m.type === 'meters') window.houzyMeters = m.m;   // plugin.js draws the meters and the GR graph
         };
       });
@@ -79,15 +80,13 @@
     engineReady.catch(function () { engineReady = null; });
     return engineReady;
   }
-  var LOCKED = { limmode: 'T8 — only in the full version', osfactor: 'Oversampling above 16x — only in the full version',
-                 enginemode: 'CLASSIC and MODERN — only in the full version',
-                 upcomp: 'UPWARD — only in the full version', character: 'CHARACTER — only in the full version',
-                 clipshape: 'CLIP SHAPE — only in the full version', dash: 'DASH — only in the full version' };
+  var LOCKED = { limmode: 'T8', osfactor: 'Oversampling above 16x', enginemode: 'CLASSIC and MODERN',
+                 upcomp: 'UPWARD', character: 'CHARACTER', clipshape: 'CLIP SHAPE', dash: 'DASH' };
 
   function readFile(file) {
     return new Promise(function (ok, fail) {
       var fr = new FileReader();
-      fr.onprogress = function (e) { if (e.lengthComputable) progress(e.loaded / e.total, 'Reading ' + file.name + '…'); };
+      fr.onprogress = function (e) { if (e.lengthComputable) progress(e.loaded / e.total, T('Reading {name}…', { name: file.name })); };
       fr.onload = function () { ok(fr.result); };
       fr.onerror = function () { fail(fr.error); };
       fr.readAsArrayBuffer(file);
@@ -97,8 +96,8 @@
   pick.addEventListener('change', async function () {
     var file = pick.files && pick.files[0];
     if (!file) return;
-    if (!/\.(mp3|wav)$/i.test(file.name)) { say('Please choose an MP3 or WAV file'); pick.value = ''; return; }
-    if (file.size > MAX_MB * 1024 * 1024) { say('That file is over ' + MAX_MB + ' MB'); pick.value = ''; return; }
+    if (!/\.(mp3|wav)$/i.test(file.name)) { say(T('Please choose an MP3 or WAV file')); pick.value = ''; return; }
+    if (file.size > MAX_MB * 1024 * 1024) { say(T('That file is over {mb} MB', { mb: MAX_MB })); pick.value = ''; return; }
     load(file.name, function () { return readFile(file); });
   });
 
@@ -123,11 +122,11 @@
     try {
       await startEngine();
       var bytes = await getBytes();
-      progress(null, 'Decoding ' + name + '…');
+      progress(null, T('Decoding {name}…', { name: name }));
       var full = await ctx.decodeAudioData(bytes);
       bytes = null;
       track = demoCut(full);
-      nameEl.textContent = name + (full.duration > DEMO_S ? ' — demo: first 1:15 of ' + fmt(full.duration) : ' — demo');
+      nameEl.textContent = name + ' — ' + (full.duration > DEMO_S ? T('demo: first 1:15 of {len}', { len: fmt(full.duration) }) : T('demo'));
       full = null;                 // only the 75 s demo stays in memory
       prog.hidden = true;
       ui.classList.add('has-track'); row.hidden = false;
@@ -135,7 +134,7 @@
       play();
     } catch (e) {
       prog.hidden = true;
-      say(/decode|Decod/i.test(String(e)) ? 'This file could not be decoded' : 'Could not start: ' + e.message, 4000);
+      say(/decode|Decod/i.test(String(e)) ? T('This file could not be decoded') : T('Could not start: {msg}', { msg: e.message }), 4000);
       clearTrack(true);
     }
   }
@@ -153,12 +152,12 @@
     ctx.resume();
     src = ctx.createBufferSource(); src.buffer = track; src.loop = true;
     src.connect(node); src.start(0, offset);
-    startedAt = ctx.currentTime; playing = window.houzyPlaying = true; playBtn.textContent = 'Pause';   // site.js: UI sounds stay quiet while a track plays
+    startedAt = ctx.currentTime; playing = window.houzyPlaying = true; playBtn.textContent = T('Pause');   // site.js: UI sounds stay quiet while a track plays
     tick();
   }
   function pause() {
     if (!playing) return;
-    offset = now(); src.stop(); src.disconnect(); src = null; playing = window.houzyPlaying = false; playBtn.textContent = 'Play';
+    offset = now(); src.stop(); src.disconnect(); src = null; playing = window.houzyPlaying = false; playBtn.textContent = T('Play');
   }
   function seek(t) { var was = playing; pause(); offset = Math.max(0, Math.min(t, track.duration - 0.01)); showTime(); if (was) play(); }
   function fmt(s) { s = Math.max(0, s | 0); return (s / 60 | 0) + ':' + ('0' + s % 60).slice(-2); }
@@ -174,8 +173,8 @@
     if (src) { try { src.stop(); } catch (e) {} src.disconnect(); src = null; }
     playing = window.houzyPlaying = false; track = null; offset = 0; pick.value = '';
     ui.classList.remove('has-track'); row.hidden = true; nameEl.textContent = '';
-    playBtn.textContent = 'Play'; barFill.style.width = '0%';
-    if (!silent) say('Track removed from this page. It was never uploaded anywhere.', 3200);
+    playBtn.textContent = T('Play'); barFill.style.width = '0%';
+    if (!silent) say(T('Track removed from this page. It was never uploaded anywhere.'), 3200);
   }
 
   playBtn.addEventListener('click', function () { playing ? pause() : play(); });

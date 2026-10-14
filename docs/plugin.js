@@ -61,7 +61,7 @@
   })();
   var orb = window.HouzyOrb ? window.HouzyOrb(panel.querySelector('.porb')) : null;
   var sprite = new Image(), SPRITE_N = 144, SPRITE_S = 160, SPRITE_COLS = 12;   // knob faces, the plugin's knob_sprite.png
-  sprite.src = 'img/plugin/knobs.webp';
+  sprite.src = '/img/plugin/knobs.webp';
 
   // ---- drawing helpers ----
   function arcStroke(c, r, from, to, w, style) {
@@ -302,7 +302,7 @@
   // second bake with every switch flipped (chrome_alt) and one at 4x (chrome_os4). A switch away from
   // its default is drawn by pasting its own region from the other bake - the plugin's real look.
   // 2x of the 740 x 500 grid, WebP. The flipped bakes load only when a switch first leaves its default.
-  var BAKE = 2, ALT = new Image(), OS4 = new Image(), bakeDir = 'img/plugin/t1/';   // DARKIK by default
+  var BAKE = 2, ALT = new Image(), OS4 = new Image(), bakeDir = '/img/plugin/t1/';   // DARKIK by default
   ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp';
   var STATE = { allmix: 0, bypass: 0, lookahead: 1, gainmatch: 0, clipmode: 2, limmode: 1, relsmart: 1,
                 osfactor: 4, autogain: 1, relauto: 1, truepeak: 0 };
@@ -342,6 +342,7 @@
     });
   }
 
+  var T = function (s, v) { return window.houzyT ? window.houzyT(s, v) : s; };   // site.js: the page language
   var say = function (t) { if (window.houzySay) window.houzySay(t); };
   var locked = function (t) { if (window.houzyLocked) window.houzyLocked(t); };
   function setState(k, v) { STATE[k] = v; if (window.houzyParam) window.houzyParam(k, v); }
@@ -374,7 +375,7 @@
     slots[slot] = snapshot();
     slot = i;
     if (slots[i]) applySettings(slots[i], true);
-    say('Slot ' + (i ? 'B' : 'A'));
+    say(T('Slot {s}', { s: i ? 'B' : 'A' }));
   }
   function drawSlot() {      // the baked chrome has A lit; when B is active, light B and dim A
     if (slot === 0) return;
@@ -412,7 +413,7 @@
   var THEMES = [['BLURIK', 0], ['DARKIK', 1], ['MEDIUMIK', 3], ['PULIK', 4], ['UILIK', 5]];
   var chromeImg = panel.querySelector('img');
   function setTheme(i) {
-    var dir = 'img/plugin/t' + THEMES[i][1] + '/';
+    var dir = '/img/plugin/t' + THEMES[i][1] + '/';
     var next = new Image();
     next.onload = function () {
       chromeImg.src = next.src; bakeDir = dir;
@@ -459,12 +460,12 @@
     if (inR(p, R.relsmart)) setState('relsmart', half(p, R.relsmart));
     if (inR(p, R.osfactor)) {       // 16x -> 4x -> 8x -> 16x; 32x and 64x are the full version
       var next = STATE.osfactor === 4 ? 2 : STATE.osfactor === 2 ? 3 : 4;
-      setState('osfactor', next); say('Oversampling ' + [1, 2, 4, 8, 16][next] + 'x · 32x and 64x in the full version');
+      setState('osfactor', next); say(T('Oversampling {n}x · 32x and 64x in the full version', { n: [1, 2, 4, 8, 16][next] }));
     }
     if (inR(p, R.a)) useSlot(0);
     if (inR(p, R.b)) useSlot(1);
-    if (inR(p, R.copy)) { slots[1 - slot] = snapshot(); say('Copied ' + (slot ? 'B to A' : 'A to B')); }
-    if (inR(p, R.lang)) say('English, Russian, Spanish and Portuguese in the plugin');
+    if (inR(p, R.copy)) { slots[1 - slot] = snapshot(); say(T('Copied {from} to {to}', { from: slot ? 'B' : 'A', to: slot ? 'A' : 'B' })); }
+    if (inR(p, R.lang)) say(T('English, Russian, Spanish and Portuguese in the plugin'));
   }
   var releaseKnob = KNOBS.filter(function (c) { return c.param === 'relms'; })[0];
   function sendChanged() {

@@ -6,6 +6,18 @@
   var M = window.Motion && window.Motion.animate ? window.Motion : null;
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
 
+  /* ---------- text the scripts write themselves (toasts, the player, the terms card) is looked up here ----------
+     English phrase -> the page language. A translated page carries its strings in <script id="i18n-js">; the switcher
+     (i18n.js) swaps them with houzyI18nSet. {name}-style holes are filled by the caller. */
+  var I18N = {};
+  try { I18N = JSON.parse(document.getElementById('i18n-js').textContent) || {}; } catch (e) {}
+  window.houzyI18nSet = function (d) { I18N = d || {}; };
+  window.houzyT = function (s, v) {
+    var r = I18N[s] || s;
+    return v ? r.replace(/\{(\w+)\}/g, function (m, k) { return v[k] != null ? v[k] : m; }) : r;
+  };
+  var T = window.houzyT;
+
   /* ---------- UI sounds: audio/click.wav on a click or tap of anything clickable, audio/grab.wav when a tendril grabs a card.
      Silent while a track plays in the HOUZY demo (houzy-live.js sets window.houzyPlaying), back on pause or when it is cleared.
      Browsers let a page make sound only after a click / tap / key (hover and scroll do not count), so grabs before that are
@@ -14,9 +26,9 @@
   // for; ONE gesture (pointer down, key, tap) resumes the context for every sound, on iPhone too. Nothing is ever scheduled
   // while the context is suspended - a sound asked for before the first gesture is dropped, never played late as a burst.
   var AC = window.AudioContext || window.webkitAudioContext, actx = null, bufs = {}, lastSnd = {};
-  var SND = { click: ['audio/click.wav', 1],     // the click peaks at -17 dBFS
-              grab:  ['audio/grab.wav', 0.5],    // peaks at -1 dBFS: half is plenty for a UI sound
-              buy:   ['audio/buy.mp3', 0.354] };  // "bye.wav", on hovering a Buy key (buy.js): 50% quieter, then -3 dB more (owner, 13-14.10)
+  var SND = { click: ['/audio/click.wav', 1],     // the click peaks at -17 dBFS
+              grab:  ['/audio/grab.wav', 0.5],    // peaks at -1 dBFS: half is plenty for a UI sound
+              buy:   ['/audio/buy.mp3', 0.354] };  // "bye.wav", on hovering a Buy key (buy.js): 50% quieter, then -3 dB more (owner, 13-14.10)
   function ctxOf() {
     if (actx || !AC) return actx;
     try { actx = new AC({ latencyHint: 'interactive' }); } catch (e) { AC = null; return null; }
@@ -70,10 +82,12 @@
     var gate = document.createElement('div');
     gate.className = 'terms-gate';
     gate.innerHTML = '<div class="terms-card glass" role="dialog" aria-labelledby="terms-h">' +
-      '<p class="kicker">HOUZY 5</p><h2 id="terms-h">Before you continue</h2>' +
-      '<p>By using this site and the HOUZY demo you agree to the <a href="terms.html">Terms of Use &amp; Sale</a> ' +
-      'and the <a href="eula.html">Licence Agreement (EULA)</a>. How we handle data is in the <a href="privacy.html">Privacy Policy</a>.</p>' +
-      '<button class="cta" type="button">I agree</button></div>';
+      '<p class="kicker">HOUZY 5</p><h2 id="terms-h">' + T('Before you continue') + '</h2>' +
+      '<p>' + T('By using this site and the HOUZY demo you agree to the {terms} and the {eula}. How we handle data is in the {privacy}.', {
+        terms: '<a href="/terms.html">' + T('Terms of Use & Sale') + '</a>',
+        eula: '<a href="/eula.html">' + T('Licence Agreement (EULA)') + '</a>',
+        privacy: '<a href="/privacy.html">' + T('Privacy Policy') + '</a>' }) + '</p>' +
+      '<button class="cta" type="button">' + T('I agree') + '</button></div>';
     document.body.appendChild(gate);
     var agree = gate.querySelector('button');
     agree.addEventListener('click', function () {
@@ -96,7 +110,7 @@
     var vids = [].slice.call(document.querySelectorAll('.bg video'));
     if (!vids.length) return;
     // the background is served from the site itself: a light 640 px cut on phones, 1280 px elsewhere (both copies share one file)
-    var src = 'video/bg-' + (Math.min(screen.width, innerWidth) < 760 ? 640 : 1280) + '.mp4';
+    var src = '/video/bg-' + (Math.min(screen.width, innerWidth) < 760 ? 640 : 1280) + '.mp4';
     vids.forEach(function (v) { v.src = src; });
     var p0 = vids[0].play(); if (p0) p0.catch(function () {});
     if (vids.length < 2) { vids[0].loop = true; return; }

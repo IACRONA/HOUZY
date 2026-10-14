@@ -8,6 +8,11 @@
 <title>HOUZY 5 — Mastering Compressor Plugin (VST3 / AU) | ACRONA AUDIO</title>
 <meta name="description" content="HOUZY 5 is a mastering compressor plugin that compresses every tone on its own: no pumping, punchy kick, clean low end. ACR clipper, T8 limiter. VST3 / AU.">
 <meta name="theme-color" content="#e7e7ef">
+<link rel="alternate" hreflang="en" href="https://acronaaudio.shop/">
+<link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/">
+<link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/">
+<link rel="alternate" hreflang="x-default" href="https://acronaaudio.shop/">
 <link rel="canonical" href="https://acronaaudio.shop/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
@@ -102,44 +107,45 @@
 ]
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="/site.css">
 <script>document.documentElement.classList.add('pt')</script>
-<script src="vendor/framer-motion/dom.js" defer></script>
-<script src="orb.js" defer></script>
-<script src="site.js" defer></script>
-<script src="plugin.js" defer></script>
-<script src="houzy-live.js" defer></script>
-<script src="buy.js" defer></script>
+<script src="/vendor/framer-motion/dom.js" defer></script>
+<script src="/orb.js" defer></script>
+<script src="/site.js" defer></script>
+<script src="/i18n.js" defer></script>
+<script src="/plugin.js" defer></script>
+<script src="/houzy-live.js" defer></script>
+<script src="/buy.js" defer></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="0">Skip to content</a>
 
 <div class="bg" aria-hidden="true">
   <!-- two copies crossfade at the seam (site.js): the stones keep drifting forward, no jump back -->
-  <video class="art" autoplay muted playsinline preload="auto" poster="video/bg-poster.jpg"></video>
+  <video class="art" autoplay muted playsinline preload="auto" poster="/video/bg-poster.jpg"></video>
   <video class="art art-b" muted playsinline preload="none"></video>
 </div>
 <div class="veil" aria-hidden="true"></div>
 
 <header class="bar">
-  <a class="brand" href="#" aria-label="HOUZY home">
+  <a class="brand" href="#" aria-label="HOUZY home" data-i18n-a="aria-label:91">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg>
     <b>HOUZY</b><small>ACRONA AUDIO</small>
   </a>
-  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Open menu">
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Open menu" data-i18n-a="aria-label:92">
   <label class="scrim" for="nav-open" aria-hidden="true"></label>
-  <label class="burger" for="nav-open" aria-label="Menu">
+  <label class="burger" for="nav-open" aria-label="Menu" data-i18n-a="aria-label:93">
     <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
   </label>
   <div class="navpanel">
-    <nav class="menu" aria-label="Main">
-      <a href="#top">Technology</a>
-      <a href="manual.html">Manual</a>
-      <a href="#about">About</a>
+    <nav class="menu" aria-label="Main" data-i18n-a="aria-label:94">
+      <a href="#top" data-i18n="1">Technology</a>
+      <a data-manual href="/manual.html" data-i18n="2">Manual</a>
+      <a href="#about" data-i18n="3">About</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact" data-i18n="4">Contact</a>
     </nav>
-    <button class="cta buy" type="button">Buy</button>
+    <button class="cta buy" type="button" data-i18n="5">Buy</button>
   </div>
 </header>
 
@@ -147,33 +153,33 @@
   <!-- THE PLUGIN WINDOW: the same live panel as plugin.html, first, the sphere under it -->
   <section class="try" id="plugin">
     <div class="head glass" data-reveal>
-      <h1 class="hero-title"><span class="kick">HOUZY — mastering compressor</span><span class="t">Even compression across every frequency.</span></h1>
-      <p class="lead">When you compress, a loud kick or bass no longer drags the rest of the instruments along with it.</p>
+      <h1 class="hero-title"><span class="kick" data-i18n="6">HOUZY — mastering compressor</span><span class="t" data-i18n="7">Even compression across every frequency.</span></h1>
+      <p class="lead" data-i18n="8">When you compress, a loud kick or bass no longer drags the rest of the instruments along with it.</p>
     </div>
-    <div class="plugin" id="panel" role="img" aria-label="The HOUZY 5 plugin window">
-      <img src="img/plugin/t1/chrome.webp" width="1480" height="1000" alt="HOUZY 5 mastering compressor plugin window" loading="lazy">
+    <div class="plugin" id="panel" role="img" aria-label="The HOUZY 5 plugin window" data-i18n-a="aria-label:95">
+      <img src="/img/plugin/t1/chrome.webp" width="1480" height="1000" alt="HOUZY 5 mastering compressor plugin window" loading="lazy" data-i18n-a="alt:96">
       <div class="porb" aria-hidden="true"></div>
       <canvas id="live" aria-hidden="true"></canvas>
       <div class="live-toast" role="status" aria-live="polite"></div>
     </div>
     <div class="live glass" id="live-ui">
-      <label class="cta live-pick" aria-label="Upload your track (MP3 or WAV)">
+      <label class="cta live-pick" aria-label="Upload your track (MP3 or WAV)" data-i18n-a="aria-label:97">
         <input type="file" accept=".mp3,.wav,audio/mpeg,audio/wav,audio/x-wav" hidden>
         <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 14V3M5.5 7.5 10 3l4.5 4.5M3 13v3.5h14V13"/></svg>
-        <span>Upload</span>
+        <span data-i18n="9">Upload</span>
       </label>
-      <p class="live-note"><b>Try HOUZY on your own track</b>MP3 / WAV · first 75 s · plays in your browser, never uploaded</p>
+      <p class="live-note" data-i18n="10"><b>Try HOUZY on your own track</b>MP3 / WAV · first 75 s · plays in your browser, never uploaded</p>
       <label class="live-amount">AMOUNT <input type="range" min="0" max="100" step="1" value="0" aria-label="Amount"><output>0</output></label>
       <div class="live-progress" hidden><i></i><span></span></div>
       <div class="live-row" hidden>
-        <button class="pill live-play" type="button">Play</button>
-        <div class="live-track"><span class="live-name"></span><div class="live-bar" role="slider" aria-label="Position"><i></i></div></div>
+        <button class="pill live-play" type="button" data-i18n="11">Play</button>
+        <div class="live-track"><span class="live-name"></span><div class="live-bar" role="slider" aria-label="Position" data-i18n-a="aria-label:98"><i></i></div></div>
         <span class="live-time">0:00</span>
-        <button class="pill live-ab" type="button" aria-pressed="false" title="Compare with the original">HOUZY</button>
-        <button class="pill live-clear" type="button">Clear</button>
+        <button class="pill live-ab" type="button" aria-pressed="false" title="Compare with the original" data-i18n-a="title:99">HOUZY</button>
+        <button class="pill live-clear" type="button" data-i18n="12">Clear</button>
       </div>
     </div>
-    <div class="buy-row"><button class="cta buy buy-big" type="button">Buy HOUZY</button></div>
+    <div class="buy-row"><button class="cta buy buy-big" type="button" data-i18n="13">Buy HOUZY</button></div>
   </section>
 
   <!-- THE SPHERE in the centre, chapter tabs left and right, the reading panel on top.
@@ -182,77 +188,77 @@
     <div class="pin">
       <div class="reader glass">
         <div class="reader-top">
-          <span class="num">HOUZY 5 · Coming soon</span>
+          <span class="num" data-i18n="14">HOUZY 5 · Coming soon</span>
         </div>
         <div class="panels" aria-live="polite">
           <div class="panel" id="p-houzy" data-ch="houzy">
-            <h2>Even compression across every frequency in the track.</h2>
+            <h2 data-i18n="15">Even compression across every frequency in the track.</h2>
             <div class="cols">
-              <p>The sound is taken apart into individual tones, and each one's loudness is evened out by its own envelope. Loud sounds don't drag the rest down, and the compressor treats every sound equally steadily, whatever the loudness of any frequency in the mix. With a loud kick, low end or midrange, it squeezes the lows and the highs just the same.</p>
-              <p>The threshold is automatic: it sets itself from the loudest sound and moves along with the track. The release is automatic too (AUTO): the plugin measures how fast the sounds fade out and sets the time itself. Every tone — kick, drums or vocal — is compressed the same way, then the level is raised back automatically, which gives you a well and densely compressed track.</p>
-              <p class="small">Works beyond mastering too, on any track or bus, with a higher CPU load.</p>
+              <p data-i18n="16">The sound is taken apart into individual tones, and each one's loudness is evened out by its own envelope. Loud sounds don't drag the rest down, and the compressor treats every sound equally steadily, whatever the loudness of any frequency in the mix. With a loud kick, low end or midrange, it squeezes the lows and the highs just the same.</p>
+              <p data-i18n="17">The threshold is automatic: it sets itself from the loudest sound and moves along with the track. The release is automatic too (AUTO): the plugin measures how fast the sounds fade out and sets the time itself. Every tone — kick, drums or vocal — is compressed the same way, then the level is raised back automatically, which gives you a well and densely compressed track.</p>
+              <p class="small" data-i18n="18">Works beyond mastering too, on any track or bus, with a higher CPU load.</p>
             </div>
           </div>
           <div class="panel" id="p-problem" data-ch="problem">
-            <h2>One number for the whole sound.</h2>
+            <h2 data-i18n="19">One number for the whole sound.</h2>
             <div class="cols">
-              <p>An ordinary compressor is <span class="code">output = gain × signal</span>. Every classic complaint follows from that:</p>
+              <p data-i18n="20">An ordinary compressor is <span class="code">output = gain × signal</span>. Every classic complaint follows from that:</p>
               <ul>
-                <li><b>The detector is blind</b> — the whole spectrum is collapsed into one number, so a kick and a vocal of the same amplitude are indistinguishable to it.</li>
-                <li><b>The kick drags everything with it</b> — the gain drops, and the hats, the vocal and the reverb tails dive with it. That is pumping.</li>
-                <li><b>Attack fights punch</b> — one envelope has to serve both the transient and the body.</li>
-                <li><b>The bass gets dirty</b> — the gain moves, and sidebands grow around a 50 Hz kick. The compressor ruins the very thing it was evening out.</li>
+                <li data-i18n="21"><b>The detector is blind</b> — the whole spectrum is collapsed into one number, so a kick and a vocal of the same amplitude are indistinguishable to it.</li>
+                <li data-i18n="22"><b>The kick drags everything with it</b> — the gain drops, and the hats, the vocal and the reverb tails dive with it. That is pumping.</li>
+                <li data-i18n="23"><b>Attack fights punch</b> — one envelope has to serve both the transient and the body.</li>
+                <li data-i18n="24"><b>The bass gets dirty</b> — the gain moves, and sidebands grow around a 50 Hz kick. The compressor ruins the very thing it was evening out.</li>
               </ul>
             </div>
           </div>
           <div class="panel" id="p-acr" data-ch="acr">
-            <h2>ACR — a clipper that stops chopping the highs.</h2>
+            <h2 data-i18n="25">ACR — a clipper that stops chopping the highs.</h2>
             <div class="cols">
-              <p>An ordinary clipper slices the top off the waveform. A slice is abrupt and its error is broadband, so every kick hit subtracts that error from the hats, the vocal and the reverb tails. Hence the classic problem with clipped house: the harder you drive the kick, the duller and grittier the top end gets. Oversampling makes the error clean, but does not change where it sits in the spectrum.</p>
-              <p><b>Instead of slicing, ACR subtracts a short pulse placed exactly at the peak.</b> Its spectrum puts the distortion at the top, where the hats and the kick's attack mask it. The technique comes from LTE transmitters; the pulse kernel is designed from a psychoacoustic model of hearing.</p>
-              <p class="small">ACR is the default. HI-Q — a conventional oversampled clipper — is the other position of the switch.</p>
+              <p data-i18n="26">An ordinary clipper slices the top off the waveform. A slice is abrupt and its error is broadband, so every kick hit subtracts that error from the hats, the vocal and the reverb tails. Hence the classic problem with clipped house: the harder you drive the kick, the duller and grittier the top end gets. Oversampling makes the error clean, but does not change where it sits in the spectrum.</p>
+              <p data-i18n="27"><b>Instead of slicing, ACR subtracts a short pulse placed exactly at the peak.</b> Its spectrum puts the distortion at the top, where the hats and the kick's attack mask it. The technique comes from LTE transmitters; the pulse kernel is designed from a psychoacoustic model of hearing.</p>
+              <p class="small" data-i18n="28">ACR is the default. HI-Q — a conventional oversampled clipper — is the other position of the switch.</p>
             </div>
           </div>
           <div class="panel" id="p-t8" data-ch="t8">
-            <h2>T8 — the half-wave limiter.</h2>
+            <h2 data-i18n="29">T8 — the half-wave limiter.</h2>
             <div class="cols">
-              <p>An ordinary limiter moves its gain whenever it needs to, often right in the middle of a wave. On a kick or a bass that bends the wave itself, and you hear it as grit inside every hit.</p>
-              <p><b>T8 changes its gain only where the wave crosses zero.</b> Each half-wave of the kick and bass is lowered as one whole piece, so its shape stays exactly as it was. Only its height changes.</p>
-              <p class="small">Our own design, new in HOUZY 5. In our kick tests about 5–6 dB cleaner than T6 at the same loudness. On the SMART | T6 | T8 switch.</p>
+              <p data-i18n="30">An ordinary limiter moves its gain whenever it needs to, often right in the middle of a wave. On a kick or a bass that bends the wave itself, and you hear it as grit inside every hit.</p>
+              <p data-i18n="31"><b>T8 changes its gain only where the wave crosses zero.</b> Each half-wave of the kick and bass is lowered as one whole piece, so its shape stays exactly as it was. Only its height changes.</p>
+              <p class="small" data-i18n="32">Our own design, new in HOUZY 5. In our kick tests about 5–6 dB cleaner than T6 at the same loudness. On the SMART | T6 | T8 switch.</p>
             </div>
           </div>
           <div class="panel" id="p-cycles" data-ch="cycles">
-            <h2>Attack in wave cycles, release in beat fractions.</h2>
+            <h2 data-i18n="33">Attack in wave cycles, release in beat fractions.</h2>
             <div class="cols">
-              <p><b>5 ms on a 50 Hz bass note is a quarter of its wave</b> — the gain moves inside a single oscillation, exactly where a compressor dirties the low end. The same 5 ms on an 8 kHz hat is forty cycles. So attack is set in cycles: one knob gives 45 ms at 50 Hz and 1 ms at 8 kHz, never faster than half a cycle.</p>
-              <p>A release dialled in at 128 BPM is wrong at 124, so release has two units, switched by clicking its label: <b>NOTE</b>, a fraction of a bar from your project tempo, or <b>MS</b>, plain milliseconds (default). <b>AUTO</b> measures how fast the sounds fade and uses that time.</p>
+              <p data-i18n="34"><b>5 ms on a 50 Hz bass note is a quarter of its wave</b> — the gain moves inside a single oscillation, exactly where a compressor dirties the low end. The same 5 ms on an 8 kHz hat is forty cycles. So attack is set in cycles: one knob gives 45 ms at 50 Hz and 1 ms at 8 kHz, never faster than half a cycle.</p>
+              <p data-i18n="35">A release dialled in at 128 BPM is wrong at 124, so release has two units, switched by clicking its label: <b>NOTE</b>, a fraction of a bar from your project tempo, or <b>MS</b>, plain milliseconds (default). <b>AUTO</b> measures how fast the sounds fade and uses that time.</p>
             </div>
           </div>
           <div class="panel" id="p-more" data-ch="more">
-            <h2>Everything a master bus needs.</h2>
+            <h2 data-i18n="36">Everything a master bus needs.</h2>
             <ul class="cols">
-              <li><b>AUTO GAIN</b> — gives back exactly what the compression took.</li>
-              <li><b>Spectral limiter</b> — SMART (3 bands) or T6 (6 bands): a bass peak never ducks the highs.</li>
-              <li><b>GAIN MATCH</b> — BYPASS compares character, not loudness.</li>
-              <li><b>DASH / PUNCH</b> — from punchy to even; how much of each hit stays untouched.</li>
-              <li><b>UPWARD</b> — lifts the quiet parts: tails, air, detail.</li>
-              <li><b>CLIP SHAPE</b> — light saturation across the whole spectrum, level matched.</li>
-              <li><b>CHARACTER</b> — softer to the left, denser to the right.</li>
-              <li><b>ALL MIX</b> — 6 bands with their own compression and level (−6…+6 dB).</li>
-              <li><b>TP</b> — true peak for streaming and MP3 exports.</li>
-              <li><b>PRESETS</b> — SNOOZE to SQUISHY; the list stays open to compare by ear.</li>
-              <li><b>A / B</b> — two slots, compared at matched loudness.</li>
-              <li><b>BEAT | SMART</b> — exact release, or release as a maximum that lets a died-away tone go early.</li>
-              <li><b>Meters</b> — RMS and LUFS, gain reduction per stage and a live waveform.</li>
+              <li data-i18n="37"><b>AUTO GAIN</b> — gives back exactly what the compression took.</li>
+              <li data-i18n="38"><b>Spectral limiter</b> — SMART (3 bands) or T6 (6 bands): a bass peak never ducks the highs.</li>
+              <li data-i18n="39"><b>GAIN MATCH</b> — BYPASS compares character, not loudness.</li>
+              <li data-i18n="40"><b>DASH / PUNCH</b> — from punchy to even; how much of each hit stays untouched.</li>
+              <li data-i18n="41"><b>UPWARD</b> — lifts the quiet parts: tails, air, detail.</li>
+              <li data-i18n="42"><b>CLIP SHAPE</b> — light saturation across the whole spectrum, level matched.</li>
+              <li data-i18n="43"><b>CHARACTER</b> — softer to the left, denser to the right.</li>
+              <li data-i18n="44"><b>ALL MIX</b> — 6 bands with their own compression and level (−6…+6 dB).</li>
+              <li data-i18n="45"><b>TP</b> — true peak for streaming and MP3 exports.</li>
+              <li data-i18n="46"><b>PRESETS</b> — SNOOZE to SQUISHY; the list stays open to compare by ear.</li>
+              <li data-i18n="47"><b>A / B</b> — two slots, compared at matched loudness.</li>
+              <li data-i18n="48"><b>BEAT | SMART</b> — exact release, or release as a maximum that lets a died-away tone go early.</li>
+              <li data-i18n="49"><b>Meters</b> — RMS and LUFS, gain reduction per stage and a live waveform.</li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="tabs left">
-        <button class="tab glass" type="button" data-ch="houzy" data-angle="300" aria-controls="p-houzy"><span class="n">01</span><span class="tt"><b>HOUZY engine</b><small>Every tone compressed on its own</small></span></button>
-        <button class="tab glass" type="button" data-ch="problem" data-angle="270" aria-controls="p-problem"><span class="n">02</span><span class="tt"><b>The problem</b><small>One gain for the whole mix</small></span></button>
-        <button class="tab glass" type="button" data-ch="acr" data-angle="240" aria-controls="p-acr"><span class="n">03</span><span class="tt"><b>ACR clipper</b><small>A pulse instead of a slice</small></span></button>
+        <button class="tab glass" type="button" data-ch="houzy" data-angle="300" aria-controls="p-houzy"><span class="n">01</span><span class="tt"><b data-i18n="50">HOUZY engine</b><small data-i18n="51">Every tone compressed on its own</small></span></button>
+        <button class="tab glass" type="button" data-ch="problem" data-angle="270" aria-controls="p-problem"><span class="n">02</span><span class="tt"><b data-i18n="52">The problem</b><small data-i18n="53">One gain for the whole mix</small></span></button>
+        <button class="tab glass" type="button" data-ch="acr" data-angle="240" aria-controls="p-acr"><span class="n">03</span><span class="tt"><b data-i18n="54">ACR clipper</b><small data-i18n="55">A pulse instead of a slice</small></span></button>
       </div>
 
       <div class="orb-wrap" id="orb-wrap" aria-hidden="true">
@@ -261,9 +267,9 @@
       </div>
 
       <div class="tabs right">
-        <button class="tab glass" type="button" data-ch="t8" data-angle="60" aria-controls="p-t8"><span class="n">04</span><span class="tt"><b>T8 limiter <em>new</em></b><small>Gain moves only at zero</small></span></button>
-        <button class="tab glass" type="button" data-ch="cycles" data-angle="90" aria-controls="p-cycles"><span class="n">05</span><span class="tt"><b>CYCLES / NOTE</b><small>Attack in cycles, release in beats</small></span></button>
-        <button class="tab glass" type="button" data-ch="more" data-angle="120" aria-controls="p-more"><span class="n">06</span><span class="tt"><b>What else is in there</b><small>Thirteen more tools inside</small></span></button>
+        <button class="tab glass" type="button" data-ch="t8" data-angle="60" aria-controls="p-t8"><span class="n">04</span><span class="tt"><b data-i18n="56">T8 limiter <em>new</em></b><small data-i18n="57">Gain moves only at zero</small></span></button>
+        <button class="tab glass" type="button" data-ch="cycles" data-angle="90" aria-controls="p-cycles"><span class="n">05</span><span class="tt"><b data-i18n="58">CYCLES / NOTE</b><small data-i18n="59">Attack in cycles, release in beats</small></span></button>
+        <button class="tab glass" type="button" data-ch="more" data-angle="120" aria-controls="p-more"><span class="n">06</span><span class="tt"><b data-i18n="60">What else is in there</b><small data-i18n="61">Thirteen more tools inside</small></span></button>
       </div>
     </div>
   </section>
@@ -272,20 +278,20 @@
   <section class="block" id="about">
     <div class="wrap about">
       <div class="glass" data-reveal>
-        <p class="kicker">About</p>
-        <h2>Built for house and dance music.</h2>
-        <p class="lead">HOUZY is made by ACRONA AUDIO, an independent developer. One goal: masters that are dense, glued and loud, with a punchy kick and a clean low end, without pumping and without dull highs.</p>
+        <p class="kicker" data-i18n="3">About</p>
+        <h2 data-i18n="62">Built for house and dance music.</h2>
+        <p class="lead" data-i18n="63">HOUZY is made by ACRONA AUDIO, an independent developer. One goal: masters that are dense, glued and loud, with a punchy kick and a clean low end, without pumping and without dull highs.</p>
         <div class="links">
           <a class="pill" href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">ACRONA on Spotify</a>
           <a class="pill" href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a>
-          <a class="pill" href="manual.html">User manual</a>
+          <a data-manual class="pill" href="/manual.html" data-i18n="64">User manual</a>
         </div>
       </div>
       <div class="glass" data-reveal>
         <p class="kicker">HOUZY 5</p>
-        <h3>A paid release with a 7-day free trial</h3>
-        <p class="lead lead-sm">Liquid Glass design, five themes, four colours of the sphere, the T8 limiter, a third less CPU and a manual inside the plugin in four languages.</p>
-        <div class="links"><a class="btn" href="mailto:acrona.war@gmail.com?subject=HOUZY%205%20%E2%80%94%20let%20me%20know">Tell me when it's out
+        <h3 data-i18n="65">A paid release with a 7-day free trial</h3>
+        <p class="lead lead-sm" data-i18n="66">Liquid Glass design, five themes, four colours of the sphere, the T8 limiter, a third less CPU and a manual inside the plugin in four languages.</p>
+        <div class="links"><a class="btn" href="mailto:acrona.war@gmail.com?subject=HOUZY%205%20%E2%80%94%20let%20me%20know" data-i18n="67" data-i18n-lead>Tell me when it's out
           <svg class="arrow" viewBox="0 0 16 11" aria-hidden="true"><path d="M0 5.5 H14.6 M10.3 1.2 L14.9 5.5 L10.3 9.8"/></svg></a></div>
       </div>
     </div>
@@ -297,16 +303,16 @@
     <div class="wrap faq">
       <div class="head" data-reveal>
         <p class="kicker">FAQ</p>
-        <h2>Questions people ask.</h2>
-        <p class="lead">Something else? Write to <a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a>.</p>
+        <h2 data-i18n="68">Questions people ask.</h2>
+        <p class="lead" data-i18n="69">Something else? Write to <a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a>.</p>
       </div>
       <div class="glass faq-list" data-reveal>
-        <details><summary>When is HOUZY 5 out, and what will it cost?</summary><p>Soon. The price will be announced at release. There is a 7-day free trial, so you can check it on your own tracks first.</p></details>
-        <details><summary>What is the difference between T6 and T8?</summary><p>T6 is a smooth six-band limiter. T8 changes its gain only at the zero crossings of the wave, so the bass and kick are lowered without changing their shape. Both are in HOUZY 5, and you choose by ear.</p></details>
-        <details><summary>Does my audio leave my computer?</summary><p>Never. All processing happens on your machine. The plugin goes online only to check for updates (you can switch this off) and to activate your licence. Details are in the <a href="privacy.html">Privacy Policy</a>.</p></details>
-        <details><summary>How do refunds work?</summary><p>Within 14 days of purchase, after you release the activation in the plugin. Licences activated offline can't be refunded, because they can't be deactivated. Your statutory consumer rights are not affected. See the <a href="terms.html#refunds">Terms of Sale</a>.</p></details>
-        <details><summary>Can I use it on single tracks, not just the master?</summary><p>Yes, on any track or bus. HOUZY analyses every tone separately, so CPU load is higher than with an ordinary compressor.</p></details>
-        <details><summary>Which DAWs are supported?</summary><p>Any host that loads VST3 on Windows or macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig and others), plus AU for Logic Pro and GarageBand.</p></details>
+        <details><summary data-i18n="70">When is HOUZY 5 out, and what will it cost?</summary><p data-i18n="71">Soon. The price will be announced at release. There is a 7-day free trial, so you can check it on your own tracks first.</p></details>
+        <details><summary data-i18n="72">What is the difference between T6 and T8?</summary><p data-i18n="73">T6 is a smooth six-band limiter. T8 changes its gain only at the zero crossings of the wave, so the bass and kick are lowered without changing their shape. Both are in HOUZY 5, and you choose by ear.</p></details>
+        <details><summary data-i18n="74">Does my audio leave my computer?</summary><p data-i18n="75">Never. All processing happens on your machine. The plugin goes online only to check for updates (you can switch this off) and to activate your licence. Details are in the <a href="/privacy.html">Privacy Policy</a>.</p></details>
+        <details><summary data-i18n="76">How do refunds work?</summary><p data-i18n="77">Within 14 days of purchase, after you release the activation in the plugin. Licences activated offline can't be refunded, because they can't be deactivated. Your statutory consumer rights are not affected. See the <a href="/terms.html#refunds">Terms of Sale</a>.</p></details>
+        <details><summary data-i18n="78">Can I use it on single tracks, not just the master?</summary><p data-i18n="79">Yes, on any track or bus. HOUZY analyses every tone separately, so CPU load is higher than with an ordinary compressor.</p></details>
+        <details><summary data-i18n="80">Which DAWs are supported?</summary><p data-i18n="81">Any host that loads VST3 on Windows or macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig and others), plus AU for Logic Pro and GarageBand.</p></details>
       </div>
     </div>
   </section>
@@ -315,9 +321,9 @@
   <section class="block" id="contact">
     <div class="wrap">
       <div class="glass contact-panel" data-reveal>
-        <p class="kicker">Contact</p>
-        <h2>Questions, bugs, licences: write to me.</h2>
-        <p class="lead">For a bug, include your HOUZY version, system and DAW. In HOUZY 5 the REPORT button copies all of that for you.</p>
+        <p class="kicker" data-i18n="4">Contact</p>
+        <h2 data-i18n="82">Questions, bugs, licences: write to me.</h2>
+        <p class="lead" data-i18n="83">For a bug, include your HOUZY version, system and DAW. In HOUZY 5 the REPORT button copies all of that for you.</p>
         <div class="contact">
           <a class="cta" href="mailto:acrona.war@gmail.com">acrona.war@gmail.com
             <svg class="arrow" viewBox="0 0 16 11" aria-hidden="true"><path d="M0 5.5 H14.6 M10.3 1.2 L14.9 5.5 L10.3 9.8"/></svg></a>
@@ -331,26 +337,26 @@
 <footer class="foot">
   <div class="wrap">
     <div>
-      <a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
-      <p>Mastering compressor by ACRONA AUDIO.<br><a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <a data-home="" class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
+      <p data-i18n="84">Mastering compressor by ACRONA AUDIO.<br><a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
     </div>
     <div>
-      <h4>Legal</h4>
+      <h4 data-i18n="85">Legal</h4>
       <ul>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="cookies.html">Cookie Policy</a></li>
-        <li><a href="terms.html">Terms of Use &amp; Sale</a></li>
-        <li><a href="eula.html">Licence Agreement (EULA)</a></li>
+        <li><a href="/privacy.html" data-i18n="86">Privacy Policy</a></li>
+        <li><a href="/cookies.html" data-i18n="87">Cookie Policy</a></li>
+        <li><a href="/terms.html" data-i18n="88">Terms of Use &amp; Sale</a></li>
+        <li><a href="/eula.html" data-i18n="89">Licence Agreement (EULA)</a></li>
       </ul>
     </div>
     <div>
       <h4>HOUZY</h4>
       <ul>
         <li><a href="#top">HOUZY 5</a></li>
-        <li><a href="manual.html">User manual</a></li>
+        <li><a data-manual href="/manual.html" data-i18n="64">User manual</a></li>
       </ul>
     </div>
-    <p class="copy">© 2026 ACRONA AUDIO. HOUZY, ACR and T8 are names of ACRONA AUDIO. VST is a trademark of Steinberg Media Technologies GmbH. Audio Units, Logic Pro and macOS are trademarks of Apple Inc. Other names belong to their owners.</p>
+    <p class="copy" data-i18n="90">© 2026 ACRONA AUDIO. HOUZY, ACR and T8 are names of ACRONA AUDIO. VST is a trademark of Steinberg Media Technologies GmbH. Audio Units, Logic Pro and macOS are trademarks of Apple Inc. Other names belong to their owners.</p>
   </div>
 </footer>
 

@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HOUZY 5 — plugin compressor de masterização (VST3 / AU) | ACRONA AUDIO</title>
+<meta name="description" content="O HOUZY 5 é um plugin compressor de masterização que comprime cada tom separadamente: sem pumping, kick com pegada e graves limpos. Clipper ACR, limitador T8. VST3 / AU.">
+<meta name="theme-color" content="#e7e7ef">
+<link rel="alternate" hreflang="en" href="https://acronaaudio.shop/">
+<link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/">
+<link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/">
+<link rel="alternate" hreflang="x-default" href="https://acronaaudio.shop/">
+<link rel="canonical" href="https://acronaaudio.shop/pt/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
+<meta property="og:url" content="https://acronaaudio.shop/pt/">
+<meta property="og:title" content="HOUZY 5 — plugin compressor de masterização (VST3 / AU) | ACRONA AUDIO">
+<meta property="og:description" content="O HOUZY 5 é um plugin compressor de masterização que comprime cada tom separadamente: sem pumping, kick com pegada e graves limpos. Clipper ACR, limitador T8. VST3 / AU.">
+<meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
+<meta property="og:image:width" content="1640">
+<meta property="og:image:height" content="912">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HOUZY 5",
+  "alternateName": "HOUZY mastering compressor",
+  "description": "Plugin compressor de masterização que comprime cada tom separadamente, com clipper ACR e limitador de meia onda T8.",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Audio plugin (VST3, AU)",
+  "operatingSystem": "Windows, macOS",
+  "url": "https://acronaaudio.shop/",
+  "image": "https://acronaaudio.shop/img/version5.jpg",
+  "author": {
+   "@type": "Organization",
+   "name": "ACRONA AUDIO",
+   "url": "https://acronaaudio.shop/",
+   "email": "acrona.war@gmail.com"
+  },
+  "publisher": {
+   "@type": "Organization",
+   "name": "ACRONA AUDIO",
+   "url": "https://acronaaudio.shop/",
+   "email": "acrona.war@gmail.com"
+  },
+  "inLanguage": "pt"
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Quando o HOUZY 5 sai e quanto vai custar?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Em breve. O preço será anunciado no lançamento. Há 7 dias de teste grátis, então você pode experimentar primeiro nas suas próprias faixas."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Qual é a diferença entre T6 e T8?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "O T6 é um limitador suave de seis bandas. O T8 muda o ganho apenas nos cruzamentos por zero da onda, então o baixo e o kick são abaixados sem alterar a forma. Os dois estão no HOUZY 5, e você escolhe de ouvido."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Meu áudio sai do meu computador?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Nunca. Todo o processamento acontece na sua máquina. O plugin só se conecta à internet para verificar atualizações (você pode desativar) e para ativar sua licença. Os detalhes estão na Política de Privacidade (em inglês)."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Como funcionam os reembolsos?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Em até 14 dias após a compra, depois de liberar a ativação no plugin. Licenças ativadas offline não podem ser reembolsadas, porque não podem ser desativadas. Seus direitos legais de consumidor não são afetados. Veja os Termos de Venda (em inglês)."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Posso usar em faixas individuais, não só no master?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Sim, em qualquer faixa ou bus. O HOUZY analisa cada tom separadamente, então o uso de CPU é maior que o de um compressor comum."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Quais DAWs são compatíveis?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Qualquer host que carregue VST3 no Windows ou macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig e outros), além de AU para Logic Pro e GarageBand."
+    }
+   }
+  ],
+  "inLanguage": "pt"
+ }
+]
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/site.css">
+<script>document.documentElement.classList.add('pt')</script>
+<script src="/vendor/framer-motion/dom.js" defer></script>
+<script src="/orb.js" defer></script>
+<script src="/site.js" defer></script>
+<script src="/i18n.js" defer></script>
+<script src="/plugin.js" defer></script>
+<script src="/houzy-live.js" defer></script>
+<script src="/buy.js" defer></script>
+<script type="application/json" id="i18n-js">{"Before you continue":"Antes de continuar","By using this site and the HOUZY demo you agree to the {terms} and the {eula}. How we handle data is in the {privacy}.":"Ao usar este site e a demo do HOUZY, você concorda com os {terms} e o {eula}. Como tratamos os dados está na {privacy}.","Terms of Use & Sale":"Termos de Uso e Venda (em inglês)","Licence Agreement (EULA)":"Contrato de Licença (EULA, em inglês)","Privacy Policy":"Política de Privacidade (em inglês)","I agree":"Concordo","Coming soon":"Em breve","Original":"Original","Pause":"Pausar","Play":"Tocar","Loading the HOUZY engine…":"Carregando o motor do HOUZY…","Reading {name}…":"Lendo {name}…","Decoding {name}…":"Decodificando {name}…","Please choose an MP3 or WAV file":"Escolha um arquivo MP3 ou WAV","That file is over {mb} MB":"Esse arquivo tem mais de {mb} MB","This file could not be decoded":"Não foi possível decodificar este arquivo","Could not start: {msg}":"Não foi possível iniciar: {msg}","this browser has no AudioWorklet":"este navegador não tem AudioWorklet","the live demo needs the secure (https) version of this page":"a demo ao vivo precisa da versão segura (https) desta página","engine not found":"motor não encontrado","Track removed from this page. It was never uploaded anywhere.":"Faixa removida desta página. Ela nunca foi enviada para lugar nenhum.","demo: first 1:15 of {len}":"demo: primeiros 1:15 de {len}","demo":"demo","{what} — only in the full version":"{what} — só na versão completa","Only in the full version":"Só na versão completa","Oversampling above 16x":"Oversampling acima de 16x","CLASSIC and MODERN":"CLASSIC e MODERN","UPWARD, CHARACTER, CLIP SHAPE and DASH":"UPWARD, CHARACTER, CLIP SHAPE e DASH","Slot {s}":"Slot {s}","Oversampling {n}x · 32x and 64x in the full version":"Oversampling {n}x · 32x e 64x na versão completa","Copied {from} to {to}":"Copiado de {from} para {to}","English, Russian, Spanish and Portuguese in the plugin":"Inglês, russo, espanhol e português no plugin","Language":"Idioma"}</script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="0">Pular para o conteúdo</a>
+
+<div class="bg" aria-hidden="true">
+  <!-- two copies crossfade at the seam (site.js): the stones keep drifting forward, no jump back -->
+  <video class="art" autoplay muted playsinline preload="auto" poster="/video/bg-poster.jpg"></video>
+  <video class="art art-b" muted playsinline preload="none"></video>
+</div>
+<div class="veil" aria-hidden="true"></div>
+
+<header class="bar">
+  <a class="brand" href="#" aria-label="HOUZY — página inicial" data-i18n-a="aria-label:91">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg>
+    <b>HOUZY</b><small>ACRONA AUDIO</small>
+  </a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Abrir o menu" data-i18n-a="aria-label:92">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" aria-label="Menu" data-i18n-a="aria-label:93">
+    <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
+  </label>
+  <div class="navpanel">
+    <nav class="menu" aria-label="Principal" data-i18n-a="aria-label:94">
+      <a href="#top" data-i18n="1">Tecnologia</a>
+      <a data-manual href="/manual.html#pt-BR" data-i18n="2">Manual</a>
+      <a href="#about" data-i18n="3">Sobre</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" data-i18n="4">Contato</a>
+    </nav>
+    <button class="cta buy" type="button" data-i18n="5">Comprar</button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- THE PLUGIN WINDOW: the same live panel as plugin.html, first, the sphere under it -->
+  <section class="try" id="plugin">
+    <div class="head glass" data-reveal>
+      <h1 class="hero-title"><span class="kick" data-i18n="6">HOUZY — compressor de masterização</span><span class="t" data-i18n="7">Compressão uniforme em todas as frequências.</span></h1>
+      <p class="lead" data-i18n="8">Quando você comprime, um kick ou baixo forte não arrasta mais os outros instrumentos junto.</p>
+    </div>
+    <div class="plugin" id="panel" role="img" aria-label="A janela do plugin HOUZY 5" data-i18n-a="aria-label:95">
+      <img src="/img/plugin/t1/chrome.webp" width="1480" height="1000" alt="Janela do plugin HOUZY 5, compressor de masterização" loading="lazy" data-i18n-a="alt:96">
+      <div class="porb" aria-hidden="true"></div>
+      <canvas id="live" aria-hidden="true"></canvas>
+      <div class="live-toast" role="status" aria-live="polite"></div>
+    </div>
+    <div class="live glass" id="live-ui">
+      <label class="cta live-pick" aria-label="Carregue sua faixa (MP3 ou WAV)" data-i18n-a="aria-label:97">
+        <input type="file" accept=".mp3,.wav,audio/mpeg,audio/wav,audio/x-wav" hidden>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 14V3M5.5 7.5 10 3l4.5 4.5M3 13v3.5h14V13"/></svg>
+        <span data-i18n="9">Carregar</span>
+      </label>
+      <p class="live-note" data-i18n="10"><b>Experimente o HOUZY na sua própria faixa</b>MP3 / WAV · primeiros 75 s · toca no seu navegador, nunca é enviado</p>
+      <label class="live-amount">AMOUNT <input type="range" min="0" max="100" step="1" value="0" aria-label="Amount"><output>0</output></label>
+      <div class="live-progress" hidden><i></i><span></span></div>
+      <div class="live-row" hidden>
+        <button class="pill live-play" type="button" data-i18n="11">Tocar</button>
+        <div class="live-track"><span class="live-name"></span><div class="live-bar" role="slider" aria-label="Posição" data-i18n-a="aria-label:98"><i></i></div></div>
+        <span class="live-time">0:00</span>
+        <button class="pill live-ab" type="button" aria-pressed="false" title="Comparar com o original" data-i18n-a="title:99">HOUZY</button>
+        <button class="pill live-clear" type="button" data-i18n="12">Remover</button>
+      </div>
+    </div>
+    <div class="buy-row"><button class="cta buy buy-big" type="button" data-i18n="13">Comprar HOUZY</button></div>
+  </section>
+
+  <!-- THE SPHERE in the centre, chapter tabs left and right, the reading panel on top.
+       Point at a tab or at the sphere on that side (or click / tap / arrow keys): the sphere turns and the chapter opens on top. -->
+  <section class="stage" id="top" aria-label="HOUZY 5">
+    <div class="pin">
+      <div class="reader glass">
+        <div class="reader-top">
+          <span class="num" data-i18n="14">HOUZY 5 · Em breve</span>
+        </div>
+        <div class="panels" aria-live="polite">
+          <div class="panel" id="p-houzy" data-ch="houzy">
+            <h2 data-i18n="15">Compressão uniforme em todas as frequências da faixa.</h2>
+            <div class="cols">
+              <p data-i18n="16">O som é decomposto em tons individuais e o volume de cada um é nivelado pela sua própria envoltória. Sons fortes não puxam o resto para baixo, e o compressor trata cada som com a mesma estabilidade, seja qual for o volume de qualquer frequência da mixagem. Com um kick forte, graves ou médios, ele comprime graves e agudos exatamente do mesmo jeito.</p>
+              <p data-i18n="17">O threshold é automático: ele se ajusta pelo som mais forte e acompanha a faixa. O release também é automático (AUTO): o plugin mede a velocidade com que os sons se extinguem e define esse tempo sozinho. Cada tom — kick, bateria ou vocal — é comprimido do mesmo jeito, e depois o nível é recuperado automaticamente, o que entrega uma faixa bem e densamente comprimida.</p>
+              <p class="small" data-i18n="18">Funciona além da masterização: em qualquer faixa ou bus, com maior uso de CPU.</p>
+            </div>
+          </div>
+          <div class="panel" id="p-problem" data-ch="problem">
+            <h2 data-i18n="19">Um único número para o som inteiro.</h2>
+            <div class="cols">
+              <p data-i18n="20">Um compressor comum é <span class="code">saída = ganho × sinal</span>. Todas as reclamações clássicas vêm daí:</p>
+              <ul>
+                <li data-i18n="21"><b>O detector é cego</b> — o espectro inteiro é reduzido a um único número, então um kick e um vocal com a mesma amplitude são indistinguíveis para ele.</li>
+                <li data-i18n="22"><b>O kick arrasta tudo</b> — o ganho cai, e os hats, o vocal e as caudas de reverb afundam junto. Isso é pumping.</li>
+                <li data-i18n="23"><b>O ataque briga com a pegada</b> — uma única envoltória precisa servir tanto ao transiente quanto ao corpo.</li>
+                <li data-i18n="24"><b>O baixo fica sujo</b> — o ganho se move, e bandas laterais crescem em torno de um kick de 50 Hz. O compressor estraga justamente o que estava nivelando.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel" id="p-acr" data-ch="acr">
+            <h2 data-i18n="25">ACR — um clipper que para de cortar os agudos.</h2>
+            <div class="cols">
+              <p data-i18n="26">Um clipper comum corta o topo da forma de onda. O corte é abrupto e seu erro é de banda larga, então cada batida de kick subtrai esse erro dos hats, do vocal e das caudas de reverb. Daí o problema clássico do house clipado: quanto mais você força o kick, mais opacos e ásperos ficam os agudos. O oversampling deixa o erro limpo, mas não muda o lugar do espectro onde ele está.</p>
+              <p data-i18n="27"><b>Em vez de cortar, o ACR subtrai um pulso curto colocado exatamente no pico.</b> Seu espectro leva a distorção para cima, onde os hats e o ataque do kick a mascaram. A técnica vem dos transmissores LTE; o núcleo do pulso foi projetado a partir de um modelo psicoacústico da audição.</p>
+              <p class="small" data-i18n="28">O ACR é o padrão. O HI-Q — um clipper convencional com oversampling — é a outra posição da chave.</p>
+            </div>
+          </div>
+          <div class="panel" id="p-t8" data-ch="t8">
+            <h2 data-i18n="29">T8 — o limitador de meia onda.</h2>
+            <div class="cols">
+              <p data-i18n="30">Um limitador comum move o ganho sempre que precisa, muitas vezes bem no meio de uma onda. Em um kick ou baixo isso entorta a própria onda, e você ouve como aspereza dentro de cada batida.</p>
+              <p data-i18n="31"><b>O T8 muda o ganho apenas onde a onda cruza o zero.</b> Cada meia onda do kick e do baixo é abaixada como uma peça inteira, então sua forma fica exatamente como era. Só a altura muda.</p>
+              <p class="small" data-i18n="32">Projeto próprio, novidade do HOUZY 5. Nos nossos testes com kick, cerca de 5–6 dB mais limpo que o T6 com o mesmo volume. Na chave SMART | T6 | T8.</p>
+            </div>
+          </div>
+          <div class="panel" id="p-cycles" data-ch="cycles">
+            <h2 data-i18n="33">Ataque em ciclos de onda, release em frações de compasso.</h2>
+            <div class="cols">
+              <p data-i18n="34"><b>5 ms em uma nota de baixo de 50 Hz é um quarto da sua onda</b> — o ganho se move dentro de uma única oscilação, exatamente onde um compressor suja os graves. Os mesmos 5 ms em um hat de 8 kHz são quarenta ciclos. Por isso o ataque é definido em ciclos: um knob dá 45 ms em 50 Hz e 1 ms em 8 kHz, nunca mais rápido que meio ciclo.</p>
+              <p data-i18n="35">Um release ajustado para 128 BPM está errado em 124, então o release tem duas unidades, trocadas clicando no rótulo: <b>NOTE</b>, uma fração de compasso a partir do andamento do projeto, ou <b>MS</b>, milissegundos simples (padrão). O <b>AUTO</b> mede a velocidade com que os sons se extinguem e usa esse tempo.</p>
+            </div>
+          </div>
+          <div class="panel" id="p-more" data-ch="more">
+            <h2 data-i18n="36">Tudo o que um bus master precisa.</h2>
+            <ul class="cols">
+              <li data-i18n="37"><b>AUTO GAIN</b> — devolve exatamente o que a compressão tirou.</li>
+              <li data-i18n="38"><b>Limitador espectral</b> — SMART (3 bandas) ou T6 (6 bandas): um pico de graves nunca abaixa os agudos.</li>
+              <li data-i18n="39"><b>GAIN MATCH</b> — o BYPASS compara o caráter, não o volume.</li>
+              <li data-i18n="40"><b>DASH / PUNCH</b> — de com pegada a uniforme; quanto de cada batida fica intocado.</li>
+              <li data-i18n="41"><b>UPWARD</b> — levanta as partes baixas: caudas, ar, detalhes.</li>
+              <li data-i18n="42"><b>CLIP SHAPE</b> — saturação leve em todo o espectro, com o nível compensado.</li>
+              <li data-i18n="43"><b>CHARACTER</b> — mais suave para a esquerda, mais denso para a direita.</li>
+              <li data-i18n="44"><b>ALL MIX</b> — 6 bandas com compressão e nível próprios (−6…+6 dB).</li>
+              <li data-i18n="45"><b>TP</b> — true peak para streaming e exportações em MP3.</li>
+              <li data-i18n="46"><b>PRESETS</b> — do SNOOZE ao SQUISHY; a lista fica aberta para comparar de ouvido.</li>
+              <li data-i18n="47"><b>A / B</b> — dois slots, comparados com o mesmo volume.</li>
+              <li data-i18n="48"><b>BEAT | SMART</b> — release exato, ou release como máximo que deixa um tom já extinto soltar mais cedo.</li>
+              <li data-i18n="49"><b>Medidores</b> — RMS e LUFS, redução de ganho por etapa e uma forma de onda ao vivo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabs left">
+        <button class="tab glass" type="button" data-ch="houzy" data-angle="300" aria-controls="p-houzy"><span class="n">01</span><span class="tt"><b data-i18n="50">Motor HOUZY</b><small data-i18n="51">Cada tom é comprimido por conta própria</small></span></button>
+        <button class="tab glass" type="button" data-ch="problem" data-angle="270" aria-controls="p-problem"><span class="n">02</span><span class="tt"><b data-i18n="52">O problema</b><small data-i18n="53">Um ganho para a mix inteira</small></span></button>
+        <button class="tab glass" type="button" data-ch="acr" data-angle="240" aria-controls="p-acr"><span class="n">03</span><span class="tt"><b data-i18n="54">Clipper ACR</b><small data-i18n="55">Um pulso em vez de um corte</small></span></button>
+      </div>
+
+      <div class="orb-wrap" id="orb-wrap" aria-hidden="true">
+        <div class="orb-ring"><i class="marker"></i></div>
+        <div class="orb" id="orb"></div>
+      </div>
+
+      <div class="tabs right">
+        <button class="tab glass" type="button" data-ch="t8" data-angle="60" aria-controls="p-t8"><span class="n">04</span><span class="tt"><b data-i18n="56">Limitador T8 <em>novo</em></b><small data-i18n="57">O ganho só se move no zero</small></span></button>
+        <button class="tab glass" type="button" data-ch="cycles" data-angle="90" aria-controls="p-cycles"><span class="n">05</span><span class="tt"><b data-i18n="58">CYCLES / NOTE</b><small data-i18n="59">Ataque em ciclos, release em tempos</small></span></button>
+        <button class="tab glass" type="button" data-ch="more" data-angle="120" aria-controls="p-more"><span class="n">06</span><span class="tt"><b data-i18n="60">O que mais tem aí dentro</b><small data-i18n="61">Mais treze ferramentas</small></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="block" id="about">
+    <div class="wrap about">
+      <div class="glass" data-reveal>
+        <p class="kicker" data-i18n="3">Sobre</p>
+        <h2 data-i18n="62">Feito para house e música de pista.</h2>
+        <p class="lead" data-i18n="63">O HOUZY é feito pela ACRONA AUDIO, um projeto independente. Um único objetivo: masters densos, colados e fortes, com um kick com pegada e graves limpos, sem pumping e sem agudos opacos.</p>
+        <div class="links">
+          <a class="pill" href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">ACRONA on Spotify</a>
+          <a class="pill" href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a>
+          <a data-manual class="pill" href="/manual.html#pt-BR" data-i18n="64">Manual do usuário</a>
+        </div>
+      </div>
+      <div class="glass" data-reveal>
+        <p class="kicker">HOUZY 5</p>
+        <h3 data-i18n="65">Um lançamento pago com 7 dias de teste grátis</h3>
+        <p class="lead lead-sm" data-i18n="66">Design Liquid Glass, cinco temas, quatro cores da esfera, o limitador T8, um terço a menos de CPU e um manual dentro do plugin em quatro idiomas.</p>
+        <div class="links"><a class="btn" href="mailto:acrona.war@gmail.com?subject=HOUZY%205%20%E2%80%94%20let%20me%20know" data-i18n="67" data-i18n-lead>Avise-me quando sair
+          <svg class="arrow" viewBox="0 0 16 11" aria-hidden="true"><path d="M0 5.5 H14.6 M10.3 1.2 L14.9 5.5 L10.3 9.8"/></svg></a></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <div class="wrap faq">
+      <div class="head" data-reveal>
+        <p class="kicker">FAQ</p>
+        <h2 data-i18n="68">Perguntas frequentes.</h2>
+        <p class="lead" data-i18n="69">Mais alguma coisa? Escreva para <a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a>.</p>
+      </div>
+      <div class="glass faq-list" data-reveal>
+        <details><summary data-i18n="70">Quando o HOUZY 5 sai e quanto vai custar?</summary><p data-i18n="71">Em breve. O preço será anunciado no lançamento. Há 7 dias de teste grátis, então você pode experimentar primeiro nas suas próprias faixas.</p></details>
+        <details><summary data-i18n="72">Qual é a diferença entre T6 e T8?</summary><p data-i18n="73">O T6 é um limitador suave de seis bandas. O T8 muda o ganho apenas nos cruzamentos por zero da onda, então o baixo e o kick são abaixados sem alterar a forma. Os dois estão no HOUZY 5, e você escolhe de ouvido.</p></details>
+        <details><summary data-i18n="74">Meu áudio sai do meu computador?</summary><p data-i18n="75">Nunca. Todo o processamento acontece na sua máquina. O plugin só se conecta à internet para verificar atualizações (você pode desativar) e para ativar sua licença. Os detalhes estão na <a href="/privacy.html">Política de Privacidade</a> (em inglês).</p></details>
+        <details><summary data-i18n="76">Como funcionam os reembolsos?</summary><p data-i18n="77">Em até 14 dias após a compra, depois de liberar a ativação no plugin. Licenças ativadas offline não podem ser reembolsadas, porque não podem ser desativadas. Seus direitos legais de consumidor não são afetados. Veja os <a href="/terms.html#refunds">Termos de Venda</a> (em inglês).</p></details>
+        <details><summary data-i18n="78">Posso usar em faixas individuais, não só no master?</summary><p data-i18n="79">Sim, em qualquer faixa ou bus. O HOUZY analisa cada tom separadamente, então o uso de CPU é maior que o de um compressor comum.</p></details>
+        <details><summary data-i18n="80">Quais DAWs são compatíveis?</summary><p data-i18n="81">Qualquer host que carregue VST3 no Windows ou macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig e outros), além de AU para Logic Pro e GarageBand.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="glass contact-panel" data-reveal>
+        <p class="kicker" data-i18n="4">Contato</p>
+        <h2 data-i18n="82">Dúvidas, bugs, licenças: escreva para mim.</h2>
+        <p class="lead" data-i18n="83">Em caso de bug, inclua a versão do HOUZY, o sistema e a DAW. No HOUZY 5 o botão REPORT copia tudo isso para você.</p>
+        <div class="contact">
+          <a class="cta" href="mailto:acrona.war@gmail.com">acrona.war@gmail.com
+            <svg class="arrow" viewBox="0 0 16 11" aria-hidden="true"><path d="M0 5.5 H14.6 M10.3 1.2 L14.9 5.5 L10.3 9.8"/></svg></a>
+          <a class="pill" href="https://t.me/acronalife" rel="noopener">Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a data-home="" class="brand" href="/pt/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
+      <p data-i18n="84">Compressor de masterização da ACRONA AUDIO.<br><a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+    </div>
+    <div>
+      <h4 data-i18n="85">Informações legais</h4>
+      <ul>
+        <li><a href="/privacy.html" data-i18n="86">Política de Privacidade (EN)</a></li>
+        <li><a href="/cookies.html" data-i18n="87">Política de Cookies (EN)</a></li>
+        <li><a href="/terms.html" data-i18n="88">Termos de Uso e Venda (EN)</a></li>
+        <li><a href="/eula.html" data-i18n="89">Contrato de Licença (EULA, EN)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>HOUZY</h4>
+      <ul>
+        <li><a href="#top">HOUZY 5</a></li>
+        <li><a data-manual href="/manual.html#pt-BR" data-i18n="64">Manual do usuário</a></li>
+      </ul>
+    </div>
+    <p class="copy" data-i18n="90">© 2026 ACRONA AUDIO. HOUZY, ACR e T8 são nomes da ACRONA AUDIO. VST é marca registrada da Steinberg Media Technologies GmbH. Audio Units, Logic Pro e macOS são marcas registradas da Apple Inc. Os demais nomes pertencem aos seus donos.</p>
+  </div>
+</footer>
+
+</body>
+</html>
