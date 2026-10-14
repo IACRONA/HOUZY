@@ -16,7 +16,7 @@
   var AC = window.AudioContext || window.webkitAudioContext, actx = null, bufs = {}, lastSnd = {};
   var SND = { click: ['audio/click.wav', 1],     // the click peaks at -17 dBFS
               grab:  ['audio/grab.wav', 0.5],    // peaks at -1 dBFS: half is plenty for a UI sound
-              buy:   ['audio/buy.mp3', 0.5] };   // "bye.wav", on hovering a Buy key (buy.js); 50% quieter (owner, 13.10)
+              buy:   ['audio/buy.mp3', 0.354] };  // "bye.wav", on hovering a Buy key (buy.js): 50% quieter, then -3 dB more (owner, 13-14.10)
   function ctxOf() {
     if (actx || !AC) return actx;
     try { actx = new AC({ latencyHint: 'interactive' }); } catch (e) { AC = null; return null; }
