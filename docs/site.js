@@ -516,4 +516,154 @@
     el.style.setProperty('--lit', '1');
   }, { passive: true });
   document.addEventListener('pointerleave', function () { if (litEl) litEl.style.setProperty('--lit', '0'); litEl = null; });
+
+  /* ---------- VECTOR WORDMARK on the header's HOUZY: the plugin's HouzyWordmark (PluginEditor.h), same rules ----------
+     Only while the pointer is over the word (at rest the ordinary text shows and this costs nothing): the letters dissolve
+     toward their bottom, turn into a dotted outline around the pointer, and three vector handles - squares joined by a
+     dashed triangle, each labelled x, y - snap to the grid cells next to the pointer and drift. Pointer, fade and drift
+     run on elapsed time. Composed per pixel like the plugin (~15k px); takes no clicks, the link under it still works. */
+  (function () {
+    var word = document.querySelector('.bar .brand b');
+    if (!word || !window.matchMedia('(hover: hover)').matches) return;
+    var brand = word.parentElement, bar = brand.closest('.bar'), PAD = 14;
+    var cv = document.createElement('canvas'); cv.className = 'wordmark'; cv.setAttribute('aria-hidden', 'true');
+    brand.appendChild(cv);
+    var c = cv.getContext('2d');
+    var W = 0, H = 0, cssW = 0, cssH = 0, dpr = 1, fill, soft, dots, img, tTop = 0, tH = 1, dirty = true;
+    var hover = 0, active = false, hasPtr = false, ptr = [0, 0], eased = [0, 0], drift = 0, last = 0, running = false;
+    var cells = [[0, 0], [0, 0], [0, 0]], verts = [[0, 0], [0, 0], [0, 0]];
+    var INK = [22, 25, 31], SHADE = [31, 111, 125], ACC = '31,111,125';    // --ink, --accent-ink
+
+    function layer(draw) {
+      var o = document.createElement('canvas'); o.width = W; o.height = H;
+      var x = o.getContext('2d'); x.setTransform(dpr, 0, 0, dpr, 0, 0); draw(x, o); return o;
+    }
+    function alphaOf(o) {
+      var d = o.getContext('2d').getImageData(0, 0, W, H).data, a = new Float32Array(W * H);
+      for (var i = 0; i < a.length; i++) a[i] = d[i * 4 + 3] / 255;
+      return a;
+    }
+    // the layers - rebuilt only when the size or the screen scale changes
+    function build() {
+      var br = brand.getBoundingClientRect(), wr = word.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cssW = wr.width + 2 * PAD; cssH = wr.height + 2 * PAD;
+      cv.style.left = (wr.left - br.left - PAD) + 'px'; cv.style.top = (wr.top - br.top - PAD) + 'px';
+      cv.style.width = cssW + 'px'; cv.style.height = cssH + 'px';
+      W = Math.round(cssW * dpr); H = Math.round(cssH * dpr); cv.width = W; cv.height = H;
+      var cs = getComputedStyle(word), font = '650 ' + cs.fontSize + ' ' + cs.fontFamily;
+      var mc = document.createElement('canvas').getContext('2d'); mc.font = font;
+      var asc = mc.measureText('H').fontBoundingBoxAscent, gm = mc.measureText('HOUZY');
+      // every letter exactly where the page put it (letter-spacing included), from the text's own boxes
+      var node = word.firstChild, rng = document.createRange(), chars = [];
+      for (var i = 0; i < node.length; i++) {
+        rng.setStart(node, i); rng.setEnd(node, i + 1);
+        var r = rng.getBoundingClientRect();
+        chars.push([node.data[i], r.left - wr.left + PAD, r.top - wr.top + PAD + asc]);
+      }
+      tTop = chars[0][2] - gm.actualBoundingBoxAscent; tH = gm.actualBoundingBoxAscent + gm.actualBoundingBoxDescent;
+      var each = function (x, how) { x.font = font; x.textBaseline = 'alphabetic'; chars.forEach(function (ch) { how(x, ch); }); };
+      var fillC = layer(function (x) { x.fillStyle = '#fff'; each(x, function (x, ch) { x.fillText(ch[0], ch[1], ch[2]); }); });
+      var dotD = Math.max(1.1 / dpr, tH * 0.045), pitch = dotD * 2.6;     // the dotted outline: round dots along every contour
+      var dotC = layer(function (x) {
+        x.strokeStyle = '#fff'; x.lineWidth = dotD; x.lineCap = 'round'; x.setLineDash([0.001, pitch]);
+        each(x, function (x, ch) { x.strokeText(ch[0], ch[1], ch[2]); });
+      });
+      var softC = layer(function (x) {                                      // the soft copy: a small blur of the fill
+        x.setTransform(1, 0, 0, 1, 0, 0); x.filter = 'blur(' + Math.max(1, Math.round(tH * 0.06 * dpr)) + 'px)'; x.drawImage(fillC, 0, 0);
+      });
+      fill = alphaOf(fillC); dots = alphaOf(dotC); soft = alphaOf(softC);
+      img = c.createImageData(W, H);
+      dirty = false;
+    }
+    // the frame, per pixel like the plugin: crisp at the top, soft and fading toward the bottom, dots around the pointer
+    function compose() {
+      var d = img.data, px = eased[0] * dpr, py = eased[1] * dpr, reach = tH * 1.9 * dpr, T = tTop * dpr, TH = Math.max(1, tH * dpr);
+      for (var y = 0; y < H; y++) {
+        var ey = Math.min(1, Math.max(0, 1 - (y - T) / TH));               // 0 bottom .. 1 top
+        var softMix = Math.min(1, Math.max(0, 1 - ey * 3.5)), fade = Math.pow(ey, 0.7), g = ey * ey * (3 - 2 * ey);
+        var cr = SHADE[0] + (INK[0] - SHADE[0]) * g, cg = SHADE[1] + (INK[1] - SHADE[1]) * g, cb = SHADE[2] + (INK[2] - SHADE[2]) * g;
+        for (var x = 0; x < W; x++) {
+          var i = y * W + x, sf = fill[i] + (soft[i] - fill[i]) * softMix, k = 0;
+          if (hasPtr) { var t = Math.min(1, Math.hypot(x - px, y - py) / reach), s = t * t * (3 - 2 * t); k = 1 - s * s * s; }
+          var a = Math.min(1, Math.max(0, (sf + (dots[i] - sf) * k) * fade * hover)), j = i * 4;
+          d[j] = cr; d[j + 1] = cg; d[j + 2] = cb; d[j + 3] = a * 255;
+        }
+      }
+      c.putImageData(img, 0, 0);
+    }
+    function handles() {
+      if (!hasPtr) return;
+      var a = 0.55 * hover, half = tH * 0.27, i;
+      c.setTransform(dpr, 0, 0, dpr, 0, 0);
+      c.strokeStyle = 'rgba(' + ACC + ',' + a + ')'; c.lineWidth = 0.7; c.setLineDash([2, 2]);
+      c.beginPath();
+      for (i = 0; i < 3; i++) { var p = verts[i], q = verts[(i + 1) % 3]; c.moveTo(p[0], p[1]); c.lineTo(q[0], q[1]); }
+      c.stroke(); c.setLineDash([]);
+      c.font = '7px ui-monospace, Consolas, monospace'; c.textBaseline = 'alphabetic';
+      var taken = [];                                                       // labels drawn so far: never overlap one
+      for (i = 0; i < 3; i++) {
+        var v = verts[i];
+        c.strokeStyle = 'rgba(' + ACC + ',' + a + ')'; c.strokeRect(v[0] - half, v[1] - half, half * 2, half * 2);
+        var txt = Math.round(clamp(v[0] / cssW * 100, 0, 100)) + ', ' + Math.round(clamp((1 - v[1] / cssH) * 100, 0, 100));
+        var lr = [v[0] - half, v[1] - half - 9, c.measureText(txt).width + 2, 7];
+        var clash = taken.some(function (t) { return lr[0] < t[0] + t[2] && t[0] < lr[0] + lr[2] && lr[1] < t[1] + t[3] && t[1] < lr[1] + lr[3]; });
+        if (!clash) { c.fillStyle = 'rgba(' + ACC + ',' + Math.min(1, a * 1.1) + ')'; c.fillText(txt, lr[0], lr[1] + 7); taken.push([lr[0] - 2, lr[1] - 1, lr[2] + 4, lr[3] + 2]); }
+      }
+      c.setTransform(1, 0, 0, 1, 0, 0);
+    }
+    function snapCells() {
+      var cw = tH * 1.6, ch = cw * 0.5, cx = Math.floor(ptr[0] / cw), cy = Math.floor(ptr[1] / ch), found = [];
+      for (var i = -1; i <= 1; i++) for (var j = -1; j <= 1; j++) {
+        var p = [(cx + i + 0.5) * cw, (cy + j + 0.5) * ch];
+        found.push([p, Math.hypot(p[0] - ptr[0], p[1] - ptr[1])]);
+      }
+      found.sort(function (a, b) { return a[1] - b[1]; });
+      for (i = 0; i < 3; i++) cells[i] = found[i + 1][0];
+    }
+    function updateVerts() {
+      var cw = tH * 1.6, ch = cw * 0.5, fr = function (v) { return v - Math.floor(v); };
+      for (var i = 0; i < 3; i++) {
+        var sx = Math.round(cells[i][0] / cw - 0.5), sy = Math.round(cells[i][1] / ch - 0.5);
+        var h1 = fr(Math.sin(sx * 127.1 + sy * 311.7) * 43758.5453), h2 = fr(Math.sin(sx * 269.5 + sy * 183.3) * 43758.5453);
+        verts[i] = [cells[i][0] + 0.08 * cw * Math.sin(drift * 1.3 + h1 * 6.2832), cells[i][1] + 0.04 * ch * Math.sin(drift * 1.69 + h2 * 6.2832)];
+        verts[i][1] = clamp(verts[i][1], tTop + 2, tTop + tH - 2);          // on the lettering, inside this box
+        verts[i][0] = clamp(verts[i][0], 8, cssW - 40);
+      }
+    }
+    function loop(now) {
+      var dt = last ? Math.min(0.1, (now - last) / 1000) : 0.016; last = now;
+      hover += ((active ? 1 : 0) - hover) * (1 - Math.exp(-dt / 0.12));
+      if (!active && hover < 0.003) hover = 0;
+      var damp = 1 - Math.exp(-dt / 0.08);
+      eased[0] += (ptr[0] - eased[0]) * damp; eased[1] += (ptr[1] - eased[1]) * damp;
+      drift += dt;
+      if (hasPtr) { snapCells(); updateVerts(); }
+      word.style.opacity = (1 - hover).toFixed(3);                          // the ordinary word fades out under the effect
+      c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, W, H);
+      if (hover > 0.002) { compose(); handles(); }
+      if (!active && hover === 0) { hasPtr = false; running = false; last = 0; word.style.opacity = ''; return; }
+      requestAnimationFrame(loop);
+    }
+    function setActive(a) {
+      active = a;
+      if (a && !running) { running = true; last = 0; requestAnimationFrame(loop); }
+    }
+    bar.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var r = word.getBoundingClientRect();
+      var inside = e.clientX > r.left - 10 && e.clientX < r.right + 10 && e.clientY > r.top - 6 && e.clientY < r.bottom + 6;
+      if (inside) {
+        if (dirty || !W) build();
+        var cr = cv.getBoundingClientRect();
+        ptr = [e.clientX - cr.left, e.clientY - cr.top];
+        if (!hasPtr) eased = ptr.slice();
+        hasPtr = true;
+      }
+      setActive(inside);
+    });
+    bar.addEventListener('pointerleave', function () { setActive(false); });
+    window.addEventListener('resize', function () { dirty = true; });
+    if (document.fonts) document.fonts.ready.then(function () { dirty = true; });   // the letters are measured in Sora
+  })();
 })();
