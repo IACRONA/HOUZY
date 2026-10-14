@@ -13,7 +13,7 @@
   var SND = { click: new Audio('audio/click.wav'), grab: new Audio('audio/grab.wav'), buy: new Audio('audio/buy.mp3') }, lastSnd = {};
   SND.click.volume = 1;                 // the click peaks at -17 dBFS
   SND.grab.volume = 0.5;                // the grab peaks at -1 dBFS: half is plenty for a UI sound
-  SND.buy.volume = 1;                   // "bye.wav" (silence at the end trimmed), on hovering a Buy key - buy.js
+  SND.buy.volume = 0.5;                 // "bye.wav" (silence at the end trimmed), on hovering a Buy key - buy.js; 50% quieter (13.10, owner)
   Object.keys(SND).forEach(function (k) { SND[k].preload = 'auto'; });
   function uiSound(k) {
     var a = SND[k], now = performance.now();
