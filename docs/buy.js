@@ -46,12 +46,16 @@
   var tip = document.createElement('div'); tip.className = 'buy-tip'; tip.setAttribute('role', 'status'); tip.textContent = window.houzyT ? window.houzyT('Coming soon') : 'Coming soon';
   document.body.appendChild(tip);
   var tipTimer = 0;
-  function showTip(el) {
-    var r = el.getBoundingClientRect();
+  var PITCH = 'HOUZY is a new method of compression, reinvented from scratch. With HOUZY you are buying the best solution there is.';
+  // pitch: the big key under the plugin, on hover - stays while the mouse is on the key; otherwise "Coming soon" for 1.8 s
+  function showTip(el, pitch) {
+    var r = el.getBoundingClientRect(), T = window.houzyT || function (x) { return x; };
     tip.style.left = (r.left + r.width / 2) + 'px'; tip.style.top = (r.bottom + 10) + 'px';
-    if (window.houzyT) tip.textContent = window.houzyT('Coming soon');
-    tip.classList.add('on'); clearTimeout(tipTimer); tipTimer = setTimeout(function () { tip.classList.remove('on'); }, 1800);
+    tip.textContent = T(pitch ? PITCH : 'Coming soon'); tip.classList.toggle('long', !!pitch);
+    tip.classList.add('on'); clearTimeout(tipTimer);
+    if (!pitch) tipTimer = setTimeout(function () { tip.classList.remove('on'); }, 1800);
   }
+  function hideTip() { if (tip.classList.contains('long')) tip.classList.remove('on'); }
 
   // the tendril: one fixed SVG over the page
   var NS = 'http://www.w3.org/2000/svg', svg = document.createElementNS(NS, 'svg');
@@ -68,8 +72,9 @@
       if (e.pointerType !== 'mouse') return;
       st.hover = true; wake();
       if (window.houzyUiSound) window.houzyUiSound('buy');   // site.js: quiet while the demo track is audible
+      if (el.classList.contains('buy-big')) showTip(el, true);
     });
-    el.addEventListener('pointerleave', function () { st.hover = false; wake(); });
+    el.addEventListener('pointerleave', function () { st.hover = false; wake(); hideTip(); });
     el.addEventListener('focus', function () { st.hover = true; wake(); });
     el.addEventListener('blur', function () { st.hover = false; wake(); });
     el.addEventListener('click', function () { showTip(el); });

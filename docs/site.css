@@ -477,6 +477,7 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
   background:rgba(255,255,255,.82);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);
   box-shadow:var(--rim),0 10px 24px -10px rgba(30,34,50,.4);transition:opacity .25s,transform .35s var(--ease-out)}
 .buy-tip.on{opacity:1;transform:translate(-50%,0)}
+.buy-tip.long{white-space:normal;width:max-content;max-width:min(380px,calc(100vw - 32px));padding:11px 18px;border-radius:16px;text-align:center;line-height:1.45}
 .buy-arm{position:fixed;inset:0;width:100vw;height:100vh;z-index:150;pointer-events:none;overflow:visible;opacity:0;transition:opacity .2s}
 .buy-arm path{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .buy-arm .b-body{stroke:rgba(8,20,22,.22);stroke-width:.8}
