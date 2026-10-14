@@ -69,7 +69,7 @@
   window.houzyUiSound = uiSound;        // plugin.js and buy.js: the switches drawn on the plugin window, the Buy keys
   // the click is played inside the click itself
   document.addEventListener('click', function (e) {
-    if (e.target.closest && e.target.closest('a, button, label, summary, [role="button"], .tab')) uiSound('click');
+    if (e.target.closest && !e.target.closest('.lang') && e.target.closest('a, button, label, summary, [role="button"], .tab')) uiSound('click');   // the language switch is silent (owner, 14.10)
   }, true);
 
   /* ---------- user agreement: asked once, before anything else ----------

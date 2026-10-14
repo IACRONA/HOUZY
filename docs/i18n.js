@@ -1,6 +1,6 @@
-// HOUZY site: the language switch. EN | RU | ES | PT - a drop of liquid glass flows between the codes (the same motion as the
-// header's selection and the plugin's switches: the leading edge runs ahead, the trailing one follows, the drop thins across
-// while it is pulled out). A click swaps the text of the page IN PLACE (no reload), moves the address to /ru/ /es/ /pt/ (the
+// HOUZY site: the language switch. One glass button with the current code (EN / RU / ES / PT); a click opens a menu with the four
+// languages (fades and grows in from the button, silent - site.js leaves .lang out of the click sound).
+// A click on a language swaps the text of the page IN PLACE (no reload), moves the address to /ru/ /es/ /pt/ (the
 // real, indexed pages) and back; every code is also a plain link to its page, so the switch works without scripts.
 // Text blocks carry data-i18n="N" (index into the language file's "t"), attributes data-i18n-a="aria-label:N,title:M".
 (function () {
@@ -17,41 +17,30 @@
   function urlOf(l) { return l === 'en' ? base : '/' + l + (base === '/' ? '/' : base); }
   var indexOf = function (l) { return LANGS.findIndex(function (x) { return x[0] === l; }); };
 
-  // ---- the control
-  var box = document.createElement('div'); box.className = 'lang'; box.setAttribute('role', 'group'); box.setAttribute('aria-label', T('Language'));
-  var drop = document.createElement('i'); drop.className = 'lang-drop'; drop.setAttribute('aria-hidden', 'true'); box.appendChild(drop);
+  // ---- the control: one button with the current code; a click opens a glass menu with the four languages
+  var box = document.createElement('div'); box.className = 'lang';
+  var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'lang-btn';
+  btn.setAttribute('aria-haspopup', 'true'); btn.setAttribute('aria-expanded', 'false');
+  var code = document.createElement('span'); btn.appendChild(code);
+  var chev = document.createElement('i'); chev.className = 'lang-chev'; chev.setAttribute('aria-hidden', 'true'); btn.appendChild(chev);
+  var menu = document.createElement('div'); menu.className = 'lang-menu'; menu.setAttribute('role', 'group');
+  box.appendChild(btn); box.appendChild(menu);
   var links = LANGS.map(function (l) {
-    var a = document.createElement('a'); a.href = urlOf(l[0]); a.textContent = l[1]; a.lang = l[0]; a.hreflang = l[0]; a.title = l[2];
-    a.setAttribute('aria-current', l[0] === cur ? 'true' : 'false');
-    box.appendChild(a); return a;
+    var a = document.createElement('a'); a.href = urlOf(l[0]); a.lang = l[0]; a.hreflang = l[0];
+    a.innerHTML = '<b>' + l[1] + '</b>' + l[2];
+    menu.appendChild(a); return a;
   });
   nav.insertBefore(box, nav.querySelector('.buy') || null);
-
-  // ---- the drop
-  var L = 0, R = 0, tL = 0, tR = 0, tTop = 0, tH = 0, started = false, running = false, last = 0;
-  function place(i) {
-    var b = box.getBoundingClientRect(), r = links[i].getBoundingClientRect();
-    tL = r.left - b.left; tR = r.right - b.left; tTop = r.top - b.top; tH = r.height;
+  function mark(l) {
+    code.textContent = LANGS[indexOf(l)][1];
+    btn.setAttribute('aria-label', T('Language') + ': ' + LANGS[indexOf(l)][2]); menu.setAttribute('aria-label', T('Language'));
+    links.forEach(function (a) { a.setAttribute('aria-current', a.lang === l ? 'true' : 'false'); });
   }
-  function draw() {
-    var w = R - L, tw = Math.max(1, tR - tL), stretch = Math.min(1, Math.max(0, (w - tw) / (tw * 1.2))), h = tH * (1 - 0.28 * stretch);
-    drop.style.width = w.toFixed(1) + 'px'; drop.style.height = h.toFixed(1) + 'px';
-    drop.style.transform = 'translate(' + L.toFixed(1) + 'px,' + (tTop + (tH - h) / 2).toFixed(1) + 'px)';
-  }
-  function frame(now) {
-    var dt = last ? Math.min(0.05, (now - last) / 1000) : 0.016; last = now;
-    var kLead = 1 - Math.exp(-dt / 0.045), kTrail = 1 - Math.exp(-dt / 0.13), right = (tL + tR) >= (L + R);
-    R += (tR - R) * (right ? kLead : kTrail); L += (tL - L) * (right ? kTrail : kLead);
-    draw();
-    if (Math.abs(R - tR) < 0.15 && Math.abs(L - tL) < 0.15) { R = tR; L = tL; draw(); running = false; last = 0; return; }
-    requestAnimationFrame(frame);
-  }
-  function go(i, instant) {
-    place(i);
-    if (instant || !started) { L = tL; R = tR; draw(); started = true; drop.classList.add('on'); }
-    else if (!running) { running = true; last = 0; requestAnimationFrame(frame); }
-  }
-  function snap() { place(indexOf(cur)); L = tL; R = tR; draw(); }
+  function open(on) { box.classList.toggle('open', on); btn.setAttribute('aria-expanded', on ? 'true' : 'false'); }
+  btn.addEventListener('click', function () { open(!box.classList.contains('open')); });
+  document.addEventListener('click', function (e) { if (!box.contains(e.target)) open(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('open')) { open(false); btn.focus(); } });
+  mark(cur);
 
   // ---- swapping the page
   var files = {};
@@ -88,15 +77,14 @@
     setMeta('link[rel="canonical"]', 'href', abs); setMeta('meta[property="og:url"]', 'content', abs);
     document.documentElement.lang = l;
     if (window.houzyI18nSet) window.houzyI18nSet(data.js || {});
-    box.setAttribute('aria-label', T('Language'));
-    links.forEach(function (a, i) { a.setAttribute('aria-current', LANGS[i][0] === l ? 'true' : 'false'); });
+    mark(l);
     // the words changed length: everything that measures them (the header's drop, the wordmark, the layout) re-measures
     window.dispatchEvent(new Event('resize'));
   }
   var busy = 0;
   function setLang(l, push) {
     var ticket = ++busy;
-    go(indexOf(l));                                       // the drop starts at once, the text follows when the file is there
+    mark(l);                                              // the button and the tick change at once, the text follows when the file is there
     load(l).then(function (data) {
       if (ticket !== busy) return;                        // a newer click won
       cur = l; apply(l, data);
@@ -107,13 +95,11 @@
     var a = e.target.closest && e.target.closest('a');
     if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
     e.preventDefault();
+    open(false);
     if (a.lang !== cur) setLang(a.lang, true);
   });
   window.addEventListener('popstate', function () {
     var m = /^\/(ru|es|pt)(?=\/|$)/.exec(location.pathname), l = m ? m[1] : 'en';
     if (l !== cur) setLang(l, false);
   });
-  window.addEventListener('resize', function () { if (started) snap(); });
-  if (document.fonts) document.fonts.ready.then(function () { go(indexOf(cur), true); });
-  go(indexOf(cur), true);
 })();
