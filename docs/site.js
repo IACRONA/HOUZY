@@ -142,7 +142,7 @@
   })();
 
   /* ---------- the stage: tabs left / right of the sphere, the chapter opens in the reading panel on top ----------
-     Point at a tab or at the sphere on that side (hover intent 110 ms), or click / tap / arrow keys / scroll.
+     Click / tap a tab, drag the sphere, arrow keys or scroll. Hover does NOT switch chapters (owner, 14.10).
      ui-ux-pro-max: hover never the only way in; spring motion (critically damped, time based); swaps cancel cleanly. */
   var stage = document.querySelector('.stage'), pin = document.querySelector('.pin');
   var tabs = [].slice.call(document.querySelectorAll('.tab'));
@@ -181,15 +181,11 @@
   }
 
   if (stage && N && wrap) {
-    var pend = null, hovering = false, pointerA = 0;
     // a chosen chapter interrupts a coasting sphere: it turns straight to it
     function pick(i) { mode = 'spring'; setActive(i); }
-    function intent(i) { clearTimeout(pend); pend = setTimeout(function () { pick(i); }, 110); }
     tabs.forEach(function (t, k) {
-      t.addEventListener('mouseenter', function () { intent(k); });
-      t.addEventListener('mouseleave', function () { clearTimeout(pend); });
       t.addEventListener('click', function () {
-        clearTimeout(pend); pick(k);
+        pick(k);
         // phones: the reading card is on top; bring it into view when a chapter below it is tapped
         if (!isPinned() && reader) {
           var rr = reader.getBoundingClientRect();
@@ -198,17 +194,8 @@
       });
       t.addEventListener('focus', function () { pick(k); });
     });
-    // pointing at the RING round the sphere (between 1 and 1.7 radii): the marker follows the pointer, that side opens.
-    // Inside the sphere the pointer grabs it instead (below).
-    pin.addEventListener('pointermove', function (e) {
-      if (drag) return;
-      var r = wrap.getBoundingClientRect(), d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
-      hovering = d > r.width * 0.5 && d < r.width * 0.85;
-      if (!hovering) return;
-      pointerA = (Math.atan2(e.clientX - (r.left + r.width / 2), -(e.clientY - (r.top + r.height / 2))) * 180 / Math.PI + 360) % 360;
-      var i = nearest(pointerA); if (i !== current) intent(i);
-    });
-    pin.addEventListener('pointerleave', function () { hovering = false; });
+    // ⚠ No hover: a chapter opens only on a click / tap / key / drag / scroll (owner, 14.10). Hover on the tabs and on the
+    // ring round the sphere switched the chapter while the mouse crossed them on its way up to read the panel.
 
     // GRAB AND SPIN: drag turns the sphere under the pointer (x → yaw, y → tilt); let go and it coasts,
     // then a spring settles it on the nearest chapter, which opens. The chapter follows the spin meanwhile.
@@ -217,7 +204,7 @@
       var r = wrap.getBoundingClientRect();
       if (Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2)) > r.width * 0.55) return;
       e.preventDefault();
-      drag = { x: e.clientX, y: e.clientY, t: performance.now() }; mode = 'drag'; hovering = false;
+      drag = { x: e.clientX, y: e.clientY, t: performance.now() }; mode = 'drag';
       wrap.setPointerCapture(e.pointerId); wrap.classList.add('dragging');
     });
     wrap.addEventListener('pointermove', function (e) {
@@ -425,7 +412,7 @@
         s = spring(yaw, yV, yaw + adiff(angles[current], yaw), 22, dt); yaw = s[0]; yV = s[1];
       }
       if (!drag) { s = spring(tilt, tiltV, 0, 30, dt); tilt = s[0]; tiltV = s[1]; }
-      var mT = drag || mode === 'coast' ? yaw : hovering ? pointerA : angles[current];
+      var mT = drag || mode === 'coast' ? yaw : angles[current];
       var mt = mA + adiff(mT, mA); s = spring(mA, mV, mt, 70, dt); mA = s[0]; mV = s[1];
       if (ring) ring.style.setProperty('--a', mA.toFixed(2) + 'deg');
       drawArms(dt, mA);
