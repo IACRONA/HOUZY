@@ -52,7 +52,7 @@
       ctx = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
       // browsers give a page AudioWorklet only over https (or on localhost): say so instead of blaming the browser
       if (!ctx.audioWorklet) throw new Error(window.isSecureContext ? T('this browser has no AudioWorklet') : T('the live demo needs the secure (https) version of this page'));
-      var res = await fetch('/houzy-engine.wasm');
+      var res = await fetch('/houzy-engine.wasm?v=20261014j');
       if (!res.ok) throw new Error(T('engine not found'));
       var total = +res.headers.get('content-length') || 0, got = 0, parts = [], reader = res.body.getReader();
       for (;;) {
