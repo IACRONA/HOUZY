@@ -307,7 +307,7 @@
   var STATE = { allmix: 0, bypass: 0, lookahead: 1, gainmatch: 0, clipmode: 2, limmode: 1, relsmart: 1,
                 osfactor: 4, autogain: 1, relauto: 1, truepeak: 0 };
   var DEF = JSON.parse(JSON.stringify(STATE));
-  STATE.gainmatch = 1;   // the demo compares at matched loudness: louder always sounds better, which is not a comparison
+  // GAIN MATCH starts OFF, as in the plugin (it was on in the demo, to compare at matched loudness; the visitor can switch it on)
   // layout.json (base 740 x 500)
   var R = {
     allmix: [12, 76, 67, 24], bypass: [95, 76, 68, 24], lookahead: [179, 76, 90, 24], gainmatch: [541, 76, 90, 24],
