@@ -46,7 +46,7 @@
   var tip = document.createElement('div'); tip.className = 'buy-tip'; tip.setAttribute('role', 'status'); tip.textContent = window.houzyT ? window.houzyT('Coming soon') : 'Coming soon';
   document.body.appendChild(tip);
   var tipTimer = 0;
-  var PITCH = 'HOUZY is a new method of compression, reinvented from scratch. With HOUZY you are buying the best solution there is.';
+  var PITCH = 'HOUZY is a new method of compression, invented from scratch. With HOUZY you are buying the best solution there is';
   // pitch: the big key under the plugin, on hover - stays while the mouse is on the key; otherwise "Coming soon" for 1.8 s
   function showTip(el, pitch) {
     var r = el.getBoundingClientRect(), T = window.houzyT || function (x) { return x; };
