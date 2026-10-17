@@ -3,7 +3,8 @@
 // glide corner to corner round the edge, glow outside only. (Its orange Starfield was tried here and taken off.)
 // And a tendril in the colour of the plugin's sphere (--orb-tint, set by plugin.js) reaches out of the sphere and wraps the key.
 (function () {
-  var keys = [].slice.call(document.querySelectorAll('.buy'));
+  // 17.10.2026: the Download keys (.dl) get the same neon, tendril and sound; only Buy goes to Gumroad
+  var keys = [].slice.call(document.querySelectorAll('.buy, .dl'));
   if (!keys.length) return;
   var NEON = '213,187,155', REACH = 14, LAP = 10;
   var porb = document.querySelector('.porb');
@@ -77,7 +78,9 @@
     el.addEventListener('pointerleave', function () { st.hover = false; wake(); hideTip(); });
     el.addEventListener('focus', function () { st.hover = true; wake(); });
     el.addEventListener('blur', function () { st.hover = false; wake(); });
-    el.addEventListener('click', function () { showTip(el); });
+    // 15.10.2026: the shop is Gumroad (licence keys are checked by licence.acronaaudio.shop)
+    if (el.classList.contains('buy'))
+      el.addEventListener('click', function () { window.open('https://acronawar.gumroad.com/l/houzy', '_blank', 'noopener'); });
     return st;
   });
   var reach = 0, reachV = 0, armFor = null, running = false, last = 0;

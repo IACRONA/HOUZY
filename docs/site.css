@@ -465,10 +465,11 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 
 /* ---------- BUY: no shop yet, a click says "Coming soon" (buy.js). Liquid glass key; on hover the licence window's
    Neon Border is drawn on .buy-fx, and a tendril in the sphere's colour (.buy-arm) wraps it ---------- */
-.buy{overflow:visible}
-.buy .buy-fx{position:absolute;inset:-14px;width:calc(100% + 28px);height:calc(100% + 28px);pointer-events:none;z-index:-1}
-.buy-row{display:flex;justify-content:center;margin-top:clamp(18px,2.4vw,26px)}
-.buy-big{min-height:56px;padding:15px 44px;font-size:18px;font-variation-settings:'wght' 650;letter-spacing:.01em}
+.buy,.cta.dl{overflow:visible}
+.buy .buy-fx,.dl .buy-fx{position:absolute;inset:-14px;width:calc(100% + 28px);height:calc(100% + 28px);pointer-events:none;z-index:-1}
+.buy-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px;margin-top:clamp(18px,2.4vw,26px)}
+.cta.trial{white-space:nowrap;text-decoration:none}   /* the free-trial download next to Buy (15.10.2026) */
+.buy-row .cta.trial,.buy-big{min-height:56px;min-width:260px;padding:15px 44px;font-size:18px;font-variation-settings:'wght' 650;letter-spacing:.01em}   /* Buy and Download: one size (17.10.2026) */
 /* the SEO kicker over the claim: a small accent line, the same voice as the reader's "HOUZY 5 · Coming soon" */
 .hero-title .kick{display:block;margin:0 0 12px;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent-ink);font-variation-settings:'wght' 650;line-height:1.4}
 .hero-title .t{display:block}
@@ -571,3 +572,66 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
     -webkit-backdrop-filter:none;backdrop-filter:none;transition:max-height .35s cubic-bezier(.3,1,.5,1),opacity .2s,padding .35s,visibility 0s .35s}
   .lang.open .lang-menu{max-height:260px;padding:6px 2px 2px;transition:max-height .4s cubic-bezier(.3,1,.5,1),opacity .2s,padding .35s}
   .lang-menu a{min-height:44px;font-size:16px}}
+/* ---------- DOWNLOAD page (17.10.2026): head left, two platform cards right; one language at a time ---------- */
+.dl [hidden]{display:none!important}
+.dl .wrap{max-width:var(--max);width:100%;min-width:0}   /* main is flex: a flex child would grow to its content */
+.dl-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(16px,2.4vw,28px);align-items:stretch;margin:0 0 clamp(20px,3vw,32px)}
+.dl-head{display:flex;flex-direction:column;justify-content:center;padding:clamp(26px,3.4vw,48px)}
+.dl-head .kicker{margin:0 0 14px}
+.dl-head h1{margin:0 0 18px;line-height:1.02}
+.dl-ver{display:inline-flex;white-space:nowrap;align-self:flex-start;align-items:center;gap:8px;margin:0 0 16px;padding:7px 14px;border-radius:999px;
+  font-size:14px;color:var(--accent-deep);background:rgba(141,202,212,.22);box-shadow:inset 0 0 0 1px rgba(31,111,125,.22)}
+.dl-ver::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent-ink);box-shadow:0 0 0 4px rgba(31,111,125,.15)}
+.dl-req{margin:0;color:var(--sub);font-size:14px;line-height:1.6}
+.dl-platforms{display:grid;gap:clamp(14px,2vw,20px)}
+.dl-card{display:grid;grid-template-columns:1fr auto;grid-template-areas:'head key' 'alt alt';align-items:center;gap:14px 20px;padding:clamp(20px,2.4vw,28px)}
+.dl-card-head{grid-area:head;display:flex;align-items:center;gap:14px}
+.dl-card-head h2{margin:0;font-size:22px;line-height:1.1}
+.dl-card-head p{margin:2px 0 0;color:var(--sub);font-size:14px}
+.dl-ico{flex:none;width:40px;height:40px;padding:9px;border-radius:12px;fill:none;stroke:var(--accent-ink);stroke-width:1.5;stroke-linejoin:round;
+  background:rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(31,111,125,.18)}
+.dl-card .cta.dl{grid-area:key;min-width:0;min-height:52px;padding:13px 26px;font-size:16px}
+.dl-alt{grid-area:alt;display:flex;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid rgba(31,111,125,.12)}
+.dl-alt .pill{min-height:36px;padding:7px 16px;font-size:14px;text-decoration:none}
+.dl a[aria-disabled]{cursor:default}
+.dl-news,.dl-lang{margin:0 0 clamp(16px,2.4vw,24px)}
+.dl-news h2{margin-top:0}
+.dl-news h3{display:flex;align-items:baseline;gap:10px}
+.dl-news h3:first-of-type::after{content:'NEW';font-size:11px;letter-spacing:.14em;padding:3px 8px;border-radius:999px;color:#fff;background:var(--accent-ink)}
+.dl-lang > :first-child{margin-top:0}
+.dl-lang pre{overflow-x:auto}
+.dl-steps{list-style:none;counter-reset:step;padding:0}
+.dl-steps li{counter-increment:step;position:relative;padding:2px 0 14px 48px}
+.dl-steps li::before{content:counter(step);position:absolute;left:0;top:0;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;
+  font-size:15px;font-variation-settings:'wght' 650;color:#fff;background:linear-gradient(180deg,rgba(48,140,156,.85),rgba(22,92,105,.92))}
+.dl-steps li:not(:last-child)::after{content:'';position:absolute;left:15.5px;top:36px;bottom:4px;width:1px;background:rgba(31,111,125,.2)}
+@media (max-width:860px){.dl-top{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){.dl-ver{white-space:normal}.dl-head h1{overflow-wrap:anywhere}}
+@media (max-width:520px){.dl-card{grid-template-columns:minmax(0,1fr);grid-template-areas:'head' 'key' 'alt'}.dl-card .cta.dl{width:100%}}
+/* header: Buy + Download are ONE pair (17.10.2026) - two equal columns as wide as the longer word, 8 px apart
+   (a group: closer to each other than to the menu); no fixed width, so every language fits */
+.nav-cta{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px}
+@media (min-width:1000px){.bar{padding-right:10px}}   /* 40 px keys in a 60 px bar: 10 px on every side, concentric */
+@media (min-width:1000px) and (max-width:1199px){.bar .brand small{display:none}}   /* 1000-1200 px: room for the Buy + Download pair in every language */
+/* MANUAL page (17.10.2026): the Download page's head and one-language section */
+.man .dl-head{width:fit-content;max-width:100%;margin:0 0 clamp(20px,3vw,32px);padding-right:clamp(32px,5vw,72px)}
+.man-lead{font-size:clamp(18px,1.6vw,21px);color:var(--ink)}
+.man .dl-lang .box{margin-top:clamp(20px,3vw,32px)}
+/* HERO "4 technologies" (17.10.2026, frontend-design-pro): the announcement as a glass strip under the lead -
+   a big turquoise 4, the sentence beside it, and one slow light sweep across the glass (off with reduced motion) */
+.tech4{position:relative;display:flex;align-items:center;gap:clamp(14px,2vw,22px);max-width:640px;margin:clamp(18px,2.4vw,26px) auto 0;
+  padding:clamp(14px,1.8vw,18px) clamp(18px,2.4vw,26px);border-radius:22px;text-align:left;overflow:hidden;isolation:isolate;
+  background:linear-gradient(135deg,rgba(141,202,212,.30),rgba(255,255,255,.42) 55%,rgba(141,202,212,.22));
+  box-shadow:inset 0 0 0 1px rgba(31,111,125,.22),0 10px 30px rgba(20,82,93,.14)}
+.tech4::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.65) 48%,transparent 66%);transform:translateX(-110%);
+  animation:tech4-sweep 7s cubic-bezier(.4,0,.2,1) 1.2s infinite}
+@keyframes tech4-sweep{0%{transform:translateX(-110%)}38%,100%{transform:translateX(110%)}}
+.tech4-n{flex:none;font-size:clamp(46px,6vw,64px);line-height:.9;font-variation-settings:'wght' 700;letter-spacing:-.04em;
+  background:linear-gradient(180deg,#3fb5c4,var(--accent-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tech4-t{font-size:clamp(15px,1.25vw,17px);line-height:1.5;color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.tech4::after{animation:none;opacity:0}}
+@media (max-width:520px){.tech4{gap:12px}.tech4-n{font-size:44px}}
+/* Download page: macOS not out yet - a quiet, non-clickable key */
+.dl-soon{cursor:default;pointer-events:none;opacity:.55;filter:saturate(.4)}
+.dl .dl-alt span.pill{cursor:default;pointer-events:none;opacity:.5}

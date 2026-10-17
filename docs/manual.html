@@ -20,50 +20,57 @@
 <meta property="og:image:height" content="912">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="site.css?v=20261017a">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="vendor/framer-motion/dom.js" defer></script>
-<script src="site.js" defer></script>
-<script src="buy.js" defer></script>
+<script src="site.js?v=20261017a" defer></script>
+<script src="buy.js?v=20261017a" defer></script>
+<script src="i18n.js?v=20261017a" defer></script>
 </head>
 <body>
+<div class="bg" aria-hidden="true">
+  <!-- the same moving background as the home page (site.js starts it) -->
+  <video class="art" autoplay muted playsinline preload="auto" poster="/video/bg-poster.jpg"></video>
+  <video class="art art-b" muted playsinline preload="none"></video>
+</div>
+<div class="veil" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar">
-  <a class="brand" href="index.html" aria-label="HOUZY home">
+  <a class="brand" data-home="" href="/" aria-label="HOUZY home" data-i18n-a="aria-label:91">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg>
     <b>HOUZY</b><small>ACRONA AUDIO</small>
   </a>
-  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Open menu">
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Open menu" data-i18n-a="aria-label:92">
   <label class="scrim" for="nav-open" aria-hidden="true"></label>
-  <label class="burger" for="nav-open" aria-label="Menu">
+  <label class="burger" for="nav-open" aria-label="Menu" data-i18n-a="aria-label:93">
     <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
   </label>
   <div class="navpanel">
-    <nav class="menu" aria-label="Main">
-      <a href="index.html#top">Technology</a>
-      <a href="manual.html">Manual</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#faq">FAQ</a>
-      <a href="index.html#contact">Contact</a>
+    <nav class="menu" aria-label="Main" data-i18n-a="aria-label:94">
+      <a data-home="#top" href="/#top" data-i18n="1">Technology</a>
+      <a data-manual href="/manual.html" data-i18n="2">Manual</a>
+      <a data-home="#about" href="/#about" data-i18n="3">About</a>
+      <a data-home="#faq" href="/#faq">FAQ</a>
+      <a data-home="#contact" href="/#contact" data-i18n="4">Contact</a>
     </nav>
-    <button class="cta buy" type="button">Buy</button>
+    <div class="nav-cta">
+      <button class="cta buy" type="button" data-i18n="5">Buy</button>
+      <a class="cta trial dl" href="/download.html" data-i18n="103">Download</a>
+    </div>
   </div>
 </header>
 
-<main id="main" class="legal">
+<main id="main" class="legal dl man">
   <div class="wrap">
-    <h1>User manual</h1>
-    <p class="meta">HOUZY · ACRONA AUDIO · English · Русский · Español · Português</p>
-    <nav class="glass toc" aria-label="Contents"><ol>
-      <li><a href="#en">English</a></li>
-      <li><a href="#ru">Русский</a></li>
-      <li><a href="#es">Español</a></li>
-      <li><a href="#pt-BR">Português (BR)</a></li>
-    </ol></nav>
-    <div class="prose">
-<p>Two minutes from opening HOUZY to a dense, even track. The same guide is built into HOUZY 5, in the ACRONA card.</p>
-<h2 id="en">English</h2>
-<div lang="en">
+    <!-- 17.10.2026: like the Download page - one language at a time, picked by the header's switch (i18n.js) -->
+    <div class="glass dl-head">
+      <p class="kicker">HOUZY 5</p>
+      <h1 data-i18n="2">Manual</h1>
+      <p class="dl-ver">AMOUNT · INPUT · CYCLES · RELEASE</p>
+    </div>
+    <section class="glass prose dl-lang" id="en" lang="en" data-lang="en">
+<p class="man-lead">Two minutes from opening HOUZY to a dense, even track. The same guide is built into HOUZY 5, in the ACRONA card.</p>
+
 <p><b>Mode.</b> Pick <b>HOUZY</b> — it gives the best sound quality.</p>
 <p><b>1. AMOUNT.</b> Start with the AMOUNT knob. For a well-mixed track, 15 to 30 usually gives soft, moderate compression. For anything else, set it by ear.</p>
 <p><b>2. INPUT.</b> Once the compression feels right, raise INPUT while watching the LUFS meter. For a soft sound, −10 to −9 LUFS is enough.</p>
@@ -78,9 +85,10 @@
 <p><b>TRUE PEAK.</b> The <b>TP</b> button sits on the OUTPUT knob. Turn it on when you export for streaming: it removes the inter-sample peaks that crackle after conversion to MP3/AAC.</p>
 <p><b>LOOKAHEAD.</b> Keep it on.</p>
 <div class="glass box"><p><b>In short</b></p><ol><li>AMOUNT 15 to 30, CYCLES 3 to 4.</li><li>Raise INPUT if needed.</li><li>A little DASH and UPWARD to taste.</li><li>In ALL MIX, pull down whatever sticks out.</li><li>Done.</li></ol></div>
-</div>
-<h2 id="ru">Русский</h2>
-<div lang="ru">
+    </section>
+    <section class="glass prose dl-lang" id="ru" lang="ru" data-lang="ru" hidden>
+<p class="man-lead">Две минуты от открытия HOUZY до плотного, ровного трека. Та же инструкция встроена в HOUZY 5 — в карточке ACRONA.</p>
+
 <p><b>Режим.</b> Выберите <b>HOUZY</b> — в нём лучшее качество звука.</p>
 <p><b>1. AMOUNT.</b> Начните с ручки AMOUNT. Хорошо сведённому треку для мягкого, умеренного сжатия обычно хватает значений от 15 до 30. В остальных случаях подбирайте на слух.</p>
 <p><b>2. INPUT.</b> После того как настроили сжатие, поднимите INPUT и следите за метром LUFS. Для мягкого звучания достаточно −10…−9 LUFS.</p>
@@ -95,9 +103,10 @@
 <p><b>TRUE PEAK.</b> Кнопка <b>TP</b> находится на ручке OUTPUT. Включайте её для экспорта на стриминги: она убирает межсэмпловые пики, которые после перекодирования в MP3/AAC дают хруст.</p>
 <p><b>LOOKAHEAD.</b> Не выключайте.</p>
 <div class="glass box"><p><b>Если совсем коротко</b></p><ol><li>AMOUNT от 15 до 30, CYCLES от 3 до 4.</li><li>Поднимите INPUT, если нужно.</li><li>Немного DASH и UPWARD — по вкусу.</li><li>В ALL MIX прижмите то, что выпирает.</li><li>Готово.</li></ol></div>
-</div>
-<h2 id="es">Español</h2>
-<div lang="es">
+    </section>
+    <section class="glass prose dl-lang" id="es" lang="es" data-lang="es" hidden>
+<p class="man-lead">Dos minutos desde que abres HOUZY hasta un track denso y parejo. La misma guía viene dentro de HOUZY 5, en la tarjeta ACRONA.</p>
+
 <p><b>Modo.</b> Elige <b>HOUZY</b>: es el modo con la mejor calidad de sonido.</p>
 <p><b>1. AMOUNT.</b> Empieza por la perilla AMOUNT. Para una compresión suave y moderada en un track bien mezclado, normalmente alcanza con valores entre 15 y 30. En otros casos, ajústala a oído.</p>
 <p><b>2. INPUT.</b> Cuando la compresión te guste, sube INPUT mirando el medidor LUFS. Para un sonido suave, alcanza con −10 a −9 LUFS.</p>
@@ -112,9 +121,10 @@
 <p><b>TRUE PEAK.</b> El botón <b>TP</b> está en la perilla OUTPUT. Actívalo al exportar para streaming: elimina los picos entre muestras que crujen después de convertir a MP3/AAC.</p>
 <p><b>LOOKAHEAD.</b> Déjalo siempre encendido.</p>
 <div class="glass box"><p><b>En resumen</b></p><ol><li>AMOUNT entre 15 y 30, CYCLES entre 3 y 4.</li><li>Sube INPUT si hace falta.</li><li>Un poco de DASH y UPWARD, a gusto.</li><li>En ALL MIX, baja lo que sobresalga.</li><li>Listo.</li></ol></div>
-</div>
-<h2 id="pt-BR">Português (BR)</h2>
-<div lang="pt-BR">
+    </section>
+    <section class="glass prose dl-lang" id="pt-BR" lang="pt-BR" data-lang="pt" hidden>
+<p class="man-lead">Dois minutos entre abrir o HOUZY e ter uma faixa densa e uniforme. O mesmo guia está dentro do HOUZY 5, no cartão ACRONA.</p>
+
 <p><b>Modo.</b> Escolha o <b>HOUZY</b>: é o modo com a melhor qualidade de som.</p>
 <p><b>1. AMOUNT.</b> Comece pelo knob AMOUNT. Para uma compressão suave e moderada numa faixa bem mixada, valores entre 15 e 30 costumam bastar. Nos outros casos, ajuste de ouvido.</p>
 <p><b>2. INPUT.</b> Quando a compressão estiver boa, suba o INPUT de olho no medidor LUFS. Para um som suave, −10 a −9 LUFS é o suficiente.</p>
@@ -129,9 +139,7 @@
 <p><b>TRUE PEAK.</b> O botão <b>TP</b> fica no knob OUTPUT. Ligue ao exportar para streaming: ele remove os picos entre amostras que estalam depois da conversão para MP3/AAC.</p>
 <p><b>LOOKAHEAD.</b> Deixe sempre ligado.</p>
 <div class="glass box"><p><b>Resumindo</b></p><ol><li>AMOUNT entre 15 e 30, CYCLES entre 3 e 4.</li><li>Suba o INPUT se precisar.</li><li>Um pouco de DASH e UPWARD, a gosto.</li><li>No ALL MIX, abaixe o que estiver sobrando.</li><li>Pronto.</li></ol></div>
-</div>
-
-    </div>
+    </section>
   </div>
 </main>
 
@@ -139,7 +147,7 @@
   <div class="wrap">
     <div>
       <a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
-      <p>Mastering compressor by ACRONA AUDIO.<br><a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <p>Mastering compressor by ACRONA AUDIO.<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
     </div>
     <div>
       <h4>Legal</h4>

@@ -13,8 +13,17 @@
 
   // /ru/plugin.html -> /plugin.html ; /ru/ -> /
   var base = location.pathname.replace(/^\/(ru|es|pt)(?=\/|$)/, '') || '/';
-  var pageKey = /plugin\.html$/.test(base) ? 'plugin' : 'index';
-  function urlOf(l) { return l === 'en' ? base : '/' + l + (base === '/' ? '/' : base); }
+  // 17.10.2026: Download and Manual are ONE file each with the four languages inside; the language lives in the hash
+  // (#ru / #es / #pt-BR - the same anchors the plugin's UPDATE badge opens) and only that section[data-lang] is shown.
+  var hashPage = /(download|manual)\.html$/.test(base);
+  var pageKey = /plugin\.html$/.test(base) ? 'plugin' : hashPage ? 'own' : 'index';   // no "own" head in the files: the page keeps its title
+  var showSections = function (l) {
+    [].forEach.call(document.querySelectorAll('section[data-lang]'), function (s) { s.hidden = s.getAttribute('data-lang') !== l; });
+  };
+  var hashOf = function (l) { return l === 'en' ? '' : '#' + (l === 'pt' ? 'pt-BR' : l); };
+  var hashLang = function () { var m = /^#(ru|es|pt)/.exec(location.hash); return m ? m[1] : 'en'; };
+  if (hashPage) { cur = hashLang(); showSections(cur); }
+  function urlOf(l) { return hashPage ? base + hashOf(l) : l === 'en' ? base : '/' + l + (base === '/' ? '/' : base); }
   var indexOf = function (l) { return LANGS.findIndex(function (x) { return x[0] === l; }); };
 
   // ---- the control: one button with the current code; a click opens a glass menu with the four languages
@@ -32,7 +41,7 @@
     a.innerHTML = '<b>' + l[1] + '</b>' + l[2];
     menu.appendChild(a); return a;
   });
-  nav.insertBefore(box, nav.querySelector('.buy') || null);
+  nav.insertBefore(box, nav.querySelector('.nav-cta') || null);   // before the Buy + Download pair
   // an old stylesheet from the browser cache (a page cached before this switch existed) has no rules for the menu, and the four
   // languages would spill into the header as a row of text: hide the switch and fetch the current stylesheet.
   if (getComputedStyle(menu).flexDirection !== 'column') {
@@ -54,7 +63,7 @@
 
   // ---- swapping the page
   var files = {};
-  function load(l) { return files[l] || (files[l] = fetch('/i18n/' + l + '.json').then(function (r) { return r.json(); })); }
+  function load(l) { return files[l] || (files[l] = fetch('/i18n/' + l + '.json?v=20261017b').then(function (r) { return r.json(); })); }
   function setMeta(sel, attr, v) { var e = document.querySelector(sel); if (e && v != null) e.setAttribute(attr, v); }
   function apply(l, data) {
     var t = data.t || [];
@@ -86,6 +95,8 @@
     var abs = location.origin + urlOf(l);
     setMeta('link[rel="canonical"]', 'href', abs); setMeta('meta[property="og:url"]', 'content', abs);
     document.documentElement.lang = l;
+    if (hashPage) showSections(l);
+    window.dispatchEvent(new CustomEvent('houzy:lang', { detail: l }));   // download.js: its own words
     if (window.houzyI18nSet) window.houzyI18nSet(data.js || {});
     mark(l);
     // the words changed length: everything that measures them (the header's drop, the wordmark, the layout) re-measures
@@ -109,7 +120,8 @@
     if (a.lang !== cur) setLang(a.lang, true);
   });
   window.addEventListener('popstate', function () {
-    var m = /^\/(ru|es|pt)(?=\/|$)/.exec(location.pathname), l = m ? m[1] : 'en';
+    var m = /^\/(ru|es|pt)(?=\/|$)/.exec(location.pathname), l = hashPage ? hashLang() : m ? m[1] : 'en';
     if (l !== cur) setLang(l, false);
   });
+  if (hashPage && cur !== 'en') setLang(cur, false);   // opened as download.html#ru: translate the header too
 })();

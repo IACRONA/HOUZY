@@ -10,11 +10,11 @@
 <meta name="theme-color" content="#e7e7ef">
 <link rel="canonical" href="https://acronaaudio.shop/privacy.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="site.css?v=20261017a">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="vendor/framer-motion/dom.js" defer></script>
-<script src="site.js" defer></script>
-<script src="buy.js" defer></script>
+<script src="site.js?v=20261017a" defer></script>
+<script src="buy.js?v=20261017a" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -36,7 +36,10 @@
       <a href="index.html#faq">FAQ</a>
       <a href="index.html#contact">Contact</a>
     </nav>
-    <button class="cta buy" type="button">Buy</button>
+    <div class="nav-cta">
+      <button class="cta buy" type="button">Buy</button>
+      <a class="cta trial dl" href="/download.html">Download</a>
+    </div>
   </div>
 </header>
 
@@ -63,7 +66,7 @@
 <p>HOUZY is an audio plugin. <b>It processes your audio entirely on your computer, and no audio ever leaves your machine.</b> This policy explains the small amount of personal data handled by this website, by the plugin, and by our sales and licensing partners: what it is, why, for how long, and what you can do about it.</p>
 
 <h2 id="who">Who is responsible</h2>
-<p>The controller of your personal data is <b>ACRONA AUDIO</b>, an independent developer operated by a private individual. Contact for every privacy question: <a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a> (Telegram: <a href="https://t.me/acronalife">@acronalife</a>). We have not appointed a data protection officer, because the law does not require one for an operation of this size.</p>
+<p>The controller of your personal data is <b>ACRONA AUDIO</b>, an independent developer operated by a private individual. Contact for every privacy question: <a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> (Telegram: <a href="https://t.me/acronalife">@acronalife</a>). We have not appointed a data protection officer, because the law does not require one for an operation of this size.</p>
 
 <h2 id="website">This website</h2>
 <h3>Hosting and server logs</h3>
@@ -81,21 +84,19 @@
 
 <h2 id="plugin">The HOUZY plugin</h2>
 <h3>Update check</h3>
-<p>Up to once every 8 hours the plugin downloads one small public file from GitHub to see whether a newer version exists. No personal identifiers are sent. As with any web request, GitHub can see your IP address. You can turn the check off in the ACRONA AUDIO card inside the plugin.</p>
+<p>Up to once every 8 hours the plugin downloads one small public file from this website to see whether a newer version exists. No personal identifiers are sent. As with any web request, the website host can see your IP address. You can turn the check off in the ACRONA AUDIO card inside the plugin.</p>
 <h3>Licence activation (HOUZY 5 and later)</h3>
-<p>When you activate HOUZY, start a trial, or when the plugin confirms your licence (at most every 12 hours, and only when online), it contacts our licensing provider <b>Moonbase AS</b> (Norway) and sends:</p>
+<p>When you activate HOUZY, start a trial, or when the plugin confirms your licence (at most every 12 hours, and only when online), it contacts our licence server (<span class="code">licence.acronaaudio.shop</span>, run on Cloudflare), which checks the key with Gumroad, and sends:</p>
 <ul>
-  <li>your licence key or voucher code;</li>
-  <li>your computer's name;</li>
-  <li>a device identifier: a one-way hash of your computer's system information, used only to count activations per licence;</li>
-  <li>if you activate by signing in through the browser, the email address of your Moonbase account.</li>
+  <li>your licence key (for a trial, none);</li>
+  <li>a device identifier: a one-way hash of your computer's system information, used only to count activations per licence and to give each computer one trial.</li>
 </ul>
-<p>The licence file is stored on your computer in your user application-data folder. You can release a computer's activation at any time from the plugin's licence window. If you activate offline with a licence file, the plugin does not contact anyone.</p>
+<p>The licence file is stored on your computer in your user application-data folder. You can release a computer's activation at any time from the plugin's licence window. The server keeps only the licence key, the device identifiers using it and the trial start time.</p>
 <h3>Data that stays on your computer</h3>
 <p>Settings, the licence file, its backup and a small diagnostic log (<span class="code">licence.log</span>, at most 64 KB, without your licence key) are kept locally and are never sent automatically. The <b>REPORT</b> button only copies a summary to your clipboard. You decide whether to send it to us.</p>
 
 <h2 id="purchases">Purchases</h2>
-<p>Payments are processed by Moonbase as merchant of record, or by an authorised reseller. They collect what the order needs, such as your name, email address, country, billing address and payment details, under their own privacy policies (<a href="https://moonbase.sh/privacy-policy/">Moonbase Privacy Policy</a>). We receive the order details (name, email, country, product, order number) so we can provide licences, support and refunds, and meet accounting duties. <b>We never see your full card details.</b></p>
+<p>Payments are processed by Gumroad, Inc. as merchant of record. Gumroad collects what the order needs, such as your name, email address, country, billing address and payment details, under its own privacy policy (<a href="https://gumroad.com/privacy">Gumroad Privacy Policy</a>). We receive the order details (name, email, country, product, order number) so we can provide licences, support and refunds, and meet accounting duties. <b>We never see your full card details.</b></p>
 
 <h2 id="bases">Legal bases</h2>
 <table>
@@ -112,9 +113,9 @@
 <table>
   <tr><th>Recipient</th><th>Role</th><th>Location</th></tr>
   <tr><td>GitHub, Inc.</td><td>Website hosting, downloads, update file</td><td>USA</td></tr>
-  <tr><td>Cloudflare, Inc.</td><td>Content delivery and HTTPS for this website</td><td>USA (servers worldwide)</td></tr>
+  <tr><td>Cloudflare, Inc.</td><td>Content delivery and HTTPS for this website; the licence server</td><td>USA (servers worldwide)</td></tr>
   <tr><td>Google Ireland Ltd. / Google LLC</td><td>Email (Gmail)</td><td>EU / USA</td></tr>
-  <tr><td>Moonbase AS</td><td>Licensing, store, merchant of record</td><td>Norway (EEA)</td></tr>
+  <tr><td>Gumroad, Inc.</td><td>Store, merchant of record, licence keys</td><td>USA</td></tr>
   <tr><td>Authorised resellers</td><td>Sales, if you buy through one</td><td>Varies</td></tr>
 </table>
 <p>We do not sell or rent personal data, and we do not share it for advertising. We disclose data to authorities only where the law requires it.</p>
@@ -142,7 +143,7 @@
   <li><b>complain</b> to a data protection authority, in the EU/EEA in your country of residence or work, or in the UK to the ICO.</li>
 </ul>
 <p><b>California and other US states:</b> we do not sell or "share" personal information for cross-context behavioural advertising, and we do not use sensitive personal information. You may request to know, correct or delete your information, and we will not discriminate against you for using these rights.</p>
-<p>To use any right, write to <a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a>. We answer within one month (sooner where local law requires), free of charge, and may ask you to confirm your identity first. Data held by Moonbase or a reseller can also be requested from them directly. We make no decisions about you by purely automated means that have legal or similarly significant effects.</p>
+<p>To use any right, write to <a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a>. We answer within one month (sooner where local law requires), free of charge, and may ask you to confirm your identity first. Data held by Gumroad can also be requested from Gumroad directly. We make no decisions about you by purely automated means that have legal or similarly significant effects.</p>
 
 <h2 id="children">Children</h2>
 <p>The site and the plugin are not aimed at children under 16, and we do not knowingly collect their data. If you think a child has given us personal data, write to us and we will delete it.</p>
@@ -161,7 +162,7 @@
   <div class="wrap">
     <div>
       <a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
-      <p>Mastering compressor by ACRONA AUDIO.<br><a href="mailto:acrona.war@gmail.com">acrona.war@gmail.com</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <p>Mastering compressor by ACRONA AUDIO.<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
     </div>
     <div>
       <h4>Legal</h4>
