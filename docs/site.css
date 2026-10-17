@@ -143,7 +143,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .reader-top .rt{margin:0;font-weight:normal;font-variation-settings:'wght' 540;font-size:16px;color:var(--ink)}
 /* fixed height: switching chapters never moves the sphere or the tabs */
 .panels{position:relative;height:clamp(200px,calc(100vh - 88px - 22px - 2 * 2vh - var(--orb) * 1.5 - 70px),340px)}
-.panel{position:absolute;inset:0;overflow:auto;opacity:0;visibility:hidden;padding-right:6px}
+/* the bottom edge fades: long text shows it scrolls; the padding lets the last line clear the fade */
+.panel{position:absolute;inset:0;overflow:auto;opacity:0;visibility:hidden;padding:0 6px 26px 0;
+  -webkit-mask-image:linear-gradient(#000 calc(100% - 26px),transparent);mask-image:linear-gradient(#000 calc(100% - 26px),transparent)}
 .panel.is-active{opacity:1;visibility:visible}
 .panel.is-leaving{visibility:visible}
 .panel h2{font-size:clamp(20px,1.9vw,26px);line-height:1.18;margin:0 0 12px;font-variation-settings:'wght' 540;text-wrap:balance}
@@ -197,9 +199,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
      (the thin arm, site.js drawPhoneArm), the chapters are below; a computer keeps its own layout above */
   .reader{order:1;width:100%;margin:0}
   .orb-wrap{order:2;margin:38px 0 30px}
-  .tabs{order:3;width:100%;flex-direction:row;flex-wrap:wrap;gap:8px;align-items:stretch!important}
+  /* 3 + 3 chapters = two even rows of three: number on top, title under it; no shrink, so the edges line up */
+  .tabs,.tabs.left,.tabs.right{order:3;width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:stretch}
   .tabs.right{order:4;margin-top:8px}
-  .tab,.tabs.left .tab{flex:1 1 calc(50% - 8px);flex-direction:row;text-align:left;width:auto;min-height:56px;padding:10px 12px}
+  .tab,.tabs.left .tab{flex-direction:column;justify-content:flex-start;gap:6px;text-align:center;width:auto;min-height:0;padding:10px 6px 12px;transform:none}
+  .tt b{font-size:14px;line-height:1.25}
+  .tt em,.tabs.left .tt em{display:table;margin:4px auto 0}
   .tt small{display:none}
   /* a fixed height, as on a computer: switching chapters never moves the sphere; long text scrolls inside the card */
   .panels{height:clamp(230px,42svh,360px)}
