@@ -28,7 +28,7 @@
   var AC = window.AudioContext || window.webkitAudioContext, actx = null, bufs = {}, lastSnd = {};
   var SND = { click: ['/audio/click.wav', 1],     // the click peaks at -17 dBFS
               grab:  ['/audio/octopus.mp3', 0.5], // the tendril grabs a chapter tab: octopus.mp3 (owner, 14.10), peaks at -0.7 dBFS: half
-              buy:   ['/audio/buy.mp3', 0.354] };  // "bye.wav", on hovering a Buy key (buy.js): 50% quieter, then -3 dB more (owner, 13-14.10)
+              buy:   ['/audio/buy.mp3', 0.25] };   // 17.10.2026: -3 dB more (owner)  // "bye.wav", on hovering a Buy key (buy.js): 50% quieter, then -3 dB more (owner, 13-14.10)
   function ctxOf() {
     if (actx || !AC) return actx;
     try { actx = new AC({ latencyHint: 'interactive' }); } catch (e) { AC = null; return null; }
@@ -69,7 +69,7 @@
   window.houzyUiSound = uiSound;        // plugin.js and buy.js: the switches drawn on the plugin window, the Buy keys
   // the click is played inside the click itself
   document.addEventListener('click', function (e) {
-    if (e.target.closest && !e.target.closest('.lang, .tab') && e.target.closest('a, button, label, summary, [role="button"]')) uiSound('click');   // silent: the language switch; the chapter tabs - their one sound is the octopus grab (owner, 14.10)
+    if (e.target.closest && !e.target.closest('.tab, .lang-btn') && e.target.closest('a, button, label, summary, [role="button"]')) uiSound('click');   // silent: the language switch; the chapter tabs - their one sound is the octopus grab (owner, 14.10)
   }, true);
 
   /* ---------- user agreement: asked once, before anything else ----------

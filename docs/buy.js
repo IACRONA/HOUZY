@@ -4,7 +4,7 @@
 // And a tendril in the colour of the plugin's sphere (--orb-tint, set by plugin.js) reaches out of the sphere and wraps the key.
 (function () {
   // 17.10.2026: the Download keys (.dl) get the same neon, tendril and sound; only Buy goes to Gumroad
-  var keys = [].slice.call(document.querySelectorAll('.buy, .dl'));
+  var keys = [].slice.call(document.querySelectorAll('.buy, .cta.dl')   /* .cta: <main class="dl"> is the Download PAGE, not a key */);
   if (!keys.length) return;
   var NEON = '213,187,155', REACH = 14, LAP = 10;
   var porb = document.querySelector('.porb');
