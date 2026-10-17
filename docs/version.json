@@ -1,19 +1,19 @@
 {
-  "version": "5.1.0",
-  "version_win": "5.1.0",
-  "version_mac": "5.1.0",
+  "version": "5.0.0",
+  "version_win": "5.0.0",
+  "version_mac": "5.0.0",
   "url": "https://acronaaudio.shop/download.html",
   "releases": [
     {
-      "version": "5.1.0",
+      "version": "5.0.0",
       "date": "2026-10-17",
       "win": "https://download.acronaaudio.shop/HOUZY-5.0.0-Setup.exe",
       "win_vst3": "https://download.acronaaudio.shop/HOUZY-5.0.0-Windows-VST3.zip",
       "notes": {
-        "en": "TEST update (will be rolled back)",
-        "ru": "ТЕСТ обновления (будет откачен)",
-        "es": "PRUEBA de actualización",
-        "pt": "TESTE de atualização"
+        "en": "Liquid Glass design, five themes and four colours of the sphere.\nT8 limiter: the bass and kick are lowered without changing their shape.\nA third less CPU, a manual inside the plugin in four languages.",
+        "ru": "Дизайн Liquid Glass, пять тем и четыре цвета сферы.\nЛимитер T8: бас и кик опускаются без изменения формы волны.\nНа треть меньше нагрузка, инструкция внутри плагина на четырёх языках.",
+        "es": "Diseño Liquid Glass, cinco temas y cuatro colores de la esfera.\nLimitador T8: el bajo y el kick bajan sin cambiar su forma.\nUn tercio menos de CPU y un manual dentro del plugin en cuatro idiomas.",
+        "pt": "Design Liquid Glass, cinco temas e quatro cores da esfera.\nLimitador T8: o grave e o kick descem sem mudar a forma da onda.\nUm terço a menos de CPU e um manual dentro do plugin em quatro idiomas."
       }
     }
   ]
