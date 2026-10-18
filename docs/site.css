@@ -881,3 +881,7 @@ a.tech4-n:hover{transform:scale(1.08)}
    22 px between the words so the long Russian menu keeps air beside HOUZY + ACRONA AUDIO */
 @media (min-width:1000px){.bar{grid-template-columns:1fr auto 1fr}.navpanel{--nav-gap:22px}}
 @media (min-width:1000px) and (max-width:1199px){.bar .brand small{display:none}}   /* narrow desktops: room for the centred menu (ru: 12 px gap with ACRONA AUDIO shown) */
+/* the demo toast with a long message (the AMOUNT hint, 18.10.2026): left:50% capped it at half the panel, so the text
+   wrapped into a tall column and the 999 px radius made it a circle over the whole window - size it to the text instead */
+.live-toast{width:max-content;max-width:86%;border-radius:16px;text-align:center;line-height:1.35}
+@media (max-width:640px){.live-toast{max-width:92%;bottom:4%;padding:7px 12px;font-size:12px;border-radius:12px}}
