@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>HOUZY — мастеринг-компрессор для электронной музыки</title>
+<title>HOUZY — мастеринг-компрессор VST для электронной музыки</title>
 <meta name="description" content="HOUZY — мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом. Клиппер ACR, лимитер T8. VST3 / AU.">
 <meta name="theme-color" content="#e7e7ef">
 <link rel="alternate" hreflang="en" href="https://acronaaudio.shop/">
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
 <meta property="og:url" content="https://acronaaudio.shop/ru/">
-<meta property="og:title" content="HOUZY — мастеринг-компрессор для электронной музыки">
+<meta property="og:title" content="HOUZY — мастеринг-компрессор VST для электронной музыки">
 <meta property="og:description" content="HOUZY — мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом. Клиппер ACR, лимитер T8. VST3 / AU.">
 <meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
 <meta property="og:image:width" content="1640">
@@ -146,18 +146,19 @@
 ]
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/site.css?v=20261018p">
+<link rel="stylesheet" href="/site.css?v=20261018q">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/orb.js" defer></script>
 <script src="/site.js?v=20261018a" defer></script>
-<script src="/i18n.js?v=20261018m" defer></script>
+<script src="/i18n.js?v=20261018n" defer></script>
 <script src="/plugin.js" defer></script>
 <script src="/houzy-live.js?v=20261014k" defer></script>
 <script src="/buy.js?v=20261017e" defer></script>
 <script type="application/json" id="i18n-js">{"Before you continue":"Прежде чем продолжить","By using this site and the HOUZY demo you agree to the {terms} and the {eula}. How we handle data is in the {privacy}.":"Пользуясь этим сайтом и демо HOUZY, вы соглашаетесь с {terms} и {eula}. О том, как мы обращаемся с данными, написано в {privacy}.","Terms of Use & Sale":"Условиями использования и продажи (на английском)","Licence Agreement (EULA)":"Лицензионным соглашением (EULA, на английском)","Privacy Policy":"Политике конфиденциальности (на английском)","I agree":"Согласен","Coming soon":"Скоро","Original":"Оригинал","Pause":"Пауза","Play":"Играть","Loading the HOUZY engine…":"Загружаю движок HOUZY…","Reading {name}…":"Читаю {name}…","Decoding {name}…":"Декодирую {name}…","Please choose an MP3 or WAV file":"Выберите файл MP3 или WAV","That file is over {mb} MB":"Файл больше {mb} МБ","This file could not be decoded":"Не удалось декодировать этот файл","Could not start: {msg}":"Не удалось запустить: {msg}","this browser has no AudioWorklet":"в этом браузере нет AudioWorklet","the live demo needs the secure (https) version of this page":"живому демо нужна защищённая (https) версия этой страницы","engine not found":"движок не найден","Track removed from this page. It was never uploaded anywhere.":"Трек убран с этой страницы. Он никуда не загружался.","demo: first 1:15 of {len}":"демо: первые 1:15 из {len}","demo":"демо","{what} — only in the full version":"{what} — только в полной версии","Only in the full version":"Только в полной версии","Oversampling above 16x":"Оверсэмплинг выше 16x","CLASSIC and MODERN":"CLASSIC и MODERN","UPWARD, CHARACTER, CLIP SHAPE and DASH":"UPWARD, CHARACTER, CLIP SHAPE и DASH","Slot {s}":"Слот {s}","Oversampling {n}x · 32x and 64x in the full version":"Оверсэмплинг {n}x · 32x и 64x — в полной версии","Copied {from} to {to}":"Скопировано {from} в {to}","English, Russian, Spanish and Portuguese in the plugin":"В плагине доступны английский, русский, испанский и португальский","Language":"Язык","HOUZY is a new method of compression, invented from scratch. With HOUZY you are buying the best solution there is":"HOUZY — новый метод компрессии, изобретённый с нуля. Покупая HOUZY, вы покупаете лучшее решение из всех возможных"}</script>
 </head>
 <body>
+<!--email_off-->
 <a class="skip" href="#main" data-i18n="0">Перейти к содержимому</a>
 
 <div class="bg" aria-hidden="true">
@@ -413,5 +414,6 @@
   </div>
 </footer>
 
+<!--/email_off-->
 </body>
 </html>

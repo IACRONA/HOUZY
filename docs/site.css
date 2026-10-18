@@ -762,3 +762,8 @@ a.tech4-n:hover{transform:scale(1.08)}
 .sale-tech li{position:relative;padding-left:16px;font-size:15px;line-height:1.45;color:var(--sub)}
 .sale-tech li::before{content:'';position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--accent-ink)}
 .sale-tech li b{color:var(--ink);font-weight:normal;font-variation-settings:'wght' 650}
+/* the manual's section subheadings (18.10.2026): real <h2> for crawlers, sized like the bold starts they replaced */
+.man .dl-lang h2{margin:24px 0 6px;font-size:18px;line-height:1.3;color:var(--ink);font-variation-settings:'wght' 650}
+.man .dl-lang h2:first-of-type{margin-top:8px}
+.man-end{margin-top:16px;padding:clamp(20px,2.6vw,30px)}
+.man-end h2{margin:0 0 4px;font-size:clamp(20px,1.8vw,24px)}
