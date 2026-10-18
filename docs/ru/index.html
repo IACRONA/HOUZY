@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>HOUZY 5 — мастеринг-компрессор для хауса | ACRONA AUDIO</title>
+<title>HOUZY — мастеринг-компрессор для электронной музыки</title>
 <meta name="description" content="HOUZY 5 — мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом. Клиппер ACR, лимитер T8. VST3 / AU.">
 <meta name="theme-color" content="#e7e7ef">
 <link rel="alternate" hreflang="en" href="https://acronaaudio.shop/">
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
 <meta property="og:url" content="https://acronaaudio.shop/ru/">
-<meta property="og:title" content="HOUZY 5 — плагин мастеринг-компрессор (VST3 / AU) | ACRONA AUDIO">
+<meta property="og:title" content="HOUZY — мастеринг-компрессор для электронной музыки">
 <meta property="og:description" content="HOUZY 5 — мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом. Клиппер ACR, лимитер T8. VST3 / AU.">
 <meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
 <meta property="og:image:width" content="1640">
@@ -138,12 +138,12 @@
 ]
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/site.css?v=20261018c">
+<link rel="stylesheet" href="/site.css?v=20261018d">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/orb.js" defer></script>
 <script src="/site.js?v=20261017e" defer></script>
-<script src="/i18n.js?v=20261018e" defer></script>
+<script src="/i18n.js?v=20261018f" defer></script>
 <script src="/plugin.js" defer></script>
 <script src="/houzy-live.js?v=20261014k" defer></script>
 <script src="/buy.js?v=20261017e" defer></script>
@@ -184,9 +184,9 @@
   <!-- THE PLUGIN WINDOW: the same live panel as plugin.html, first, the sphere under it -->
   <section class="try" id="plugin">
     <div class="head glass" data-reveal>
-      <h1 class="hero-title"><span class="kick" data-i18n="6">HOUZY — мастеринг-компрессор</span><span class="t" data-i18n="7">Ровное сжатие на всех частотах.</span></h1>
-      <p class="lead" data-i18n="8">Когда вы сжимаете звук, громкий кик или бас больше не тянет за собой остальные инструменты.</p>
-      <p class="tech4"><a class="tech4-n" href="#top" aria-label="4">4</a><span class="tech4-t" data-i18n="105">ACRONA AUDIO благодаря прорыву в ИИ создала четыре совершенно новые технологии, которых раньше не существовало.<br>И все они собраны в HOUZY, который выведет ваш мастеринг на совершенно новый уровень.</span></p>
+      <h1 class="hero-title"><span class="kick" data-i18n="6">HOUZY 5 · ACRONA AUDIO</span><span class="t" data-i18n="7">Мастеринг-компрессор для электронной и танцевальной музыки.</span></h1>
+      <p class="lead" data-i18n="8">Ровное сжатие на всех частотах: громкий кик или бас больше не тянет за собой весь микс.</p>
+      <p class="tech4"><a class="tech4-n" href="#top" aria-label="4">4</a><span class="tech4-t" data-i18n="105">Четыре технологии, сделанные с нуля, в одном плагине: сжатие по каждому тону без общего гейна, клиппер, который вычитает пики, а не срезает их, лимитер, который двигает гейн только на переходе через ноль, и время в периодах волны и долях такта.</span></p>
     </div>
     <div class="plugin" id="panel" role="img" aria-label="Окно плагина HOUZY 5" data-i18n-a="aria-label:95">
       <img src="/img/plugin/t1/chrome.webp" width="1480" height="1000" alt="Окно плагина HOUZY 5 — мастеринг-компрессор" fetchpriority="high" data-i18n-a="alt:96">
@@ -241,7 +241,7 @@
                 <li data-i18n="23"><b>Атака спорит с панчем</b> — одна огибающая должна обслуживать и транзиент, и тело.</li>
                 <li data-i18n="24"><b>Бас становится грязным</b> — гейн двигается, и вокруг кика на 50 Гц вырастают боковые полосы. Компрессор портит именно то, что выравнивал.</li>
               </ul>
-              <p class="solves" data-i18n="102">Этот принцип не менялся с первых компрессоров 1930-х годов: один гейн на весь звук. <b>HOUZY — открытие, сделанное в 2026 году.</b> В нём нет общего гейна, у каждого тона своя огибающая, и этот новый метод решает все проблемы прошлого.</p>
+              <p class="solves" data-i18n="102">С первых компрессоров 1930-х принцип один: один гейн на весь сигнал. <b>HOUZY от него отказывается.</b> У каждого тона своя огибающая, поэтому пампинга, спора атаки с панчем и боковых полос на басу просто не возникает.</p>
             </div>
           </div>
           <div class="panel" id="p-acr" data-ch="acr">

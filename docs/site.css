@@ -340,7 +340,7 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 .live-menu button.on{background:rgba(141,202,212,.22);color:#fff}
 .live-menu button:focus-visible{outline:1px solid #8dcad4}
 /* the page opens with the claim; the try-it text sits in the upload card in body type */
-.try .head .hero-title{margin:0 0 12px;font-weight:normal;font-variation-settings:'wght' 540;font-size:clamp(30px,4.2vw,52px);line-height:1.08;color:var(--ink);text-wrap:balance}
+.try .head .hero-title{margin:0 0 12px;font-weight:normal;font-variation-settings:'wght' 540;font-size:clamp(28px,3.6vw,44px);line-height:1.08;color:var(--ink);text-wrap:balance}
 .live-intro{margin:0;font-size:16px;line-height:1.6;color:var(--text);max-width:62ch}
 .live-intro .kicker{display:flex;justify-content:center;margin:0 0 6px}
 
