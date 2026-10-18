@@ -26,6 +26,21 @@
   function urlOf(l) { return hashPage ? base + hashOf(l) : l === 'en' ? base : '/' + l + (base === '/' ? '/' : base); }
   var indexOf = function (l) { return LANGS.findIndex(function (x) { return x[0] === l; }); };
 
+  // ---- 18.10.2026: the first visit to an English address follows the BROWSER language (not the country): the first of the
+  // visitor's languages that the site has wins (nl-NL, ru -> ru; en-US -> stays). A language picked with the button is
+  // remembered and always wins; bots stay on the address they asked for (every version is indexed by its own URL).
+  var KEY = 'houzy-lang';
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) {}
+  if (cur === 'en' && !saved && !navigator.webdriver && !/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent)) {
+    var want = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])
+      .map(function (x) { return String(x).slice(0, 2).toLowerCase(); })
+      .filter(function (x) { return indexOf(x) >= 0; })[0];
+    if (want && want !== 'en') {
+      if (!hashPage) { location.replace(urlOf(want) + location.hash); return; }
+      cur = want; history.replaceState(null, '', urlOf(want)); showSections(cur);   // translated below by setLang
+    }
+  }
+
   // ---- the control: one button with the current code; a click opens a glass menu with the four languages
   var box = document.createElement('div'); box.className = 'lang';
   var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'lang-btn';
@@ -117,6 +132,7 @@
     if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
     e.preventDefault();
     open(false);
+    try { localStorage.setItem(KEY, a.lang); } catch (err) {}   // the visitor's own choice beats the browser language
     if (a.lang !== cur) setLang(a.lang, true);
   });
   window.addEventListener('popstate', function () {
