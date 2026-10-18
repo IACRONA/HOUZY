@@ -23,33 +23,10 @@
   var oldHash = ownPage && cur === 'en' && /^#(ru|es|pt)(-BR)?$/.exec(location.hash);
   if (oldHash) { location.replace(urlOf(oldHash[1])); return; }
 
-  // ---- 18.10.2026: a visitor whose BROWSER language the site has (ru / es / pt), on an English address, is OFFERED that
-  // version in a small card - not redirected (Google's advice: shared links and crawlers keep the address they asked for).
-  // "Open" and "x" both remember the answer, as does a pick in the language menu; the card never comes back after that.
+  // ---- 18.10.2026 (owner): no automatic language at all - no redirect, no offer card. The visitor picks a language with the
+  // button in the header; that pick is remembered (houzy-lang) only for the visitor's own use of the menu.
   var KEY = 'houzy-lang';
-  var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) {}
-  var offer = null;
-  if (cur === 'en' && !saved && !navigator.webdriver && !/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent)) {
-    offer = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])
-      .map(function (x) { return String(x).slice(0, 2).toLowerCase(); })
-      .filter(function (x) { return indexOf(x) >= 0; })[0];
-    if (offer === 'en') offer = null;
-  }
   function remember(l) { try { localStorage.setItem(KEY, l); } catch (e) {} }
-  if (offer) {
-    var OFFER = { ru: ['Этот сайт есть на русском.', 'Открыть по-русски', 'Закрыть'],
-      es: ['Este sitio está en español.', 'Ver en español', 'Cerrar'],
-      pt: ['Este site está em português.', 'Ver em português', 'Fechar'] }[offer];
-    var card = document.createElement('div'); card.className = 'lang-offer glass'; card.lang = offer === 'pt' ? 'pt-BR' : offer;
-    card.setAttribute('role', 'region'); card.setAttribute('aria-label', OFFER[0]);
-    var msg = document.createElement('span'); msg.textContent = OFFER[0];
-    var go = document.createElement('a'); go.className = 'cta'; go.href = urlOf(offer) + (ownPage ? '' : location.hash); go.textContent = OFFER[1];
-    go.addEventListener('click', function () { remember(offer); });
-    var x = document.createElement('button'); x.type = 'button'; x.className = 'lang-offer-x'; x.setAttribute('aria-label', OFFER[2]); x.textContent = '×';
-    x.addEventListener('click', function () { remember('en'); card.remove(); });
-    card.appendChild(msg); card.appendChild(go); card.appendChild(x);
-    document.body.appendChild(card);
-  }
 
   // ---- the control: one button with the current code; a click opens a glass menu with the four languages
   var box = document.createElement('div'); box.className = 'lang';
@@ -142,8 +119,7 @@
   box.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a');
     if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
-    remember(a.lang);                                   // the visitor's own choice: the offer card never shows again
-    var oc = document.querySelector('.lang-offer'); if (oc) oc.remove();
+    remember(a.lang);                                   // the visitor's own choice
     if (ownPage) return;                                // one language per file: the link opens that file
     e.preventDefault();
     open(false);
