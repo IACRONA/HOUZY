@@ -721,3 +721,44 @@ a.tech4-n:hover{transform:scale(1.08)}
 .buy-row .cta.trial small{font-size:12px;letter-spacing:.02em;opacity:.85;font-variation-settings:'wght' 540}
 .buy-row{align-items:stretch}   /* both keys the same height when Download has its second line */
 @media (min-width:1000px){.navpanel .menu{justify-self:center}}
+/* the demo page's guide (18.10.2026): two cards under the demo, as wide as the plugin window - four numbered steps
+   (the Download page's step style), then "What's in the demo" (two short columns) beside "Questions" (collapsed) */
+.demo-guide{width:min(760px,100%);margin:clamp(28px,4vw,44px) auto 0;display:grid;gap:16px;text-align:left}
+.demo-guide .prose{padding:clamp(20px,2.6vw,30px)}
+.demo-guide h2{margin:0 0 14px;font-size:clamp(19px,1.6vw,22px)}
+.demo-steps{display:grid;grid-template-columns:1fr 1fr;gap:4px 28px;margin:0}
+.demo-steps li::after{display:none}
+.demo-steps li b{color:var(--ink);font-weight:normal;font-variation-settings:'wght' 650}
+.demo-more{display:grid;grid-template-columns:1fr;gap:16px}   /* stacked: the lists need the full width */
+.demo-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.demo-cols h3{margin:0 0 8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:normal;font-variation-settings:'wght' 650;color:var(--accent-ink)}
+.demo-cols ul{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:14px}
+.demo-in li::before{content:'✓ ';color:var(--accent-ink)}
+.demo-full li::before{content:'+ ';color:var(--sub)}
+.demo-full li{color:var(--sub)}
+.demo-faq details summary{font-size:15px}
+
+@media (max-width:560px){.demo-steps{grid-template-columns:1fr}}
+.demo-steps li{padding-bottom:10px}
+@media (max-width:520px){.demo-cols{grid-template-columns:1fr}}   /* phones: the two lists one under the other */
+/* the closing sales card beside About (18.10.2026): the price large, what you get, the keys, "new in 5" small */
+.about > .glass.sale{justify-content:flex-start}
+.sale-price{margin:6px 0 0;font-size:clamp(52px,6vw,72px);line-height:1;letter-spacing:-.03em;color:var(--ink);font-variation-settings:'wght' 650}
+.sale-once{margin:6px 0 18px;color:var(--sub);font-size:15px}
+.sale-list{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:10px}
+.sale-list li{position:relative;padding-left:30px;color:var(--text);font-size:16px;line-height:1.45}
+.sale-list li::before{content:'';position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;
+  background:linear-gradient(180deg,rgba(58,130,142,.9),rgba(34,96,108,.95));box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+.sale-list li::after{content:'';position:absolute;left:6px;top:7px;width:8px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg)}
+.sale-keys{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.sale-keys .cta{min-height:50px;padding:12px 26px;font-size:16px;overflow:visible}
+.sale-keys .pill{min-height:50px;padding:12px 22px;font-size:16px}
+.sale-note{margin:16px 0 0;font-size:13px;line-height:1.55;color:var(--sub)}
+.demo-man{margin:18px 0 0}.demo-man a{color:var(--accent-ink);text-decoration:underline;text-decoration-color:rgba(31,111,125,.35);text-underline-offset:3px}
+/* the sales card: the four own technologies (18.10.2026) */
+.sale .sale-list{margin-bottom:18px}
+.sale-tech-h{margin:0 0 10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);font-variation-settings:'wght' 650}
+.sale-tech{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:10px}
+.sale-tech li{position:relative;padding-left:16px;font-size:15px;line-height:1.45;color:var(--sub)}
+.sale-tech li::before{content:'';position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--accent-ink)}
+.sale-tech li b{color:var(--ink);font-weight:normal;font-variation-settings:'wght' 650}

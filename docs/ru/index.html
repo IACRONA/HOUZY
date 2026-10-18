@@ -123,6 +123,14 @@
      "@type": "Answer",
      "text": "Любой хост, который загружает VST3 на Windows или macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig и другие), а также AU для Logic Pro и GarageBand. Версия для macOS выйдет скоро, для Windows доступна уже сейчас."
     }
+   },
+   {
+    "@type": "Question",
+    "name": "Как работает онлайн-демо?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "В браузере работает настоящий движок HOUZY 5, поэтому звучит так же, как плагин. Загрузите MP3 или WAV: первые 75 секунд играют по кругу — этого хватает, чтобы услышать дроп и грув. Трек открывается и обрабатывается прямо в браузере и не покидает ваш компьютер. Работает в свежих Chrome, Edge, Firefox и Safari. Попробовать."
+    }
    }
   ],
   "inLanguage": "ru"
@@ -138,12 +146,12 @@
 ]
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/site.css?v=20261018i">
+<link rel="stylesheet" href="/site.css?v=20261018p">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/orb.js" defer></script>
 <script src="/site.js?v=20261017e" defer></script>
-<script src="/i18n.js?v=20261018h" defer></script>
+<script src="/i18n.js?v=20261018l" defer></script>
 <script src="/plugin.js" defer></script>
 <script src="/houzy-live.js?v=20261014k" defer></script>
 <script src="/buy.js?v=20261017e" defer></script>
@@ -316,17 +324,26 @@
         <h2 data-i18n="62">Сделано для хауса и танцевальной музыки.</h2>
         <p class="lead" data-i18n="63">Проект создан, чтобы улучшить и упростить мастеринг электронной музыки. Автор больше 15 лет искал идеальный компрессор для своих проектов и в итоге решил изобрести его сам. В HOUZY вложены колоссальный опыт, знания и понимание того, что нужно для превосходного звучания на мастере.</p>
         <div class="links">
-          <a class="pill" href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">ACRONA on Spotify</a>
-          <a class="pill" href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a>
           <a data-manual class="pill" href="/ru/manual.html" data-i18n="64">Инструкция</a>
         </div>
       </div>
-      <div class="glass" data-reveal>
+      <div class="glass sale" data-reveal>
         <p class="kicker">HOUZY 5</p>
-        <h3 data-i18n="65">$47, пробный период 14 дней</h3>
-        <p class="lead lead-sm" data-i18n="66">Дизайн Liquid Glass, пять тем, четыре цвета сферы, лимитер T8, на треть меньше нагрузка на процессор и инструкция внутри плагина на четырёх языках.</p>
-        <div class="links"><a class="btn" href="/ru/download.html" data-i18n="67" data-i18n-lead>Скачать HOUZY 5
-          <svg class="arrow" viewBox="0 0 16 11" aria-hidden="true"><path d="M0 5.5 H14.6 M10.3 1.2 L14.9 5.5 L10.3 9.8"/></svg></a></div>
+        <p class="sale-price">$47</p>
+        <p class="sale-once" data-i18n="111">один платёж — лицензия остаётся у вас навсегда</p>
+        <ul class="sale-list">
+          <li data-i18n="112">Лицензия навсегда на два компьютера</li>
+          <li data-i18n="113">14 дней бесплатно, все функции открыты</li>
+        </ul>
+        <p class="sale-tech-h" data-i18n="119">4 технологии, которых нет в других плагинах</p>
+        <ul class="sale-tech">
+          <li data-i18n="120"><b>Движок HOUZY</b> — сжимает каждый тон отдельно: без общего гейна и пампинга</li>
+          <li data-i18n="121"><b>Клиппер ACR</b> — вычитает пики, а не срезает их, поэтому панч остаётся</li>
+          <li data-i18n="122"><b>Лимитер T8</b> — двигает гейн только на переходе через ноль: бас и кик не меняют форму</li>
+          <li data-i18n="123"><b>CYCLES / NOTE</b> — атака в периодах волны, релиз в долях такта</li>
+        </ul>
+        <div class="sale-keys"><button class="cta buy" type="button" data-i18n="13">Купить HOUZY — $47</button><a class="pill" data-home="download.html" href="/ru/download.html" data-i18n="117">Скачать бесплатно</a></div>
+        <p class="sale-note"><span data-i18n="66">Новое в 5: дизайн Liquid Glass, пять тем, четыре цвета сферы, лимитер T8 и на треть меньше нагрузка на процессор.</span> <span data-i18n="118">Безопасная оплата через Gumroad.</span></p>
       </div>
     </div>
   </section>
@@ -347,6 +364,7 @@
         <details><summary data-i18n="76">Как работает возврат?</summary><p data-i18n="77">В течение 14 дней после покупки. Сначала снимите активацию в плагине (окно лицензии → СНЯТЬ). Ваши законные права потребителя не затрагиваются. См. <a href="/terms.html#refunds">Условия продажи</a> (на английском).</p></details>
         <details><summary data-i18n="78">Можно ли использовать его на отдельных треках, а не только на мастере?</summary><p data-i18n="79">Да, на любом треке или шине. HOUZY анализирует каждый тон отдельно, поэтому нагрузка на процессор выше, чем у обычного компрессора.</p></details>
         <details><summary data-i18n="80">Какие DAW поддерживаются?</summary><p data-i18n="81">Любой хост, который загружает VST3 на Windows или macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig и другие), а также AU для Logic Pro и GarageBand. Версия для macOS выйдет скоро, для Windows доступна уже сейчас.</p></details>
+        <details><summary data-i18n="109">Как работает онлайн-демо?</summary><p data-i18n="110">В браузере работает настоящий движок HOUZY 5, поэтому звучит так же, как плагин. Загрузите MP3 или WAV: первые 75 секунд играют по кругу — этого хватает, чтобы услышать дроп и грув. Трек открывается и обрабатывается прямо в браузере и не покидает ваш компьютер. Работает в свежих Chrome, Edge, Firefox и Safari. <a data-home="plugin.html" href="/ru/plugin.html">Попробовать</a>.</p></details>
       </div>
     </div>
   </section>

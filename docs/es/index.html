@@ -123,6 +123,14 @@
      "@type": "Answer",
      "text": "Cualquier host que cargue VST3 en Windows o macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig y otros), además de AU para Logic Pro y GarageBand. La versión para macOS llega pronto; la de Windows ya está disponible."
     }
+   },
+   {
+    "@type": "Question",
+    "name": "¿Cómo funciona la demo online?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Ejecuta el motor real de HOUZY 5 en tu navegador, así que suena igual que el plugin. Carga un MP3 o WAV: los primeros 75 segundos suenan en bucle, suficiente para escuchar un drop y el groove. El tema se abre y se procesa dentro de tu navegador y nunca sale de tu computadora. Funciona en versiones actuales de Chrome, Edge, Firefox y Safari. Pruébala aquí."
+    }
    }
   ],
   "inLanguage": "es"
@@ -138,12 +146,12 @@
 ]
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/site.css?v=20261018i">
+<link rel="stylesheet" href="/site.css?v=20261018p">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/orb.js" defer></script>
 <script src="/site.js?v=20261017e" defer></script>
-<script src="/i18n.js?v=20261018h" defer></script>
+<script src="/i18n.js?v=20261018l" defer></script>
 <script src="/plugin.js" defer></script>
 <script src="/houzy-live.js?v=20261014k" defer></script>
 <script src="/buy.js?v=20261017e" defer></script>
@@ -316,17 +324,26 @@
         <h2 data-i18n="62">Hecho para house y música de baile.</h2>
         <p class="lead" data-i18n="63">HOUZY nació para mejorar y simplificar el mastering de música electrónica. Durante más de 15 años su autor buscó el compresor ideal para sus propios tracks y al final decidió inventarlo él mismo. En él puso una enorme experiencia, conocimiento y comprensión de lo que necesita un máster para sonar de primera.</p>
         <div class="links">
-          <a class="pill" href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">ACRONA on Spotify</a>
-          <a class="pill" href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a>
           <a data-manual class="pill" href="/es/manual.html" data-i18n="64">Manual del usuario</a>
         </div>
       </div>
-      <div class="glass" data-reveal>
+      <div class="glass sale" data-reveal>
         <p class="kicker">HOUZY 5</p>
-        <h3 data-i18n="65">47 US$, con 14 días de prueba gratis</h3>
-        <p class="lead lead-sm" data-i18n="66">Diseño Liquid Glass, cinco temas, cuatro colores de la esfera, el limitador T8, un tercio menos de CPU y un manual dentro del plugin en cuatro idiomas.</p>
-        <div class="links"><a class="btn" href="/es/download.html" data-i18n="67" data-i18n-lead>Descargar HOUZY 5
-          <svg class="arrow" viewBox="0 0 16 11" aria-hidden="true"><path d="M0 5.5 H14.6 M10.3 1.2 L14.9 5.5 L10.3 9.8"/></svg></a></div>
+        <p class="sale-price">$47</p>
+        <p class="sale-once" data-i18n="111">un solo pago, una licencia que es tuya para siempre</p>
+        <ul class="sale-list">
+          <li data-i18n="112">Licencia de por vida para dos computadoras</li>
+          <li data-i18n="113">14 días de prueba gratis, todo desbloqueado</li>
+        </ul>
+        <p class="sale-tech-h" data-i18n="119">4 tecnologías que no encontrarás en ningún otro plugin</p>
+        <ul class="sale-tech">
+          <li data-i18n="120"><b>Motor HOUZY</b> — comprime cada tono por separado: sin ganancia común, sin bombeo</li>
+          <li data-i18n="121"><b>Clipper ACR</b> — resta los picos en lugar de recortarlos, así la pegada se mantiene</li>
+          <li data-i18n="122"><b>Limitador T8</b> — mueve la ganancia solo en los cruces por cero: el bajo y el kick conservan su forma</li>
+          <li data-i18n="123"><b>CYCLES / NOTE</b> — ataque en ciclos de onda, release en fracciones de compás</li>
+        </ul>
+        <div class="sale-keys"><button class="cta buy" type="button" data-i18n="13">Comprar HOUZY — $47</button><a class="pill" data-home="download.html" href="/es/download.html" data-i18n="117">Descargar gratis</a></div>
+        <p class="sale-note"><span data-i18n="66">Novedades de la 5: diseño Liquid Glass, cinco temas, cuatro colores de la esfera, el limitador T8 y un tercio menos de CPU.</span> <span data-i18n="118">Pago seguro con Gumroad.</span></p>
       </div>
     </div>
   </section>
@@ -347,6 +364,7 @@
         <details><summary data-i18n="76">¿Cómo funcionan los reembolsos?</summary><p data-i18n="77">Dentro de los 14 días posteriores a la compra. Primero libera la activación en el plugin (ventana de licencia → DESACTIVAR). Tus derechos legales como consumidor no se ven afectados. Consulta las <a href="/terms.html#refunds">Condiciones de venta</a> (en inglés).</p></details>
         <details><summary data-i18n="78">¿Puedo usarlo en pistas individuales, no solo en el master?</summary><p data-i18n="79">Sí, en cualquier pista o bus. HOUZY analiza cada tono por separado, así que la carga de CPU es mayor que con un compresor común.</p></details>
         <details><summary data-i18n="80">¿Qué DAW son compatibles?</summary><p data-i18n="81">Cualquier host que cargue VST3 en Windows o macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig y otros), además de AU para Logic Pro y GarageBand. La versión para macOS llega pronto; la de Windows ya está disponible.</p></details>
+        <details><summary data-i18n="109">¿Cómo funciona la demo online?</summary><p data-i18n="110">Ejecuta el motor real de HOUZY 5 en tu navegador, así que suena igual que el plugin. Carga un MP3 o WAV: los primeros 75 segundos suenan en bucle, suficiente para escuchar un drop y el groove. El tema se abre y se procesa dentro de tu navegador y nunca sale de tu computadora. Funciona en versiones actuales de Chrome, Edge, Firefox y Safari. <a data-home="plugin.html" href="/es/plugin.html">Pruébala aquí</a>.</p></details>
       </div>
     </div>
   </section>

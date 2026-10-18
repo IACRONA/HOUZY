@@ -15,7 +15,7 @@
   var base = location.pathname.replace(/^\/(ru|es|pt)(?=\/|$)/, '') || '/';
   // 18.10.2026: Download and Manual have their own address per language (/ru/download.html ...), like the home page, and
   // each file holds ONE language (they used to hold four, picked by #ru / #es / #pt-BR - not indexable).
-  var ownPage = /(download|manual|why-houzy)\.html$/.test(base);
+  var ownPage = /(download|manual|why-houzy|plugin)\.html$/.test(base);
   var pageKey = /plugin\.html$/.test(base) ? 'plugin' : ownPage ? 'own' : 'index';   // no "own" head in the files: the page keeps its title
   function urlOf(l) { return l === 'en' ? base : '/' + l + (base === '/' ? '/' : base); }
   var indexOf = function (l) { return LANGS.findIndex(function (x) { return x[0] === l; }); };
@@ -88,7 +88,7 @@
 
   // ---- swapping the page
   var files = {};
-  function load(l) { return files[l] || (files[l] = fetch('/i18n/' + l + '.json?v=20261018d').then(function (r) { return r.json(); })); }
+  function load(l) { return files[l] || (files[l] = fetch('/i18n/' + l + '.json?v=20261018g').then(function (r) { return r.json(); })); }
   function setMeta(sel, attr, v) { var e = document.querySelector(sel); if (e && v != null) e.setAttribute(attr, v); }
   function apply(l, data) {
     var t = data.t || [];
