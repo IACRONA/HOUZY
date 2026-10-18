@@ -251,7 +251,7 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 .foot{position:relative;margin:0 auto 16px;width:min(var(--max),calc(100% - 24px));padding:36px clamp(20px,3vw,36px) 24px;border-radius:var(--radius);
   background:var(--glass);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);box-shadow:var(--rim),var(--shadow);color:var(--sub);font-size:14px}
 .foot .wrap{display:grid;gap:26px;grid-template-columns:2fr 1fr 1fr;padding:0;max-width:none}
-.foot h4{margin:0 0 12px;font-weight:normal;color:var(--ink);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-variation-settings:'wght' 650}
+.foot h2{margin:0 0 12px;font-weight:normal;color:var(--ink);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-variation-settings:'wght' 650}
 .foot ul{list-style:none;display:grid;gap:8px}
 .foot a:hover,.linkbtn:hover{color:var(--accent-ink)}
 .linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
@@ -281,7 +281,7 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 
 /* page transitions: <html class="pt"> hides content until site.js fades it in; failsafe after 1.2 s.
    ponytail: motion runs for everyone, including the OS "reduce motion" setting (owner's decision, 12.10.2026). */
-.pt main,.pt .foot{opacity:0;animation:pt-failsafe 0s linear 1.2s forwards}
+.pt main,.pt .foot{opacity:0;animation:pt-failsafe 0s linear .6s forwards}   /* 18.10.2026: 1.2 -> .6 s, the worst case for LCP on a slow phone */
 @keyframes pt-failsafe{to{opacity:1}}
 
 /* ---------- the live plugin window (plugin.js): on plugin.html and under the sphere on index.html ---------- */
@@ -695,3 +695,6 @@ a.tech4-n:hover{transform:scale(1.08)}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.55),var(--shadow)}
 .tech4{background:linear-gradient(135deg,rgba(141,202,212,.18),rgba(255,255,255,.5) 55%,rgba(141,202,212,.12));
   box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(31,111,125,.12),0 8px 24px -14px rgba(20,82,93,.22)}
+/* footer: the demo link and the four languages as plain links (18.10.2026, SEO: crawlers without JS reach every version) */
+.foot-langs{margin-top:10px;font-size:13px;line-height:1.9;color:var(--sub)}
+.foot-langs a{color:var(--text)}

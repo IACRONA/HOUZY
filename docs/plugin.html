@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Try the HOUZY 5 Mastering Compressor in Your Browser | ACRONA AUDIO</title>
+<title>HOUZY 5 Online Demo — Try It in Your Browser | ACRONA AUDIO</title>
 <meta name="description" content="Play with the real HOUZY 5 mastering compressor interface in your browser and hear it on your own track. MP3 or WAV, nothing is uploaded.">
 <meta name="theme-color" content="#e7e7ef">
 <link rel="alternate" hreflang="en" href="https://acronaaudio.shop/plugin.html">
@@ -25,15 +25,63 @@
 <meta property="og:image:height" content="912">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="/site.css?v=20261018a">
+<link rel="stylesheet" href="/site.css?v=20261018b">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/orb.js" defer></script>
 <script src="/site.js?v=20261017e" defer></script>
-<script src="/i18n.js?v=20261018b" defer></script>
+<script src="/i18n.js?v=20261018c" defer></script>
 <script src="/plugin.js" defer></script>
 <script src="/houzy-live.js?v=20261014k" defer></script>
 <script src="/buy.js?v=20261017e" defer></script>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HOUZY 5 online demo",
+  "url": "https://acronaaudio.shop/plugin.html",
+  "inLanguage": "en",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any (web browser)",
+  "browserRequirements": "A current browser with WebAssembly and Web Audio",
+  "isAccessibleForFree": true,
+  "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "USD"
+  },
+  "about": {
+   "@type": "SoftwareApplication",
+   "name": "HOUZY 5",
+   "url": "https://acronaaudio.shop/"
+  },
+  "author": {
+   "@type": "Organization",
+   "name": "ACRONA AUDIO",
+   "url": "https://acronaaudio.shop/"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+   {
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://acronaaudio.shop/"
+   },
+   {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "HOUZY 5 online demo",
+    "item": "https://acronaaudio.shop/plugin.html"
+   }
+  ]
+ }
+]
+</script>
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="0">Skip to content</a>
@@ -57,7 +105,7 @@
       <p class="lead" data-i18n="8">When you compress, a loud kick or bass no longer drags the rest of the instruments along with it.</p>
     </div>
   <div class="plugin" id="panel" role="img" aria-label="The HOUZY 5 plugin window" data-i18n-a="aria-label:95">
-    <img src="/img/plugin/t1/chrome.webp" width="1480" height="1000" alt="">
+    <img src="/img/plugin/t1/chrome.webp" width="1480" height="1000" alt="HOUZY 5 mastering compressor plugin window" data-i18n-a="alt:96">
     <div class="porb" aria-hidden="true"></div>
     <canvas id="live" aria-hidden="true"></canvas>
     <div class="live-toast" role="status" aria-live="polite"></div>

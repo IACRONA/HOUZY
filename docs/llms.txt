@@ -1,0 +1,35 @@
+# HOUZY 5 by ACRONA AUDIO
+
+> HOUZY 5 is a mastering compressor plugin (VST3, AU) for house and dance music. Instead of one gain for the whole mix, it compresses every tone of the spectrum on its own, so a loud kick or bass does not pull the rest of the mix down with it (no pumping). Made by ACRONA AUDIO.
+
+## Facts
+
+- Product: HOUZY 5, version 5.0.0, released 17 October 2026.
+- Type: mastering compressor audio plugin with a clipper and a limiter built in.
+- Formats: VST3 on Windows now; the macOS build (VST3 and AU, Universal) is coming soon.
+- Hosts: any DAW that loads VST3 (Ableton Live, FL Studio, Cubase, Reaper, Bitwig and others); AU for Logic Pro and GarageBand once the macOS build is out.
+- Price: $47, one payment, a lifetime licence for two computers. Sold on Gumroad.
+- Trial: 14 days free, every feature works during the trial.
+- Free online demo: the real plugin interface in a web browser, on your own MP3 or WAV; the audio never leaves the browser.
+- Audio stays on the user's computer; the plugin only goes online to activate the licence and to check for updates.
+- Languages of the plugin and the site: English, Russian, Spanish, Brazilian Portuguese.
+
+## Technologies
+
+- HOUZY engine: every tone gets its own envelope; there is no shared gain, so the mix cannot pump.
+- ACR clipper: removes short peaks with a short cancelling pulse aimed under the kick instead of slicing the waveform.
+- T8 limiter: changes gain only at zero crossings of the wave, so bass and kick are lowered without changing their shape. T6, a smooth six-band limiter, is also included.
+- CYCLES / NOTE: attack is set in wave cycles of each tone, release in fractions of a bar (or milliseconds, with AUTO).
+
+## Pages
+
+- [HOUZY 5 home](https://acronaaudio.shop/): what it does, technologies, price, FAQ.
+- [Online demo](https://acronaaudio.shop/plugin.html): try HOUZY 5 in the browser.
+- [Download](https://acronaaudio.shop/download.html): installers, installation and licence activation.
+- [User manual](https://acronaaudio.shop/manual.html): every control explained.
+- [Buy on Gumroad](https://acronawar.gumroad.com/l/houzy)
+- [Terms of Use & Sale](https://acronaaudio.shop/terms.html), [EULA](https://acronaaudio.shop/eula.html), [Privacy Policy](https://acronaaudio.shop/privacy.html)
+
+## Contact
+
+acronaaudio@proton.me · Telegram: https://t.me/acronalife
