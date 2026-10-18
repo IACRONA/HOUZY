@@ -854,3 +854,30 @@ a.tech4-n:hover{transform:scale(1.08)}
 }
 /* phones: no volume slider (the phone's own keys set the volume; the mute key stays) - the seek bar gets the room */
 @media (pointer:coarse){.video-frame .plyr__volume input[type=range]{display:none}.video-frame .plyr__volume{min-width:0;max-width:none;width:auto}}
+/* About + the sales card, half the height (owner, 18.10.2026: 714 px -> ~half, the two the same): tighter padding and
+   type, the price with its line beside it, the two checks on one row, the four technologies as a 2 x 2 grid */
+@media (min-width:861px){
+  .about > .glass{padding:26px 28px}
+  .about > .glass .kicker{margin-bottom:8px}
+  .about > .glass h2{font-size:30px;line-height:1.15;margin:0 0 10px}
+  .about > .glass .lead{font-size:15px;line-height:1.55}
+  .about > .glass .links{padding-top:12px}
+  .sale{display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-content:start}
+  .sale > *{grid-column:1 / -1}
+  .sale .sale-price{grid-column:1;font-size:46px;margin:0}
+  .sale .sale-once{grid-column:2;align-self:end;margin:0 0 6px;font-size:13px;line-height:1.35}
+  .sale .sale-list{display:flex;flex-wrap:wrap;gap:6px 18px;margin:12px 0 14px}
+  .sale .sale-list li{font-size:14px;padding-left:26px}
+  .sale .sale-list li::before{width:18px;height:18px;top:1px}
+  .sale .sale-list li::after{left:5px;top:6px}
+  .sale .sale-tech-h{margin:0 0 8px;font-size:11px}
+  .sale .sale-tech{grid-template-columns:1fr 1fr;gap:8px 18px;margin:0 0 16px}
+  .sale .sale-tech li{font-size:13px;line-height:1.4}
+  .sale .sale-keys .cta,.sale .sale-keys .pill{min-height:44px;padding:10px 20px;font-size:15px}
+  .sale .sale-note{margin-top:10px;font-size:12px;line-height:1.45}
+}
+@media (min-width:861px){.sale .sale-once{justify-self:start;text-align:left;max-width:22em}}   /* the line sits right after the price */
+/* header (owner, 18.10.2026): the menu back in the TRUE centre of the bar - one axis with the hero and the plugin window;
+   22 px between the words so the long Russian menu keeps air beside HOUZY + ACRONA AUDIO */
+@media (min-width:1000px){.bar{grid-template-columns:1fr auto 1fr}.navpanel{--nav-gap:22px}}
+@media (min-width:1000px) and (max-width:1199px){.bar .brand small{display:none}}   /* narrow desktops: room for the centred menu (ru: 12 px gap with ACRONA AUDIO shown) */
