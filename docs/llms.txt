@@ -1,10 +1,10 @@
-# HOUZY 5 by ACRONA AUDIO
+# HOUZY by ACRONA AUDIO
 
-> HOUZY 5 is a mastering compressor plugin (VST3, AU) for house and dance music. Instead of one gain for the whole mix, it compresses every tone of the spectrum on its own, so a loud kick or bass does not pull the rest of the mix down with it (no pumping). Made by ACRONA AUDIO.
+> HOUZY is a mastering compressor plugin (VST3, AU) for electronic and dance music. Instead of one gain for the whole mix, it compresses every tone of the spectrum on its own, so a loud kick or bass does not pull the rest of the mix down with it (no pumping). Made by ACRONA AUDIO.
 
 ## Facts
 
-- Product: HOUZY 5, version 5.0.0, released 17 October 2026.
+- Product: HOUZY, version 5.0.0, released 17 October 2026.
 - Type: mastering compressor audio plugin with a clipper and a limiter built in.
 - Formats: VST3 on Windows now; the macOS build (VST3 and AU, Universal) is coming soon.
 - Hosts: any DAW that loads VST3 (Ableton Live, FL Studio, Cubase, Reaper, Bitwig and others); AU for Logic Pro and GarageBand once the macOS build is out.
@@ -23,12 +23,16 @@
 
 ## Pages
 
-- [HOUZY 5 home](https://acronaaudio.shop/): what it does, technologies, price, FAQ.
-- [Online demo](https://acronaaudio.shop/plugin.html): try HOUZY 5 in the browser.
+- [HOUZY home](https://acronaaudio.shop/): what it does, the four technologies, price, FAQ.
+- [Why HOUZY](https://acronaaudio.shop/why-houzy.html): per-tone compression compared with an ordinary compressor and a multiband compressor, with a table.
+- [Online demo](https://acronaaudio.shop/plugin.html): try HOUZY on your own track in the browser.
 - [Download](https://acronaaudio.shop/download.html): installers, installation and licence activation.
-- [User manual](https://acronaaudio.shop/manual.html): every control explained.
+- [User manual](https://acronaaudio.shop/manual.html): how to master electronic music with HOUZY, every control explained.
 - [Buy on Gumroad](https://acronawar.gumroad.com/l/houzy)
 - [Terms of Use & Sale](https://acronaaudio.shop/terms.html), [EULA](https://acronaaudio.shop/eula.html), [Privacy Policy](https://acronaaudio.shop/privacy.html)
+
+Every page above also exists in Russian, Spanish and Brazilian Portuguese: add /ru/, /es/ or /pt/ after the domain
+(for example https://acronaaudio.shop/ru/why-houzy.html).
 
 ## Contact
 

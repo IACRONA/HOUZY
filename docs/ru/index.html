@@ -6,7 +6,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>HOUZY — мастеринг-компрессор для электронной музыки</title>
-<meta name="description" content="HOUZY 5 — мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом. Клиппер ACR, лимитер T8. VST3 / AU.">
+<meta name="description" content="HOUZY — мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом. Клиппер ACR, лимитер T8. VST3 / AU.">
 <meta name="theme-color" content="#e7e7ef">
 <link rel="alternate" hreflang="en" href="https://acronaaudio.shop/">
 <link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/">
@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
 <meta property="og:url" content="https://acronaaudio.shop/ru/">
 <meta property="og:title" content="HOUZY — мастеринг-компрессор для электронной музыки">
-<meta property="og:description" content="HOUZY 5 — мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом. Клиппер ACR, лимитер T8. VST3 / AU.">
+<meta property="og:description" content="HOUZY — мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом. Клиппер ACR, лимитер T8. VST3 / AU.">
 <meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
 <meta property="og:image:width" content="1640">
 <meta property="og:image:height" content="912">
@@ -30,7 +30,7 @@
  {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "HOUZY 5",
+  "name": "HOUZY",
   "alternateName": "HOUZY mastering compressor",
   "description": "Плагин-мастеринг-компрессор, который сжимает каждый тон отдельно, с клиппером ACR и полуволновым лимитером T8.",
   "applicationCategory": "MultimediaApplication",
@@ -78,7 +78,7 @@
   "mainEntity": [
    {
     "@type": "Question",
-    "name": "Сколько стоит HOUZY 5?",
+    "name": "Сколько стоит HOUZY?",
     "acceptedAnswer": {
      "@type": "Answer",
      "text": "$47, разовая оплата: бессрочная лицензия на два компьютера. Есть 14-дневный пробный период, так что сначала можно проверить плагин на своих треках."
@@ -89,7 +89,7 @@
     "name": "Чем отличаются T6 и T8?",
     "acceptedAnswer": {
      "@type": "Answer",
-     "text": "T6 — плавный шестиполосный лимитер. T8 меняет гейн только в точках, где волна пересекает ноль, поэтому бас и кик опускаются без изменения формы. В HOUZY 5 есть оба, выбирайте на слух."
+     "text": "T6 — плавный шестиполосный лимитер. T8 меняет гейн только в точках, где волна пересекает ноль, поэтому бас и кик опускаются без изменения формы. В HOUZY есть оба, выбирайте на слух."
     }
    },
    {
@@ -129,7 +129,7 @@
     "name": "Как работает онлайн-демо?",
     "acceptedAnswer": {
      "@type": "Answer",
-     "text": "В браузере работает настоящий движок HOUZY 5, поэтому звучит так же, как плагин. Загрузите MP3 или WAV: первые 75 секунд играют по кругу — этого хватает, чтобы услышать дроп и грув. Трек открывается и обрабатывается прямо в браузере и не покидает ваш компьютер. Работает в свежих Chrome, Edge, Firefox и Safari. Попробовать."
+     "text": "В браузере работает настоящий движок HOUZY, поэтому звучит так же, как плагин. Загрузите MP3 или WAV: первые 75 секунд играют по кругу — этого хватает, чтобы услышать дроп и грув. Трек открывается и обрабатывается прямо в браузере и не покидает ваш компьютер. Работает в свежих Chrome, Edge, Firefox и Safari. Попробовать."
     }
    }
   ],
@@ -150,8 +150,8 @@
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/orb.js" defer></script>
-<script src="/site.js?v=20261017e" defer></script>
-<script src="/i18n.js?v=20261018l" defer></script>
+<script src="/site.js?v=20261018a" defer></script>
+<script src="/i18n.js?v=20261018m" defer></script>
 <script src="/plugin.js" defer></script>
 <script src="/houzy-live.js?v=20261014k" defer></script>
 <script src="/buy.js?v=20261017e" defer></script>
@@ -192,12 +192,12 @@
   <!-- THE PLUGIN WINDOW: the same live panel as plugin.html, first, the sphere under it -->
   <section class="try" id="plugin">
     <div class="head glass" data-reveal>
-      <h1 class="hero-title"><span class="kick" data-i18n="6">HOUZY 5 · ACRONA AUDIO</span><span class="t" data-i18n="7">Мастеринг-компрессор для электронной и танцевальной музыки.</span></h1>
+      <h1 class="hero-title"><span class="kick" data-i18n="6">HOUZY · ACRONA AUDIO</span><span class="t" data-i18n="7">Мастеринг-компрессор для электронной и танцевальной музыки.</span></h1>
       <p class="lead" data-i18n="8">Ровное сжатие на всех частотах: громкий кик или бас больше не тянет за собой весь микс.</p>
       <p class="tech4"><a class="tech4-n" href="#top" aria-label="4">4</a><span class="tech4-t" data-i18n="105">Четыре технологии, сделанные с нуля, в одном плагине: сжатие по каждому тону без общего гейна, клиппер, который вычитает пики, а не срезает их, лимитер, который двигает гейн только на переходе через ноль, и время в периодах волны и долях такта.</span></p>
     </div>
-    <div class="plugin" id="panel" role="img" aria-label="Окно плагина HOUZY 5" data-i18n-a="aria-label:95">
-      <img src="/img/plugin/t1/chrome.webp" width="1480" height="1000" alt="Окно плагина HOUZY 5 — мастеринг-компрессор" fetchpriority="high" data-i18n-a="alt:96">
+    <div class="plugin" id="panel" role="img" aria-label="Окно плагина HOUZY" data-i18n-a="aria-label:95">
+      <img src="/img/plugin/t1/chrome.webp" width="1480" height="1000" alt="Окно плагина HOUZY — мастеринг-компрессор" fetchpriority="high" data-i18n-a="alt:96">
       <div class="porb" aria-hidden="true"></div>
       <canvas id="live" aria-hidden="true"></canvas>
       <div class="live-toast" role="status" aria-live="polite"></div>
@@ -224,11 +224,11 @@
 
   <!-- THE SPHERE in the centre, chapter tabs left and right, the reading panel on top.
        Point at a tab or at the sphere on that side (or click / tap / arrow keys): the sphere turns and the chapter opens on top. -->
-  <section class="stage" id="top" aria-label="HOUZY 5">
+  <section class="stage" id="top" aria-label="HOUZY">
     <div class="pin">
       <div class="reader glass">
         <div class="reader-top">
-          <span class="num" data-i18n="14">HOUZY 5 · Уже вышел</span>
+          <span class="num" data-i18n="14">HOUZY · Уже вышел</span>
         </div>
         <div class="panels" aria-live="polite">
           <div class="panel is-active" id="p-houzy" data-ch="houzy">
@@ -328,7 +328,7 @@
         </div>
       </div>
       <div class="glass sale" data-reveal>
-        <p class="kicker">HOUZY 5</p>
+        <p class="kicker">HOUZY</p>
         <p class="sale-price">$47</p>
         <p class="sale-once" data-i18n="111">один платёж — лицензия остаётся у вас навсегда</p>
         <ul class="sale-list">
@@ -358,13 +358,13 @@
         <p class="lead" data-i18n="69">Что-то ещё? Напишите на <a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a>.</p>
       </div>
       <div class="glass faq-list" data-reveal>
-        <details><summary data-i18n="70">Сколько стоит HOUZY 5?</summary><p data-i18n="71">$47, разовая оплата: бессрочная лицензия на два компьютера. Есть 14-дневный пробный период, так что сначала можно проверить плагин на своих треках.</p></details>
-        <details><summary data-i18n="72">Чем отличаются T6 и T8?</summary><p data-i18n="73">T6 — плавный шестиполосный лимитер. T8 меняет гейн только в точках, где волна пересекает ноль, поэтому бас и кик опускаются без изменения формы. В HOUZY 5 есть оба, выбирайте на слух.</p></details>
+        <details><summary data-i18n="70">Сколько стоит HOUZY?</summary><p data-i18n="71">$47, разовая оплата: бессрочная лицензия на два компьютера. Есть 14-дневный пробный период, так что сначала можно проверить плагин на своих треках.</p></details>
+        <details><summary data-i18n="72">Чем отличаются T6 и T8?</summary><p data-i18n="73">T6 — плавный шестиполосный лимитер. T8 меняет гейн только в точках, где волна пересекает ноль, поэтому бас и кик опускаются без изменения формы. В HOUZY есть оба, выбирайте на слух.</p></details>
         <details><summary data-i18n="74">Уходит ли моё аудио с компьютера?</summary><p data-i18n="75">Никогда. Вся обработка идёт на вашем компьютере. Плагин выходит в сеть только чтобы проверить обновления (это можно отключить) и активировать лицензию. Подробности — в <a href="/privacy.html">Политике конфиденциальности</a> (на английском).</p></details>
         <details><summary data-i18n="76">Как работает возврат?</summary><p data-i18n="77">В течение 14 дней после покупки. Сначала снимите активацию в плагине (окно лицензии → СНЯТЬ). Ваши законные права потребителя не затрагиваются. См. <a href="/terms.html#refunds">Условия продажи</a> (на английском).</p></details>
         <details><summary data-i18n="78">Можно ли использовать его на отдельных треках, а не только на мастере?</summary><p data-i18n="79">Да, на любом треке или шине. HOUZY анализирует каждый тон отдельно, поэтому нагрузка на процессор выше, чем у обычного компрессора.</p></details>
         <details><summary data-i18n="80">Какие DAW поддерживаются?</summary><p data-i18n="81">Любой хост, который загружает VST3 на Windows или macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig и другие), а также AU для Logic Pro и GarageBand. Версия для macOS выйдет скоро, для Windows доступна уже сейчас.</p></details>
-        <details><summary data-i18n="109">Как работает онлайн-демо?</summary><p data-i18n="110">В браузере работает настоящий движок HOUZY 5, поэтому звучит так же, как плагин. Загрузите MP3 или WAV: первые 75 секунд играют по кругу — этого хватает, чтобы услышать дроп и грув. Трек открывается и обрабатывается прямо в браузере и не покидает ваш компьютер. Работает в свежих Chrome, Edge, Firefox и Safari. <a data-home="plugin.html" href="/ru/plugin.html">Попробовать</a>.</p></details>
+        <details><summary data-i18n="109">Как работает онлайн-демо?</summary><p data-i18n="110">В браузере работает настоящий движок HOUZY, поэтому звучит так же, как плагин. Загрузите MP3 или WAV: первые 75 секунд играют по кругу — этого хватает, чтобы услышать дроп и грув. Трек открывается и обрабатывается прямо в браузере и не покидает ваш компьютер. Работает в свежих Chrome, Edge, Firefox и Safari. <a data-home="plugin.html" href="/ru/plugin.html">Попробовать</a>.</p></details>
       </div>
     </div>
   </section>
@@ -375,7 +375,7 @@
       <div class="glass contact-panel" data-reveal>
         <p class="kicker" data-i18n="4">Контакты</p>
         <h2 data-i18n="82">Вопросы, баги, лицензии: пишите мне.</h2>
-        <p class="lead" data-i18n="83">При баге укажите версию HOUZY, систему и DAW. В HOUZY 5 кнопка REPORT копирует всё это за вас.</p>
+        <p class="lead" data-i18n="83">При баге укажите версию HOUZY, систему и DAW. В HOUZY кнопка REPORT копирует всё это за вас.</p>
         <div class="contact">
           <a class="cta" href="mailto:acronaaudio@proton.me">acronaaudio@proton.me
             <svg class="arrow" viewBox="0 0 16 11" aria-hidden="true"><path d="M0 5.5 H14.6 M10.3 1.2 L14.9 5.5 L10.3 9.8"/></svg></a>
@@ -405,7 +405,7 @@
     <div>
       <h2>HOUZY</h2>
       <ul>
-        <li><a href="#top">HOUZY 5</a></li>
+        <li><a href="#top">HOUZY</a></li>
         <li><a data-manual href="/ru/manual.html" data-i18n="64">Инструкция</a></li>
       </ul>
     </div>

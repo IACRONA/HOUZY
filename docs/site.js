@@ -82,7 +82,7 @@
     var gate = document.createElement('div');
     gate.className = 'terms-gate';
     gate.innerHTML = '<div class="terms-card glass" role="dialog" aria-labelledby="terms-h">' +
-      '<p class="kicker">HOUZY 5</p><h2 id="terms-h">' + T('Before you continue') + '</h2>' +
+      '<p class="kicker">HOUZY</p><h2 id="terms-h">' + T('Before you continue') + '</h2>' +
       '<p>' + T('By using this site and the HOUZY demo you agree to the {terms} and the {eula}. How we handle data is in the {privacy}.', {
         terms: '<a href="/terms.html">' + T('Terms of Use & Sale') + '</a>',
         eula: '<a href="/eula.html">' + T('Licence Agreement (EULA)') + '</a>',
