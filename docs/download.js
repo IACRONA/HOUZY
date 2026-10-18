@@ -2,8 +2,7 @@
 // UPDATE badge reads. Releasing = upload the files, put the new release FIRST in "releases", keep the last three.
 // Five files per release (win .exe, win_vst3 .zip, mac .pkg, mac_vst3 .zip, mac_au .zip); each key takes the newest
 // release that HAS that file (macOS can ship later than Windows).
-// ONE language on screen: the header's switch (i18n.js) picks it - hash #ru / #es / #pt-BR -, shows that section and
-// says so with "houzy:lang"; this redraws the words that live here.
+// ONE language per file since 18.10.2026 (/download.html, /ru/ /es/ /pt/download.html): the page language is <html lang>.
 (function () {
   var TXT = {
     en: ['What\'s new', 'Latest version', 'Download', 'Installer', 'Download HOUZY', 'Coming soon'],
@@ -11,7 +10,8 @@
     es: ['Novedades', 'Última versión', 'Descargar', 'Instalador', 'Descargar HOUZY', 'Próximamente'],
     pt: ['Novidades', 'Última versão', 'Baixar', 'Instalador', 'Baixar HOUZY', 'Em breve']
   };
-  var L = (/^#(ru|es|pt)/.exec(location.hash) || [])[1] || 'en', data = null;
+  var L = (document.documentElement.lang || 'en').slice(0, 2), data = null;   // 18.10.2026: one language per file (/ru/download.html)
+  if (!TXT[L]) L = 'en';
 
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
   function date(d) { var p = String(d || '').split('-'); return p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : ''; }

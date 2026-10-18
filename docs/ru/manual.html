@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Инструкция HOUZY 5: настройка мастеринг-компрессора | ACRONA</title>
+<meta name="description" content="Как настроить мастеринг-компрессор HOUZY за две минуты: AMOUNT, INPUT, CYCLES, RELEASE и тонкая настройка.">
+<meta name="theme-color" content="#e7e7ef">
+<link rel="canonical" href="https://acronaaudio.shop/ru/manual.html">
+<link rel="alternate" hreflang="en" href="https://acronaaudio.shop/manual.html">
+<link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/manual.html">
+<link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/manual.html">
+<link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/manual.html">
+<link rel="alternate" hreflang="x-default" href="https://acronaaudio.shop/manual.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
+<meta property="og:url" content="https://acronaaudio.shop/ru/manual.html">
+<meta property="og:title" content="Инструкция HOUZY 5: настройка мастеринг-компрессора | ACRONA">
+<meta property="og:description" content="Как настроить мастеринг-компрессор HOUZY за две минуты: AMOUNT, INPUT, CYCLES, RELEASE и тонкая настройка.">
+<meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
+<meta property="og:image:width" content="1640">
+<meta property="og:image:height" content="912">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/site.css?v=20261018c">
+<script>document.documentElement.classList.add('pt')</script>
+<script src="/vendor/framer-motion/dom.js" defer></script>
+<script src="/site.js?v=20261017e" defer></script>
+<script src="/buy.js?v=20261017e" defer></script>
+<script src="/i18n.js?v=20261018e" defer></script>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Инструкция HOUZY 5: настройка мастеринг-компрессора",
+  "inLanguage": "ru",
+  "url": "https://acronaaudio.shop/ru/manual.html",
+  "about": {
+   "@type": "SoftwareApplication",
+   "name": "HOUZY 5",
+   "url": "https://acronaaudio.shop/ru/"
+  },
+  "author": {
+   "@type": "Organization",
+   "name": "ACRONA AUDIO",
+   "url": "https://acronaaudio.shop/"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+   {
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Главная",
+    "item": "https://acronaaudio.shop/ru/"
+   },
+   {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Инструкция HOUZY 5",
+    "item": "https://acronaaudio.shop/ru/manual.html"
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <!-- the same moving background as the home page (site.js starts it) -->
+  <video class="art" autoplay muted playsinline preload="auto" poster="/video/bg-poster.jpg"></video>
+  <video class="art art-b" muted playsinline preload="none"></video>
+</div>
+<div class="veil" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="brand" data-home="" href="/ru/" aria-label="HOUZY — на главную" data-i18n-a="aria-label:91">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg>
+    <b>HOUZY</b><small>ACRONA AUDIO</small>
+  </a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Открыть меню" data-i18n-a="aria-label:92">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" aria-label="Меню" data-i18n-a="aria-label:93">
+    <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
+  </label>
+  <div class="navpanel">
+    <nav class="menu" aria-label="Главное меню" data-i18n-a="aria-label:94">
+      <a data-home="#top" href="/ru/#top" data-i18n="1">Технология</a>
+      <a data-manual href="/ru/manual.html" data-i18n="2">Инструкция</a>
+      <a data-home="#about" href="/ru/#about" data-i18n="3">О проекте</a>
+      <a data-home="#faq" href="/ru/#faq">FAQ</a>
+      <a data-home="#contact" href="/ru/#contact" data-i18n="4">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal dl man">
+  <div class="wrap">
+    <!-- 17.10.2026: like the Download page - one language at a time, picked by the header's switch (i18n.js) -->
+    <div class="glass dl-head">
+      <p class="kicker">HOUZY 5</p>
+      <h1 data-i18n="2">Manual</h1>
+      <p class="dl-ver">AMOUNT · INPUT · CYCLES · RELEASE</p>
+    </div>
+    <section class="glass prose dl-lang" id="ru" lang="ru" data-lang="ru">
+<p class="man-lead">Две минуты от открытия HOUZY до плотного, ровного трека. Та же инструкция встроена в HOUZY 5 — в карточке ACRONA.</p>
+
+<p><b>Режим.</b> Выберите <b>HOUZY</b> — в нём лучшее качество звука.</p>
+<p><b>1. AMOUNT.</b> Начните с ручки AMOUNT. Хорошо сведённому треку для мягкого, умеренного сжатия обычно хватает значений от 15 до 30. В остальных случаях подбирайте на слух.</p>
+<p><b>2. INPUT.</b> После того как настроили сжатие, поднимите INPUT и следите за метром LUFS. Для мягкого звучания достаточно −10…−9 LUFS.</p>
+<p><b>3. CYCLES.</b> Для мягкого кика ставьте от 3 до 4.</p>
+<p><b>4. RELEASE.</b> Оставьте включённым <b>AUTO</b>: плагин сам измеряет, как быстро затухают звуки в треке, и ставит время релиза.</p>
+<p><b>5. BEAT или SMART</b> — выбирайте на слух.</p>
+<ul><li><b>BEAT</b> держит релиз ровно таким, как задано. Звук получается более ровным и пульсирующим в такт.</li><li><b>SMART</b> считает заданный релиз максимумом: если звук затих раньше, плагин отпускает его раньше. Звучит воздушнее и естественнее.</li></ul>
+<p><b>Доводка</b></p>
+<ul><li><b>DASH</b> — если сжатие нравится, но треку не хватает ровности, добавьте DASH.</li><li><b>UPWARD</b> — поднимает тихие участки: хвосты ревербераций, воздух, верх.</li><li><b>CLIP SHAPE</b> — лёгкая сатурация на весь трек. Громкость выравнивается автоматически, поэтому вы слышите окраску, а не прибавку громкости.</li><li><b>ALL MIX</b> — если в целом трек звучит плотно, но выпирает, например, верх или середина, включите ALL MIX и прижмите нужную полосу её ручкой. Чтобы узнать, за какие частоты отвечает полоса, наведите курсор на её ручку и подождите пару секунд: появится подсказка с диапазоном.</li></ul>
+<p><b>Клиппер: HI-Q или ACR.</b> Рекомендуем <b>ACR</b> — наш собственный клиппер. Он убирает искажения туда, где их маскирует удар, поэтому атаки остаются чистыми. Но дело вкуса: попробуйте оба варианта.</p>
+<p><b>OVERSAMPLE.</b> Для работы хватает ×16, для финального рендера ставьте ×32.</p>
+<p><b>TRUE PEAK.</b> Кнопка <b>TP</b> находится на ручке OUTPUT. Включайте её для экспорта на стриминги: она убирает межсэмпловые пики, которые после перекодирования в MP3/AAC дают хруст.</p>
+<p><b>LOOKAHEAD.</b> Не выключайте.</p>
+<div class="glass box"><p><b>Если совсем коротко</b></p><ol><li>AMOUNT от 15 до 30, CYCLES от 3 до 4.</li><li>Поднимите INPUT, если нужно.</li><li>Немного DASH и UPWARD — по вкусу.</li><li>В ALL MIX прижмите то, что выпирает.</li><li>Готово.</li></ol></div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
+      <p>Mastering compressor by ACRONA AUDIO.<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <p class="foot-langs"><a data-home="plugin.html" href="/ru/plugin.html" data-i18n="106">Попробовать в браузере</a><br><a href="/manual.html" hreflang="en" lang="en">English</a> · <a href="/ru/manual.html" hreflang="ru" lang="ru">Русский</a> · <a href="/es/manual.html" hreflang="es" lang="es">Español</a> · <a href="/pt/manual.html" hreflang="pt-BR" lang="pt-BR">Português</a></p>
+    </div>
+    <div>
+      <h2>Legal</h2>
+      <ul>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/cookies.html">Cookie Policy</a></li>
+        <li><a href="/terms.html">Terms of Use &amp; Sale</a></li>
+        <li><a href="/eula.html">Licence Agreement (EULA)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>ACRONA</h2>
+      <ul>
+        <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 ACRONA AUDIO. VST is a trademark of Steinberg Media Technologies GmbH. Audio Units, Logic Pro and macOS are trademarks of Apple Inc. Other names belong to their owners.</p>
+  </div>
+</footer>
+
+</body>
+</html>

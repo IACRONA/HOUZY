@@ -698,3 +698,14 @@ a.tech4-n:hover{transform:scale(1.08)}
 /* footer: the demo link and the four languages as plain links (18.10.2026, SEO: crawlers without JS reach every version) */
 .foot-langs{margin-top:10px;font-size:13px;line-height:1.9;color:var(--sub)}
 .foot-langs a{color:var(--text)}
+/* the language offer (i18n.js, 18.10.2026): instead of redirecting, a small glass card under the header offers the
+   visitor's browser language; "x" or a pick in the menu remembers the answer */
+.lang-offer{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:12px;
+  max-width:calc(100% - 32px);padding:8px 8px 8px 20px;border-radius:999px;font-size:14px;color:var(--ink);animation:lang-offer-in .55s var(--ease-out) both}
+@keyframes lang-offer-in{from{opacity:0;transform:translate(-50%,-10px)}to{opacity:1;transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.lang-offer{animation:none}}
+.lang-offer .cta{min-height:36px;padding:7px 18px;font-size:14px;white-space:nowrap}
+.lang-offer-x{flex:none;width:36px;height:36px;border:0;border-radius:50%;background:none;color:var(--sub);font:inherit;font-size:20px;line-height:1;cursor:pointer}
+.lang-offer-x:hover{background:rgba(255,255,255,.7);color:var(--ink)}
+.lang-offer-x:focus-visible,.lang-offer .cta:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px}
+@media (max-width:520px){.lang-offer{top:68px;flex-wrap:wrap;justify-content:center;border-radius:22px;padding:12px 12px 10px;text-align:center}}

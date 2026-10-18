@@ -13,32 +13,42 @@
 
   // /ru/plugin.html -> /plugin.html ; /ru/ -> /
   var base = location.pathname.replace(/^\/(ru|es|pt)(?=\/|$)/, '') || '/';
-  // 17.10.2026: Download and Manual are ONE file each with the four languages inside; the language lives in the hash
-  // (#ru / #es / #pt-BR - the same anchors the plugin's UPDATE badge opens) and only that section[data-lang] is shown.
-  var hashPage = /(download|manual)\.html$/.test(base);
-  var pageKey = /plugin\.html$/.test(base) ? 'plugin' : hashPage ? 'own' : 'index';   // no "own" head in the files: the page keeps its title
-  var showSections = function (l) {
-    [].forEach.call(document.querySelectorAll('section[data-lang]'), function (s) { s.hidden = s.getAttribute('data-lang') !== l; });
-  };
-  var hashOf = function (l) { return l === 'en' ? '' : '#' + (l === 'pt' ? 'pt-BR' : l); };
-  var hashLang = function () { var m = /^#(ru|es|pt)/.exec(location.hash); return m ? m[1] : 'en'; };
-  if (hashPage) { cur = hashLang(); showSections(cur); }
-  function urlOf(l) { return hashPage ? base + hashOf(l) : l === 'en' ? base : '/' + l + (base === '/' ? '/' : base); }
+  // 18.10.2026: Download and Manual have their own address per language (/ru/download.html ...), like the home page, and
+  // each file holds ONE language (they used to hold four, picked by #ru / #es / #pt-BR - not indexable).
+  var ownPage = /(download|manual)\.html$/.test(base);
+  var pageKey = /plugin\.html$/.test(base) ? 'plugin' : ownPage ? 'own' : 'index';   // no "own" head in the files: the page keeps its title
+  function urlOf(l) { return l === 'en' ? base : '/' + l + (base === '/' ? '/' : base); }
   var indexOf = function (l) { return LANGS.findIndex(function (x) { return x[0] === l; }); };
+  // the old addresses keep working: download.html#ru (the UPDATE badge of HOUZY 5.0.0 opens these) -> /ru/download.html
+  var oldHash = ownPage && cur === 'en' && /^#(ru|es|pt)(-BR)?$/.exec(location.hash);
+  if (oldHash) { location.replace(urlOf(oldHash[1])); return; }
 
-  // ---- 18.10.2026: the first visit to an English address follows the BROWSER language (not the country): the first of the
-  // visitor's languages that the site has wins (nl-NL, ru -> ru; en-US -> stays). A language picked with the button is
-  // remembered and always wins; bots stay on the address they asked for (every version is indexed by its own URL).
+  // ---- 18.10.2026: a visitor whose BROWSER language the site has (ru / es / pt), on an English address, is OFFERED that
+  // version in a small card - not redirected (Google's advice: shared links and crawlers keep the address they asked for).
+  // "Open" and "x" both remember the answer, as does a pick in the language menu; the card never comes back after that.
   var KEY = 'houzy-lang';
   var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) {}
+  var offer = null;
   if (cur === 'en' && !saved && !navigator.webdriver && !/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent)) {
-    var want = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])
+    offer = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])
       .map(function (x) { return String(x).slice(0, 2).toLowerCase(); })
       .filter(function (x) { return indexOf(x) >= 0; })[0];
-    if (want && want !== 'en') {
-      if (!hashPage) { location.replace(urlOf(want) + location.hash); return; }
-      cur = want; history.replaceState(null, '', urlOf(want)); showSections(cur);   // translated below by setLang
-    }
+    if (offer === 'en') offer = null;
+  }
+  function remember(l) { try { localStorage.setItem(KEY, l); } catch (e) {} }
+  if (offer) {
+    var OFFER = { ru: ['Этот сайт есть на русском.', 'Открыть по-русски', 'Закрыть'],
+      es: ['Este sitio está en español.', 'Ver en español', 'Cerrar'],
+      pt: ['Este site está em português.', 'Ver em português', 'Fechar'] }[offer];
+    var card = document.createElement('div'); card.className = 'lang-offer glass'; card.lang = offer === 'pt' ? 'pt-BR' : offer;
+    card.setAttribute('role', 'region'); card.setAttribute('aria-label', OFFER[0]);
+    var msg = document.createElement('span'); msg.textContent = OFFER[0];
+    var go = document.createElement('a'); go.className = 'cta'; go.href = urlOf(offer) + (ownPage ? '' : location.hash); go.textContent = OFFER[1];
+    go.addEventListener('click', function () { remember(offer); });
+    var x = document.createElement('button'); x.type = 'button'; x.className = 'lang-offer-x'; x.setAttribute('aria-label', OFFER[2]); x.textContent = '×';
+    x.addEventListener('click', function () { remember('en'); card.remove(); });
+    card.appendChild(msg); card.appendChild(go); card.appendChild(x);
+    document.body.appendChild(card);
   }
 
   // ---- the control: one button with the current code; a click opens a glass menu with the four languages
@@ -98,7 +108,10 @@
     var home = l === 'en' ? '/' : '/' + l + '/';
     [].forEach.call(document.querySelectorAll('[data-home]'), function (a) { a.setAttribute('href', home + a.getAttribute('data-home')); });
     [].forEach.call(document.querySelectorAll('[data-manual]'), function (a) {
-      a.setAttribute('href', '/manual.html' + (l === 'en' ? '' : '#' + (l === 'pt' ? 'pt-BR' : l)));
+      a.setAttribute('href', (l === 'en' ? '' : '/' + l) + '/manual.html');
+    });
+    [].forEach.call(document.querySelectorAll('a[href$="download.html"]'), function (a) {   // its own address per language too
+      a.setAttribute('href', (l === 'en' ? '' : '/' + l) + '/download.html');
     });
     var h = (data.head || {})[pageKey];
     if (h) {
@@ -110,7 +123,6 @@
     var abs = location.origin + urlOf(l);
     setMeta('link[rel="canonical"]', 'href', abs); setMeta('meta[property="og:url"]', 'content', abs);
     document.documentElement.lang = l;
-    if (hashPage) showSections(l);
     window.dispatchEvent(new CustomEvent('houzy:lang', { detail: l }));   // download.js: its own words
     if (window.houzyI18nSet) window.houzyI18nSet(data.js || {});
     mark(l);
@@ -130,14 +142,15 @@
   box.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a');
     if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+    remember(a.lang);                                   // the visitor's own choice: the offer card never shows again
+    var oc = document.querySelector('.lang-offer'); if (oc) oc.remove();
+    if (ownPage) return;                                // one language per file: the link opens that file
     e.preventDefault();
     open(false);
-    try { localStorage.setItem(KEY, a.lang); } catch (err) {}   // the visitor's own choice beats the browser language
     if (a.lang !== cur) setLang(a.lang, true);
   });
   window.addEventListener('popstate', function () {
-    var m = /^\/(ru|es|pt)(?=\/|$)/.exec(location.pathname), l = hashPage ? hashLang() : m ? m[1] : 'en';
+    var m = /^\/(ru|es|pt)(?=\/|$)/.exec(location.pathname), l = m ? m[1] : 'en';
     if (l !== cur) setLang(l, false);
   });
-  if (hashPage && cur !== 'en') setLang(cur, false);   // opened as download.html#ru: translate the header too
 })();
