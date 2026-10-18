@@ -644,7 +644,7 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
    centre of the bar | the language as a glass chip in the right corner, a twin of the ACRONA AUDIO chip on the left.
    The panel is display:contents on desktop, so the menu and the language are columns of the bar itself. */
 @media (min-width:1000px){
-  .bar{display:grid;grid-template-columns:1fr auto 1fr;padding-right:12px}
+  .bar{display:grid;grid-template-columns:auto 1fr auto;column-gap:12px;padding-right:12px}   /* menu centred in the room between HOUZY and the language: equal gaps in every language */
   .navpanel{display:contents}
   .brand{justify-self:start}
   .navpanel .lang{justify-self:end}
@@ -716,6 +716,8 @@ a.tech4-n:hover{transform:scale(1.08)}
 .why-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 .why-link{margin-top:12px}
 .why-link a{color:var(--accent-ink);text-decoration:underline;text-decoration-color:rgba(31,111,125,.35);text-underline-offset:3px}
-/* 1000-1199 px: the five menu words in the centre need the room - ACRONA AUDIO hides beside HOUZY (measured 18.10.2026:
-   ru menu 493 px, side columns 209 px, HOUZY + ACRONA AUDIO 254 px, HOUZY alone 116 px) */
-@media (min-width:1000px) and (max-width:1199px){.bar .brand small{display:none}}
+/* the price on the Buy key and the trial under Download (18.10.2026): the visitor sees the cost before the click */
+.buy-row .cta.trial{flex-direction:column;gap:1px;line-height:1.15}
+.buy-row .cta.trial small{font-size:12px;letter-spacing:.02em;opacity:.85;font-variation-settings:'wght' 540}
+.buy-row{align-items:stretch}   /* both keys the same height when Download has its second line */
+@media (min-width:1000px){.navpanel .menu{justify-self:center}}
