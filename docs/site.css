@@ -709,3 +709,13 @@ a.tech4-n:hover{transform:scale(1.08)}
 .lang-offer-x:hover{background:rgba(255,255,255,.7);color:var(--ink)}
 .lang-offer-x:focus-visible,.lang-offer .cta:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px}
 @media (max-width:520px){.lang-offer{top:68px;flex-wrap:wrap;justify-content:center;border-radius:22px;padding:12px 12px 10px;text-align:center}}
+/* Why HOUZY page (18.10.2026): the comparison table and the two keys at the end; the link to it from the Problem chapter */
+.why .prose h2{margin-top:28px}
+.why .prose table th[scope="row"]{color:var(--ink);white-space:normal}
+.why .prose thead th:last-child,.why .prose tbody td:last-child{color:var(--accent-ink)}
+.why-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.why-link{margin-top:12px}
+.why-link a{color:var(--accent-ink);text-decoration:underline;text-decoration-color:rgba(31,111,125,.35);text-underline-offset:3px}
+/* 1000-1199 px: the five menu words in the centre need the room - ACRONA AUDIO hides beside HOUZY (measured 18.10.2026:
+   ru menu 493 px, side columns 209 px, HOUZY + ACRONA AUDIO 254 px, HOUZY alone 116 px) */
+@media (min-width:1000px) and (max-width:1199px){.bar .brand small{display:none}}
