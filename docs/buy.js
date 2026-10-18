@@ -80,7 +80,7 @@
     el.addEventListener('blur', function () { st.hover = false; wake(); });
     // 15.10.2026: the shop is Gumroad (licence keys are checked by licence.acronaaudio.shop)
     if (el.classList.contains('buy'))
-      el.addEventListener('click', function () { window.open('https://acronawar.gumroad.com/l/houzy', '_blank', 'noopener'); });
+      el.addEventListener('click', function () { if (el.tagName !== 'A') window.open('https://acronawar.gumroad.com/l/houzy', '_blank', 'noopener'); });   // <a>: the link itself opens Gumroad
     return st;
   });
   var reach = 0, reachV = 0, armFor = null, running = false, last = 0;

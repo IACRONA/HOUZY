@@ -18,13 +18,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
 <meta property="og:url" content="https://acronaaudio.shop/plugin.html">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Try the HOUZY Mastering Compressor in Your Browser | ACRONA AUDIO">
 <meta property="og:description" content="Play with the real HOUZY mastering compressor interface in your browser and hear it on your own track. MP3 or WAV, nothing is uploaded.">
 <meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
 <meta property="og:image:width" content="1640">
 <meta property="og:image:height" content="912">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/site.css?v=20261018q">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
@@ -33,7 +34,7 @@
 <script src="/i18n.js?v=20261018n" defer></script>
 <script src="/plugin.js" defer></script>
 <script src="/houzy-live.js?v=20261014k" defer></script>
-<script src="/buy.js?v=20261017e" defer></script>
+<script src="/buy.js?v=20261018a" defer></script>
 <script type="application/ld+json">
 [
  {
@@ -84,12 +85,18 @@
 </script>
 </head>
 <body>
+<!--email_off-->
 <a class="skip" href="#main" data-i18n="0">Skip to content</a>
 <header class="bar">
   <a data-home="" class="brand" href="/" aria-label="HOUZY home" data-i18n-a="aria-label:91">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg>
     <b>HOUZY</b><small>ACRONA AUDIO</small>
   </a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Open menu" data-i18n-a="aria-label:92">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" aria-label="Menu" data-i18n-a="aria-label:93">
+    <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
+  </label>
   <div class="navpanel">
     <nav class="menu" aria-label="Main" data-i18n-a="aria-label:94">
       <a data-home="#top" href="/#top" data-i18n="1">Technology</a>
@@ -129,7 +136,7 @@
       <button class="pill live-clear" type="button" data-i18n="12">Clear</button>
     </div>
   </div>
-    <div class="buy-row"><button class="cta buy buy-big" type="button" data-i18n="13">Buy HOUZY — $47</button><a class="cta trial dl" href="/download.html" data-i18n="104">Download free<small>14-day trial</small></a></div>
+    <div class="buy-row"><a class="cta buy buy-big" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">Buy HOUZY — $47</a><a class="cta trial dl" href="/download.html" data-i18n="104">Download free<small>14-day trial</small></a></div>
   <section class="demo-guide">
     <div class="demo-more">
       <div class="glass prose">
@@ -143,5 +150,33 @@
     </div>
   </section>
 </main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
+      <p>Mastering compressor by ACRONA AUDIO.<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <p class="foot-langs"><a data-home="plugin.html" href="/plugin.html" data-i18n="106">Try it in your browser</a><br><a href="/plugin.html" hreflang="en" lang="en">English</a> · <a href="/ru/plugin.html" hreflang="ru" lang="ru">Русский</a> · <a href="/es/plugin.html" hreflang="es" lang="es">Español</a> · <a href="/pt/plugin.html" hreflang="pt-BR" lang="pt-BR">Português</a></p>
+    </div>
+    <div>
+      <h2>Legal</h2>
+      <ul>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/cookies.html">Cookie Policy</a></li>
+        <li><a href="/terms.html">Terms of Use &amp; Sale</a></li>
+        <li><a href="/eula.html">Licence Agreement (EULA)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>ACRONA</h2>
+      <ul>
+        <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 ACRONA AUDIO. VST is a trademark of Steinberg Media Technologies GmbH. Audio Units, Logic Pro and macOS are trademarks of Apple Inc. Other names belong to their owners.</p>
+  </div>
+</footer>
+<!--/email_off-->
 </body>
 </html>

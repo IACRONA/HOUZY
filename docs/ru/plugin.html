@@ -25,7 +25,7 @@
 <meta property="og:image:width" content="1640">
 <meta property="og:image:height" content="912">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23e7e7ef'/%3E%3Cpath d='M4 12c2-6 4-6 6 0s4 6 6 0 3-4 4-2' fill='none' stroke='%231f6f7d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/site.css?v=20261018q">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
@@ -34,7 +34,7 @@
 <script src="/i18n.js?v=20261018n" defer></script>
 <script src="/plugin.js" defer></script>
 <script src="/houzy-live.js?v=20261014k" defer></script>
-<script src="/buy.js?v=20261017e" defer></script>
+<script src="/buy.js?v=20261018a" defer></script>
 <script type="application/json" id="i18n-js">{"Before you continue":"Прежде чем продолжить","By using this site and the HOUZY demo you agree to the {terms} and the {eula}. How we handle data is in the {privacy}.":"Пользуясь этим сайтом и демо HOUZY, вы соглашаетесь с {terms} и {eula}. О том, как мы обращаемся с данными, написано в {privacy}.","Terms of Use & Sale":"Условиями использования и продажи (на английском)","Licence Agreement (EULA)":"Лицензионным соглашением (EULA, на английском)","Privacy Policy":"Политике конфиденциальности (на английском)","I agree":"Согласен","Coming soon":"Скоро","Original":"Оригинал","Pause":"Пауза","Play":"Играть","Loading the HOUZY engine…":"Загружаю движок HOUZY…","Reading {name}…":"Читаю {name}…","Decoding {name}…":"Декодирую {name}…","Please choose an MP3 or WAV file":"Выберите файл MP3 или WAV","That file is over {mb} MB":"Файл больше {mb} МБ","This file could not be decoded":"Не удалось декодировать этот файл","Could not start: {msg}":"Не удалось запустить: {msg}","this browser has no AudioWorklet":"в этом браузере нет AudioWorklet","the live demo needs the secure (https) version of this page":"живому демо нужна защищённая (https) версия этой страницы","engine not found":"движок не найден","Track removed from this page. It was never uploaded anywhere.":"Трек убран с этой страницы. Он никуда не загружался.","demo: first 1:15 of {len}":"демо: первые 1:15 из {len}","demo":"демо","{what} — only in the full version":"{what} — только в полной версии","Only in the full version":"Только в полной версии","Oversampling above 16x":"Оверсэмплинг выше 16x","CLASSIC and MODERN":"CLASSIC и MODERN","UPWARD, CHARACTER, CLIP SHAPE and DASH":"UPWARD, CHARACTER, CLIP SHAPE и DASH","Slot {s}":"Слот {s}","Oversampling {n}x · 32x and 64x in the full version":"Оверсэмплинг {n}x · 32x и 64x — в полной версии","Copied {from} to {to}":"Скопировано {from} в {to}","English, Russian, Spanish and Portuguese in the plugin":"В плагине доступны английский, русский, испанский и португальский","Language":"Язык","HOUZY is a new method of compression, invented from scratch. With HOUZY you are buying the best solution there is":"HOUZY — новый метод компрессии, изобретённый с нуля. Покупая HOUZY, вы покупаете лучшее решение из всех возможных"}</script>
 <script type="application/ld+json">
 [
@@ -86,12 +86,18 @@
 </script>
 </head>
 <body>
+<!--email_off-->
 <a class="skip" href="#main" data-i18n="0">Перейти к содержимому</a>
 <header class="bar">
   <a data-home="" class="brand" href="/ru/" aria-label="HOUZY — на главную" data-i18n-a="aria-label:91">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg>
     <b>HOUZY</b><small>ACRONA AUDIO</small>
   </a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Открыть меню" data-i18n-a="aria-label:92">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" aria-label="Меню" data-i18n-a="aria-label:93">
+    <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
+  </label>
   <div class="navpanel">
     <nav class="menu" aria-label="Главное меню" data-i18n-a="aria-label:94">
       <a data-home="#top" href="/ru/#top" data-i18n="1">Технология</a>
@@ -131,7 +137,7 @@
       <button class="pill live-clear" type="button" data-i18n="12">Убрать</button>
     </div>
   </div>
-    <div class="buy-row"><button class="cta buy buy-big" type="button" data-i18n="13">Купить HOUZY — $47</button><a class="cta trial dl" href="/ru/download.html" data-i18n="104">Скачать бесплатно<small>пробный период 14 дней</small></a></div>
+    <div class="buy-row"><a class="cta buy buy-big" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">Купить HOUZY — $47</a><a class="cta trial dl" href="/ru/download.html" data-i18n="104">Скачать бесплатно<small>пробный период 14 дней</small></a></div>
   <section class="demo-guide">
     <div class="demo-more">
       <div class="glass prose">
@@ -145,5 +151,33 @@
     </div>
   </section>
 </main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/ru/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
+      <p>Мастеринг-компрессор от ACRONA AUDIO.<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <p class="foot-langs"><a data-home="plugin.html" href="/ru/plugin.html" data-i18n="106">Попробовать в браузере</a><br><a href="/plugin.html" hreflang="en" lang="en">English</a> · <a href="/ru/plugin.html" hreflang="ru" lang="ru">Русский</a> · <a href="/es/plugin.html" hreflang="es" lang="es">Español</a> · <a href="/pt/plugin.html" hreflang="pt-BR" lang="pt-BR">Português</a></p>
+    </div>
+    <div>
+      <h2>Правовые документы</h2>
+      <ul>
+        <li><a href="/privacy.html">Политика конфиденциальности (EN)</a></li>
+        <li><a href="/cookies.html">Политика cookie (EN)</a></li>
+        <li><a href="/terms.html">Условия использования и продажи (EN)</a></li>
+        <li><a href="/eula.html">Лицензионное соглашение (EULA, EN)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>ACRONA</h2>
+      <ul>
+        <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 ACRONA AUDIO. HOUZY, ACR и T8 — названия ACRONA AUDIO. VST — торговая марка Steinberg Media Technologies GmbH. Audio Units, Logic Pro и macOS — торговые марки Apple Inc. Остальные названия принадлежат их владельцам.</p>
+  </div>
+</footer>
+<!--/email_off-->
 </body>
 </html>
