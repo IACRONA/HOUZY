@@ -41,7 +41,7 @@
     a.innerHTML = '<b>' + l[1] + '</b>' + l[2];
     menu.appendChild(a); return a;
   });
-  nav.insertBefore(box, nav.querySelector('.nav-cta') || null);   // before the Buy + Download pair
+  nav.appendChild(box);   // the last column of the bar: the right corner (18.10.2026, Buy / Download left the header)
   // an old stylesheet from the browser cache (a page cached before this switch existed) has no rules for the menu, and the four
   // languages would spill into the header as a row of text: hide the switch and fetch the current stylesheet.
   if (getComputedStyle(menu).flexDirection !== 'column') {
