@@ -276,6 +276,8 @@
     var p = toBase(e);
     if (active && last) {
       if (isSlider(active)) setFromSlider(active, p);
+      // AMOUNT as in the plugin (PluginEditor: RotaryVerticalDrag, setMouseDragSensitivity 1200): vertical only, twice the travel
+      else if (active === AMT) active.v = clamp(active.v + (last[1] - e.clientY) / 1200 * (active.max - active.min), active.min, active.max);
       else active.v = clamp(active.v + ((e.clientX - last[0]) + (last[1] - e.clientY)) / 600 * (active.max - active.min), active.min, active.max);
       last = [e.clientX, e.clientY];
     } else { hovered = hit(p); cv.style.cursor = hovered || overZone(p) ? 'pointer' : 'default'; }

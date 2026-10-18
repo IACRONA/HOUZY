@@ -188,4 +188,13 @@
     if (!track || /INPUT|TEXTAREA|BUTTON/.test(document.activeElement.tagName)) return;
     if (e.code === 'Space') { e.preventDefault(); playing ? pause() : play(); }
   });
+  // AMOUNT at 30 and above (owner, 18.10.2026): one hint per climb - loudness belongs to INPUT, not to more compression.
+  // Back under 28 re-arms it. Covers the panel knob and the phone slider (both end in "houzy-amount").
+  var amtWarned = false;
+  document.addEventListener('houzy-amount', function (e) {
+    var v = +e.detail;
+    if (v >= 30 && !amtWarned) { amtWarned = true; say(T("We don't recommend AMOUNT above 30. Need more loudness? Raise INPUT."), 5500); }
+    else if (v < 28) amtWarned = false;
+  });
+
 })();
