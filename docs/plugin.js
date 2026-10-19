@@ -306,7 +306,7 @@
   // 2x of the 740 x 500 grid, WebP. The flipped bakes load only when a switch first leaves its default.
   var BAKE = 2, ALT = new Image(), OS4 = new Image(), T8 = new Image(), bakeDir = '/img/plugin/t1/';   // DARKIK by default
   ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T8.file = 'chrome_t8.webp';
-  var BAKE_V = '?v=20261019a';   // the bakes change with the panel (LOOKAHEAD gone 19.10.2026)
+  var BAKE_V = '?v=20261019b';   // the bakes change with the panel (LOOKAHEAD gone 19.10.2026)
   var STATE = { allmix: 0, bypass: 0, gainmatch: 0, clipmode: 2, limmode: 1, relsmart: 1,
                 osfactor: 4, autogain: 1, relauto: 1, truepeak: 0 };
   var DEF = JSON.parse(JSON.stringify(STATE));
