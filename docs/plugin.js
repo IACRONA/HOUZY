@@ -304,7 +304,7 @@
   // second bake with every switch flipped (chrome_alt) and one at 4x (chrome_os4). A switch away from
   // its default is drawn by pasting its own region from the other bake - the plugin's real look.
   // 2x of the 740 x 500 grid, WebP. The flipped bakes load only when a switch first leaves its default.
-  var BAKE = 2, ALT = new Image(), OS4 = new Image(), T8 = new Image(), bakeDir = '/img/plugin/t1/';   // DARKIK by default
+  var BAKE = 2, ALT = new Image(), OS4 = new Image(), T8 = new Image(), bakeDir = '/img/plugin/t5/';   // UILIK by default (19.10.2026)
   ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T8.file = 'chrome_t8.webp';
   var BAKE_V = '?v=20261019b';   // the bakes change with the panel (LOOKAHEAD gone 19.10.2026)
   var STATE = { allmix: 0, bypass: 0, gainmatch: 0, clipmode: 2, limmode: 1, relsmart: 1,
@@ -424,7 +424,7 @@
     };
     next.src = dir + 'chrome.webp' + BAKE_V;
   }
-  var themeMenu = makeMenu('THEMES', THEMES.map(function (t) { return t[0]; }), 12.7, setTheme, 1);
+  var themeMenu = makeMenu('THEMES', THEMES.map(function (t) { return t[0]; }), 12.7, setTheme, 4);
 
   // UI: the four spheres (kOrbColours) and UI OFF, which stops the picture
   var ORBS = [['MINT', 0x33B9B9, 0xFFFFFF, 0xFFFFFF], ['GRAPHITE', 0x5A6B6B, 0xFFFFFF, 0xFFFFFF],
