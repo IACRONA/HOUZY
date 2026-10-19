@@ -41,8 +41,6 @@ para onde a batida a esconde, então os ataques ficam limpos. Mas é questão de
 **TRUE PEAK.** O botão **TP** fica no knob OUTPUT. Ligue ao exportar para streaming: ele remove
 os picos entre amostras que estalam depois da conversão para MP3/AAC.
 
-**LOOKAHEAD.** Deixe sempre ligado.
-
 > **Resumindo**
 > 1. AMOUNT entre 15 e 30, CYCLES entre 3 e 4.
 > 2. Suba o INPUT se precisar.

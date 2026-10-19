@@ -1,5 +1,5 @@
 {
-  "base": [740, 500], "scale": 3,
+  "base": [740, 500], "scale": 2,
   "items": [
     {"id": "glassRoot", "kind": "other", "type": "HouseCompAudioProcessorEditor::Content", "text": "", "r": [0, 0, 740, 500]},
     {"id": "amount", "kind": "knob", "type": "WheelSlider", "text": "", "r": [317, 164, 195, 221], "min": 0, "max": 100, "value": 15, "prop": 0.1500},
@@ -55,7 +55,6 @@
     {"id": "", "kind": "other", "type": "LinkByline", "text": "", "r": [44, 45, 740, 14]},
     {"id": "", "kind": "button", "type": "HoverToggle", "text": "BYPASS", "r": [95, 76, 68, 24], "on": false},
     {"id": "", "kind": "button", "type": "HoverToggle", "text": "ALL MIX", "r": [12, 76, 67, 24], "on": false},
-    {"id": "", "kind": "button", "type": "HoverToggle", "text": "LOOKAHEAD", "r": [179, 76, 90, 24], "on": true},
     {"id": "", "kind": "button", "type": "HoverToggle", "text": "GAIN MATCH", "r": [541, 76, 90, 24], "on": false},
     {"id": "", "kind": "other", "type": "SegmentedSwitch", "text": "", "r": [508, 334, 100, 20]},
     {"id": "", "kind": "other", "type": "SegmentedSwitch", "text": "", "r": [508, 362, 100, 20]},

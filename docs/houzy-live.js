@@ -52,7 +52,7 @@
       ctx = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
       // browsers give a page AudioWorklet only over https (or on localhost): say so instead of blaming the browser
       if (!ctx.audioWorklet) throw new Error(window.isSecureContext ? T('this browser has no AudioWorklet') : T('the live demo needs the secure (https) version of this page'));
-      var res = await fetch('/houzy-engine.wasm?v=20261014j');
+      var res = await fetch('/houzy-engine.wasm?v=20261019a');
       if (!res.ok) throw new Error(T('engine not found'));
       var total = +res.headers.get('content-length') || 0, got = 0, parts = [], reader = res.body.getReader();
       for (;;) {
@@ -80,8 +80,7 @@
     engineReady.catch(function () { engineReady = null; });
     return engineReady;
   }
-  var LOCKED = { limmode: 'T8', osfactor: 'Oversampling above 16x', enginemode: 'CLASSIC and MODERN',
-                 upcomp: 'UPWARD', character: 'CHARACTER', clipshape: 'CLIP SHAPE', dash: 'DASH' };
+  var LOCKED = { osfactor: 'Oversampling above 16x', enginemode: 'CLASSIC and MODERN', character: 'CHARACTER', allmix: 'ALL MIX' };
 
   function readFile(file) {
     return new Promise(function (ok, fail) {
@@ -188,13 +187,4 @@
     if (!track || /INPUT|TEXTAREA|BUTTON/.test(document.activeElement.tagName)) return;
     if (e.code === 'Space') { e.preventDefault(); playing ? pause() : play(); }
   });
-  // AMOUNT at 30 and above (owner, 18.10.2026): one hint per climb - loudness belongs to INPUT, not to more compression.
-  // Back under 28 re-arms it. Covers the panel knob and the phone slider (both end in "houzy-amount").
-  var amtWarned = false;
-  document.addEventListener('houzy-amount', function (e) {
-    var v = +e.detail;
-    if (v >= 30 && !amtWarned) { amtWarned = true; say(T("We don't recommend AMOUNT above 30. Need more loudness? Raise INPUT."), 5500); }
-    else if (v < 28) amtWarned = false;
-  });
-
 })();

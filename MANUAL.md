@@ -41,8 +41,6 @@ where the hit masks it, so the attacks stay clean. Still, it's a matter of taste
 **TRUE PEAK.** The **TP** button sits on the OUTPUT knob. Turn it on when you export for
 streaming: it removes the inter-sample peaks that crackle after conversion to MP3/AAC.
 
-**LOOKAHEAD.** Keep it on.
-
 > **In short**
 > 1. AMOUNT 15 to 30, CYCLES 3 to 4.
 > 2. Raise INPUT if needed.

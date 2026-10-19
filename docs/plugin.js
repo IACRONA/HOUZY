@@ -304,33 +304,34 @@
   // second bake with every switch flipped (chrome_alt) and one at 4x (chrome_os4). A switch away from
   // its default is drawn by pasting its own region from the other bake - the plugin's real look.
   // 2x of the 740 x 500 grid, WebP. The flipped bakes load only when a switch first leaves its default.
-  var BAKE = 2, ALT = new Image(), OS4 = new Image(), bakeDir = '/img/plugin/t1/';   // DARKIK by default
-  ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp';
-  var STATE = { allmix: 0, bypass: 0, lookahead: 1, gainmatch: 0, clipmode: 2, limmode: 1, relsmart: 1,
+  var BAKE = 2, ALT = new Image(), OS4 = new Image(), T8 = new Image(), bakeDir = '/img/plugin/t1/';   // DARKIK by default
+  ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T8.file = 'chrome_t8.webp';
+  var BAKE_V = '?v=20261019a';   // the bakes change with the panel (LOOKAHEAD gone 19.10.2026)
+  var STATE = { allmix: 0, bypass: 0, gainmatch: 0, clipmode: 2, limmode: 1, relsmart: 1,
                 osfactor: 4, autogain: 1, relauto: 1, truepeak: 0 };
   var DEF = JSON.parse(JSON.stringify(STATE));
   // GAIN MATCH starts OFF, as in the plugin (it was on in the demo, to compare at matched loudness; the visitor can switch it on)
   // layout.json (base 740 x 500)
   var R = {
-    allmix: [12, 76, 67, 24], bypass: [95, 76, 68, 24], lookahead: [179, 76, 90, 24], gainmatch: [541, 76, 90, 24],
+    allmix: [12, 76, 67, 24], bypass: [95, 76, 68, 24], gainmatch: [541, 76, 90, 24],
     engine: [319, 78, 190, 20], clipmode: [508, 334, 100, 20], limmode: [508, 362, 100, 20], relsmart: [508, 390, 100, 20],
     osfactor: [86, 470, 64, 22], autogain: [368, 136, 92, 14], relauto: [551, 278, 34, 12], truepeak: [141, 428, 20, 12],
     bands: [8, 100, 198, 260], presets: [12, 22, 74, 17], themes: [94, 22, 74, 17], ui: [176, 22, 40, 17],
     a: [590, 22, 30, 17], copy: [624, 22, 24, 17], b: [652, 22, 30, 17], lang: [698, 22, 30, 17],
     rms: [630, 108, 44, 378], lufs: [678, 108, 44, 378], graph: [214, 430, 400, 62]
   };
-  // UPWARD / CHARACTER / CLIP SHAPE / DASH are the full version: dimmed, not draggable, held in the .wasm too
-  var SHAPING = ['upward', 'character', 'clipshape', 'dash'];
-  SLIDERS.forEach(function (c) { if (SHAPING.indexOf(c.id) >= 0) c.off = true; });
-  R.shaping = [210, 302, 154, 112];
-  function drawShapingLock() {      // the baked captions dimmed like the sliders beside them
-    var g = ctx.createLinearGradient(R.shaping[0], 0, R.shaping[0] + 80, 0);
+  // CHARACTER (does nothing in HOUZY) and ALL MIX with its band controls are the full version: not draggable,
+  // held in the .wasm too. UPWARD / CLIP SHAPE / DASH and T8 are open (owner, 19.10.2026); LOOKAHEAD is always on.
+  all.forEach(function (c) { if (c.id === 'character' || /^(sub|low|lomid|mid|himid|high|gain\d)$/.test(c.id)) c.off = true; });
+  R.character = [210, 330, 154, 28];
+  function drawShapingLock() {      // the baked caption dimmed like the slider beside it
+    var g = ctx.createLinearGradient(R.character[0], 0, R.character[0] + 80, 0);
     g.addColorStop(0, 'rgba(18,25,27,0.62)'); g.addColorStop(0.7, 'rgba(18,25,27,0.62)'); g.addColorStop(1, 'rgba(18,25,27,0)');
-    ctx.fillStyle = g; ctx.fillRect(R.shaping[0] + 2, R.shaping[1], 80, R.shaping[3]);
+    ctx.fillStyle = g; ctx.fillRect(R.character[0] + 2, R.character[1], 80, R.character[3]);
   }
-  var PATCHES = ['allmix', 'lookahead', 'gainmatch', 'clipmode', 'limmode', 'relsmart', 'osfactor', 'autogain', 'relauto', 'truepeak'];
+  var PATCHES = ['allmix', 'gainmatch', 'clipmode', 'limmode', 'relsmart', 'osfactor', 'autogain', 'relauto', 'truepeak'];
   function paste(img, r, pad) {
-    if (!img.getAttribute('src')) img.src = bakeDir + img.file;
+    if (!img.getAttribute('src')) img.src = bakeDir + img.file + BAKE_V;
     if (!img.complete || !img.naturalWidth) return;
     var x = r[0] - pad, y = r[1] - pad, w = r[2] + 2 * pad, h = r[3] + 2 * pad;
     ctx.drawImage(img, x * BAKE, y * BAKE, w * BAKE, h * BAKE, x, y, w, h);
@@ -339,7 +340,7 @@
     if (STATE.allmix !== DEF.allmix) paste(ALT, R.bands, 0);
     PATCHES.forEach(function (k) {
       if (STATE[k] === DEF[k]) return;
-      var img = k === 'osfactor' ? (STATE.osfactor === 2 ? OS4 : ALT) : ALT;
+      var img = k === 'osfactor' ? (STATE.osfactor === 2 ? OS4 : ALT) : k === 'limmode' && STATE.limmode === 3 ? T8 : ALT;
       paste(img, R[k], 3);
     });
   }
@@ -419,9 +420,9 @@
     var next = new Image();
     next.onload = function () {
       chromeImg.src = next.src; bakeDir = dir;
-      [ALT, OS4].forEach(function (im) { if (im.getAttribute('src')) im.src = dir + im.file; });   // reload only what was in use
+      [ALT, OS4, T8].forEach(function (im) { if (im.getAttribute('src')) im.src = dir + im.file + BAKE_V; });   // reload only what was in use
     };
-    next.src = dir + 'chrome.webp';
+    next.src = dir + 'chrome.webp' + BAKE_V;
   }
   var themeMenu = makeMenu('THEMES', THEMES.map(function (t) { return t[0]; }), 12.7, setTheme, 1);
 
@@ -452,13 +453,14 @@
     if (inR(p, R.ui)) { toggleMenu(uiMenu); return; }
     menus.forEach(function (m) { m.hidden = true; });
     if (inR(p, R.bypass)) { if (window.houzyBypass) window.houzyBypass(); return; }
-    ['allmix', 'lookahead', 'gainmatch', 'autogain', 'relauto', 'truepeak'].forEach(function (k) {
+    ['gainmatch', 'autogain', 'relauto', 'truepeak'].forEach(function (k) {
       if (inR(p, R[k])) setState(k, STATE[k] ? 0 : 1);
     });
-    if (inR(p, R.shaping)) { locked('UPWARD, CHARACTER, CLIP SHAPE and DASH'); return; }
+    if (inR(p, R.allmix) || inR(p, R.bands)) { locked('ALL MIX'); return; }
+    if (inR(p, R.character)) { locked('CHARACTER'); return; }
     if (inR(p, R.engine)) { if (third(p, R.engine) < 2) locked('CLASSIC and MODERN'); return; }
     if (inR(p, R.clipmode)) setState('clipmode', half(p, R.clipmode) ? 2 : 1);
-    if (inR(p, R.limmode)) { var t = third(p, R.limmode); if (t === 2) locked('T8'); else setState('limmode', t); }
+    if (inR(p, R.limmode)) { var t = third(p, R.limmode); setState('limmode', t === 2 ? 3 : t); }
     if (inR(p, R.relsmart)) setState('relsmart', half(p, R.relsmart));
     if (inR(p, R.osfactor)) {       // 16x -> 4x -> 8x -> 16x; 32x and 64x are the full version
       var next = STATE.osfactor === 4 ? 2 : STATE.osfactor === 2 ? 3 : 4;
