@@ -45,7 +45,7 @@
   }
 
   // the engine: fetched once, with progress; the worklet gets the bytes
-  var engineReady = null;
+  var engineReady = null, wasmBytes = null;
   function startEngine() {
     if (engineReady) return engineReady;
     engineReady = (async function () {
@@ -62,6 +62,7 @@
       }
       var wasm = new Uint8Array(got), at = 0;
       parts.forEach(function (p) { wasm.set(p, at); at += p.length; });
+      wasmBytes = wasm;            // kept for the WAV export (a second, offline engine)
       await ctx.audioWorklet.addModule('/houzy-worklet.js');
       node = new AudioWorkletNode(ctx, 'houzy', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [2],
         processorOptions: { wasm: wasm.buffer, host: location.hostname } });
@@ -175,6 +176,74 @@
     playBtn.textContent = T('Play'); barFill.style.width = '0%';
     if (!silent) say(T('Track removed from this page. It was never uploaded anywhere.'), 3200);
   }
+
+  // Download (20.10.2026): the same 75 s demo through a second engine in an OfflineAudioContext, with the current knobs,
+  // as a 24-bit WAV. Never longer than the demo: it renders `track`, which demoCut already stopped at 75 s (and the .wasm
+  // goes silent after 75.5 s of music on its own). The engine starts asynchronously (wasm compile in the worklet), so
+  // rendering pauses at 0.25 s until it says "ready"; the track starts at 0.5 s and the engine's delay is cut off the front.
+  var dlBtn = $('.live-dl'), rendering = false;
+  // one offline pass through a fresh engine with the current knobs: `buf` starts at 0.5 s, the result is `len` samples long
+  async function renderThrough(buf, len) {
+    var sr = buf.sampleRate, lead = Math.round(0.5 * sr);
+    var off = new OfflineAudioContext(2, lead + len, sr);
+    await off.audioWorklet.addModule('/houzy-worklet.js');
+    var en = new AudioWorkletNode(off, 'houzy', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [2],
+      processorOptions: { wasm: wasmBytes.buffer.slice(0), host: location.hostname } });
+    var ready = new Promise(function (ok, fail) {
+      en.port.onmessage = function (e) {
+        if (e.data.type === 'ready') ok(); else if (e.data.type === 'error') fail(new Error(e.data.message));
+      };
+    });
+    Object.keys(params).forEach(function (k) { en.port.postMessage({ id: k, value: params[k] }); });
+    en.port.postMessage({ id: 'bypass', value: 0 });               // the download is always the processed sound
+    var s = off.createBufferSource(); s.buffer = buf; s.connect(en); en.connect(off.destination); s.start(lead / sr);
+    var gate = off.suspend(Math.floor(0.25 * sr / 128) * 128 / sr)   // suspend times snap to the 128-sample quantum
+      .then(function () { return ready; }).then(function () { off.resume(); });
+    var out = await off.startRendering();
+    await gate;
+    return { out: out, lead: lead };
+  }
+  async function exportWav() {
+    if (!track || !wasmBytes || rendering) return;
+    rendering = true; dlBtn.disabled = true;
+    try {
+      var sr = track.sampleRate, n = track.length - Math.round(GAP_S * sr);
+      progress(null, T('Rendering the 75 s demo…'));
+      // the delay is MEASURED, not taken from the engine: its reported latency is short of the real one by a few hundred
+      // samples (oversampling filters, ADAA). A click through an engine with the same knobs shows where sound comes out.
+      var click = ctx.createBuffer(2, sr, sr); click.getChannelData(0)[0] = click.getChannelData(1)[0] = 0.25;
+      var ci = await renderThrough(click, sr), cd = ci.out.getChannelData(0), at = ci.lead, mx = 0;
+      for (var i = ci.lead; i < cd.length; i++) if (Math.abs(cd[i]) > mx) { mx = Math.abs(cd[i]); at = i; }
+      var delay = at - ci.lead;
+      var r = await renderThrough(track, n + delay + 128), from = r.lead + delay,
+          L = r.out.getChannelData(0).subarray(from, from + n), R = r.out.getChannelData(1).subarray(from, from + n);
+      var blob = wav24(L, R, sr), a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = (nameEl.textContent.split(' — ')[0].replace(/\.(mp3|wav)$/i, '') || 'track') + ' (HOUZY demo).wav';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
+      prog.hidden = true;
+      say(T('Saved: the first 75 s, processed by HOUZY'), 3200);
+    } catch (e) {
+      prog.hidden = true;
+      say(T('Could not render: {msg}', { msg: e.message }), 4000);
+    }
+    rendering = false; dlBtn.disabled = false;
+  }
+  function wav24(L, R, sr) {
+    var n = L.length, data = n * 6, b = new DataView(new ArrayBuffer(44 + data)), p = 0;
+    function str(s) { for (var i = 0; i < s.length; i++) b.setUint8(p++, s.charCodeAt(i)); }
+    function u32(v) { b.setUint32(p, v, true); p += 4; }
+    function u16(v) { b.setUint16(p, v, true); p += 2; }
+    str('RIFF'); u32(36 + data); str('WAVE'); str('fmt '); u32(16); u16(1); u16(2); u32(sr); u32(sr * 6); u16(6); u16(24);
+    str('data'); u32(data);
+    for (var i = 0; i < n; i++) for (var c = 0; c < 2; c++) {
+      var v = Math.max(-1, Math.min(1, (c ? R : L)[i])), x = Math.round(v * 8388607);
+      b.setUint8(p++, x & 255); b.setUint8(p++, (x >> 8) & 255); b.setUint8(p++, (x >> 16) & 255);
+    }
+    return new Blob([b.buffer], { type: 'audio/wav' });
+  }
+  if (dlBtn) dlBtn.addEventListener('click', exportWav);
 
   playBtn.addEventListener('click', function () { playing ? pause() : play(); });
   abBtn.addEventListener('click', function () { setBypass(!bypass); });
