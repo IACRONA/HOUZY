@@ -57,7 +57,7 @@ feature unlocked, then a one-time **$47** for a lifetime licence on two computer
   English, Russian, Spanish and Portuguese
 - **More stable** — no crash when closing the plugin window, protection against broken or
   extremely loud samples at the input, safe handling of unusual buffers
-- **PUNCH from 0 to 100**, shorter and clearer tooltips, a smoother panel while a track plays
+- **Shorter and clearer tooltips**, a smoother panel while a track plays
 - **macOS** — VST3 and AU, Universal (Apple Silicon and Intel)
 
 > **Using HOUZY 4.8?** The **UPDATE** badge in the plugin now opens the download page on
@@ -249,8 +249,7 @@ position of the switch.
 - **GAIN MATCH** — matches the output to the input level so **BYPASS compares character
   rather than loudness**. Without it the plugin is always louder, and "better" just
   means "louder"
-- **DASH** — one knob takes the compressor from punchy to even. **PUNCH** shares its row
-  (click the label to swap): how much of each hit is left untouched
+- **DASH** — one knob takes the compressor from punchy to even
 - **UPWARD** — upward compression: lifts the quiet parts — reverb tails, air, detail
 - **CLIP SHAPE** — in HOUZY, a light saturation across the whole spectrum with automatic
   level compensation; in CLASSIC / MODERN, how soft the clipper cuts
