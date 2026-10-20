@@ -896,3 +896,4 @@ a.tech4-n:hover{transform:scale(1.08)}
 .up-card{max-width:680px;margin:0 auto}
 .up-lead{margin:0 0 20px;font-size:17px;line-height:1.55;color:var(--text)}
 .up-code{margin:8px 0 20px;font-size:15px;color:var(--sub)}
+.was-btn{text-decoration:line-through;text-decoration-thickness:2px;opacity:.6;font-variation-settings:'wght' 500}
