@@ -1,12 +1,14 @@
 {
   "version": "5.0.0",
-  "version_win": "5.0.0",
+  "version_win": "5.0.1",
   "version_mac": "5.0.1",
   "url": "https://acronaaudio.shop/download.html",
   "releases": [
     {
       "version": "5.0.1",
       "date": "2026-10-20",
+      "win": "https://acronawar.gumroad.com/l/houzy-trial",
+      "win_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
       "mac": "https://acronawar.gumroad.com/l/houzy-trial",
       "mac_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
       "mac_au": "https://acronawar.gumroad.com/l/houzy-trial",

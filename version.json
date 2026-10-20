@@ -1,13 +1,13 @@
 {
   "version":     "5.0.0",
-  "version_win": "5.0.0",
+  "version_win": "5.0.1",
   "version_mac": "5.0.1",
 
-  "url_win":      "https://acronaaudio.shop/download.html",
-  "url_mac_vst3": "https://acronaaudio.shop/download.html",
-  "url_mac_au":   "https://acronaaudio.shop/download.html",
-  "url_en":       "https://acronaaudio.shop/download.html",
-  "url_ru":       "https://acronaaudio.shop/ru/download.html",
+  "url_win":      "https://acronaaudio.shop/upgrade.html",
+  "url_mac_vst3": "https://acronaaudio.shop/upgrade.html",
+  "url_mac_au":   "https://acronaaudio.shop/upgrade.html",
+  "url_en":       "https://acronaaudio.shop/upgrade.html",
+  "url_ru":       "https://acronaaudio.shop/ru/upgrade.html",
 
   "notes_ru": "HOUZY 5 — новый дизайн Liquid Glass, лимитер T8, на треть меньше нагрузка. Скачать — на acronaaudio.shop",
 

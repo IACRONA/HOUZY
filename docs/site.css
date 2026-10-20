@@ -885,3 +885,14 @@ a.tech4-n:hover{transform:scale(1.08)}
    wrapped into a tall column and the 999 px radius made it a circle over the whole window - size it to the text instead */
 .live-toast{width:max-content;max-width:86%;border-radius:16px;text-align:center;line-height:1.35}
 @media (max-width:640px){.live-toast{max-width:92%;bottom:4%;padding:7px 12px;font-size:12px;border-radius:12px}}
+
+/* 20.10.2026: launch price - the old price struck through, FIRST20 offer under the hero keys and in the sales card, /upgrade.html */
+.sale-price .was{font-size:.42em;color:var(--dim);text-decoration:line-through;text-decoration-thickness:2px;margin-right:.28em;vertical-align:.38em;font-variation-settings:'wght' 500}
+.promo{width:fit-content;max-width:min(46em,100%);margin:16px auto 0;padding:10px 20px;border-radius:18px;background:var(--glass-strong);box-shadow:var(--rim);
+  -webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);text-align:center;font-size:15px;line-height:1.5;color:var(--text)}
+.promo a,.sale-promo a{color:var(--accent-deep);font-weight:600;text-decoration:underline;text-decoration-color:rgba(20,82,93,.35);text-underline-offset:3px}
+.sale-promo{margin:-8px 0 16px;font-size:14px;line-height:1.45;color:var(--text)}
+@media (min-width:861px){.sale .sale-promo{margin:6px 0 0}}
+.up-card{max-width:680px;margin:0 auto}
+.up-lead{margin:0 0 20px;font-size:17px;line-height:1.55;color:var(--text)}
+.up-code{margin:8px 0 20px;font-size:15px;color:var(--sub)}
