@@ -1,9 +1,22 @@
 {
   "version": "5.0.0",
   "version_win": "5.0.0",
-  "version_mac": "5.0.0",
+  "version_mac": "5.0.1",
   "url": "https://acronaaudio.shop/download.html",
   "releases": [
+    {
+      "version": "5.0.1",
+      "date": "2026-10-20",
+      "mac": "https://acronawar.gumroad.com/l/houzy-trial",
+      "mac_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
+      "mac_au": "https://acronawar.gumroad.com/l/houzy-trial",
+      "notes": {
+        "en": "HOUZY is now on macOS: VST3 and AU, Apple Silicon and Intel.\nA licence key entered in one plugin window now reaches all open windows at once.\nEntering a new key frees the computer slot of the old one.",
+        "ru": "HOUZY вышел на macOS: VST3 и AU, Apple Silicon и Intel.\nКлюч лицензии, введённый в одном окне плагина, сразу доходит до всех открытых окон.\nВвод нового ключа освобождает место компьютера у старого.",
+        "es": "HOUZY ya está en macOS: VST3 y AU, Apple Silicon e Intel.\nUna clave de licencia introducida en una ventana del plugin llega al instante a todas las ventanas abiertas.\nAl introducir una clave nueva se libera el puesto de computadora de la anterior.",
+        "pt": "O HOUZY chegou ao macOS: VST3 e AU, Apple Silicon e Intel.\nUma chave de licença inserida em uma janela do plugin chega na hora a todas as janelas abertas.\nAo inserir uma chave nova, a vaga de computador da antiga é liberada."
+      }
+    },
     {
       "version": "5.0.0",
       "date": "2026-10-17",

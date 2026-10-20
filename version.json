@@ -1,15 +1,15 @@
 {
-  "version":     "4.8.0",
-  "version_win": "4.8.0",
-  "version_mac": "4.7.0",
+  "version":     "5.0.0",
+  "version_win": "5.0.0",
+  "version_mac": "5.0.1",
 
-  "url_win":      "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-Setup.exe",
-  "url_mac_vst3": "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-VST3.zip",
-  "url_mac_au":   "https://github.com/IACRONA/HOUZY/raw/main/Releases/HOUZY-macOS-AU.zip",
-  "url_en":       "https://github.com/IACRONA/HOUZY",
-  "url_ru":       "https://github.com/IACRONA/HOUZY",
+  "url_win":      "https://acronaaudio.shop/download.html",
+  "url_mac_vst3": "https://acronaaudio.shop/download.html",
+  "url_mac_au":   "https://acronaaudio.shop/download.html",
+  "url_en":       "https://acronaaudio.shop/download.html",
+  "url_ru":       "https://acronaaudio.shop/ru/download.html",
 
-  "notes_ru": "AUTO GAIN в HOUZY возвращает потерю; кнопка TP; без щелчков при переключении; меньше нагрузка",
+  "notes_ru": "HOUZY 5 — новый дизайн Liquid Glass, лимитер T8, на треть меньше нагрузка. Скачать — на acronaaudio.shop",
 
-  "notes_en": "AUTO GAIN in HOUZY gives the level back; TP button; no clicks when switching; lighter on CPU"
+  "notes_en": "HOUZY 5 — new Liquid Glass design, T8 limiter, a third less CPU. Download at acronaaudio.shop"
 }

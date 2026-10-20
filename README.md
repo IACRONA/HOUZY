@@ -4,20 +4,77 @@
 
 # HOUZY
 
-<sup>**v4.8.0** · 27 September 2026</sup>
+<sup>**v5.0.1** · 20 October 2026</sup>
 
-**A next-generation mastering compressor**
+**The mastering compressor for electronic & dance music**
 
-Three original technologies: **HOUZY** — loud sounds don't drag the rest down, and the compression stays equally steady in loud and quiet parts,
-**ACR** — a clipper that stops chopping the highs,
-**CYCLES / NOTE** — attack in wave cycles and release in beat fractions or milliseconds.
+Four original technologies: **HOUZY** — compresses every tone on its own, with no shared gain and no pumping,
+**ACR** — a clipper that cancels peaks instead of slicing them, so the punch stays,
+**T8** — a limiter that moves gain only at zero crossings, so the bass and kick keep their shape,
+**CYCLES / NOTE** — attack in wave cycles, release in fractions of a bar.
 
-[![Version](https://img.shields.io/badge/version-4.8.0-8dcad4?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-5.0.1-8dcad4?style=flat-square)]()
 [![Windows](https://img.shields.io/badge/Windows-VST3-8dcad4?style=flat-square)]()
 [![macOS](https://img.shields.io/badge/macOS-VST3%20%2B%20AU-8dcad4?style=flat-square)]()
-[![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
+[![Trial](https://img.shields.io/badge/14--day%20trial-free-3ddc84?style=flat-square)]()
 
 <br>
+
+## ✦ HOUZY 5 is out
+
+### [⬇ Download HOUZY 5 — acronaaudio.shop](https://acronaaudio.shop/download.html)
+
+**[acronaaudio.shop](https://acronaaudio.shop)** · [Buy — $47](https://acronawar.gumroad.com/l/houzy) · [Try it in your browser](https://acronaaudio.shop/plugin.html)
+
+HOUZY 5 is downloaded from our website. It comes with a **14-day free trial** with every
+feature unlocked, then a one-time **$47** for a lifetime licence on two computers.
+
+**Windows 10 / 11** (64-bit) · **macOS 10.15+** (Apple Silicon and Intel), VST3 and AU.
+
+<br>
+
+<img src="version5.png" width="820" alt="HOUZY 5 — Liquid Glass design">
+
+<sub>HOUZY 5 — Liquid Glass design</sub>
+
+</div>
+
+### What's new in HOUZY 5
+
+- **Liquid Glass design** — translucent glass panels with the background showing through,
+  soft light along every edge, knob tips that stretch like a drop of liquid, and a living
+  liquid sphere in the centre that breathes with your music
+- **Themes** — five backgrounds under **THEMES**, four colours of the sphere under **UI**,
+  or UI OFF to keep the centre still
+- **T8 limiter** — the gain moves only at zero crossings, so the bass and the kick are lowered
+  without changing the shape of their wave: cleaner low end at the same loudness
+- **About a third less CPU**
+- **Better sound** — cleaner and steadier on loud, already-mastered material; the sub below
+  50 Hz is now compressed just like the bass
+- **Meters you can trust** — RMS and LUFS exactly to the broadcast standard (ITU-R BS.1770-4),
+  correct readings on mono tracks, far more accurate A/B level matching
+- **A manual inside the plugin**, with pictures, and the interface in **four languages** —
+  English, Russian, Spanish and Portuguese
+- **More stable** — no crash when closing the plugin window, protection against broken or
+  extremely loud samples at the input, safe handling of unusual buffers
+- **PUNCH from 0 to 100**, shorter and clearer tooltips, a smoother panel while a track plays
+- **macOS** — VST3 and AU, Universal (Apple Silicon and Intel)
+
+> **Using HOUZY 4.8?** The **UPDATE** badge in the plugin now opens the download page on
+> our website. Your 4.8 keeps working as before, and your projects open in HOUZY 5.
+
+<div align="center">
+
+### [📖 User manual](https://acronaaudio.shop/manual.html)
+
+<br>
+
+---
+
+## HOUZY 4.8 — the previous, free version
+
+[![Version](https://img.shields.io/badge/version-4.8.0-8dcad4?style=flat-square)]()
+[![Free](https://img.shields.io/badge/price-free-3ddc84?style=flat-square)]()
 
 ### [⬇ Windows · VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-VST3-Windows.zip) · [⬇ Windows · installer](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-Windows-Installer.zip) · [⬇ macOS](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-Installer.pkg)
 
@@ -27,19 +84,16 @@ Three original technologies: **HOUZY** — loud sounds don't drag the rest down,
 
 **macOS** — the installer puts VST3 and AU where they belong. Or the bundles on their own: [VST3](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-VST3.zip) · [AU](https://raw.githubusercontent.com/IACRONA/HOUZY/main/Releases/HOUZY-macOS-AU.zip) — **AU** is the one Logic and GarageBand use.
 
-> **macOS is currently on 4.7.0** — two releases behind. Everything in it works; it just
-> doesn't have the changes from 4.7.1 and 4.8.0 yet. The Mac build is made on an
-> actual Mac, so it follows a little later.
+> **The free macOS build is 4.7.0** — everything in it works; it just doesn't have the
+> changes from 4.7.1 and 4.8.0.
 
-> **A note on the installer.** It isn't code-signed yet, so Windows may show
+> **A note on the installer.** It isn't code-signed, so Windows may show
 > "Windows protected your PC" — click **More info → Run anyway**. Some scanners flag
 > unsigned Inno Setup files by machine-learning guess, not because of anything inside.
 > The plain zip above sidesteps this entirely: it holds the plugin folder and nothing
-> executable. Code signing is planned for the commercial release.
+> executable.
 
-**Works on:** Windows 10 / 11 (64-bit) · macOS, Apple Silicon and Intel.
-
-### [📖 User manual](MANUAL.md)
+### [📖 User manual for 4.8](MANUAL.md)
 <sub>[Русский](MANUAL.ru.md) · [Español](MANUAL.es.md) · [Português](MANUAL.pt-BR.md)</sub>
 
 <br>
@@ -48,48 +102,7 @@ Three original technologies: **HOUZY** — loud sounds don't drag the rest down,
 
 <sub>HOUZY 4.8 — free, available above</sub>
 
-<br><br>
-
-## ✦ Coming soon — HOUZY 5
-
-**This is what version 5 looks like.**
-A completely new design in the **Liquid Glass** style — the direction modern
-interfaces are moving in: translucent glass panels with the background showing
-through, soft light along every edge, knob tips that stretch like a drop of liquid,
-and a living liquid sphere in the centre that breathes with your music.
-
-**HOUZY 5 will be a paid release.**
-**Version 4.8 stays free** — it remains available right here and will keep getting
-updates.
-
-<br>
-
-<img src="version5.png" width="820" alt="HOUZY 5 — Liquid Glass design">
-
-<sub>HOUZY 5 — Liquid Glass design · coming soon</sub>
-
 </div>
-
-<details>
-<summary><b>What else is coming in HOUZY 5</b></summary>
-
-- **Better sound quality** — cleaner and steadier on loud, already-mastered material
-- **High performance** — about a third less CPU load
-- **Themes** — five backgrounds under **THEMES**, four colours of the liquid sphere
-  under **UI**, or UI OFF to keep the centre still
-- **A manual inside the plugin** — a button in the ACRONA card, with pictures, in English and Russian
-- **More frequent updates**
-- **Meters you can trust** — RMS and LUFS exactly to the broadcast standard
-  (ITU-R BS.1770-4), correct readings on mono tracks, and far more accurate A/B level
-  matching
-- **More stable** — no more crash when closing the plugin window, protection against
-  broken or extremely loud samples at the input, safe handling of unusual buffers
-- **PUNCH from 0 to 100**, where 0 means "follow DASH"; old projects convert
-  automatically and sound the same
-- **Shorter, clearer tooltips**, also shown when hovering a knob's name
-- **Smoother panel** while a track is playing
-
-</details>
 
 ---
 
@@ -231,8 +244,8 @@ position of the switch.
 - **AUTO GAIN** (on by default) — measures how much the compression took and gives back
   exactly that, so the output stays as loud as the input. Switch it off and nothing is
   added back: you set the level with INPUT
-- **Spectral limiter** — SMART (3 bands) or T6 (6 bands), so a peak in the bass does
-  not duck the highs
+- **Spectral limiter** — SMART (3 bands), T6 (6 bands) or T8 (half-wave, in HOUZY 5), so a
+  peak in the bass does not duck the highs
 - **GAIN MATCH** — matches the output to the input level so **BYPASS compares character
   rather than loudness**. Without it the plugin is always louder, and "better" just
   means "louder"
@@ -251,7 +264,8 @@ position of the switch.
 - **A / B** — two settings slots, compared at matched loudness
 - **Oversampling 4x…64x** (16x by default), **LOOKAHEAD** for the limiter
 - **Meters** — RMS and LUFS, a gain-reduction graph per stage and a live waveform
-- **English and Russian** interface, language follows the system on first run
+- **English, Russian, Spanish and Portuguese** interface (HOUZY 5; 4.8 has English and
+  Russian), language follows the system on first run
 - **Update check** — a small UPDATE badge lights up when a new version is out; it can be
   switched off in the ACRONA AUDIO card
 
@@ -309,6 +323,20 @@ locked.
 
 ## What's new
 
+## v5.0.1 · 20 October 2026
+
+- **HOUZY is now on macOS** — VST3 and AU, Apple Silicon and Intel
+- **A licence key entered in one plugin window now reaches all open windows at once**
+- **Entering a new key frees the computer slot of the old one**
+
+## v5.0.0 · 17 October 2026
+
+- **A completely new Liquid Glass design**, five themes and four colours of the sphere
+- **T8 limiter** — the bass and the kick are lowered without changing the shape of their wave
+- **About a third less CPU**, a manual inside the plugin, the interface in four languages
+- **HOUZY 5 is a paid release with a 14-day free trial** — download it at
+  [acronaaudio.shop](https://acronaaudio.shop/download.html)
+
 ## v4.8.0 · 27 September 2026
 
 - **AUTO GAIN now really gives back what HOUZY takes.** In HOUZY mode it saw no loss
@@ -322,22 +350,6 @@ locked.
   short peaks at the very top and the limiter takes the bass and the body of the kick
 - **The low end is back at CLIP SHAPE 0,** crash fix for hosts sending bigger chunks
   than announced, and nearly half the CPU of 4.7.1
-
-## v4.7.1 · 24 September 2026
-
-- **HOUZY now plays exactly in time with the rest of your project.** It was telling
-  your DAW that it delayed the sound by 25 ms more than it really did, so the DAW
-  played it that much early. On a single track, a drum bus or in parallel processing
-  that smeared every hit into a doubled attack. The sound itself has not changed
-
-## v4.7.0 · 16 September 2026
-
-- **Every band now has its own level control.** In ALL MIX mode a thin strip beside
-  each compression knob raises or lowers that range *before* the compressor gets to it —
-  a band too quiet to be compressed can be brought up, one that tramples its neighbours
-  pulled back
-- **T7 has been taken off the panel.** It was an unfinished experiment. SMART and T6 are
-  unchanged, and anything you already set up sounds exactly the same
 
 ---
 
