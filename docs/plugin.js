@@ -21,6 +21,7 @@
     { id: 'amount', param: 'amount', r: [317, 164, 195, 221], min: 0, max: 100, v: 0, amount: true },
     { id: 'input', param: 'ingain', r: [29, 390, 62, 62], min: -12, max: 24, v: 0 },
     { id: 'output', param: 'outgain', r: [120, 390, 62, 62], min: -24, max: 0, v: 0 },
+    { id: 'mix', param: 'mix', r: [645, 425, 62, 62], min: 0, max: 100, v: 100 },   // 24.10.2026: dry/wet, HOUZY + LINEAR only
     { id: 'attack', param: 'atkcycles', r: [222, 229, 76, 76], min: 0.5, max: 4, v: 2.95, digits: 2 },
     { id: 'release', param: 'relms', r: [530, 229, 76, 76], min: 20, max: 1200, v: 234, digits: 0 },
     { id: 'sub', param: 'complow', r: [26, 118, 62, 62], min: 0, max: 100, v: 20 }, { id: 'low', param: 'compbass', r: [124, 118, 62, 62], min: 0, max: 100, v: 20 },
@@ -167,9 +168,10 @@
       shape(c.cx - R, c.cy - R, R * 2, R * 2, 0, true); ctx.fillStyle = g; ctx.fill();
       if (sprite.complete && sprite.naturalWidth) {
         var i = Math.round(pos * (SPRITE_N - 1));
-        ctx.globalAlpha = 0.5;
+        var baseA = ctx.globalAlpha;         // < 1 when the caller dims the knob (MIX in NATURAL)
+        ctx.globalAlpha = 0.5 * baseA;
         ctx.drawImage(sprite, (i % SPRITE_COLS) * SPRITE_S, Math.floor(i / SPRITE_COLS) * SPRITE_S, SPRITE_S, SPRITE_S, c.cx - R, c.cy - R, R * 2, R * 2);
-        ctx.globalAlpha = 1;
+        ctx.globalAlpha = baseA;
       }
       shape(c.cx - R + 0.5, c.cy - R + 0.5, R * 2 - 1, R * 2 - 1, 0, true);
       ctx.lineWidth = 1; ctx.strokeStyle = rgba(CYAN, 0.10 + 0.18 * hov); ctx.stroke();
@@ -242,7 +244,10 @@
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
     ctx.setTransform(scale, 0, 0, scale, 0, 0);
     drawSwitches();
-    KNOBS.forEach(drawKnob); SLIDERS.forEach(drawSlider); drawShapingLock();
+    KNOBS.forEach(function (c) {         // MIX locked in NATURAL: dimmed, as in the plugin (setLocked + colour)
+      if (c === MIX && c.off) { ctx.save(); ctx.globalAlpha = 0.35; drawKnob(c); ctx.restore(); } else drawKnob(c);
+    });
+    SLIDERS.forEach(drawSlider); drawShapingLock();
     drawLive();
   }
   function size() {
@@ -281,9 +286,11 @@
       else active.v = clamp(active.v + ((e.clientX - last[0]) + (last[1] - e.clientY)) / 600 * (active.max - active.min), active.min, active.max);
       last = [e.clientX, e.clientY];
     } else { hovered = hit(p); cv.style.cursor = hovered || overZone(p) ? 'pointer' : 'default'; }
+    tipMove(p, e);
   });
   cv.addEventListener('pointerdown', function (e) {
     var p = toBase(e);
+    hideTip();
     if (inR(p, R.relauto) || inR(p, R.truepeak)) { zoneClick(p); return; }   // the AUTO / TP words sit inside their knobs
     var c = hit(p);
     if (!c) { zoneClick(p); return; }
@@ -291,8 +298,9 @@
     if (isSlider(c)) setFromSlider(c, p);
   });
   cv.addEventListener('pointerup', function () { active = null; last = null; });
-  cv.addEventListener('pointerleave', function () { if (!active) hovered = null; });
+  cv.addEventListener('pointerleave', function () { if (!active) hovered = null; hideTip(); });
   cv.addEventListener('wheel', function (e) {
+    hideTip();
     var c = hit(toBase(e)); if (!c) return;
     e.preventDefault();
     c.v = clamp(c.v + (e.deltaY < 0 ? 1 : -1) * (e.shiftKey ? 0.05 : 0.01) * (c.max - c.min), c.min, c.max);
@@ -304,11 +312,12 @@
   // second bake with every switch flipped (chrome_alt) and one at 4x (chrome_os4). A switch away from
   // its default is drawn by pasting its own region from the other bake - the plugin's real look.
   // 2x of the 740 x 500 grid, WebP. The flipped bakes load only when a switch first leaves its default.
-  var BAKE = 2, ALT = new Image(), OS4 = new Image(), T8 = new Image(), bakeDir = '/img/plugin/t4/';   // PULIK by default (24.10.2026)
-  ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T8.file = 'chrome_t8.webp';
-  var BAKE_V = '?v=20261019b';   // the bakes change with the panel (LOOKAHEAD gone 19.10.2026)
-  var STATE = { allmix: 0, bypass: 0, gainmatch: 0, clipmode: 2, limmode: 1, relsmart: 1,
-                osfactor: 4, autogain: 1, relauto: 1, truepeak: 0 };
+  // 24.10.2026: T8 is the plugin's default now, so the third bake is T6 (chrome_t6), and chrome_alt has NATURAL lit.
+  var BAKE = 2, ALT = new Image(), OS4 = new Image(), T6 = new Image(), bakeDir = '/img/plugin/t4/';   // PULIK by default (24.10.2026)
+  ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T6.file = 'chrome_t6.webp';
+  var BAKE_V = '?v=20261024a';   // the bakes change with the panel (MIX card, LINEAR | NATURAL, T8 default: 24.10.2026)
+  var STATE = { allmix: 0, bypass: 0, gainmatch: 0, clipmode: 2, limmode: 3, relsmart: 1,
+                osfactor: 4, autogain: 1, relauto: 1, truepeak: 0, phasemode: 0 };
   var DEF = JSON.parse(JSON.stringify(STATE));
   // GAIN MATCH starts OFF, as in the plugin (it was on in the demo, to compare at matched loudness; the visitor can switch it on)
   // layout.json (base 740 x 500)
@@ -318,8 +327,10 @@
     osfactor: [86, 470, 64, 22], autogain: [368, 136, 92, 14], relauto: [551, 278, 34, 12], truepeak: [141, 428, 20, 12],
     bands: [8, 100, 198, 260], presets: [12, 22, 74, 17], themes: [94, 22, 74, 17], ui: [176, 22, 40, 17],
     a: [590, 22, 30, 17], copy: [624, 22, 24, 17], b: [652, 22, 30, 17], lang: [698, 22, 30, 17],
-    rms: [630, 108, 44, 378], lufs: [678, 108, 44, 378], graph: [214, 430, 400, 62]
+    rms: [630, 108, 44, 284], lufs: [678, 108, 44, 284], graph: [214, 430, 400, 62],   // meters shorter: the MIX card sits under them
+    phase: [12, 47, 74, 17], mix: [622, 408, 108, 84]
   };
+  var MIX = KNOBS.filter(function (c) { return c.param === 'mix'; })[0];
   // CHARACTER (does nothing in HOUZY) and ALL MIX with its band controls are the full version: not draggable,
   // held in the .wasm too. UPWARD / CLIP SHAPE / DASH and T8 are open (owner, 19.10.2026); LOOKAHEAD is always on.
   all.forEach(function (c) { if (c.id === 'character' || /^(sub|low|lomid|mid|himid|high|gain\d)$/.test(c.id)) c.off = true; });
@@ -329,7 +340,8 @@
     g.addColorStop(0, 'rgba(18,25,27,0.62)'); g.addColorStop(0.7, 'rgba(18,25,27,0.62)'); g.addColorStop(1, 'rgba(18,25,27,0)');
     ctx.fillStyle = g; ctx.fillRect(R.character[0] + 2, R.character[1], 80, R.character[3]);
   }
-  var PATCHES = ['allmix', 'gainmatch', 'clipmode', 'limmode', 'relsmart', 'osfactor', 'autogain', 'relauto', 'truepeak'];
+  var PATCHES = ['allmix', 'gainmatch', 'clipmode', 'limmode', 'relsmart', 'osfactor', 'autogain', 'relauto', 'truepeak', 'phasemode'];
+  R.phasemode = R.phase;
   function paste(img, r, pad) {
     if (!img.getAttribute('src')) img.src = bakeDir + img.file + BAKE_V;
     if (!img.complete || !img.naturalWidth) return;
@@ -340,7 +352,7 @@
     if (STATE.allmix !== DEF.allmix) paste(ALT, R.bands, 0);
     PATCHES.forEach(function (k) {
       if (STATE[k] === DEF[k]) return;
-      var img = k === 'osfactor' ? (STATE.osfactor === 2 ? OS4 : ALT) : k === 'limmode' && STATE.limmode === 3 ? T8 : ALT;
+      var img = k === 'osfactor' ? (STATE.osfactor === 2 ? OS4 : ALT) : k === 'limmode' && STATE.limmode === 1 ? T6 : ALT;
       paste(img, R[k], 3);
     });
   }
@@ -420,7 +432,7 @@
     var next = new Image();
     next.onload = function () {
       chromeImg.src = next.src; bakeDir = dir;
-      [ALT, OS4, T8].forEach(function (im) { if (im.getAttribute('src')) im.src = dir + im.file + BAKE_V; });   // reload only what was in use
+      [ALT, OS4, T6].forEach(function (im) { if (im.getAttribute('src')) im.src = dir + im.file + BAKE_V; });   // reload only what was in use
     };
     next.src = dir + 'chrome.webp' + BAKE_V;
   }
@@ -446,6 +458,8 @@
   function half(p, r) { return p[0] < r[0] + r[2] / 2 ? 0 : 1; }
   // the click sound (site.js) for the switches and buttons drawn on the window; knobs are dragged, not clicked
   var CLICK_ZONES = Object.keys(R).filter(function (k) { return ['bands', 'rms', 'lufs', 'graph'].indexOf(k) < 0; });
+  // the pointer cursor over a clickable zone (pointermove called it, but it was never defined: every move off a knob threw)
+  function overZone(p) { return CLICK_ZONES.some(function (k) { return inR(p, R[k]); }); }
   function zoneClick(p) {
     if (window.houzyUiSound && CLICK_ZONES.some(function (k) { return inR(p, R[k]); })) window.houzyUiSound('click');
     if (inR(p, R.presets)) { toggleMenu(presetMenu); return; }
@@ -462,6 +476,7 @@
     if (inR(p, R.clipmode)) setState('clipmode', half(p, R.clipmode) ? 2 : 1);
     if (inR(p, R.limmode)) { var t = third(p, R.limmode); setState('limmode', t === 2 ? 3 : t); }
     if (inR(p, R.relsmart)) setState('relsmart', half(p, R.relsmart));
+    if (inR(p, R.phase)) setState('phasemode', STATE.phasemode ? 0 : 1);   // one key: click = the other mode
     if (inR(p, R.osfactor)) {       // 16x -> 4x -> 8x -> 16x; 32x and 64x are the full version
       var next = STATE.osfactor === 4 ? 2 : STATE.osfactor === 2 ? 3 : 4;
       setState('osfactor', next); say(T('Oversampling {n}x · 32x and 64x in the full version', { n: [1, 2, 4, 8, 16][next] }));
@@ -471,6 +486,57 @@
     if (inR(p, R.copy)) { slots[1 - slot] = snapshot(); say(T('Copied {from} to {to}', { from: slot ? 'B' : 'A', to: slot ? 'A' : 'B' })); }
     if (inR(p, R.lang)) say(T('English, Russian, Spanish and Portuguese in the plugin'));
   }
+  // ---- tooltips: the plugin's own texts (img/plugin/tips.json, written by the harness `webchrome` from the editor, all
+  //      four languages, captions answer with their knob), shown like DwellTooltip (24.10.2026): 0.9 s of dwell on one
+  //      control, never while dragging, three shows of one tip and it rests 90 s; it settles in like a drop and dissolves
+  //      like vapour (site.css .ptip). The flip key (LINEAR | NATURAL) shows the text of its current mode.
+  var TIPS = [], TIP_LANG = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+  if (['en', 'ru', 'es', 'pt'].indexOf(TIP_LANG) < 0) TIP_LANG = 'en';
+  fetch('/img/plugin/tips.json' + BAKE_V).then(function (r) { return r.json(); }).then(function (t) { TIPS = t; }).catch(function () {});
+  var tipEl = document.createElement('div'); tipEl.className = 'ptip'; tipEl.hidden = true; tipEl.setAttribute('role', 'tooltip');
+  panel.appendChild(tipEl);
+  window.addEventListener('scroll', function () { hideTip(); }, { passive: true });   // the page moved under a still pointer
+  tipEl.addEventListener('animationend', function () { if (tipEl.classList.contains('out')) { tipEl.hidden = true; tipEl.classList.remove('out'); } });
+  var tipAt = '', tipShown = '', tipTimer = 0, tipP = null, tipSeen = {};
+  function tipText(p) {
+    var best = null, area = 1e9;                       // the smallest rectangle under the pointer: a knob's readout beats its card
+    TIPS.forEach(function (t) { var a = t.r[2] * t.r[3]; if (a < area && inR(p, t.r)) { best = t; area = a; } });
+    if (!best) return '';
+    var s = best[TIP_LANG] || best.en;
+    return best.flip ? (s[STATE.phasemode] || s[0]) : s;
+  }
+  function hideTip() {
+    clearTimeout(tipTimer); tipAt = '';
+    if (!tipShown) return;
+    tipShown = ''; tipEl.classList.remove('in'); tipEl.classList.add('out');
+  }
+  function showTip(text) {
+    var now = Date.now(), s = tipSeen[text] || (tipSeen[text] = { n: 0, rest: 0 });
+    if (s.rest && now < s.rest) return;
+    if (s.rest) { s.rest = 0; s.n = 0; }
+    if (++s.n >= 3) s.rest = now + 90000;
+    tipEl.textContent = text; tipShown = text;
+    // getTooltipBounds: right of the pointer (left of it past the middle), below it (above it past the middle)
+    var W = panel.clientWidth, H = panel.clientHeight, x = tipP[0] / BASE_W * W, y = tipP[1] / BASE_H * H, st = tipEl.style;
+    st.left = st.right = st.top = st.bottom = '';
+    if (tipP[0] > BASE_W / 2) st.right = (W - x + 12) + 'px'; else st.left = (x + 24) + 'px';
+    if (tipP[1] > BASE_H / 2) st.bottom = (H - y + 6) + 'px'; else st.top = (y + 6) + 'px';
+    tipEl.classList.remove('out'); tipEl.hidden = false;
+    void tipEl.offsetWidth; tipEl.classList.add('in');   // restart the animation
+  }
+  var tipClient = null;
+  function tipMove(p, e) {
+    tipP = p; tipClient = e ? [e.clientX, e.clientY] : tipClient;
+    var text = active ? '' : tipText(p);
+    if (text === tipAt) return;                          // still on the same control: the dwell keeps counting
+    hideTip(); tipAt = text;
+    if (text) tipTimer = setTimeout(function () {
+      // re-read where the pointer is NOW: the window lands tilted and scaled on load (site.js), and moves under a still pointer
+      if (tipClient) tipP = toBase({ clientX: tipClient[0], clientY: tipClient[1] });
+      if (tipText(tipP) === text) showTip(text); else tipAt = '';
+    }, 900);
+  }
+
   var releaseKnob = KNOBS.filter(function (c) { return c.param === 'relms'; })[0];
   function sendChanged() {
     if (!window.houzyParam) return;
@@ -599,6 +665,8 @@
   (function loop(now) {
     if (!onScreen || document.hidden) { t0 = 0; sendChanged(); requestAnimationFrame(loop); return; }   // asleep off screen
     var dt = t0 ? Math.min(0.05, (now - t0) / 1000) : 0.016; t0 = now;
+    MIX.off = STATE.phasemode === 1;                  // MIX only in LINEAR, as in the plugin (locked and dimmed in NATURAL)
+    if (MIX.off && hovered === MIX) hovered = null;
     all.forEach(function (c) {
       c.hover += ((c === hovered || c === active ? 1 : 0) - c.hover) * (1 - Math.exp(-dt / 0.158));
       c.lag += (prop(c) - c.lag) * (1 - Math.exp(-dt / 0.067));
@@ -611,7 +679,7 @@
     // draw only when something moved: a value, hover or liquid tip still settling, new meter data or meters still
     // easing, a switch, the bypass veil, a bake that just loaded, a resize. At rest the panel costs nothing.
     var m = window.houzyMeters, sig = all.map(function (c) { return c.v; }).join() + JSON.stringify(STATE) + bypassOn + slot + uiOff +
-      chromeImg.src + (ALT.complete && ALT.naturalWidth) + (OS4.complete && OS4.naturalWidth) + cv.width;
+      chromeImg.src + (ALT.complete && ALT.naturalWidth) + (OS4.complete && OS4.naturalWidth) + (T6.complete && T6.naturalWidth) + cv.width;
     var settling = all.some(function (c) {
       return Math.abs(c.hover - (c === hovered || c === active ? 1 : 0)) > 0.002 || Math.abs(c.lag - prop(c)) > 0.0005;
     }) || meterState.some(function (st, i) {

@@ -8,6 +8,8 @@
     {"id": "", "kind": "label", "type": "juce::LookAndFeel_V2::SliderLabelComp", "text": "0.0", "r": [29, 436, 62, 16]},
     {"id": "", "kind": "knob", "type": "WheelSlider", "text": "", "r": [120, 390, 62, 62], "min": -24, "max": 0, "value": 0, "prop": 1.0000},
     {"id": "", "kind": "label", "type": "juce::LookAndFeel_V2::SliderLabelComp", "text": "0.0", "r": [120, 436, 62, 16]},
+    {"id": "", "kind": "knob", "type": "WheelSlider", "text": "", "r": [645, 425, 62, 62], "min": 0, "max": 100, "value": 100, "prop": 1.0000},
+    {"id": "", "kind": "label", "type": "juce::LookAndFeel_V2::SliderLabelComp", "text": "100.0", "r": [645, 471, 62, 16]},
     {"id": "", "kind": "knob", "type": "WheelSlider", "text": "", "r": [222, 229, 76, 76], "min": 0.5, "max": 24, "value": 20, "prop": 0.8298},
     {"id": "", "kind": "label", "type": "juce::LookAndFeel_V2::SliderLabelComp", "text": "20.0", "r": [228, 289, 64, 16]},
     {"id": "", "kind": "knob", "type": "WheelSlider", "text": "", "r": [530, 229, 76, 76], "min": 0.2, "max": 12, "value": 7, "prop": 0.5763},
@@ -37,6 +39,7 @@
     {"id": "druk", "kind": "label", "type": "juce::Label", "text": "COMPRESSION", "r": [301, 118, 226, 16]},
     {"id": "druk", "kind": "label", "type": "juce::Label", "text": "INPUT", "r": [15, 375, 91, 14]},
     {"id": "druk", "kind": "label", "type": "juce::Label", "text": "OUTPUT", "r": [106, 375, 91, 14]},
+    {"id": "druk", "kind": "label", "type": "juce::Label", "text": "MIX", "r": [627, 411, 98, 14]},
     {"id": "druk", "kind": "label", "type": "juce::Label", "text": "ATTACK", "r": [214, 215, 92, 13]},
     {"id": "druk", "kind": "label", "type": "ClickLabel", "text": "RELEASE", "r": [522, 215, 92, 13]},
     {"id": "druk", "kind": "label", "type": "juce::Label", "text": "CHARACTER", "r": [212, 337, 66, 14]},
@@ -60,6 +63,7 @@
     {"id": "", "kind": "other", "type": "SegmentedSwitch", "text": "", "r": [508, 362, 100, 20]},
     {"id": "", "kind": "other", "type": "SegmentedSwitch", "text": "", "r": [319, 78, 190, 20]},
     {"id": "", "kind": "other", "type": "SegmentedSwitch", "text": "", "r": [508, 390, 100, 20]},
+    {"id": "", "kind": "other", "type": "SegmentedSwitch", "text": "", "r": [12, 47, 74, 17]},
     {"id": "", "kind": "button", "type": "juce::TextButton", "text": "A", "r": [590, 22, 30, 17], "on": true},
     {"id": "", "kind": "button", "type": "juce::TextButton", "text": "B", "r": [652, 22, 30, 17], "on": false},
     {"id": "", "kind": "button", "type": "juce::TextButton", "text": "=", "r": [624, 22, 24, 17], "on": false},
@@ -75,5 +79,5 @@
     {"id": "", "kind": "button", "type": "juce::TextButton", "text": "EN", "r": [698, 22, 30, 17], "on": false},
     {"id": "", "kind": "other", "type": "juce::ResizableCornerComponent", "text": "", "r": [722, 482, 18, 18]}
   ],
-  "rms": [630, 108, 44, 378], "lufs": [678, 108, 44, 378], "graph": [214, 430, 400, 62]
+  "rms": [630, 108, 44, 284], "lufs": [678, 108, 44, 284], "graph": [214, 430, 400, 62]
 }

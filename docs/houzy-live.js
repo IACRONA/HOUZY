@@ -52,7 +52,7 @@
       ctx = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
       // browsers give a page AudioWorklet only over https (or on localhost): say so instead of blaming the browser
       if (!ctx.audioWorklet) throw new Error(window.isSecureContext ? T('this browser has no AudioWorklet') : T('the live demo needs the secure (https) version of this page'));
-      var res = await fetch('/houzy-engine.wasm?v=20261019a');
+      var res = await fetch('/houzy-engine.wasm?v=20261024a');
       if (!res.ok) throw new Error(T('engine not found'));
       var total = +res.headers.get('content-length') || 0, got = 0, parts = [], reader = res.body.getReader();
       for (;;) {
@@ -63,7 +63,7 @@
       var wasm = new Uint8Array(got), at = 0;
       parts.forEach(function (p) { wasm.set(p, at); at += p.length; });
       wasmBytes = wasm;            // kept for the WAV export (a second, offline engine)
-      await ctx.audioWorklet.addModule('/houzy-worklet.js');
+      await ctx.audioWorklet.addModule('/houzy-worklet.js?v=20261024a');
       node = new AudioWorkletNode(ctx, 'houzy', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [2],
         processorOptions: { wasm: wasm.buffer, host: location.hostname } });
       node.connect(ctx.destination);
@@ -186,7 +186,7 @@
   async function renderThrough(buf, len) {
     var sr = buf.sampleRate, lead = Math.round(0.5 * sr);
     var off = new OfflineAudioContext(2, lead + len, sr);
-    await off.audioWorklet.addModule('/houzy-worklet.js');
+    await off.audioWorklet.addModule('/houzy-worklet.js?v=20261024a');
     var en = new AudioWorkletNode(off, 'houzy', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [2],
       processorOptions: { wasm: wasmBytes.buffer.slice(0), host: location.hostname } });
     var ready = new Promise(function (ok, fail) {

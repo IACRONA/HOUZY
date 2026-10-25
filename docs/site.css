@@ -303,6 +303,18 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 .plugin>img{position:absolute;inset:0;width:100%;height:100%;display:block}
 .plugin .porb{position:absolute}
 .plugin .porb canvas{width:100%;height:100%;display:block}
+/* the plugin's tooltips (plugin.js, texts from the plugin): smoked glass as drawTooltip; in = settles like a drop
+   (rises 6 px, 0.86 tall -> 1 with a light overshoot, 240 ms), out = dissolves like vapour (swells 6 %, drifts up, 200 ms) */
+.plugin .ptip{position:absolute;z-index:6;max-width:min(62%,430px);padding:5px 11px;border-radius:5px;pointer-events:none;
+  font:500 12px/1.4 Sora,system-ui,sans-serif;color:#d9e8eb;text-align:center;white-space:pre-line;
+  background:rgba(12,18,20,.62);-webkit-backdrop-filter:blur(14px) saturate(1.6);backdrop-filter:blur(14px) saturate(1.6);
+  border:1px solid rgba(255,255,255,.15);box-shadow:inset 1.5px 1.5px 0 -.5px rgba(255,255,255,.4),inset 0 0 12px rgba(255,255,255,.07),0 8px 22px rgba(0,0,0,.5)}
+.plugin .ptip.in{animation:ptip-in .24s both}
+.plugin .ptip.out{animation:ptip-out .2s both}
+@keyframes ptip-in{0%{opacity:0;transform:translateY(6px) scale(1.04,.86);animation-timing-function:cubic-bezier(.22,1,.36,1)}
+  70%{opacity:1;transform:translateY(.4px) scale(.995,1.025)}100%{opacity:1;transform:none}}
+@keyframes ptip-out{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-5px) scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.plugin .ptip.in,.plugin .ptip.out{animation-duration:.01s}}
 .plugin canvas#live{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
 
 /* ---------- live demo over the plugin window (houzy-live.js): upload, progress, transport ---------- */
@@ -646,7 +658,9 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 @media (min-width:1000px){
   .bar{display:grid;grid-template-columns:auto 1fr auto;column-gap:12px;padding-right:12px}   /* menu centred in the room between HOUZY and the language: equal gaps in every language */
   .navpanel{display:contents}
-  .brand{justify-self:start}
+  /* min-height = the language button's: i18n.js builds that button AFTER the first paint, and until then the row was
+     only as tall as the brand (29 px) - the bar grew 45 -> 52 px on page load and everything in it jumped 3-4 px */
+  .brand{justify-self:start;min-height:36px}
   .navpanel .lang{justify-self:end}
   .navpanel .lang::before{display:none}
   .lang-btn{min-height:36px;background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),0 1px 2px rgba(30,34,50,.08)}

@@ -1,7 +1,7 @@
 // HOUZY live demo, audio thread: the plugin's engine (houzy-engine.wasm, built by tools/build-web.sh)
 // runs every 128-sample render quantum. The page hands the .wasm bytes in (a worklet cannot fetch)
 // and sends knob values over the port; "locked" comes back for full-version-only settings.
-import HouzyEngine from './houzy-engine.js';
+import HouzyEngine from './houzy-engine.js?v=20261024a';
 
 // The audio thread has no `performance`; JUCE's clock (emscripten_get_now) reads it. The audio clock will do.
 globalThis.performance ??= { now: () => currentTime * 1000 };
