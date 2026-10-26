@@ -8,7 +8,7 @@
 - Type: mastering compressor audio plugin with a clipper and a limiter built in.
 - Formats: VST3 on Windows; VST3 and AU on macOS (Universal: Apple Silicon and Intel), macOS build 5.0.1.
 - Hosts: any DAW that loads VST3 (Ableton Live, FL Studio, Cubase, Reaper, Bitwig and others); AU for Logic Pro and GarageBand once the macOS build is out.
-- Price: $47, one payment, a lifetime licence for two computers. Sold on Gumroad.
+- Price: $69, one payment, a lifetime licence for two computers. Sold on Gumroad.
 - Trial: 14 days free, every feature works during the trial.
 - Free online demo: the real plugin interface in a web browser, on your own MP3 or WAV; the audio never leaves the browser.
 - Audio stays on the user's computer; the plugin only goes online to activate the licence and to check for updates.
