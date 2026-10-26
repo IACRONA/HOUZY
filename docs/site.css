@@ -942,3 +942,16 @@ a.tech4-n:hover{transform:scale(1.08)}
 @keyframes affShine{to{background-position:100% 0}}
 @keyframes affFloat{50%{translate:-50% -54%;scale:1.06}}
 @media (prefers-reduced-motion:reduce){.aff-pct b,.aff-orb{animation:none}.aff-steps li,.aff-grid > div{transition:none}}
+@media (max-width:860px){   /* phones: the hero column may shrink below its content (it was wider than the screen), smaller type, buttons stacked */
+  .aff-hero{grid-template-columns:minmax(0,1fr)}
+  .aff-hero > *,.aff-steps > *,.aff-grid > *{min-width:0}
+  .aff-lead{padding:24px 20px}
+  .aff-lead h1{font-size:clamp(26px,7.4vw,34px);overflow-wrap:anywhere}
+  .aff-lead .up-lead{font-size:16px}
+  .aff-lead .sale-keys{flex-direction:column;align-items:stretch}
+  .aff-lead .sale-keys .cta,.aff-lead .sale-keys .pill{justify-content:center;text-align:center;white-space:normal}
+  .aff-pct{padding:26px 20px}
+  .aff-pct b{font-size:clamp(72px,22vw,104px)}
+  .aff-end{flex-direction:column;align-items:stretch;text-align:center}
+  .aff-end .cta{justify-content:center}
+}
