@@ -1,6 +1,6 @@
 # HOUZY by ACRONA AUDIO
 
-> HOUZY is a mastering compressor plugin (VST3, AU) for electronic and dance music. Instead of one gain for the whole mix, it compresses every tone of the spectrum on its own, so a loud kick or bass does not pull the rest of the mix down with it (no pumping). Made by ACRONA AUDIO.
+> HOUZY is a mastering compressor plugin (VST3, AU) for any genre. It was born in electronic and dance music. Instead of one gain for the whole mix, it compresses every tone of the spectrum on its own, so a loud kick or bass does not pull the rest of the mix down with it (no pumping). Made by ACRONA AUDIO.
 
 ## Facts
 

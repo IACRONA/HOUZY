@@ -911,3 +911,34 @@ a.tech4-n:hover{transform:scale(1.08)}
 .up-lead{margin:0 0 20px;font-size:17px;line-height:1.55;color:var(--text)}
 .up-code{margin:8px 0 20px;font-size:15px;color:var(--sub)}
 .was-btn{text-decoration:line-through;text-decoration-thickness:2px;opacity:.6;font-variation-settings:'wght' 500}
+
+/* ---- Partner programme page (26.10.2026): hero + big 30%, steps, who it fits, FAQ; Liquid Glass cards, scroll reveal from site.js ---- */
+.aff-hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(16px,2.4vw,28px);align-items:stretch;margin:0 0 clamp(26px,4vw,44px)}
+@media (max-width:860px){.aff-hero{grid-template-columns:1fr}}
+.aff-pct{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:clamp(26px,3.4vw,48px);overflow:hidden}
+.aff-pct b{position:relative;padding:0 .1em .06em;font-weight:normal;font-size:clamp(88px,12vw,164px);line-height:.9;letter-spacing:-.045em;font-variation-settings:'wght' 680;
+  background:linear-gradient(110deg,var(--ink) 0%,var(--accent-ink) 45%,var(--ink) 90%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:affShine 7s ease-in-out infinite alternate}
+.aff-pct span{position:relative;font-size:17px;color:var(--text)}
+.aff-pct small{position:relative;font-size:14px;color:var(--sub)}
+.aff-orb{position:absolute;left:50%;top:46%;width:78%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at 35% 30%,rgba(190,240,248,.75),rgba(96,190,206,.30) 45%,rgba(96,190,206,0) 70%);filter:blur(6px);animation:affFloat 9s ease-in-out infinite}
+.aff-h{margin:clamp(26px,4vw,44px) 0 16px;font-weight:normal;font-variation-settings:'wght' 540;font-size:clamp(24px,3vw,32px);color:var(--ink)}
+.aff-steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.aff-steps li,.aff-grid > div{padding:clamp(20px,2.4vw,28px);transition:transform .45s var(--ease-out)}
+.aff-steps li:hover,.aff-grid > div:hover{transform:translateY(-5px)}
+.aff-steps li > b{display:grid;place-items:center;width:38px;height:38px;margin:0 0 14px;border-radius:50%;font-weight:normal;font-size:17px;color:var(--accent-ink);
+  background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 1px rgba(31,111,125,.28),0 6px 16px -8px rgba(31,111,125,.5)}
+.aff-steps h3,.aff-grid h3{margin:0 0 6px;font-size:19px;font-weight:normal;font-variation-settings:'wght' 560;color:var(--ink)}
+.aff-steps p,.aff-grid p{margin:0;font-size:15px;line-height:1.55;color:var(--sub)}
+.aff-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.aff-faq{padding:6px clamp(20px,2.6vw,30px)}
+.aff-faq details{border-top:1px solid rgba(31,111,125,.14)}
+.aff-faq details:first-child{border-top:0}
+.aff-faq details p{margin:0 0 18px;font-size:15px;line-height:1.6;color:var(--sub)}
+.aff-end{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin-top:clamp(26px,4vw,44px);padding:clamp(22px,3vw,34px)}
+.aff-end p{margin:0;font-size:clamp(19px,2.2vw,24px);color:var(--ink)}
+.aff-end .cta{min-height:50px;overflow:visible}
+@keyframes affShine{to{background-position:100% 0}}
+@keyframes affFloat{50%{translate:-50% -54%;scale:1.06}}
+@media (prefers-reduced-motion:reduce){.aff-pct b,.aff-orb{animation:none}.aff-steps li,.aff-grid > div{transition:none}}

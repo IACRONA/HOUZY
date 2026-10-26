@@ -5,8 +5,8 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob: https://download.acronaaudio.shop; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>HOUZY — мастеринг-компрессор VST для электронной музыки</title>
-<meta name="description" content="HOUZY — мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом. Клиппер ACR, лимитер T8. VST3.">
+<title>HOUZY — мастеринг-компрессор VST, который подходит под любой стиль</title>
+<meta name="description" content="HOUZY — универсальный мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом, в любом жанре. Клиппер ACR, лимитер T8. VST3.">
 <meta name="theme-color" content="#e7e7ef">
 <link rel="alternate" hreflang="en" href="https://acronaaudio.shop/">
 <link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/">
@@ -19,8 +19,8 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
 <meta property="og:url" content="https://acronaaudio.shop/ru/">
-<meta property="og:title" content="HOUZY — мастеринг-компрессор VST для электронной музыки">
-<meta property="og:description" content="HOUZY — мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом. Клиппер ACR, лимитер T8. VST3.">
+<meta property="og:title" content="HOUZY — мастеринг-компрессор VST, который подходит под любой стиль">
+<meta property="og:description" content="HOUZY — универсальный мастеринг-компрессор, который сжимает каждый тон отдельно: без пампинга, с упругим киком и чистым низом, в любом жанре. Клиппер ACR, лимитер T8. VST3.">
 <meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
 <meta property="og:image:width" content="1640">
 <meta property="og:image:height" content="912">
@@ -146,8 +146,8 @@
  {
   "@context": "https://schema.org",
   "@type": "VideoObject",
-  "name": "Мастеринг электронной и танцевальной музыки с помощью HOUZY",
-  "description": "Мастеринг электронной и танцевальной музыки с помощью HOUZY.",
+  "name": "Мастеринг с HOUZY: любой жанр, любой микс",
+  "description": "Мастеринг с HOUZY: любой жанр, любой микс.",
   "inLanguage": "ru",
   "thumbnailUrl": "https://acronaaudio.shop/video/houzy-mastering.jpg",
   "contentUrl": "https://download.acronaaudio.shop/houzy-mastering.mp4",
@@ -163,7 +163,7 @@
 </script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/vendor/plyr/plyr.css">
-<link rel="stylesheet" href="/site.css?v=20261025a">
+<link rel="stylesheet" href="/site.css?v=20261026a">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/orb.js" defer></script>
@@ -204,6 +204,7 @@
       <a href="#about" data-i18n="3">О проекте</a>
       <a href="#faq">FAQ</a>
       <a data-home="why-houzy.html" href="/ru/why-houzy.html" data-i18n="107">Почему HOUZY</a>
+      <a data-home="affiliates.html" href="/ru/affiliates.html" data-i18n="129">Партнёрам</a>
     </nav>
   </div>
 </header>
@@ -212,7 +213,7 @@
   <!-- THE PLUGIN WINDOW: the same live panel as plugin.html, first, the sphere under it -->
   <section class="try" id="plugin">
     <div class="head glass" data-reveal>
-      <h1 class="hero-title"><span class="kick" data-i18n="6">HOUZY · ACRONA AUDIO</span><span class="t" data-i18n="7">Мастеринг-компрессор для электронной и танцевальной музыки.</span></h1>
+      <h1 class="hero-title"><span class="kick" data-i18n="6">HOUZY · ACRONA AUDIO</span><span class="t" data-i18n="7">Один мастеринг-компрессор для любой музыки.</span></h1>
       <p class="lead" data-i18n="8">Ровное сжатие на всех частотах: громкий кик или бас больше не тянет за собой весь микс.</p>
       <p class="tech4"><a class="tech4-n" href="#top" aria-label="4">4</a><span class="tech4-t" data-i18n="105">Четыре технологии, сделанные с нуля, в одном плагине: сжатие по каждому тону без общего гейна, клиппер, который вычитает пики, а не срезает их, лимитер, который двигает гейн только на переходе через ноль, и время в периодах волны и долях такта.</span></p>
     </div>
@@ -240,8 +241,8 @@
         <button class="pill live-clear" type="button" data-i18n="12">Убрать</button>
       </div>
     </div>
-    <div class="buy-row"><a class="cta buy buy-big" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">Купить HOUZY — <s class="was-btn">$130</s> $69</a><a class="cta trial dl" href="/ru/download.html" data-i18n="104">Скачать бесплатно<small>пробный период 14 дней</small></a></div>
-    <p class="promo" data-i18n="126"><b>Старт продаж:</b> первые 20 покупателей получают <b>скидку 60%</b> по коду <b>FIRST20</b> — <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">HOUZY за $27.60</a> вместо $69. До 19 ноября.</p>
+    <div class="buy-row"><a class="cta buy buy-big" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">Купить HOUZY — $69</a><a class="cta trial dl" href="/ru/download.html" data-i18n="104">Скачать бесплатно<small>пробный период 14 дней</small></a></div>
+    <p class="promo" data-i18n="126"><b>Старт продаж:</b> первые 20 покупателей получают <b>скидку 15%</b> по коду <b>FIRST20</b> — <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">HOUZY за $58.65</a> вместо $69. До 19 ноября.</p>
   </section>
 
   <!-- THE SPHERE in the centre, chapter tabs left and right, the reading panel on top.
@@ -342,7 +343,7 @@
   <section class="block video-block" id="video">
     <div class="wrap">
       <div class="glass head video-head">
-        <h2 data-i18n="124">Мастеринг электронной и танцевальной музыки с помощью HOUZY</h2>
+        <h2 data-i18n="124">Мастеринг с HOUZY: любой жанр, любой микс</h2>
       </div>
       <div class="video-stage">
         <div class="video-frame">
@@ -359,17 +360,17 @@
     <div class="wrap about">
       <div class="glass" data-reveal>
         <p class="kicker" data-i18n="3">О проекте</p>
-        <h2 data-i18n="62">Сделано для хауса и танцевальной музыки.</h2>
-        <p class="lead" data-i18n="63">Проект создан, чтобы улучшить и упростить мастеринг электронной музыки. Автор больше 15 лет искал идеальный компрессор для своих проектов и в итоге решил изобрести его сам. В HOUZY вложены колоссальный опыт, знания и понимание того, что нужно для превосходного звучания на мастере.</p>
+        <h2 data-i18n="62">Рождён в хаусе. Создан для всего.</h2>
+        <p class="lead" data-i18n="63">HOUZY родился в электронной музыке, где труднее всего совместить жёсткий кик и чистый верх. Тот же подход работает в любом жанре: он жмёт каждый тон отдельно, и ничего не «качает». Больше 15 лет автор искал идеальный компрессор для своих проектов и в итоге решил изобрести его сам.</p>
         <div class="links">
           <a data-manual class="pill" href="/ru/manual.html" data-i18n="64">Инструкция</a>
         </div>
       </div>
       <div class="glass sale" data-reveal>
         <p class="kicker">HOUZY</p>
-        <p class="sale-price"><s class="was">$130</s>$69</p>
+        <p class="sale-price">$69</p>
         <p class="sale-once" data-i18n="111">один платёж — лицензия остаётся у вас навсегда</p>
-        <p class="sale-promo" data-i18n="127">По коду <b>FIRST20</b>: <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">$27.60</a> · первые 20 покупателей, до 19 ноября</p>
+        <p class="sale-promo" data-i18n="127">По коду <b>FIRST20</b>: <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">$58.65</a> · первые 20 покупателей, до 19 ноября</p>
         <ul class="sale-list">
           <li data-i18n="112">Лицензия навсегда на два компьютера</li>
           <li data-i18n="113">14 дней бесплатно, все функции открыты</li>
@@ -381,7 +382,7 @@
           <li data-i18n="122"><b>Лимитер T8</b> — двигает гейн только на переходе через ноль: бас и кик не меняют форму</li>
           <li data-i18n="123"><b>CYCLES / NOTE</b> — атака в периодах волны, релиз в долях такта</li>
         </ul>
-        <div class="sale-keys"><a class="cta buy" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">Купить HOUZY — <s class="was-btn">$130</s> $69</a><a class="pill" data-home="download.html" href="/ru/download.html" data-i18n="117">Скачать бесплатно</a></div>
+        <div class="sale-keys"><a class="cta buy" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">Купить HOUZY — $69</a><a class="pill" data-home="download.html" href="/ru/download.html" data-i18n="117">Скачать бесплатно</a></div>
         <p class="sale-note"><span data-i18n="66">Новое в 5: дизайн Liquid Glass, пять тем, четыре цвета сферы, лимитер T8 и на треть меньше нагрузка на процессор.</span> <span data-i18n="118">Безопасная оплата через Gumroad.</span></p>
       </div>
     </div>
