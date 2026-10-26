@@ -1,9 +1,24 @@
 {
   "version": "5.0.0",
-  "version_win": "5.0.1",
-  "version_mac": "5.0.1",
+  "version_win": "5.0.3",
+  "version_mac": "5.0.3",
   "url": "https://acronaaudio.shop/download.html",
   "releases": [
+    {
+      "version": "5.0.3",
+      "date": "2026-10-26",
+      "win": "https://acronawar.gumroad.com/l/houzy-trial",
+      "win_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
+      "mac": "https://acronawar.gumroad.com/l/houzy-trial",
+      "mac_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
+      "mac_au": "https://acronawar.gumroad.com/l/houzy-trial",
+      "notes": {
+        "en": "New: DELTA button - hear only what HOUZY changes in your sound.\nNew: MIX knob - blend with the original for parallel compression.\nNew: LINEAR / NATURAL - the limiter no longer shifts the low end in time.\nNew: band lock in ALL MIX - turn one band and all six move together.\nT8 is now the default limiter; the limiter's gain reduction number is back.\nNew presets SUSHI and DRUMUZI (acoustic drums), the loaded preset shows on the button.\nOVERSAMPLE no longer changes the tone. Fewer CPU spikes on small buffers.",
+        "ru": "Новое: кнопка DELTA — слышно только то, что HOUZY меняет в звуке.\nНовое: ручка MIX — подмешивает оригинал, параллельная компрессия.\nНовое: LINEAR / NATURAL — лимитер больше не сдвигает бас по времени.\nНовое: замок полос в ALL MIX — крутишь одну, двигаются все шесть.\nЛимитер по умолчанию — T8, вернулась цифра, сколько снимает лимитер.\nНовые пресеты SUSHI и DRUMUZI (акустические ударные), имя пресета видно на кнопке.\nOVERSAMPLE больше не меняет тон. Меньше скачков нагрузки на маленьком буфере.",
+        "es": "Nuevo: botón DELTA - escuchas solo lo que HOUZY cambia en tu sonido.\nNuevo: perilla MIX - mezcla con el original para compresión paralela.\nNuevo: LINEAR / NATURAL - el limitador ya no desplaza los graves en el tiempo.\nNuevo: candado de bandas en ALL MIX - giras una banda y se mueven las seis.\nT8 es ahora el limitador por defecto; vuelve el número de reducción del limitador.\nPresets nuevos SUSHI y DRUMUZI (batería acústica); el preset cargado se ve en el botón.\nOVERSAMPLE ya no cambia el tono. Menos picos de CPU con buffers pequeños.",
+        "pt": "Novo: botão DELTA - você ouve só o que o HOUZY muda no som.\nNovo: knob MIX - mistura com o original para compressão paralela.\nNovo: LINEAR / NATURAL - o limitador não desloca mais os graves no tempo.\nNovo: cadeado das bandas no ALL MIX - gira uma banda e as seis se movem juntas.\nT8 agora é o limitador padrão; o número de redução do limitador voltou.\nPresets novos SUSHI e DRUMUZI (bateria acústica); o preset carregado aparece no botão.\nOVERSAMPLE não muda mais o timbre. Menos picos de CPU com buffers pequenos."
+      }
+    },
     {
       "version": "5.0.1",
       "date": "2026-10-20",
