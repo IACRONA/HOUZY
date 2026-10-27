@@ -4,9 +4,9 @@
 
 ## Facts
 
-- Product: HOUZY, version 5.0.0, released 17 October 2026.
+- Product: HOUZY, version 5.0.3 (first release 5.0.0 on 17 October 2026).
 - Type: mastering compressor audio plugin with a clipper and a limiter built in.
-- Formats: VST3 on Windows; VST3 and AU on macOS (Universal: Apple Silicon and Intel), macOS build 5.0.1.
+- Formats: VST3 on Windows; VST3 and AU on macOS (Universal: Apple Silicon and Intel), macOS build 5.0.3.
 - Hosts: any DAW that loads VST3 (Ableton Live, FL Studio, Cubase, Reaper, Bitwig and others); AU for Logic Pro and GarageBand once the macOS build is out.
 - Price: $69, one payment, a lifetime licence for two computers. Sold on Gumroad.
 - Trial: 14 days free, every feature works during the trial.
