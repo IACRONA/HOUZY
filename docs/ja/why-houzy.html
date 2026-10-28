@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob: https://download.acronaaudio.shop; connect-src 'self' https://cloudflareinsights.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>音程ごとか、マルチバンドか — なぜHOUZY | ACRONA AUDIO</title>
+<meta name="description" content="HOUZYの音程ごとの圧縮が、一般的なコンプレッサーやマルチバンドとどう違うのか：ポンピング、アタック対パンチ、ベースのサイドバンド、クロスオーバーの位相、レイテンシー。">
+<meta name="theme-color" content="#e7e7ef">
+<link rel="canonical" href="https://acronaaudio.shop/ja/why-houzy.html">
+<link rel="alternate" hreflang="en" href="https://acronaaudio.shop/why-houzy.html">
+<link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/why-houzy.html">
+<link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/why-houzy.html">
+<link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/why-houzy.html">
+<link rel="alternate" hreflang="fr" href="https://acronaaudio.shop/fr/why-houzy.html">
+<link rel="alternate" hreflang="it" href="https://acronaaudio.shop/it/why-houzy.html">
+<link rel="alternate" hreflang="ja" href="https://acronaaudio.shop/ja/why-houzy.html">
+<link rel="alternate" hreflang="x-default" href="https://acronaaudio.shop/why-houzy.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
+<meta property="og:url" content="https://acronaaudio.shop/ja/why-houzy.html">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="音程ごとか、マルチバンドか — なぜHOUZY | ACRONA AUDIO">
+<meta property="og:description" content="HOUZYの音程ごとの圧縮が、一般的なコンプレッサーやマルチバンドとどう違うのか：ポンピング、アタック対パンチ、ベースのサイドバンド、クロスオーバーの位相、レイテンシー。">
+<meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
+<meta property="og:image:width" content="1640">
+<meta property="og:image:height" content="912">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css?v=20261028j">
+<script>document.documentElement.classList.add('pt')</script>
+<script src="/vendor/framer-motion/dom.js" defer></script>
+<script src="/site.js?v=20261028c" defer></script>
+<script src="/buy.js?v=20261018a" defer></script>
+<script src="/i18n.js?v=20261028a" defer></script>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "ひとつのゲイン、数バンド、それとも音程ごと",
+  "description": "HOUZYの音程ごとの圧縮が、一般的なコンプレッサーやマルチバンドとどう違うのか：ポンピング、アタック対パンチ、ベースのサイドバンド、クロスオーバーの位相、レイテンシー。",
+  "inLanguage": "ja",
+  "url": "https://acronaaudio.shop/ja/why-houzy.html",
+  "about": {
+   "@type": "SoftwareApplication",
+   "name": "HOUZY",
+   "url": "https://acronaaudio.shop/ja/"
+  },
+  "author": {
+   "@type": "Organization",
+   "name": "ACRONA AUDIO",
+   "url": "https://acronaaudio.shop/ja/"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+   {
+    "@type": "ListItem",
+    "position": 1,
+    "name": "ホーム",
+    "item": "https://acronaaudio.shop/ja/"
+   },
+   {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "なぜHOUZY",
+    "item": "https://acronaaudio.shop/ja/why-houzy.html"
+   }
+  ]
+ }
+]
+</script>
+<link rel="stylesheet" href="/vendor/plyr/plyr.css">
+<script src="/vendor/plyr/plyr.min.js" defer></script>
+<script src="/video.js?v=20261028a" defer></script>
+</head>
+<body>
+<!--email_off-->
+<div class="bg" aria-hidden="true">
+  <!-- the same moving background as the home page (site.js starts it) -->
+  <video class="art" autoplay muted playsinline preload="auto" poster="/video/bg-poster.jpg"></video>
+  <video class="art art-b" muted playsinline preload="none"></video>
+</div>
+<div class="veil" aria-hidden="true"></div>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="bar">
+  <a class="brand" data-home="" href="/ja/" aria-label="HOUZYホーム" data-i18n-a="aria-label:91">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg>
+    <b>HOUZY</b><small>ACRONA AUDIO</small>
+  </a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="メニューを開く" data-i18n-a="aria-label:92">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" role="button" aria-label="メニュー" data-i18n-a="aria-label:93">
+    <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
+  </label>
+  <div class="navpanel">
+    <nav class="menu" aria-label="メイン" data-i18n-a="aria-label:94">
+      <a data-home="#top" href="/ja/#top" data-i18n="1">テクノロジー</a>
+      <a data-home="why-houzy.html" href="/ja/why-houzy.html" data-i18n="107">なぜHOUZY</a>
+      <a data-manual href="/ja/manual.html" data-i18n="2">マニュアル</a>
+      <a data-home="#about" href="/ja/#about" data-i18n="3">概要</a>
+      <a data-home="#faq" href="/ja/#faq">FAQ</a>
+      <a data-home="affiliates.html" href="/ja/affiliates.html" data-i18n="129">パートナー</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal dl man why">
+  <div class="wrap">
+    <div class="glass dl-head" data-reveal>
+      <p class="kicker">HOUZY</p>
+      <h1>ひとつのゲイン、数バンド、それとも音程ごと</h1>
+      <p class="man-lead">HOUZYが一般的なコンプレッサーやマルチバンドと何が違うのか。</p>
+    </div>
+        <div class="video-stage video-vert" data-reveal>
+      <div class="video-frame">
+        <video id="houzy-video" data-ratio="9:16" poster="/video/houzy-why.jpg" playsinline controls controlslist="nofullscreen" preload="metadata">
+          <source src="https://download.acronaaudio.shop/houzy-why.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <section class="glass prose" data-reveal>
+      <h2>音全体にひとつの数値。</h2>
+      <p>一般的なコンプレッサーは <span class="code">output = gain × signal</span> です。昔からの不満は、すべてここから生まれます：</p>
+              <ul>
+                <li><b>ディテクターは盲目です</b> — スペクトル全体がひとつの数値にまとめられるため、同じ振幅のキックとボーカルを区別できません。</li>
+                <li><b>キックがすべてを引きずります</b> — ゲインが下がり、ハイハットやボーカル、リバーブの余韻も一緒に沈みます。これがポンピングです。</li>
+                <li><b>アタックとパンチが衝突します</b> — ひとつのエンベロープで、トランジェントとボディの両方を受け持たなければなりません。</li>
+                <li><b>ベースが濁ります</b> — ゲインが動くと、50Hzのキックの周りにサイドバンドが生まれます。ならすはずのものを、コンプレッサー自身が壊してしまいます。</li>
+              </ul>
+              <p class="solves">1930年代の最初のコンプレッサーから、原理は変わっていません：信号全体にひとつのゲイン。<b>HOUZYはそれをやめました。</b>すべての音程が自分のエンベロープを持つので、ポンピングも、アタックとパンチのトレードオフも、ベースのサイドバンドも、そもそも発生しません。</p>
+      <h2>マルチバンドは役立ちますが、途中までです</h2>
+      <p>ミックスを3〜6バンドに分けると、バンドごとに独自のゲインを持つので、キックがハイハットを引き下げることはなくなります。しかしバンドの中では何も変わりません：キックとベースは依然としてひとつのゲインを共有し、低域バンドは依然としてポンピングし、クロスオーバー・フィルターは分割のたびに位相をずらします。</p>
+      <table>
+<thead><tr><th></th><th>一般的なコンプレッサー</th><th>マルチバンド（3〜6バンド）</th><th>HOUZY</th></tr></thead>
+<tbody>
+<tr><th scope="row">ゲイン</th><td>ミックス全体にひとつ</td><td>バンドごとにひとつ</td><td>音程ごとにひとつ</td></tr>
+<tr><th scope="row">大きなキックが押し下げるのは…</th><td>すべて</td><td>そのバンド全体（低域、低中域）</td><td>自分自身だけ</td></tr>
+<tr><th scope="row">ポンピング</th><td>あり</td><td>各バンドの内部で発生</td><td>共通ゲインがないので、ポンピングしようがありません</td></tr>
+<tr><th scope="row">アタック対パンチ</th><td>すべてにひとつのエンベロープ</td><td>バンドごとにひとつ</td><td>新しく現れた音程は圧縮されず、アタックは波の周期で設定</td></tr>
+<tr><th scope="row">ベースのサイドバンド</th><td>ゲインが波の内部で動く</td><td>同じ（低域バンドで）</td><td>アタックは音程の半周期より速くならない</td></tr>
+<tr><th scope="row">クロスオーバーの位相</th><td>—</td><td>分割のたびにずれる</td><td>信号経路にクロスオーバーがない</td></tr>
+<tr><th scope="row">レイテンシー</th><td>ほぼゼロ</td><td>低い</td><td>約0.1秒、DAWが補正</td></tr>
+</tbody>
+</table>
+      <h2>トラック内のすべての周波数で、均一な圧縮を。</h2>
+      <p>音は個々の音程に分解され、それぞれの音量がその音程専用のエンベロープでならされます。大きな音が他を押し下げることはなく、ミックス内のどの周波数がどれだけ大きくても、コンプレッサーはすべての音を同じように安定して扱います。大きなキックやローエンド、中域があっても、低音も高音も同じように圧縮します。</p>
+              <p>スレッショルドは自動です：いちばん大きな音から自動で決まり、曲に合わせて動きます。リリースも自動（AUTO）：プラグインが音の減衰の速さを測り、時間を自動で設定します。キックもドラムもボーカルも、すべての音程が同じやり方で圧縮され、そのあとレベルが自動で戻されるので、しっかり密度のある仕上がりになります。</p>
+              <p class="small">マスタリング以外にも、どのトラックやバスにも使えます（CPU負荷は高めです）。</p>
+      <h2>マルチバンドが今でも最適な場面</h2>
+      <p>レイテンシーが重要なライブやトラッキング、あるいは正確なクロスオーバー点での特定バンドのピンポイント作業。HOUZYはマスターとバス用に作られています。さらにバンドごとの調整が欲しいときは、ALL MIXモードで6バンドをそれぞれ独自のアマウントで調整できます。</p>
+      <p class="why-cta"><a class="cta" href="/ja/plugin.html">ブラウザで試す</a><a class="pill" href="/ja/download.html">ダウンロード — 14日間お試し</a></p>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/ja/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
+      <p>ACRONA AUDIOのマスタリング・コンプレッサー。<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <p class="foot-langs"><a data-home="plugin.html" href="/ja/plugin.html" data-i18n="106">ブラウザで試す</a><br><a href="/why-houzy.html" hreflang="en" lang="en">English</a> · <a href="/ru/why-houzy.html" hreflang="ru" lang="ru">Русский</a> · <a href="/es/why-houzy.html" hreflang="es" lang="es">Español</a> · <a href="/pt/why-houzy.html" hreflang="pt-BR" lang="pt-BR">Português</a> · <a href="/fr/why-houzy.html" hreflang="fr" lang="fr">Français</a> · <a href="/it/why-houzy.html" hreflang="it" lang="it">Italiano</a> · <a href="/ja/why-houzy.html" hreflang="ja" lang="ja">日本語</a></p>
+    </div>
+    <div>
+      <h2>法的情報</h2>
+      <ul>
+        <li><a href="/privacy.html">プライバシーポリシー</a></li>
+        <li><a href="/cookies.html">Cookieポリシー</a></li>
+        <li><a href="/terms.html">利用規約・販売条件</a></li>
+        <li><a href="/eula.html">使用許諾契約（EULA）</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>ACRONA</h2>
+      <ul>
+        <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 ACRONA AUDIO. VSTはSteinberg Media Technologies GmbHの商標です。Audio Units、Logic Pro、macOSはApple Inc.の商標です。その他の名称は各所有者に帰属します。</p>
+  </div>
+</footer>
+
+<!--/email_off-->
+</body>
+</html>

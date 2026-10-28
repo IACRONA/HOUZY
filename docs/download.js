@@ -8,7 +8,10 @@
     en: ['What\'s new', 'Latest version', 'Download', 'Installer', 'Download HOUZY', 'Coming soon'],
     ru: ['Что нового', 'Последняя версия', 'Скачать', 'Установщик', 'Скачать HOUZY', 'Скоро'],
     es: ['Novedades', 'Última versión', 'Descargar', 'Instalador', 'Descargar HOUZY', 'Próximamente'],
-    pt: ['Novidades', 'Última versão', 'Baixar', 'Instalador', 'Baixar HOUZY', 'Em breve']
+    pt: ['Novidades', 'Última versão', 'Baixar', 'Instalador', 'Baixar HOUZY', 'Em breve'],
+    fr: ['Nouveautés', 'Dernière version', 'Télécharger', 'Installateur', 'Télécharger HOUZY', 'Bientôt'],
+    it: ['Novità', 'Ultima versione', 'Scarica', 'Installer', 'Scarica HOUZY', 'Prossimamente'],
+    ja: ['新機能', '最新バージョン', 'ダウンロード', 'インストーラー', 'HOUZYをダウンロード', '近日公開']
   };
   var L = (document.documentElement.lang || 'en').slice(0, 2), data = null;   // 18.10.2026: one language per file (/ru/download.html)
   if (!TXT[L]) L = 'en';

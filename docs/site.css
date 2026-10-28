@@ -12,14 +12,17 @@
   --shadow:0 1px 2px rgba(30,34,50,.08),0 12px 32px -12px rgba(30,34,50,.28),0 40px 80px -40px rgba(30,34,50,.35);
   --ease-out:cubic-bezier(.16,1,.3,1);
   --pad:clamp(16px,4vw,48px); --max:1160px; --radius:28px;
-  --font:'Sora','Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font:'Sora','Onest','Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
 /* Sora is served from this site (fonts/, variable 100..800): no Google request, so no consent banner is needed */
 @font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;src:url(fonts/Sora-latin-ext.woff2) format('woff2');
   unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;src:url(fonts/Sora-latin.woff2) format('woff2');
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-/* Sora has no Cyrillic: Russian text falls to Manrope (geometric, close in shape and weight), downloaded only when it is needed */
+/* Cyrillic: Onest (28.10.2026, geometric, built for Russian; variable weight). Manrope stays as the fallback.
+   Sora has no Cyrillic: Russian text used to fall to Manrope (geometric, close in shape and weight), downloaded only when it is needed */
+@font-face{font-family:'Onest';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/Onest-cyrillic.woff2) format('woff2');
+  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url(fonts/Manrope-cyrillic.woff2) format('woff2');
   unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 *,*::before,*::after{box-sizing:border-box}
@@ -971,3 +974,21 @@ a.tech4-n:hover{transform:scale(1.08)}
   .menu a:last-child::after{right:calc(var(--nav-gap) / -2 - .5px)}}
 /* RU header (28.10.2026): Cyrillic words are long, the row was glued to the ACRONA AUDIO chip - a touch smaller type, wider gaps */
 @media (min-width:1000px){html[lang="ru"] .navpanel{--nav-gap:18px}html[lang="ru"] .menu a{font-size:13px}html[lang="ru"] .brand small{font-size:11px}}
+/* Manual page (28.10.2026): the cards rise in one after another, softly (CSS only - the language sections are toggled by i18n.js, so no JS reveal here) */
+@keyframes man-rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .man>.wrap>.glass{animation:man-rise .8s cubic-bezier(.16,1,.3,1) both}
+  .man>.wrap>.glass:nth-child(2){animation-delay:.1s}
+  .man>.wrap>.glass:nth-child(n+3){animation-delay:.2s}}
+.dl-head h1,.hero-title .t{text-wrap:balance}   /* no lone word on the last line (Onest sets Russian a little wider) */
+/* Japanese (28.10.2026): no web font - the system's own Japanese faces (Hiragino on Mac, Yu Gothic / Meiryo on Windows); Sora still sets the Latin.
+   Strict line breaking, no letter-spacing on headings (it pulls kana apart), and a calmer weight so kanji do not clot. */
+html[lang="ja"]{--font:'Sora','Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic UI','Yu Gothic','Meiryo','Noto Sans JP',system-ui,sans-serif}
+html[lang="ja"] body{line-break:strict;word-break:normal;overflow-wrap:anywhere;line-height:1.75}
+html[lang="ja"] h1,html[lang="ja"] h2,html[lang="ja"] h3,html[lang="ja"] .brand small,html[lang="ja"] .kicker{letter-spacing:0;font-variation-settings:'wght' 600}
+html[lang="ja"] .menu a{font-size:13px}
+html[lang="fr"] .menu a{font-size:13px}   /* French labels are long: same step as Russian so the chip and the menu keep a gap */
+html[lang="ja"]{word-break:auto-phrase}   /* Chrome / Edge / Safari break Japanese at phrase boundaries, not mid-word */
+/* Technology scene reveal (28.10.2026): hidden until site.js lifts it in (only when scripts run) */
+.pin-ready .stage .pin{opacity:0}
+@media (prefers-reduced-motion:reduce){.pin-ready .stage .pin{opacity:1}}

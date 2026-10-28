@@ -31,7 +31,7 @@
 - [Buy on Gumroad](https://acronawar.gumroad.com/l/houzy)
 - [Terms of Use & Sale](https://acronaaudio.shop/terms.html), [EULA](https://acronaaudio.shop/eula.html), [Privacy Policy](https://acronaaudio.shop/privacy.html)
 
-Every page above also exists in Russian, Spanish and Brazilian Portuguese: add /ru/, /es/ or /pt/ after the domain
+Every page above also exists in Russian, Spanish, Brazilian Portuguese, French, Italian and Japanese: add /ru/, /es/, /pt/, /fr/, /it/ or /ja/ after the domain
 (for example https://acronaaudio.shop/ru/why-houzy.html).
 
 ## Contact

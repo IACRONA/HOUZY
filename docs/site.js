@@ -513,6 +513,18 @@
     });
   }
 
+  // the Technology scene (sphere + tabs) rises in when it first sticks to the screen, like the cards above it.
+  // Only the outer .pin moves (opacity + a short lift): the sphere, arms and tabs inside keep their own transforms.
+  var pinEl = document.querySelector('.stage .pin');
+  if (pinEl && M.inView) {
+    html.classList.add('pin-ready');
+    M.inView(pinEl, function () {
+      M.animate(pinEl, { opacity: [0, 1], y: [48, 0] },
+        { opacity: { duration: 0.7, ease: ease }, default: { type: 'spring', stiffness: 150, damping: 24 } })
+        .then(function () { pinEl.style.opacity = ''; pinEl.style.transform = ''; });
+    }, { amount: 0.2 });
+  }
+
   // touch: buttons swell under the pointer and give under the press; the download cards lift
   var BTN = '.btn, .pill, .cta, .live-menu button, .login';
   if (M.hover) {
