@@ -1021,3 +1021,9 @@ html[lang="ja"]{word-break:auto-phrase}   /* Chrome / Edge / Safari break Japane
 .why-duo .video-frame{flex:0 0 min(300px,34%);aspect-ratio:9/16}
 .why-duo-shot{flex:1 1 auto;min-width:0;width:100%;height:auto;object-fit:cover;border-radius:19px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
 @media (max-width:700px){.why-duo{flex-direction:column}.why-duo .video-frame{flex-basis:auto;width:min(320px,100%);align-self:center}.why-duo-shot{height:auto}}
+/* Quick start: the video stays centred as before; the column only sits beside it on the right (wide screens), else below */
+.video-row{position:relative;display:block}
+.video-row .video-stage{margin:0 auto}
+.qs{width:232px;margin:0}
+@media (min-width:1360px){.qs{position:absolute;top:50%;left:calc(50% + 390px + 24px);transform:translateY(-50%)}}
+@media (max-width:1359px){.qs{width:min(780px,100%);margin:20px auto 0}}
