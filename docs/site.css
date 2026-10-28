@@ -999,3 +999,20 @@ html[lang="ja"]{word-break:auto-phrase}   /* Chrome / Edge / Safari break Japane
 /* product shot under the video (Why HOUZY) and on the comparison page: the same glass frame as the player */
 .why-shot{width:min(780px,100%);margin:0 auto clamp(18px,2.4vw,26px)}
 .why-shot img{display:block;width:100%;height:auto;border-radius:19px}
+/* Quick start beside the home video (28.10.2026): a short liquid-glass column, inset from the player's top and bottom so it reads as
+   an extension of the same field; three numbered steps and a link to the manual. Under 1000 px it drops below the video. */
+.video-row{display:flex;align-items:stretch;justify-content:center;gap:clamp(16px,2vw,24px);width:100%}
+.video-row .video-stage{flex:0 1 780px}
+.qs{flex:0 0 232px;align-self:center;margin:clamp(48px,8vw,120px) 0;padding:24px 22px 22px;border-radius:28px;display:flex;flex-direction:column;gap:16px;
+  background:linear-gradient(160deg,rgba(255,255,255,.42),rgba(255,255,255,.14) 55%,rgba(220,240,246,.22));
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.5),inset 0 -14px 26px -18px rgba(95,212,228,.45),0 22px 50px -26px rgba(30,34,50,.42)}
+.qs-kick{margin:0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);font-variation-settings:'wght' 650}
+.qs-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.qs-steps li{display:flex;align-items:center;gap:12px;font-size:14px;line-height:1.35;color:var(--text)}
+.qs-steps b{display:block;font-size:13px;letter-spacing:.08em;color:var(--ink);font-variation-settings:'wght' 700}
+.qs-n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;color:#fff;font-variation-settings:'wght' 700;
+  background:linear-gradient(180deg,#7fe0ec,#2f9fb1);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 4px 10px -4px rgba(20,110,125,.6)}
+.qs-link{align-self:flex-start;font-size:13px;color:var(--accent-ink);text-decoration:underline;text-decoration-color:rgba(31,111,125,.35);text-underline-offset:3px}
+.qs-link::after{content:' →'}
+@media (max-width:999px){.video-row{flex-direction:column;align-items:center}.qs{align-self:stretch;margin:0;flex-basis:auto;width:min(780px,100%)}}
