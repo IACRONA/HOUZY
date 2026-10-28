@@ -31,6 +31,7 @@
 
 - [HOUZY home](https://acronaaudio.shop/): what it does, the four technologies, price, FAQ.
 - [Why HOUZY](https://acronaaudio.shop/why-houzy.html): what HOUZY is and how it differs from an ordinary and a multiband compressor, with a table and FAQ.
+- [Best mastering compressor plugins 2026](https://acronaaudio.shop/best-mastering-compressor.html): how to choose a mastering compressor and how FabFilter Pro-C 2, Shadow Hills, The Glue, TDR Kotelnikov, Ozone and HOUZY compare, with FAQ.
 - [Online demo](https://acronaaudio.shop/plugin.html): try HOUZY on your own track in the browser.
 - [Download](https://acronaaudio.shop/download.html): installers, installation and licence activation.
 - [User manual](https://acronaaudio.shop/manual.html): how to master electronic music with HOUZY, every control explained.
