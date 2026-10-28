@@ -6,11 +6,11 @@ Updated 2026-10-28. Source: https://acronaaudio.shop/ . Short version: https://a
 
 Page: Home (https://acronaaudio.shop/)
 
-# HOUZY · ACRONA AUDIO. One mastering compressor for every kind of music.
+# HOUZY · ACRONA AUDIOOne mastering compressor for every kind of music.
 
-HOUZY is a mastering compressor plugin (VST3, AU) for Windows and macOS. Even compression across every frequency: a loud kick or bass no longer drags the rest of the mix down with it.
+HOUZY is a mastering compressor plugin (VST3, AU) for Windows and macOS. Even compression across every frequency. Loud and quiet passages are compressed the same way.
 
-Four technologies built from scratch, all in one plugin: compression per tone with no shared gain, a clipper that cancels peaks instead of slicing them, a limiter that moves gain only at zero crossings, and timing set in wave cycles and fractions of a bar.
+4Four technologies built from scratch, all in one plugin: compression per tone with no shared gain, a clipper that cancels peaks instead of slicing them, a limiter that moves gain only at zero crossings, and timing set in wave cycles and fractions of a bar.
 
 **Try HOUZY on your own track**MP3 / WAV · first 75 s · plays in your browser, never uploadedStart with AMOUNT at 15–30. Full manual
 
@@ -168,6 +168,7 @@ Telegram
 
 Page: Why HOUZY (https://acronaaudio.shop/why-houzy.html)
 
+
 # One gain, a few bands, or every tone
 
 How HOUZY differs from an ordinary compressor and from a multiband.
@@ -246,7 +247,73 @@ Try it in your browserDownload — 14-day trial
 
 ---
 
+Page: Best mastering compressor plugins 2026 (https://acronaaudio.shop/best-mastering-compressor.html)
+
+
+# Best mastering compressor plugins in 2026
+
+The best mastering compressor depends on the job: gluing a mix, controlling dynamics, or adding density without losing the transients. For electronic and dance music the main problem is pumping, which is why per-tone compressors such as HOUZY exist.
+
+Updated 28 October 2026
+
+## What to look for in a mastering compressor
+
+- **Transparency** — low distortion and no pumping on the kick and the bass.
+
+- **Control** — attack, release, ratio, a side-chain filter and mid/side options.
+
+- **Level matching** — auto gain, so you judge the sound and not the loudness.
+
+- **Peak safety** — a limiter or a true-peak stage for streaming and MP3 exports.
+
+- **Cost to your workflow** — latency, CPU load, price and licence terms.
+
+## Mastering compressors compared
+
+| Plugin | Type | Good for |
+
+| FabFilter Pro-C 2 | Digital compressor with eight styles, side-chain EQ and mid/side processing | Flexible control on any material |
+
+| Shadow Hills Mastering Compressor | Plugin Alliance model of a hardware mastering compressor | Analog-style colour on the master |
+
+| Cytomic The Glue | Bus compressor | Gluing a mix or a group together |
+
+| TDR Kotelnikov | Free, transparent mastering compressor | Clean dynamics control on a budget |
+
+| iZotope Ozone | All-in-one mastering suite with dynamics modules | A complete mastering chain in one plugin |
+
+| HOUZY | Per-tone mastering compressor with the ACR clipper and the T8 limiter | Electronic and dance music: even compression without pumping |
+
+Descriptions are short summaries from the vendors and from published reviews; check each vendor's site for current features and prices.
+
+## When HOUZY is the right choice
+
+HOUZY suits any style of music. It compresses every tone on its own, so nothing pulls the rest of the mix down and the sound stays even and natural: a vocal, a guitar, an orchestra or a drop. It helps most where an ordinary compressor makes a hard kick and a strong low end pump, but that is only one case. It costs $69 once, with a 14-day free trial and an online demo in the browser.
+
+## When another compressor is the better tool
+
+Choose an analog-modelled unit when you want its colour, a multiband or a bus compressor when you want to shape single bands or glue a group, and a low-latency compressor for live use and tracking: HOUZY is built for the master and for buses.
+
+## Frequently asked questions
+
+### What is the best compressor for mastering?
+
+There is no single best one: FabFilter Pro-C 2 is the flexible all-rounder, analog-modelled units add colour, and HOUZY is built for electronic and dance music, where pumping is the main problem.
+
+### What is the best mastering compressor for electronic and dance music?
+
+One that does not pump on a hard kick and bass. HOUZY compresses every tone on its own, so a loud kick does not pull the rest of the mix down.
+
+### Do I need both a compressor and a limiter for mastering?
+
+Usually yes: the compressor evens out the dynamics and the limiter holds the ceiling. HOUZY includes the ACR clipper and the T8 limiter, so one plugin covers both.
+
+Try it in your browserDownload — 14-day trial
+
+---
+
 Page: Manual (https://acronaaudio.shop/manual.html)
+
 
 # How to master electronic music with HOUZY
 
@@ -318,6 +385,7 @@ Try HOUZY right in your browserDownload free — 14-day trial
 
 Page: Download and activation (https://acronaaudio.shop/download.html)
 
+
 # Download HOUZY
 
 Latest version 5.0.0 · 17.10.2026
@@ -371,69 +439,3 @@ Restart your DAW and rescan plugins.
 - **"Already active on the maximum number of computers"** — deactivate it on one of them, or write to us.
 
 - Any other problem: the **REPORT** button in the licence window copies everything we need — paste it into your email.
-
----
-
-Page: Best mastering compressor plugins 2026 (https://acronaaudio.shop/best-mastering-compressor.html)
-
-HOUZY
-
-# Best mastering compressor plugins in 2026
-
-The best mastering compressor depends on the job: gluing a mix, controlling dynamics, or adding density without losing the transients. For electronic and dance music the main problem is pumping, which is why per-tone compressors such as HOUZY exist.
-
-Updated 28 October 2026
-
-## What to look for in a mastering compressor
-
-- **Transparency** — low distortion and no pumping on the kick and the bass.
-
-- **Control** — attack, release, ratio, a side-chain filter and mid/side options.
-
-- **Level matching** — auto gain, so you judge the sound and not the loudness.
-
-- **Peak safety** — a limiter or a true-peak stage for streaming and MP3 exports.
-
-- **Cost to your workflow** — latency, CPU load, price and licence terms.
-
-## Mastering compressors compared
-
-| Plugin | Type | Good for |
-
-| FabFilter Pro-C 2 | Digital compressor with eight styles, side-chain EQ and mid/side processing | Flexible control on any material |
-
-| Shadow Hills Mastering Compressor | Plugin Alliance model of a hardware mastering compressor | Analog-style colour on the master |
-
-| Cytomic The Glue | Bus compressor | Gluing a mix or a group together |
-
-| TDR Kotelnikov | Free, transparent mastering compressor | Clean dynamics control on a budget |
-
-| iZotope Ozone | All-in-one mastering suite with dynamics modules | A complete mastering chain in one plugin |
-
-| HOUZY | Per-tone mastering compressor with the ACR clipper and the T8 limiter | Electronic and dance music: even compression without pumping |
-
-Descriptions are short summaries from the vendors and from published reviews; check each vendor's site for current features and prices.
-
-## When HOUZY is the right choice
-
-HOUZY suits any style of music. It compresses every tone on its own, so nothing pulls the rest of the mix down and the sound stays even and natural: a vocal, a guitar, an orchestra or a drop. It helps most where an ordinary compressor makes a hard kick and a strong low end pump, but that is only one case. It costs $69 once, with a 14-day free trial and an online demo in the browser.
-
-## When another compressor is the better tool
-
-Choose an analog-modelled unit when you want its colour, a multiband or a bus compressor when you want to shape single bands or glue a group, and a low-latency compressor for live use and tracking: HOUZY is built for the master and for buses.
-
-## Frequently asked questions
-
-### What is the best compressor for mastering?
-
-There is no single best one: FabFilter Pro-C 2 is the flexible all-rounder, analog-modelled units add colour, and HOUZY is built for electronic and dance music, where pumping is the main problem.
-
-### What is the best mastering compressor for electronic and dance music?
-
-One that does not pump on a hard kick and bass. HOUZY compresses every tone on its own, so a loud kick does not pull the rest of the mix down.
-
-### Do I need both a compressor and a limiter for mastering?
-
-Usually yes: the compressor evens out the dynamics and the limiter holds the ceiling. HOUZY includes the ACR clipper and the T8 limiter, so one plugin covers both.
-
-Try it in your browserDownload — 14-day trial
