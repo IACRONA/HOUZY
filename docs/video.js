@@ -9,8 +9,9 @@
     muted: false,
     volume: 0.5,   // 50 % by default (owner)
     storage: { enabled: false },   // sound on every time: no remembered mute / volume
-    ratio: '16:9',
-    controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+    ratio: v.dataset.ratio || '16:9',
+    fullscreen: { enabled: !v.dataset.ratio },
+    controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume'].concat(v.dataset.ratio ? [] : ['fullscreen']),
     tooltips: { controls: false, seek: true }
   });
 })();

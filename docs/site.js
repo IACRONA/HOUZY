@@ -702,10 +702,10 @@
     if (!bar || !small || !links.length) return;
     var items = [small].concat(links);
     var at = function (end) { for (var i = 1; i < items.length; i++) if (items[i].getAttribute('href').slice(-end.length) === end) return i; return 0; };
-    var IDX = { tech: at('#top'), manual: at('manual.html'), about: at('#about'), faq: at('#faq'), contact: at('#contact') };
+    var IDX = { tech: at('#top'), manual: at('manual.html'), about: at('#about'), faq: at('#faq'), contact: at('#contact'), why: at('why-houzy.html'), partners: at('affiliates.html') };
     var drop = document.createElement('i'); drop.className = 'bar-drop'; drop.setAttribute('aria-hidden', 'true');
     bar.insertBefore(drop, bar.firstChild);
-    var PADX = 12, PADY = 5, L = 0, R = 0, tL = 0, tR = 0, tTop = 0, tH = 0, cur = -1, lock = -1, lockUntil = 0, running = false, last = 0;
+    var PADX = 9, PADY = 5, L = 0, R = 0, tL = 0, tR = 0, tTop = 0, tH = 0, cur = -1, lock = -1, lockUntil = 0, running = false, last = 0;
 
     function place(i) {
       var br = bar.getBoundingClientRect(), r = items[i].getBoundingClientRect();
@@ -737,6 +737,8 @@
     }
     function which() {
       if (/manual\.html$/.test(location.pathname)) return IDX.manual;
+      if (/why-houzy\.html$/.test(location.pathname)) return IDX.why;
+      if (/affiliates\.html$/.test(location.pathname)) return IDX.partners;
       var vh = window.innerHeight * 0.4, top = function (s) { var e = document.querySelector(s); return e ? e.getBoundingClientRect().top : Infinity; };
       if (top('#contact') <= vh) return IDX.contact;
       if (top('#faq') <= vh) return IDX.faq;
@@ -752,11 +754,15 @@
     }
     function ask() { if (!pending) { pending = true; requestAnimationFrame(update); } }
     items.forEach(function (el, i) {
-      el.addEventListener('click', function () { lock = i; lockUntil = performance.now() + 1100; ask(); });
+      el.addEventListener('click', function () { try { sessionStorage.setItem('houzy-drop', cur + ',' + Date.now()); } catch (e) {} lock = i; lockUntil = performance.now() + 1100; ask(); });
     });
     window.addEventListener('scroll', ask, { passive: true });
     window.addEventListener('resize', function () { if (cur >= 0) { place(cur); L = tL; R = tR; draw(); } });
     if (document.fonts) document.fonts.ready.then(function () { if (cur >= 0) { place(cur); L = tL; R = tR; draw(); } });
-    go(which(), true);
+    // arriving from another page: start where the drop stood there and flow to this page's item (it used to snap to ACRONA AUDIO)
+    var w = which(), from = -1;
+    try { var p = (sessionStorage.getItem('houzy-drop') || '').split(','); sessionStorage.removeItem('houzy-drop');
+          if (p.length === 2 && Date.now() - +p[1] < 5000) from = +p[0]; } catch (e) {}
+    if (from >= 0 && from < items.length && from !== w) { go(from, true); requestAnimationFrame(function () { go(w); }); } else go(w, true);
   })();
 })();

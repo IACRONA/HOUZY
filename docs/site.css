@@ -955,3 +955,19 @@ a.tech4-n:hover{transform:scale(1.08)}
   .aff-end{flex-direction:column;align-items:stretch;text-align:center}
   .aff-end .cta{justify-content:center}
 }
+
+/* vertical 9:16 video (Why HOUZY): centred, never taller than the screen, no fullscreen so no black side bars */
+.video-vert{width:min(360px,100%,calc((100svh - 160px) * 9 / 16));margin:0 auto clamp(18px,2.4vw,26px)}
+.video-vert .video-frame{aspect-ratio:9/16}
+/* header symmetry (28.10.2026): the brand + ACRONA AUDIO chip was wider than its 1fr share, so it pushed the menu right of the bar's centre
+   (menu 35 px off in RU). Tighter menu gaps and chip tracking let both side columns stay equal: the menu is centred again. */
+@media (min-width:1000px){.navpanel{--nav-gap:14px}.brand small{letter-spacing:.1em}.bar{column-gap:8px;padding-left:16px;padding-right:16px}}
+/* header dividers (28.10.2026): thin fading hairlines between the menu items and at both ends of the menu */
+@media (min-width:1000px){
+  .menu a+a::before{display:block}
+  .menu a:first-child::before,.menu a:last-child::after{content:'';position:absolute;top:50%;width:1px;height:16px;transform:translateY(-50%);pointer-events:none;
+    background:linear-gradient(180deg,rgba(22,25,31,0),rgba(22,25,31,.22) 30%,rgba(22,25,31,.22) 70%,rgba(22,25,31,0))}
+  .menu a:first-child::before{left:calc(var(--nav-gap) / -2 - .5px)}
+  .menu a:last-child::after{right:calc(var(--nav-gap) / -2 - .5px)}}
+/* RU header (28.10.2026): Cyrillic words are long, the row was glued to the ACRONA AUDIO chip - a touch smaller type, wider gaps */
+@media (min-width:1000px){html[lang="ru"] .navpanel{--nav-gap:18px}html[lang="ru"] .menu a{font-size:13px}html[lang="ru"] .brand small{font-size:11px}}
