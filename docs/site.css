@@ -996,3 +996,6 @@ html[lang="ja"]{word-break:auto-phrase}   /* Chrome / Edge / Safari break Japane
 .why .prose h3{margin:20px 0 4px;font-size:1.05em;line-height:1.35;color:var(--ink);font-variation-settings:'wght' 650}
 .why-upd{margin:10px 0 0}
 .foot-updated{grid-column:1/-1;margin:0;font-size:12px;color:var(--sub)}
+/* product shot under the video (Why HOUZY) and on the comparison page: the same glass frame as the player */
+.why-shot{width:min(780px,100%);margin:0 auto clamp(18px,2.4vw,26px)}
+.why-shot img{display:block;width:100%;height:auto;border-radius:19px}
