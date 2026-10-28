@@ -24,12 +24,12 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Compression par tonalité ou multibande — pourquoi HOUZY | ACRONA AUDIO">
 <meta property="og:description" content="En quoi la compression par tonalité de HOUZY diffère d'un compresseur classique et d'un multibande : pompage, attaque et punch, basses, phase, latence.">
-<meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
+<meta property="og:image" content="https://acronaaudio.shop/img/houzy-card.jpg">
 <meta property="og:image:width" content="1640">
 <meta property="og:image:height" content="912">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/site.css?v=20261028j">
+<link rel="stylesheet" href="/site.css?v=20261028k">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/site.js?v=20261028c" defer></script>
@@ -78,6 +78,47 @@
 <link rel="stylesheet" href="/vendor/plyr/plyr.css">
 <script src="/vendor/plyr/plyr.min.js" defer></script>
 <script src="/video.js?v=20261028a" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "inLanguage": "fr",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "HOUZY pompe-t-il ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Non. Il n'y a pas de gain commun, donc rien ne peut pomper : chaque tonalité est comprimée par sa propre enveloppe."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "En quoi HOUZY diffère-t-il d'un compresseur multibande ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Un multibande donne à chaque bande son propre gain, mais à l'intérieur d'une bande, le kick et la basse partagent toujours le même. HOUZY donne à chaque tonalité son propre gain, sans filtres de croisement dans le chemin du signal."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Puis-je utiliser HOUZY sur des pistes isolées, pas seulement sur le master ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Oui, sur n'importe quelle piste ou bus. HOUZY analyse chaque tonalité séparément, sa charge CPU est donc plus élevée que celle d'un compresseur ordinaire. Sa latence est signalée à la DAW et compensée automatiquement."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Quels formats et quelles DAW HOUZY prend-il en charge ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "VST3 sous Windows, VST3 et AU sous macOS : Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro et les autres hôtes qui chargent le VST3 ou l'AU."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <!--email_off-->
@@ -116,6 +157,7 @@
       <p class="kicker">HOUZY</p>
       <h1>Un seul gain, quelques bandes, ou chaque tonalité</h1>
       <p class="man-lead">En quoi HOUZY diffère d'un compresseur ordinaire et d'un multibande.</p>
+      <p class="small why-upd">Mis à jour le <time datetime="2026-10-28">28 octobre 2026</time></p>
     </div>
         <div class="video-stage video-vert" data-reveal>
       <div class="video-frame">
@@ -125,6 +167,8 @@
       </div>
     </div>
     <section class="glass prose" data-reveal>
+      <h2>Qu'est-ce que HOUZY ?</h2>
+      <p>HOUZY est un plugin de compresseur de mastering (VST3 et AU) d'ACRONA AUDIO. Au lieu d'un seul gain pour tout le mix, il donne à chaque tonalité du spectre sa propre enveloppe : un kick ou une basse puissants n'entraînent plus le reste du mix. Pas de pompage, un kick percutant, des graves propres. Né dans la musique électronique et dance, il fonctionne dans tous les genres.</p>
       <h2>Un seul chiffre pour tout le son.</h2>
       <p>Un compresseur ordinaire, c'est <span class="code">output = gain × signal</span>. Tous les reproches classiques en découlent :</p>
               <ul>
@@ -154,6 +198,15 @@
               <p class="small">Fonctionne aussi en dehors du mastering, sur n'importe quelle piste ou bus, avec une charge CPU plus élevée.</p>
       <h2>Quand un multibande reste le bon outil</h2>
       <p>En live et à l'enregistrement, où la latence compte, ou pour un travail chirurgical sur une bande avec des points de croisement précis. HOUZY est conçu pour le master et les bus. Si vous voulez en plus un contrôle par bande, son mode ALL MIX offre six bandes, chacune avec son propre réglage.</p>
+            <h2>Questions fréquentes</h2>
+      <h3>HOUZY pompe-t-il ?</h3>
+      <p>Non. Il n'y a pas de gain commun, donc rien ne peut pomper : chaque tonalité est comprimée par sa propre enveloppe.</p>
+      <h3>En quoi HOUZY diffère-t-il d'un compresseur multibande ?</h3>
+      <p>Un multibande donne à chaque bande son propre gain, mais à l'intérieur d'une bande, le kick et la basse partagent toujours le même. HOUZY donne à chaque tonalité son propre gain, sans filtres de croisement dans le chemin du signal.</p>
+      <h3>Puis-je utiliser HOUZY sur des pistes isolées, pas seulement sur le master ?</h3>
+      <p>Oui, sur n'importe quelle piste ou bus. HOUZY analyse chaque tonalité séparément, sa charge CPU est donc plus élevée que celle d'un compresseur ordinaire. Sa latence est signalée à la DAW et compensée automatiquement.</p>
+      <h3>Quels formats et quelles DAW HOUZY prend-il en charge ?</h3>
+      <p>VST3 sous Windows, VST3 et AU sous macOS : Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro et les autres hôtes qui chargent le VST3 ou l'AU.</p>
       <p class="why-cta"><a class="cta" href="/fr/plugin.html">Essayer dans votre navigateur</a><a class="pill" href="/fr/download.html">Télécharger — essai de 14 jours</a></p>
     </section>
   </div>

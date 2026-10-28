@@ -24,12 +24,12 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Por tom ou multibanda — por que o HOUZY | ACRONA AUDIO">
 <meta property="og:description" content="Como a compressão por tom do HOUZY difere de um compressor comum e de um multibanda: bombeamento, ataque e punch, bandas laterais no grave, fase e latência.">
-<meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
+<meta property="og:image" content="https://acronaaudio.shop/img/houzy-card.jpg">
 <meta property="og:image:width" content="1640">
 <meta property="og:image:height" content="912">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/site.css?v=20261028j">
+<link rel="stylesheet" href="/site.css?v=20261028k">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/site.js?v=20261028c" defer></script>
@@ -78,6 +78,47 @@
 <link rel="stylesheet" href="/vendor/plyr/plyr.css">
 <script src="/vendor/plyr/plyr.min.js" defer></script>
 <script src="/video.js?v=20261028a" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "inLanguage": "pt-BR",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "O HOUZY causa bombeamento?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Não. Não há ganho comum, então nada pode bombear: cada tom é comprimido pelo seu próprio envelope."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Em que o HOUZY é diferente de um compressor multibanda?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Um multibanda dá a cada banda o seu ganho, mas dentro de uma banda o kick e o grave continuam compartilhando o mesmo. O HOUZY dá a cada tom o seu próprio ganho, sem crossovers no caminho do sinal."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Posso usar o HOUZY em faixas individuais, e não só no master?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sim, em qualquer faixa ou bus. O HOUZY analisa cada tom separadamente, por isso a carga de CPU é maior que a de um compressor comum. A latência é informada à DAW e compensada automaticamente."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Quais formatos e DAWs o HOUZY suporta?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "VST3 no Windows, VST3 e AU no macOS: Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro e outros hosts que carregam VST3 ou AU."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <!--email_off-->
@@ -116,6 +157,7 @@
       <p class="kicker">HOUZY</p>
       <h1>Um ganho, algumas bandas ou cada tom</h1>
       <p class="man-lead">Como o HOUZY difere de um compressor comum e de um multibanda.</p>
+      <p class="small why-upd">Atualizado em <time datetime="2026-10-28">28 de outubro de 2026</time></p>
     </div>
         <div class="video-stage video-vert" data-reveal>
       <div class="video-frame">
@@ -125,6 +167,8 @@
       </div>
     </div>
     <section class="glass prose" data-reveal>
+      <h2>O que é o HOUZY?</h2>
+      <p>O HOUZY é um plugin compressor de masterização (VST3 e AU) da ACRONA AUDIO. Em vez de um único ganho para toda a mix, ele dá a cada tom do espectro o seu próprio envelope, então um kick ou um grave forte não puxa o resto da mix: sem bombeamento, com kick marcante e graves limpos. Nasceu na música eletrônica e dance e funciona em qualquer gênero.</p>
       <h2>Um único número para o som inteiro.</h2>
       <p>Um compressor comum é <span class="code">saída = ganho × sinal</span>. Todas as reclamações clássicas vêm daí:</p>
               <ul>
@@ -154,6 +198,15 @@
               <p class="small">Funciona além da masterização: em qualquer faixa ou bus, com maior uso de CPU.</p>
       <h2>Quando um multibanda ainda é a ferramenta certa</h2>
       <p>Ao vivo e na gravação, onde a latência importa, ou num trabalho cirúrgico em uma banda com pontos de corte exatos. O HOUZY foi feito para o master e os buses. Se quiser controle por bandas por cima, o modo ALL MIX oferece seis bandas, cada uma com sua própria intensidade.</p>
+            <h2>Perguntas frequentes</h2>
+      <h3>O HOUZY causa bombeamento?</h3>
+      <p>Não. Não há ganho comum, então nada pode bombear: cada tom é comprimido pelo seu próprio envelope.</p>
+      <h3>Em que o HOUZY é diferente de um compressor multibanda?</h3>
+      <p>Um multibanda dá a cada banda o seu ganho, mas dentro de uma banda o kick e o grave continuam compartilhando o mesmo. O HOUZY dá a cada tom o seu próprio ganho, sem crossovers no caminho do sinal.</p>
+      <h3>Posso usar o HOUZY em faixas individuais, e não só no master?</h3>
+      <p>Sim, em qualquer faixa ou bus. O HOUZY analisa cada tom separadamente, por isso a carga de CPU é maior que a de um compressor comum. A latência é informada à DAW e compensada automaticamente.</p>
+      <h3>Quais formatos e DAWs o HOUZY suporta?</h3>
+      <p>VST3 no Windows, VST3 e AU no macOS: Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro e outros hosts que carregam VST3 ou AU.</p>
       <p class="why-cta"><a class="cta" href="/pt/plugin.html">Experimente no navegador</a><a class="pill" href="/pt/download.html">Baixar — 14 dias de teste</a></p>
     </section>
   </div>

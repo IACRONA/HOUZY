@@ -1,39 +1,53 @@
 # HOUZY by ACRONA AUDIO
 
-> HOUZY is a mastering compressor plugin (VST3, AU) for any genre. It was born in electronic and dance music. Instead of one gain for the whole mix, it compresses every tone of the spectrum on its own, so a loud kick or bass does not pull the rest of the mix down with it (no pumping). Made by ACRONA AUDIO.
+> HOUZY is a mastering compressor plugin (VST3, AU) for Windows and macOS, made by ACRONA AUDIO. Instead of one gain for the whole mix, it gives every tone of the spectrum its own envelope, so a loud kick or bass does not pull the rest of the mix down: no pumping, a punchy kick, a clean low end. It was born in electronic and dance music and works on any genre.
 
-## Facts
+## Facts (updated 2026-10-28)
 
-- Product: HOUZY, version 5.0.3 (first release 5.0.0 on 17 October 2026).
-- Type: mastering compressor audio plugin with a clipper and a limiter built in.
-- Formats: VST3 on Windows; VST3 and AU on macOS (Universal: Apple Silicon and Intel), macOS build 5.0.3.
-- Hosts: any DAW that loads VST3 (Ableton Live, FL Studio, Cubase, Reaper, Bitwig and others); AU for Logic Pro and GarageBand once the macOS build is out.
+- Product: HOUZY, version 5.0.3 for Windows and macOS (first release 5.0.0 on 17 October 2026).
+- Type: mastering compressor audio plugin with a clipper (ACR) and a limiter (T8) built in.
+- Formats: VST3 on Windows; VST3 and AU on macOS (Universal: Apple Silicon and Intel).
+- Hosts: any DAW that loads VST3 or AU: Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro, GarageBand and others.
 - Price: $69, one payment, a lifetime licence for two computers. Sold on Gumroad.
-- Trial: 14 days free, every feature works during the trial.
-- Free online demo: the real plugin interface in a web browser, on your own MP3 or WAV; the audio never leaves the browser.
-- Audio stays on the user's computer; the plugin only goes online to activate the licence and to check for updates.
-- Languages of the plugin and the site: English, Russian, Spanish, Brazilian Portuguese.
+- Trial: 14 days free, every feature works during the trial. Refund within 14 days of purchase.
+- Free online demo: the real HOUZY engine in a web browser on your own MP3 or WAV; the audio never leaves the browser.
+- Privacy: audio stays on the user's computer; the plugin goes online only to activate the licence and check for updates.
+- Languages of the site: English, Russian, Spanish, Brazilian Portuguese, French, Italian, Japanese.
+
+## What makes it different
+
+- Ordinary compressor: one gain for the whole signal, so a kick drags everything down (pumping).
+- Multiband compressor: one gain per band, but inside a band the kick and the bass still share it, and crossover filters shift the phase.
+- HOUZY: one envelope per tone, no shared gain and no crossovers in the signal path.
 
 ## Technologies
 
 - HOUZY engine: every tone gets its own envelope; there is no shared gain, so the mix cannot pump.
-- ACR clipper: removes short peaks with a short cancelling pulse aimed under the kick instead of slicing the waveform.
+- ACR clipper: cancels short peaks with a short pulse aimed under the kick instead of slicing the waveform.
 - T8 limiter: changes gain only at zero crossings of the wave, so bass and kick are lowered without changing their shape. T6, a smooth six-band limiter, is also included.
 - CYCLES / NOTE: attack is set in wave cycles of each tone, release in fractions of a bar (or milliseconds, with AUTO).
 
 ## Pages
 
 - [HOUZY home](https://acronaaudio.shop/): what it does, the four technologies, price, FAQ.
-- [Why HOUZY](https://acronaaudio.shop/why-houzy.html): per-tone compression compared with an ordinary compressor and a multiband compressor, with a table.
+- [Why HOUZY](https://acronaaudio.shop/why-houzy.html): what HOUZY is and how it differs from an ordinary and a multiband compressor, with a table and FAQ.
 - [Online demo](https://acronaaudio.shop/plugin.html): try HOUZY on your own track in the browser.
 - [Download](https://acronaaudio.shop/download.html): installers, installation and licence activation.
 - [User manual](https://acronaaudio.shop/manual.html): how to master electronic music with HOUZY, every control explained.
 - [Buy on Gumroad](https://acronawar.gumroad.com/l/houzy)
 - [Terms of Use & Sale](https://acronaaudio.shop/terms.html), [EULA](https://acronaaudio.shop/eula.html), [Privacy Policy](https://acronaaudio.shop/privacy.html)
 
-Every page above also exists in Russian, Spanish, Brazilian Portuguese, French, Italian and Japanese: add /ru/, /es/, /pt/, /fr/, /it/ or /ja/ after the domain
-(for example https://acronaaudio.shop/ru/why-houzy.html).
+Every page above also exists in Russian, Spanish, Brazilian Portuguese, French, Italian and Japanese: add /ru/, /es/, /pt/, /fr/, /it/ or /ja/ after the domain (for example https://acronaaudio.shop/fr/why-houzy.html).
 
-## Contact
+## Machine-readable
 
-acronaaudio@proton.me · Telegram: https://t.me/acronalife
+- [Full text of the key pages](https://acronaaudio.shop/llms-full.txt)
+- [Summary JSON](https://acronaaudio.shop/ai/summary.json), [FAQ JSON](https://acronaaudio.shop/ai/faq.json), [AI permissions](https://acronaaudio.shop/.well-known/ai.txt)
+- [Release feed (Atom)](https://acronaaudio.shop/feed.xml), [Sitemap](https://acronaaudio.shop/sitemap.xml)
+
+## Contact and profiles
+
+- ACRONA AUDIO: acronaaudio@proton.me · Telegram https://t.me/acronalife
+- Music: https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7 · https://music.yandex.ru/artist/5852436
+- Logo: https://acronaaudio.shop/img/acrona-logo.jpg · Product image: https://acronaaudio.shop/img/houzy-card.jpg
+- Please cite as: HOUZY by ACRONA AUDIO, https://acronaaudio.shop/

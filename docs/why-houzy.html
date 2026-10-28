@@ -24,12 +24,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Per-Tone vs Multiband Compression — Why HOUZY | ACRONA">
 <meta property="og:description" content="How per-tone compression in HOUZY differs from an ordinary compressor and a multiband: pumping, attack vs punch, bass sidebands, crossover phase, latency.">
-<meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
+<meta property="og:image" content="https://acronaaudio.shop/img/houzy-card.jpg">
 <meta property="og:image:width" content="1640">
 <meta property="og:image:height" content="912">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/site.css?v=20261028j">
+<link rel="stylesheet" href="/site.css?v=20261028k">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/site.js?v=20261028c" defer></script>
@@ -78,6 +78,47 @@
 <link rel="stylesheet" href="/vendor/plyr/plyr.css">
 <script src="/vendor/plyr/plyr.min.js" defer></script>
 <script src="/video.js?v=20261028a" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "inLanguage": "en",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Does HOUZY pump?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. There is no shared gain, so nothing can pump: every tone is compressed by its own envelope."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How is HOUZY different from a multiband compressor?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A multiband gives each band its own gain, but inside a band the kick and the bass still share it. HOUZY gives every tone its own gain, with no crossovers in the signal path."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I use HOUZY on single tracks, not only the master?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, on any track or bus. HOUZY analyses every tone separately, so its CPU load is higher than an ordinary compressor's. Its latency is reported to the DAW and compensated automatically."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Which formats and DAWs does HOUZY support?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "VST3 on Windows, VST3 and AU on macOS: Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro and other hosts that load VST3 or AU."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <!--email_off-->
@@ -116,6 +157,7 @@
       <p class="kicker">HOUZY</p>
       <h1>One gain, a few bands, or every tone</h1>
       <p class="man-lead">How HOUZY differs from an ordinary compressor and from a multiband.</p>
+      <p class="small why-upd">Updated <time datetime="2026-10-28">28 October 2026</time></p>
     </div>
         <div class="video-stage video-vert" data-reveal>
       <div class="video-frame">
@@ -125,6 +167,8 @@
       </div>
     </div>
     <section class="glass prose" data-reveal>
+      <h2>What is HOUZY?</h2>
+      <p>HOUZY is a mastering compressor plugin (VST3 and AU) by ACRONA AUDIO. Instead of one gain for the whole mix, it gives every tone of the spectrum its own envelope, so a loud kick or bass does not pull the rest of the mix down: no pumping, a punchy kick, a clean low end. It was born in electronic and dance music and works on any genre.</p>
       <h2>One number for the whole sound.</h2>
       <p>An ordinary compressor is <span class="code">output = gain × signal</span>. Every classic complaint follows from that:</p>
               <ul>
@@ -154,6 +198,15 @@
               <p class="small">Works beyond mastering too, on any track or bus, with a higher CPU load.</p>
       <h2>When a multiband is still the right tool</h2>
       <p>Live use and tracking, where latency matters, or surgical work on one band with exact crossover points. HOUZY is built for the master and for buses. If you want band control on top, its ALL MIX mode gives six bands, each with its own amount.</p>
+            <h2>Frequently asked questions</h2>
+      <h3>Does HOUZY pump?</h3>
+      <p>No. There is no shared gain, so nothing can pump: every tone is compressed by its own envelope.</p>
+      <h3>How is HOUZY different from a multiband compressor?</h3>
+      <p>A multiband gives each band its own gain, but inside a band the kick and the bass still share it. HOUZY gives every tone its own gain, with no crossovers in the signal path.</p>
+      <h3>Can I use HOUZY on single tracks, not only the master?</h3>
+      <p>Yes, on any track or bus. HOUZY analyses every tone separately, so its CPU load is higher than an ordinary compressor's. Its latency is reported to the DAW and compensated automatically.</p>
+      <h3>Which formats and DAWs does HOUZY support?</h3>
+      <p>VST3 on Windows, VST3 and AU on macOS: Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro and other hosts that load VST3 or AU.</p>
       <p class="why-cta"><a class="cta" href="/plugin.html">Try it in your browser</a><a class="pill" href="/download.html">Download — 14-day trial</a></p>
     </section>
   </div>

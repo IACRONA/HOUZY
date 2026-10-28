@@ -24,12 +24,12 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="По тонам или мультибэнд — почему HOUZY | ACRONA AUDIO">
 <meta property="og:description" content="Чем сжатие по тонам в HOUZY отличается от обычного компрессора и мультибэнда: пампинг, атака и панч, боковые полосы на басу, фаза кроссоверов, задержка.">
-<meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
+<meta property="og:image" content="https://acronaaudio.shop/img/houzy-card.jpg">
 <meta property="og:image:width" content="1640">
 <meta property="og:image:height" content="912">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/site.css?v=20261028j">
+<link rel="stylesheet" href="/site.css?v=20261028k">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/site.js?v=20261028c" defer></script>
@@ -78,6 +78,47 @@
 <link rel="stylesheet" href="/vendor/plyr/plyr.css">
 <script src="/vendor/plyr/plyr.min.js" defer></script>
 <script src="/video.js?v=20261028a" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "inLanguage": "ru",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "HOUZY пампит?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Нет. Общего гейна нет, поэтому качать нечему: каждый тон сжимается своей огибающей."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Чем HOUZY отличается от мультибэнд-компрессора?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Мультибэнд даёт каждой полосе свой гейн, но внутри полосы кик и бас по-прежнему делят один. HOUZY даёт свой гейн каждому тону, а кроссоверов в тракте нет."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Можно ли использовать HOUZY на отдельных дорожках, а не только на мастере?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Да, на любой дорожке или шине. HOUZY анализирует каждый тон отдельно, поэтому нагрузка на процессор выше, чем у обычного компрессора. Задержка сообщается DAW и компенсируется автоматически."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Какие форматы и DAW поддерживает HOUZY?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "VST3 на Windows, VST3 и AU на macOS: Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro и другие хосты, которые загружают VST3 или AU."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <!--email_off-->
@@ -116,6 +157,7 @@
       <p class="kicker">HOUZY</p>
       <h1>Один гейн, несколько полос или каждый тон</h1>
       <p class="man-lead">Чем HOUZY отличается от обычного компрессора и от мультибэнда.</p>
+      <p class="small why-upd">Обновлено <time datetime="2026-10-28">28 октября 2026</time></p>
     </div>
         <div class="video-stage video-vert" data-reveal>
       <div class="video-frame">
@@ -125,6 +167,8 @@
       </div>
     </div>
     <section class="glass prose" data-reveal>
+      <h2>Что такое HOUZY?</h2>
+      <p>HOUZY — плагин-компрессор для мастеринга (VST3 и AU) от ACRONA AUDIO. Вместо одного гейна на весь микс он даёт каждому тону спектра свою огибающую, поэтому громкий кик или бас не тянет за собой остальной микс: без пампинга, с панчевым киком и чистым низом. Родился в электронной и танцевальной музыке, работает в любом жанре.</p>
       <h2>Одно число на весь звук.</h2>
       <p>Обычный компрессор — это <span class="code">выход = гейн × сигнал</span>. Из этого вытекают все классические проблемы:</p>
               <ul>
@@ -154,6 +198,15 @@
               <p class="small">Подходит не только для мастеринга, но и для любого трека или шины — с более высокой нагрузкой на процессор.</p>
       <h2>Когда мультибэнд всё-таки нужен</h2>
       <p>Живое выступление и запись, где важна задержка, или точечная работа с одной полосой с точными частотами разреза. HOUZY сделан для мастера и шин. Если нужен контроль по полосам сверху, режим ALL MIX даёт шесть полос, у каждой своя сила.</p>
+            <h2>Частые вопросы</h2>
+      <h3>HOUZY пампит?</h3>
+      <p>Нет. Общего гейна нет, поэтому качать нечему: каждый тон сжимается своей огибающей.</p>
+      <h3>Чем HOUZY отличается от мультибэнд-компрессора?</h3>
+      <p>Мультибэнд даёт каждой полосе свой гейн, но внутри полосы кик и бас по-прежнему делят один. HOUZY даёт свой гейн каждому тону, а кроссоверов в тракте нет.</p>
+      <h3>Можно ли использовать HOUZY на отдельных дорожках, а не только на мастере?</h3>
+      <p>Да, на любой дорожке или шине. HOUZY анализирует каждый тон отдельно, поэтому нагрузка на процессор выше, чем у обычного компрессора. Задержка сообщается DAW и компенсируется автоматически.</p>
+      <h3>Какие форматы и DAW поддерживает HOUZY?</h3>
+      <p>VST3 на Windows, VST3 и AU на macOS: Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro и другие хосты, которые загружают VST3 или AU.</p>
       <p class="why-cta"><a class="cta" href="/ru/plugin.html">Попробовать в браузере</a><a class="pill" href="/ru/download.html">Скачать — 14 дней бесплатно</a></p>
     </section>
   </div>

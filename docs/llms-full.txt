@@ -1,0 +1,373 @@
+# HOUZY by ACRONA AUDIO: full text of the key pages
+
+Updated 2026-10-28. Source: https://acronaaudio.shop/ . Short version: https://acronaaudio.shop/llms.txt
+
+---
+
+Page: Home (https://acronaaudio.shop/)
+
+# HOUZY · ACRONA AUDIO. One mastering compressor for every kind of music.
+
+HOUZY is a mastering compressor plugin (VST3, AU) for Windows and macOS. Even compression across every frequency: a loud kick or bass no longer drags the rest of the mix down with it.
+
+Four technologies built from scratch, all in one plugin: compression per tone with no shared gain, a clipper that cancels peaks instead of slicing them, a limiter that moves gain only at zero crossings, and timing set in wave cycles and fractions of a bar.
+
+**Try HOUZY on your own track**MP3 / WAV · first 75 s · plays in your browser, never uploadedStart with AMOUNT at 15–30. Full manual
+
+**Launch offer:** the first 20 buyers get **15% off** with code **FIRST20** — HOUZY for $58.65 instead of $69. Until 19 November.
+
+HOUZY · Out now
+
+## Even compression across every frequency in the track.
+
+The sound is taken apart into individual tones, and each one's loudness is evened out by its own envelope. Loud sounds don't drag the rest down, and the compressor treats every sound equally steadily, whatever the loudness of any frequency in the mix. With a loud kick, low end or midrange, it squeezes the lows and the highs just the same.
+
+The threshold is automatic: it sets itself from the loudest sound and moves along with the track. The release is automatic too (AUTO): the plugin measures how fast the sounds fade out and sets the time itself. Every tone — kick, drums or vocal — is compressed the same way, then the level is raised back automatically, which gives you a well and densely compressed track.
+
+Works beyond mastering too, on any track or bus, with a higher CPU load.
+
+## One number for the whole sound.
+
+An ordinary compressor is output = gain × signal. Every classic complaint follows from that:
+
+- **The detector is blind** — the whole spectrum is collapsed into one number, so a kick and a vocal of the same amplitude are indistinguishable to it.
+
+- **The kick drags everything with it** — the gain drops, and the hats, the vocal and the reverb tails dive with it. That is pumping.
+
+- **Attack fights punch** — one envelope has to serve both the transient and the body.
+
+- **The bass gets dirty** — the gain moves, and sidebands grow around a 50 Hz kick. The compressor ruins the very thing it was evening out.
+
+Since the first compressors of the 1930s the principle has stayed the same: one gain for the whole signal. **HOUZY drops it.** Every tone gets its own envelope, so pumping, the attack-versus-punch trade-off and sidebands on the bass don't arise in the first place.
+
+Compare with a multiband →
+
+## ACR — a clipper that stops chopping the highs.
+
+An ordinary clipper slices the top off the waveform. A slice is abrupt and its error is broadband, so every kick hit subtracts that error from the hats, the vocal and the reverb tails. Hence the classic problem with clipped house: the harder you drive the kick, the duller and grittier the top end gets. Oversampling makes the error clean, but does not change where it sits in the spectrum.
+
+**Instead of slicing, ACR subtracts a short pulse placed exactly at the peak.** Its spectrum puts the distortion at the top, where the hats and the kick's attack mask it. The technique comes from LTE transmitters; the pulse kernel is designed from a psychoacoustic model of hearing.
+
+ACR is the default. HI-Q — a conventional oversampled clipper — is the other position of the switch.
+
+## T8 — the half-wave limiter.
+
+An ordinary limiter moves its gain whenever it needs to, often right in the middle of a wave. On a kick or a bass that bends the wave itself, and you hear it as grit inside every hit.
+
+**T8 changes its gain only where the wave crosses zero.** Each half-wave of the kick and bass is lowered as one whole piece, so its shape stays exactly as it was. Only its height changes.
+
+Our own design, new in HOUZY 5. In our kick tests about 5–6 dB cleaner than T6 at the same loudness. On the SMART | T6 | T8 switch.
+
+## Attack in wave cycles, release in beat fractions.
+
+**5 ms on a 50 Hz bass note is a quarter of its wave** — the gain moves inside a single oscillation, exactly where a compressor dirties the low end. The same 5 ms on an 8 kHz hat is forty cycles. So attack is set in cycles: one knob gives 45 ms at 50 Hz and 1 ms at 8 kHz, never faster than half a cycle.
+
+Release can be set two ways, click its label to switch. **MS** is plain milliseconds (default). **NOTE** is a fraction of a bar: release follows your project tempo, so a tempo change needs no re-tweaking. And **AUTO** listens to how fast the sounds in your track fade and sets the release to match.
+
+## Everything a master bus needs.
+
+- **AUTO GAIN** — gives back exactly what the compression took.
+
+- **Spectral limiter** — SMART (3 bands), T6 (6 bands) or T8 (gain moves only at zero crossings, in HOUZY): a bass peak never ducks the highs.
+
+- **GAIN MATCH** — BYPASS compares character, not loudness.
+
+- **DASH** — from punchy to even: one knob trades dynamics for a steady level.
+
+- **UPWARD** — lifts the quiet parts: tails, air, detail.
+
+- **CLIP SHAPE** — light saturation across the whole spectrum, level matched.
+
+- **CHARACTER** — softer to the left, denser to the right.
+
+- **ALL MIX** — 6 bands with their own compression and level (−6…+6 dB).
+
+- **TP** — true peak for streaming and MP3 exports.
+
+- **PRESETS** — SNOOZE to SQUISHY; the list stays open to compare by ear.
+
+- **A / B** — two slots, compared at matched loudness.
+
+- **BEAT | SMART** — exact release, or release as a maximum that lets a died-away tone go early.
+
+- **Meters** — RMS and LUFS, gain reduction per stage and a live waveform.
+
+01HOUZY engineEvery tone compressed on its own
+02The problemOne gain for the whole mix
+03ACR clipperA pulse instead of a slice
+
+04T8 limiter newGain moves only at zero
+05CYCLES / NOTEAttack in cycles, release in beats
+06What else is in thereThirteen more tools inside
+
+## Mastering with HOUZY: any genre, any mix
+
+About
+
+## Born in house. Made for everything.
+
+HOUZY was born in electronic music, where a hard kick and a clean top end are hardest to get together. The same approach works on any genre: it compresses every tone on its own, so nothing pumps. For more than 15 years its author searched for the ideal compressor for his own tracks, and in the end decided to invent it himself.
+
+User manual
+
+$69
+
+one payment, a licence that is yours to keep
+
+With code **FIRST20**: $58.65 · first 20 buyers, until 19 Nov
+
+- Lifetime licence for two computers
+
+- 14-day free trial, every feature unlocked
+
+4 technologies you won't find in any other plugin
+
+- **HOUZY engine** — compresses every tone on its own: no shared gain, no pumping
+
+- **ACR clipper** — cancels peaks instead of slicing them, so the punch stays
+
+- **T8 limiter** — moves gain only at zero crossings: bass and kick keep their shape
+
+- **CYCLES / NOTE** — attack in wave cycles, release in fractions of a bar
+
+Buy HOUZY — $69Download free
+
+New in 5: Liquid Glass design, five themes, four colours of the sphere, the T8 limiter and a third less CPU. Secure payment on Gumroad.
+
+FAQ
+
+## Questions people ask.
+
+Something else? Write to acronaaudio@proton.me.
+
+How much does HOUZY cost?$69, one payment: a lifetime licence for two computers. There is a 14-day free trial, so you can check it on your own tracks first.
+
+What is the difference between T6 and T8?T6 is a smooth six-band limiter. T8 changes its gain only at the zero crossings of the wave, so the bass and kick are lowered without changing their shape. Both are in HOUZY, and you choose by ear.
+
+Does my audio leave my computer?Never. All processing happens on your machine. The plugin goes online only to check for updates (you can switch this off) and to activate your licence. Details are in the Privacy Policy.
+
+How do refunds work?Within 14 days of purchase. Release the activation in the plugin first (licence window → DEACTIVATE). Your statutory consumer rights are not affected. See the Terms of Sale.
+
+Can I use it on single tracks, not just the master?Yes, on any track or bus. HOUZY analyses every tone separately, so CPU load is higher than with an ordinary compressor.
+
+Which DAWs are supported?Any host that loads VST3 on Windows or macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig and others), plus AU for Logic Pro and GarageBand. Both the Windows and the macOS builds are available now.
+
+How does the online demo work?It runs the real HOUZY engine in your browser, so it sounds the same as the plugin. Load an MP3 or WAV: the first 75 seconds play in a loop, enough to hear a drop and the groove. The track is opened and processed inside your browser and never leaves your computer. It works in current Chrome, Edge, Firefox and Safari. Try it here.
+
+Contact
+
+## Questions, bugs, licences: write to me.
+
+For a bug, include your HOUZY version, system and DAW. In HOUZY the REPORT button copies all of that for you.
+
+acronaaudio@proton.me
+
+Telegram
+
+---
+
+Page: Why HOUZY (https://acronaaudio.shop/why-houzy.html)
+
+# One gain, a few bands, or every tone
+
+How HOUZY differs from an ordinary compressor and from a multiband.
+
+Updated 28 October 2026
+
+## What is HOUZY?
+
+HOUZY is a mastering compressor plugin (VST3 and AU) by ACRONA AUDIO. Instead of one gain for the whole mix, it gives every tone of the spectrum its own envelope, so a loud kick or bass does not pull the rest of the mix down: no pumping, a punchy kick, a clean low end. It was born in electronic and dance music and works on any genre.
+
+## One number for the whole sound.
+
+An ordinary compressor is output = gain × signal. Every classic complaint follows from that:
+
+- **The detector is blind** — the whole spectrum is collapsed into one number, so a kick and a vocal of the same amplitude are indistinguishable to it.
+
+- **The kick drags everything with it** — the gain drops, and the hats, the vocal and the reverb tails dive with it. That is pumping.
+
+- **Attack fights punch** — one envelope has to serve both the transient and the body.
+
+- **The bass gets dirty** — the gain moves, and sidebands grow around a 50 Hz kick. The compressor ruins the very thing it was evening out.
+
+Since the first compressors of the 1930s the principle has stayed the same: one gain for the whole signal. **HOUZY drops it.** Every tone gets its own envelope, so pumping, the attack-versus-punch trade-off and sidebands on the bass don't arise in the first place.
+
+## A multiband helps, but only part of the way
+
+Splitting the mix into 3–6 bands gives each band its own gain, so the kick no longer pulls down the hats. But inside a band nothing changes: the kick and the bass still share one gain, the low band still pumps, and the crossover filters shift the phase at every split.
+
+| | Ordinary compressor | Multiband (3–6 bands) | HOUZY |
+
+| Gains | one for the whole mix | one per band | one per tone |
+
+| A loud kick pulls down… | everything | its whole band (bass, low mids) | only itself |
+
+| Pumping | yes | inside each band | no shared gain, nothing to pump |
+
+| Attack vs punch | one envelope for all | one per band | a new tone is not compressed; attack set in wave cycles |
+
+| Bass sidebands | gain moves inside the wave | the same, in the low band | attack never faster than half a period of the tone |
+
+| Crossover phase | — | shifted at every split | no crossovers in the signal path |
+
+| Latency | near zero | low | about 0.1 s, compensated by the DAW |
+
+## Even compression across every frequency in the track.
+
+The sound is taken apart into individual tones, and each one's loudness is evened out by its own envelope. Loud sounds don't drag the rest down, and the compressor treats every sound equally steadily, whatever the loudness of any frequency in the mix. With a loud kick, low end or midrange, it squeezes the lows and the highs just the same.
+
+The threshold is automatic: it sets itself from the loudest sound and moves along with the track. The release is automatic too (AUTO): the plugin measures how fast the sounds fade out and sets the time itself. Every tone — kick, drums or vocal — is compressed the same way, then the level is raised back automatically, which gives you a well and densely compressed track.
+
+Works beyond mastering too, on any track or bus, with a higher CPU load.
+
+## When a multiband is still the right tool
+
+Live use and tracking, where latency matters, or surgical work on one band with exact crossover points. HOUZY is built for the master and for buses. If you want band control on top, its ALL MIX mode gives six bands, each with its own amount.
+
+## Frequently asked questions
+
+### Does HOUZY pump?
+
+No. There is no shared gain, so nothing can pump: every tone is compressed by its own envelope.
+
+### How is HOUZY different from a multiband compressor?
+
+A multiband gives each band its own gain, but inside a band the kick and the bass still share it. HOUZY gives every tone its own gain, with no crossovers in the signal path.
+
+### Can I use HOUZY on single tracks, not only the master?
+
+Yes, on any track or bus. HOUZY analyses every tone separately, so its CPU load is higher than an ordinary compressor's. Its latency is reported to the DAW and compensated automatically.
+
+### Which formats and DAWs does HOUZY support?
+
+VST3 on Windows, VST3 and AU on macOS: Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro and other hosts that load VST3 or AU.
+
+Try it in your browserDownload — 14-day trial
+
+---
+
+Page: Manual (https://acronaaudio.shop/manual.html)
+
+# How to master electronic music with HOUZY
+
+The HOUZY manual: where to start (AMOUNT at 15–30), what each control does to the sound, and how to fine-tune a track of electronic and dance music.
+
+AMOUNT · INPUT · CYCLES · RELEASE
+
+Two minutes from opening HOUZY to a dense, even track. The same guide is built into HOUZY, in the ACRONA card.
+
+## Mode
+
+Pick **HOUZY** — it gives the best sound quality.
+
+## 1. AMOUNT
+
+Start with the AMOUNT knob. For a well-mixed track, 15 to 30 usually gives soft, moderate compression. For anything else, set it by ear.
+
+## 2. INPUT
+
+Once the compression feels right, raise INPUT while watching the LUFS meter. For a soft sound, −10 to −9 LUFS is enough.
+
+## 3. CYCLES
+
+For a soft kick, set it between 3 and 4.
+
+## 4. RELEASE
+
+Leave **AUTO** on: the plugin measures how fast the sounds in your track decay and sets the release for you.
+
+## 5. BEAT or SMART
+
+Choose by ear.
+
+- **BEAT** holds the release exactly as set: a steadier sound that pulses with the beat.
+- **SMART** treats the release as a maximum: a sound that fades out sooner is let go sooner. Airier and more natural.
+
+## Fine-tuning
+
+- **DASH** — if the compression sounds good but the track still isn't even enough, add some DASH.
+- **UPWARD** — lifts the quiet parts: reverb tails, air, the top end.
+- **CLIP SHAPE** — light saturation across the whole track. Loudness is matched automatically, so you hear the colour, not a volume boost.
+- **ALL MIX** — if the track sounds dense overall but, say, the highs or the mids stick out, switch on ALL MIX and pull that band down with its knob. To see which frequencies a band covers, rest the pointer on its knob for a couple of seconds — a tip shows the range.
+
+## Clipper: HI-Q or ACR
+
+We recommend **ACR**, our own clipper. It moves the distortion to where the hit masks it, so the attacks stay clean. Still, it's a matter of taste — try both.
+
+## OVERSAMPLE
+
+16x is plenty while you work; use 32x for the final render.
+
+## TRUE PEAK
+
+The **TP** button sits on the OUTPUT knob. Turn it on when you export for streaming: it removes the inter-sample peaks that crackle after conversion to MP3/AAC.
+
+**In short**
+
+- AMOUNT 15 to 30, CYCLES 3 to 4.
+- Raise INPUT if needed.
+- A little DASH and UPWARD to taste.
+- In ALL MIX, pull down whatever sticks out.
+- Done.
+
+## All of this you can do with HOUZY
+
+Try HOUZY right in your browserDownload free — 14-day trial
+
+---
+
+Page: Download and activation (https://acronaaudio.shop/download.html)
+
+# Download HOUZY
+
+Latest version 5.0.0 · 17.10.2026
+
+Windows 10/11 · 64-bitmacOS 10.15+ · Apple Silicon & Intel
+
+## Windows
+VST3 · 64-bit
+
+Installer · .exe
+VST3 · .zip
+
+## macOS
+VST3 · AU
+
+Installer · .pkg
+VST3 · .zipAU · .zip
+
+**Close your DAW before installing or updating** — a running DAW keeps the plugin file locked.
+
+**Windows.** Run HOUZY-Setup.exe. The plugin goes to C:\Program Files\Common Files\VST3.
+
+**Windows without the installer.** Unzip the VST3 archive and put HOUZY.vst3 into C:\Program Files\Common Files\VST3.
+
+**macOS.** Double-click HOUZY-Installer.pkg and tick the formats you want: **AU** for Logic Pro and GarageBand, **VST3** for everything else. Both are Universal (Apple Silicon and Intel).
+
+The package is not signed with an Apple certificate yet, so macOS blocks it on first launch. Right-click the file → **Open** → **Open** again in the warning. Or: System Settings → Privacy & Security → **Open Anyway**. Nothing is broken — macOS treats every unsigned installer this way.
+
+**Installing by hand.** Put HOUZY.vst3 into /Library/Audio/Plug-Ins/VST3/ or HOUZY.component into /Library/Audio/Plug-Ins/Components/, then clear the quarantine in Terminal (only the line for what you installed):
+
+xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/VST3/HOUZY.vst3
+xattr -dr com.apple.quarantine /Library/Audio/Plug-Ins/Components/HOUZY.component
+Restart your DAW and rescan plugins.
+
+## Trial and activation
+
+- Open HOUZY. The licence window offers a **free trial** — everything works while it runs. The time left is shown in the window and in the ACRONA card.
+
+- To keep HOUZY, press **BUY**. Payment is on Gumroad; your **licence key** comes in the purchase email and is always in your Gumroad Library.
+
+- In HOUZY press **ACTIVATE**, paste the key, press **ACTIVATE** again. Internet is needed once; after that HOUZY works offline.
+
+- One key works on **two computers**. Moving to a new one: open the licence window on the old computer and press **DEACTIVATE**.
+
+**If something goes wrong**
+
+- **No email with the key** — check the email you used for the order, including spam, then your Gumroad Library: the key is always there. Still nothing? Contact Gumroad support — they handle orders and keys.
+
+- **"No connection to the licence server"** — check your internet and press ACTIVATE again. A server hiccup never takes away a licence that is already active.
+
+- **"Already active on the maximum number of computers"** — deactivate it on one of them, or write to us.
+
+- Any other problem: the **REPORT** button in the licence window copies everything we need — paste it into your email.

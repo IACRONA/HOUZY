@@ -1,0 +1,51 @@
+{
+ "name": "HOUZY frequently asked questions",
+ "url": "https://acronaaudio.shop/",
+ "updated": "2026-10-28",
+ "items": [
+  {
+   "question": "How much does HOUZY cost?",
+   "answer": "$69, one payment: a lifetime licence for two computers. There is a 14-day free trial, so you can check it on your own tracks first."
+  },
+  {
+   "question": "What is the difference between T6 and T8?",
+   "answer": "T6 is a smooth six-band limiter. T8 changes its gain only at the zero crossings of the wave, so the bass and kick are lowered without changing their shape. Both are in HOUZY, and you choose by ear."
+  },
+  {
+   "question": "Does my audio leave my computer?",
+   "answer": "Never. All processing happens on your machine. The plugin goes online only to check for updates (you can switch this off) and to activate your licence. Details are in the Privacy Policy."
+  },
+  {
+   "question": "How do refunds work?",
+   "answer": "Within 14 days of purchase. Release the activation in the plugin first (licence window → DEACTIVATE). Your statutory consumer rights are not affected. See the Terms of Sale."
+  },
+  {
+   "question": "Can I use it on single tracks, not just the master?",
+   "answer": "Yes, on any track or bus. HOUZY analyses every tone separately, so CPU load is higher than with an ordinary compressor."
+  },
+  {
+   "question": "Which DAWs are supported?",
+   "answer": "Any host that loads VST3 on Windows or macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig and others), plus AU for Logic Pro and GarageBand. Both the Windows and the macOS builds are available now."
+  },
+  {
+   "question": "How does the online demo work?",
+   "answer": "It runs the real HOUZY engine in your browser, so it sounds the same as the plugin. Load an MP3 or WAV: the first 75 seconds play in a loop, enough to hear a drop and the groove. The track is opened and processed inside your browser and never leaves your computer. It works in current Chrome, Edge, Firefox and Safari. Try it here."
+  },
+  {
+   "question": "Does HOUZY pump?",
+   "answer": "No. There is no shared gain, so nothing can pump: every tone is compressed by its own envelope."
+  },
+  {
+   "question": "How is HOUZY different from a multiband compressor?",
+   "answer": "A multiband gives each band its own gain, but inside a band the kick and the bass still share it. HOUZY gives every tone its own gain, with no crossovers in the signal path."
+  },
+  {
+   "question": "Can I use HOUZY on single tracks, not only the master?",
+   "answer": "Yes, on any track or bus. HOUZY analyses every tone separately, so its CPU load is higher than an ordinary compressor's. Its latency is reported to the DAW and compensated automatically."
+  },
+  {
+   "question": "Which formats and DAWs does HOUZY support?",
+   "answer": "VST3 on Windows, VST3 and AU on macOS: Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro and other hosts that load VST3 or AU."
+  }
+ ]
+}

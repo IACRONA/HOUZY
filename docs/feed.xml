@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>HOUZY releases</title>
+  <subtitle>What is new in the HOUZY mastering compressor plugin</subtitle>
+  <id>tag:acronaaudio.shop,2026:houzy-releases</id>
+  <link href="https://acronaaudio.shop/feed.xml" rel="self"/>
+  <link href="https://acronaaudio.shop/download.html"/>
+  <author><name>ACRONA AUDIO</name></author>
+  <updated>2026-10-26T00:00:00Z</updated>
+  <entry>
+    <title>HOUZY 5.0.3</title>
+    <id>tag:acronaaudio.shop,2026:houzy-5.0.3</id>
+    <link href="https://acronaaudio.shop/download.html"/>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <summary type="text">New: DELTA button - hear only what HOUZY changes in your sound.
+New: MIX knob - blend with the original for parallel compression.
+New: LINEAR / NATURAL - the limiter no longer shifts the low end in time.
+New: band lock in ALL MIX - turn one band and all six move together.
+T8 is now the default limiter; the limiter's gain reduction number is back.
+New presets SUSHI and DRUMUZI (acoustic drums), the loaded preset shows on the button.
+OVERSAMPLE no longer changes the tone. Fewer CPU spikes on small buffers.</summary>
+  </entry>
+  <entry>
+    <title>HOUZY 5.0.1</title>
+    <id>tag:acronaaudio.shop,2026:houzy-5.0.1</id>
+    <link href="https://acronaaudio.shop/download.html"/>
+    <updated>2026-10-20T00:00:00Z</updated>
+    <summary type="text">HOUZY is now on macOS: VST3 and AU, Apple Silicon and Intel.
+A licence key entered in one plugin window now reaches all open windows at once.
+Entering a new key frees the computer slot of the old one.</summary>
+  </entry>
+  <entry>
+    <title>HOUZY 5.0.0</title>
+    <id>tag:acronaaudio.shop,2026:houzy-5.0.0</id>
+    <link href="https://acronaaudio.shop/download.html"/>
+    <updated>2026-10-17T00:00:00Z</updated>
+    <summary type="text">Liquid Glass design, five themes and four colours of the sphere.
+T8 limiter: the bass and kick are lowered without changing their shape.
+A third less CPU, a manual inside the plugin in four languages.</summary>
+  </entry>
+</feed>

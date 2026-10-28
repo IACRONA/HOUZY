@@ -24,12 +24,12 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="音程ごとか、マルチバンドか — なぜHOUZY | ACRONA AUDIO">
 <meta property="og:description" content="HOUZYの音程ごとの圧縮が、一般的なコンプレッサーやマルチバンドとどう違うのか：ポンピング、アタック対パンチ、ベースのサイドバンド、クロスオーバーの位相、レイテンシー。">
-<meta property="og:image" content="https://acronaaudio.shop/img/version5.jpg">
+<meta property="og:image" content="https://acronaaudio.shop/img/houzy-card.jpg">
 <meta property="og:image:width" content="1640">
 <meta property="og:image:height" content="912">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/site.css?v=20261028j">
+<link rel="stylesheet" href="/site.css?v=20261028k">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/site.js?v=20261028c" defer></script>
@@ -78,6 +78,47 @@
 <link rel="stylesheet" href="/vendor/plyr/plyr.css">
 <script src="/vendor/plyr/plyr.min.js" defer></script>
 <script src="/video.js?v=20261028a" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "inLanguage": "ja",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "HOUZYはポンピングしますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "しません。共通のゲインがないので、ポンピングしようがありません。すべての音程が専用のエンベロープで圧縮されます。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "HOUZYはマルチバンド・コンプレッサーと何が違いますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "マルチバンドはバンドごとに独自のゲインを持ちますが、バンドの中ではキックとベースが依然として同じゲインを共有します。HOUZYはすべての音程に独自のゲインを持たせ、信号経路にクロスオーバーがありません。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "マスターだけでなく、個別のトラックにも使えますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "はい、どのトラックやバスにも使えます。HOUZYはすべての音程を個別に解析するため、一般的なコンプレッサーよりCPU負荷は高くなります。レイテンシーはDAWに通知され、自動で補正されます。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "HOUZYが対応するフォーマットとDAWは？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "WindowsではVST3、macOSではVST3とAU：Ableton Live、FL Studio、Cubase、Reaper、Bitwig、Logic Pro、そのほかVST3またはAUを読み込めるホストです。"
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <!--email_off-->
@@ -116,6 +157,7 @@
       <p class="kicker">HOUZY</p>
       <h1>ひとつのゲイン、数バンド、それとも音程ごと</h1>
       <p class="man-lead">HOUZYが一般的なコンプレッサーやマルチバンドと何が違うのか。</p>
+      <p class="small why-upd"><time datetime="2026-10-28">2026年10月28日</time>更新</p>
     </div>
         <div class="video-stage video-vert" data-reveal>
       <div class="video-frame">
@@ -125,6 +167,8 @@
       </div>
     </div>
     <section class="glass prose" data-reveal>
+      <h2>HOUZYとは？</h2>
+      <p>HOUZYは、ACRONA AUDIOが作るマスタリング・コンプレッサー・プラグイン（VST3、AU）です。ミックス全体にひとつのゲインを使う代わりに、スペクトル上のすべての音程に専用のエンベロープを持たせるので、大きなキックやベースが残りを押し下げることはありません。ポンピングなし、パンチのあるキック、クリーンなローエンド。電子音楽とダンスミュージックから生まれ、あらゆるジャンルで使えます。</p>
       <h2>音全体にひとつの数値。</h2>
       <p>一般的なコンプレッサーは <span class="code">output = gain × signal</span> です。昔からの不満は、すべてここから生まれます：</p>
               <ul>
@@ -154,6 +198,15 @@
               <p class="small">マスタリング以外にも、どのトラックやバスにも使えます（CPU負荷は高めです）。</p>
       <h2>マルチバンドが今でも最適な場面</h2>
       <p>レイテンシーが重要なライブやトラッキング、あるいは正確なクロスオーバー点での特定バンドのピンポイント作業。HOUZYはマスターとバス用に作られています。さらにバンドごとの調整が欲しいときは、ALL MIXモードで6バンドをそれぞれ独自のアマウントで調整できます。</p>
+            <h2>よくある質問</h2>
+      <h3>HOUZYはポンピングしますか？</h3>
+      <p>しません。共通のゲインがないので、ポンピングしようがありません。すべての音程が専用のエンベロープで圧縮されます。</p>
+      <h3>HOUZYはマルチバンド・コンプレッサーと何が違いますか？</h3>
+      <p>マルチバンドはバンドごとに独自のゲインを持ちますが、バンドの中ではキックとベースが依然として同じゲインを共有します。HOUZYはすべての音程に独自のゲインを持たせ、信号経路にクロスオーバーがありません。</p>
+      <h3>マスターだけでなく、個別のトラックにも使えますか？</h3>
+      <p>はい、どのトラックやバスにも使えます。HOUZYはすべての音程を個別に解析するため、一般的なコンプレッサーよりCPU負荷は高くなります。レイテンシーはDAWに通知され、自動で補正されます。</p>
+      <h3>HOUZYが対応するフォーマットとDAWは？</h3>
+      <p>WindowsではVST3、macOSではVST3とAU：Ableton Live、FL Studio、Cubase、Reaper、Bitwig、Logic Pro、そのほかVST3またはAUを読み込めるホストです。</p>
       <p class="why-cta"><a class="cta" href="/ja/plugin.html">ブラウザで試す</a><a class="pill" href="/ja/download.html">ダウンロード — 14日間お試し</a></p>
     </section>
   </div>

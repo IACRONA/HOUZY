@@ -992,3 +992,7 @@ html[lang="ja"]{word-break:auto-phrase}   /* Chrome / Edge / Safari break Japane
 /* Technology scene reveal (28.10.2026): hidden until site.js lifts it in (only when scripts run) */
 .pin-ready .stage .pin{opacity:0}
 @media (prefers-reduced-motion:reduce){.pin-ready .stage .pin{opacity:1}}
+/* AI-search pass (28.10.2026): FAQ subheadings, the visible update date */
+.why .prose h3{margin:20px 0 4px;font-size:1.05em;line-height:1.35;color:var(--ink);font-variation-settings:'wght' 650}
+.why-upd{margin:10px 0 0}
+.foot-updated{grid-column:1/-1;margin:0;font-size:12px;color:var(--sub)}

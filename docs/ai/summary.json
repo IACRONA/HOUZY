@@ -1,0 +1,74 @@
+{
+ "name": "HOUZY",
+ "publisher": "ACRONA AUDIO",
+ "url": "https://acronaaudio.shop/",
+ "updated": "2026-10-28",
+ "version": "5.0.3",
+ "category": "Mastering compressor audio plugin (VST3, AU)",
+ "description": "HOUZY is a mastering compressor plugin for Windows and macOS. Instead of one gain for the whole mix it gives every tone of the spectrum its own envelope, so a loud kick or bass does not pull the rest of the mix down: no pumping, a punchy kick, a clean low end. Born in electronic and dance music, it works on any genre.",
+ "platforms": {
+  "windows": [
+   "VST3"
+  ],
+  "macos": [
+   "VST3",
+   "AU"
+  ]
+ },
+ "hosts": [
+  "Ableton Live",
+  "FL Studio",
+  "Cubase",
+  "Reaper",
+  "Bitwig",
+  "Logic Pro",
+  "GarageBand"
+ ],
+ "pricing": {
+  "currency": "USD",
+  "price": 69,
+  "model": "one payment, lifetime licence for two computers",
+  "trial": "14 days free, all features",
+  "seller": "Gumroad"
+ },
+ "technologies": [
+  "HOUZY engine: per-tone envelopes, no shared gain",
+  "ACR clipper: cancels peaks with a short pulse instead of slicing",
+  "T8 limiter: changes gain only at zero crossings",
+  "CYCLES / NOTE: attack in wave cycles, release in beat fractions"
+ ],
+ "languages": [
+  "en",
+  "ru",
+  "es",
+  "pt-BR",
+  "fr",
+  "it",
+  "ja"
+ ],
+ "links": {
+  "home": "https://acronaaudio.shop/",
+  "whyHouzy": "https://acronaaudio.shop/why-houzy.html",
+  "demo": "https://acronaaudio.shop/plugin.html",
+  "download": "https://acronaaudio.shop/download.html",
+  "manual": "https://acronaaudio.shop/manual.html",
+  "buy": "https://acronawar.gumroad.com/l/houzy",
+  "faq": "https://acronaaudio.shop/ai/faq.json",
+  "llms": "https://acronaaudio.shop/llms.txt",
+  "llmsFull": "https://acronaaudio.shop/llms-full.txt",
+  "feed": "https://acronaaudio.shop/feed.xml"
+ },
+ "profiles": [
+  "https://t.me/acronalife",
+  "https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7",
+  "https://music.yandex.ru/artist/5852436",
+  "https://acronawar.gumroad.com/"
+ ],
+ "contact": {
+  "email": "acronaaudio@proton.me",
+  "telegram": "https://t.me/acronalife"
+ },
+ "logo": "https://acronaaudio.shop/img/acrona-logo.jpg",
+ "image": "https://acronaaudio.shop/img/houzy-card.jpg",
+ "citation": "HOUZY by ACRONA AUDIO, https://acronaaudio.shop/"
+}
