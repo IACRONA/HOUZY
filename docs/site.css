@@ -1016,3 +1016,8 @@ html[lang="ja"]{word-break:auto-phrase}   /* Chrome / Edge / Safari break Japane
 .qs-link{align-self:flex-start;font-size:13px;color:var(--accent-ink);text-decoration:underline;text-decoration-color:rgba(31,111,125,.35);text-underline-offset:3px}
 .qs-link::after{content:' →'}
 @media (max-width:999px){.video-row{flex-direction:column;align-items:center}.qs{align-self:stretch;margin:0;flex-basis:auto;width:min(780px,100%)}}
+/* Why HOUZY (28.10.2026): the vertical video and the product shot share one glass frame, side by side, same height */
+.why-duo{display:flex;gap:10px;width:min(1000px,100%);margin:0 auto clamp(18px,2.4vw,26px)}
+.why-duo .video-frame{flex:0 0 min(300px,34%);aspect-ratio:9/16}
+.why-duo-shot{flex:1 1 auto;min-width:0;width:100%;height:auto;object-fit:cover;border-radius:19px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+@media (max-width:700px){.why-duo{flex-direction:column}.why-duo .video-frame{flex-basis:auto;width:min(320px,100%);align-self:center}.why-duo-shot{height:auto}}
