@@ -128,6 +128,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
   .menu{flex-direction:column;gap:0}
   .menu a,.login{display:flex;align-items:center;min-height:44px;padding:10px 14px;border-radius:14px;font-size:16px}
   .menu a:hover,.login:hover{background:rgba(255,255,255,.6)}
+  .menu{gap:10px}   /* each link = the same liquid-glass chip as .login, a hairline between them */
+  .menu a{position:relative;background:var(--glass);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);
+    box-shadow:var(--rim),0 1px 2px rgba(30,34,50,.08),0 6px 16px -8px rgba(30,34,50,.25)}
+  .menu a + a::before{content:"";position:absolute;left:22%;right:22%;top:-6px;height:1px;background:linear-gradient(90deg,transparent,rgba(31,111,125,.4),transparent);pointer-events:none}
   .navpanel .pill{margin-top:6px}
 }
 
