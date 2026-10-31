@@ -1,0 +1,378 @@
+0	HOUZY : compresseur de mastering VST pour tous les styles
+1	Aller au contenu
+4	Technologie
+5	Pourquoi HOUZY
+6	Manuel
+7	À propos
+8	FAQ
+9	Partenaires
+11	Un seul compresseur de mastering pour tous les genres de musique.
+12	HOUZY est un plugin de compresseur de mastering (VST3, AU) pour Windows et macOS. Compression homogène sur toutes les fréquences. Les passages forts et les passages faibles sont comprimés de la même manière.
+13	Quatre technologies conçues de zéro, réunies dans un seul plugin : une compression par tonalité sans gain commun, un clipper qui annule les crêtes au lieu de les trancher, un limiteur qui ne bouge le gain qu'aux passages par zéro, et des temps réglés en cycles d'onde et en fractions de mesure.
+14	Importer
+15	<b>Essayez HOUZY sur votre propre morceau</b>MP3 / WAV · 75 premières secondes · lecture dans votre navigateur, rien n'est envoyé<span class="live-tip">Commencez avec AMOUNT à 15–30. <a data-manual href="/manual.html">Manuel complet</a></span>
+16	Lecture
+17	Télécharger le WAV
+18	Effacer
+19	Acheter HOUZY — 69 20 $	Télécharger gratuitement<small>essai de 14 jours</small>
+21	<b>Offre de lancement :</b> les 20 premiers acheteurs bénéficient de <b>15 % de réduction</b> avec le code <b>FIRST20</b> — <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">HOUZY à 58,65 $</a> au lieu de 69 $. Jusqu'au 19 novembre.
+22	HOUZY · Disponible
+23	Une compression homogène sur toutes les fréquences du morceau.
+24	Le son est décomposé en tonalités individuelles, et le volume de chacune est égalisé par sa propre enveloppe. Les sons forts n'entraînent pas le reste vers le bas : le compresseur traite chaque son avec la même régularité, quel que soit le niveau de chaque fréquence du mix. Qu'il s'agisse d'un kick puissant, des basses ou des médiums, il comprime les graves comme les aigus de la même façon.
+25	Le seuil est automatique : il se règle sur le son le plus fort et suit le morceau. Le release est automatique lui aussi (AUTO) : le plugin mesure la vitesse à laquelle les sons s'éteignent et règle le temps tout seul. Chaque tonalité — kick, batterie ou voix — est comprimée de la même manière, puis le niveau est remonté automatiquement : vous obtenez un morceau bien et densément compressé.
+26	Fonctionne aussi en dehors du mastering, sur n'importe quelle piste ou bus, avec une charge CPU plus élevée.
+27	Un seul chiffre pour tout le son.
+28	Un compresseur ordinaire, c'est <span class="code">output = gain × signal</span>. Tous les reproches classiques en découlent :
+29	<b>Le détecteur est aveugle</b> — tout le spectre est réduit à un seul nombre ; un kick et une voix de même amplitude sont donc indiscernables pour lui.
+30	<b>Le kick entraîne tout avec lui</b> — le gain baisse, et les charleys, la voix et les queues de réverbération plongent avec. C'est le pompage.
+31	<b>L'attaque se bat contre le punch</b> — une seule enveloppe doit servir à la fois le transitoire et le corps du son.
+32	<b>Les basses se salissent</b> — le gain bouge, et des bandes latérales apparaissent autour d'un kick à 50 Hz. Le compresseur abîme précisément ce qu'il devait régulariser.
+33	Depuis les premiers compresseurs des années 1930, le principe n'a pas changé : un seul gain pour tout le signal. <b>HOUZY l'abandonne.</b> Chaque tonalité a sa propre enveloppe : le pompage, le compromis attaque contre punch et les bandes latérales sur les basses ne se produisent tout simplement pas.
+34	Comparer avec un multibande →
+35	ACR — un clipper qui ne massacre plus les aigus.
+36	Un clipper ordinaire tranche le haut de la forme d'onde. La coupure est brutale et son erreur couvre tout le spectre : chaque coup de kick retranche cette erreur aux charleys, à la voix et aux queues de réverbération. D'où le problème classique de la house écrêtée : plus on pousse le kick, plus les aigus deviennent ternes et granuleux. Le suréchantillonnage rend l'erreur propre, mais ne change pas sa place dans le spectre.
+37	<b>Au lieu de trancher, ACR soustrait une courte impulsion placée exactement sur la crête.</b> Son spectre place la distorsion dans les aigus, où les charleys et l'attaque du kick la masquent. La technique vient des émetteurs LTE ; le noyau de l'impulsion est conçu à partir d'un modèle psychoacoustique de l'audition.
+38	ACR est le réglage par défaut. HI-Q — un clipper suréchantillonné classique — est l'autre position du commutateur.
+39	T8 — le limiteur à demi-onde.
+40	Un limiteur ordinaire bouge son gain dès qu'il en a besoin, souvent en plein milieu d'une onde. Sur un kick ou une basse, cela déforme l'onde elle-même, et on l'entend comme du grain dans chaque coup.
+41	<b>T8 ne modifie son gain que là où l'onde passe par zéro.</b> Chaque demi-onde du kick et de la basse est abaissée d'un bloc, sa forme reste donc exactement la même. Seule sa hauteur change.
+42	Notre propre conception, nouveauté de HOUZY 5. Dans nos tests sur kick, environ 5–6 dB plus propre que T6 à volume égal. Sur le commutateur SMART | T6 | T8.
+43	Attaque en cycles d'onde, release en fractions de temps.
+44	<b>5 ms sur une basse à 50 Hz, c'est un quart de son onde</b> — le gain bouge à l'intérieur d'une seule oscillation, exactement là où un compresseur salit les graves. Les mêmes 5 ms sur un charley à 8 kHz font quarante cycles. L'attaque se règle donc en cycles : un seul bouton donne 45 ms à 50 Hz et 1 ms à 8 kHz, jamais plus rapide qu'un demi-cycle.
+45	Le release se règle de deux façons, un clic sur son libellé permet de basculer. <b>MS</b> : de simples millisecondes (par défaut). <b>NOTE</b> : une fraction de mesure — le release suit le tempo de votre projet, un changement de tempo n'exige donc aucun réglage. Et <b>AUTO</b> écoute la vitesse à laquelle les sons de votre morceau s'éteignent et ajuste le release en conséquence.
+46	Tout ce dont un bus master a besoin.
+47	<b>AUTO GAIN</b> — rend exactement ce que la compression a retiré.
+48	<b>Limiteur spectral</b> — SMART (3 bandes), T6 (6 bandes) ou T8 (le gain ne bouge qu'aux passages par zéro, dans HOUZY) : un pic de basse n'écrase jamais les aigus.
+49	<b>GAIN MATCH</b> — BYPASS compare le caractère, pas le volume.
+50	<b>DASH</b> — du punchy à l'homogène : un seul bouton échange la dynamique contre un niveau stable.
+51	<b>UPWARD</b> — remonte les passages faibles : queues, air, détails.
+52	<b>CLIP SHAPE</b> — légère saturation sur tout le spectre, à volume compensé.
+53	<b>CHARACTER</b> — plus doux vers la gauche, plus dense vers la droite.
+54	<b>ALL MIX</b> — 6 bandes avec leur propre compression et leur propre niveau (−6…+6 dB).
+55	<b>TP</b> — true peak pour le streaming et les exports MP3.
+56	<b>PRESETS</b> — de SNOOZE à SQUISHY ; la liste reste ouverte pour comparer à l'oreille.
+57	<b>A / B</b> — deux emplacements, comparés à volume égal.
+58	<b>BEAT | SMART</b> — release exact, ou release comme maximum qui laisse partir plus tôt une tonalité éteinte.
+59	<b>Indicateurs</b> — RMS et LUFS, réduction de gain par étage et forme d'onde en direct.
+60	Le moteur HOUZY
+61	Chaque tonalité comprimée séparément
+62	Le problème
+63	Un seul gain pour tout le mix
+64	Le clipper ACR
+65	Une impulsion au lieu d'une coupure
+66	Limiteur T8 <em>nouveau</em>
+67	Le gain ne bouge qu'à zéro
+68	CYCLES / NOTE
+69	Attaque en cycles, release en temps
+70	Et ce n'est pas tout
+71	Treize autres outils à l'intérieur
+72	Masteriser avec HOUZY : tous les genres, tous les mix
+73	Démarrage rapide
+75	<b>INPUT</b> jusqu'à −10…−9 LUFS
+77	Manuel complet
+78	Né dans la house. Fait pour tout.
+79	HOUZY est né dans la musique électronique, là où un kick dur et des aigus propres sont les plus difficiles à obtenir ensemble. La même approche fonctionne dans tous les genres : il comprime chaque tonalité séparément, donc rien ne pompe. Pendant plus de 15 ans, son auteur a cherché le compresseur idéal pour ses propres morceaux, puis a fini par décider de l'inventer lui-même.
+80	Manuel d'utilisation
+81	un seul paiement, une licence qui vous appartient
+82	Avec le code <b>FIRST20</b> : <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">58,65 $</a> · 20 premiers acheteurs, jusqu'au 19 nov.
+83	Licence à vie pour deux ordinateurs
+84	Essai gratuit de 14 jours, toutes les fonctions débloquées
+85	4 technologies que vous ne trouverez dans aucun autre plugin
+86	<b>Moteur HOUZY</b> — comprime chaque tonalité séparément : pas de gain commun, pas de pompage
+87	<b>Clipper ACR</b> — annule les crêtes au lieu de les trancher, le punch est préservé
+88	<b>Limiteur T8</b> — ne bouge le gain qu'aux passages par zéro : basses et kick gardent leur forme
+89	<b>CYCLES / NOTE</b> — attaque en cycles d'onde, release en fractions de mesure
+90	Télécharger gratuitement
+91	Nouveautés de la version 5 : design Liquid Glass, cinq thèmes, quatre couleurs de sphère, le limiteur T8 et un tiers de CPU en moins.
+92	Paiement sécurisé via Gumroad.
+93	Les questions fréquentes.
+94	Autre chose ? Écrivez à <a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a>.
+95	Combien coûte HOUZY ?
+96	69 $, un seul paiement : une licence à vie pour deux ordinateurs. Un essai gratuit de 14 jours vous permet de le tester d'abord sur vos propres morceaux.
+97	Quelle est la différence entre T6 et T8 ?
+98	T6 est un limiteur doux à six bandes. T8 ne modifie son gain qu'aux passages par zéro de l'onde : les basses et le kick sont abaissés sans changer de forme. Les deux sont dans HOUZY, et vous choisissez à l'oreille.
+99	Mon audio quitte-t-il mon ordinateur ?
+100	Jamais. Tout le traitement se fait sur votre machine. Le plugin ne se connecte à Internet que pour vérifier les mises à jour (vous pouvez le désactiver) et activer votre licence. Les détails se trouvent dans la <a href="/privacy.html">politique de confidentialité</a>.
+101	Comment fonctionnent les remboursements ?
+102	Dans les 14 jours suivant l'achat. Désactivez d'abord l'activation dans le plugin (fenêtre de licence → DEACTIVATE). Vos droits légaux de consommateur ne sont pas affectés. Voir les <a href="/terms.html#refunds">conditions de vente</a>.
+103	Puis-je l'utiliser sur des pistes isolées, pas seulement sur le master ?
+104	Oui, sur n'importe quelle piste ou bus. HOUZY analyse chaque tonalité séparément : la charge CPU est donc plus élevée qu'avec un compresseur ordinaire.
+105	Quelles DAW sont prises en charge ?
+106	Tout hôte qui charge le VST3 sous Windows ou macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig et d'autres), plus l'AU pour Logic Pro et GarageBand. Les versions Windows et macOS sont disponibles.
+107	Comment fonctionne la démo en ligne ?
+108	Elle exécute le vrai moteur HOUZY dans votre navigateur, elle sonne donc comme le plugin. Chargez un MP3 ou un WAV : les 75 premières secondes tournent en boucle, de quoi entendre un drop et le groove. Le morceau est ouvert et traité dans votre navigateur et ne quitte jamais votre ordinateur. Elle fonctionne avec les versions actuelles de Chrome, Edge, Firefox et Safari. <a data-home="plugin.html" href="/plugin.html">Essayez-la ici</a>.
+109	Contact
+110	Questions, bugs, licences : écrivez-moi.
+111	En cas de bug, indiquez votre version de HOUZY, votre système et votre DAW. Dans HOUZY, le bouton REPORT copie tout cela pour vous.
+114	Compresseur de mastering par ACRONA AUDIO.<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a>
+115	Essayer dans votre navigateur
+123	Mentions légales
+124	Politique de confidentialité
+125	Politique des cookies
+126	Conditions d'utilisation et de vente
+127	Contrat de licence (EULA)
+128	Meilleurs compresseurs de mastering
+129	Spotify
+130	Yandex Music
+131	Version 5.0.3 · mis à jour le <time datetime="2026-10-28">28 octobre 2026</time>
+132	© 2026 ACRONA AUDIO. HOUZY, ACR et T8 sont des noms d'ACRONA AUDIO. VST est une marque de Steinberg Media Technologies GmbH. Audio Units, Logic Pro et macOS sont des marques d'Apple Inc. Les autres noms appartiennent à leurs propriétaires.
+133	Compresseur de mastering VST universel : chaque tonalité comprimée séparément, sans pompage, kick percutant, graves propres. Clipper ACR, limiteur T8.
+134	Versions de HOUZY
+135	Accueil HOUZY
+136	Ouvrir le menu
+137	Menu
+138	Principal
+139	La fenêtre du plugin HOUZY
+140	Fenêtre du plugin de mastering HOUZY
+141	Importez votre morceau (MP3 ou WAV)
+142	Amount
+143	Position
+144	Comparer avec l'original
+145	Compresseur de mastering HOUZY
+146	Plugin de compresseur de mastering qui comprime chaque tonalité séparément, avec le clipper ACR et le limiteur à demi-onde T8.
+147	Jamais. Tout le traitement se fait sur votre machine. Le plugin ne se connecte à Internet que pour vérifier les mises à jour (vous pouvez le désactiver) et activer votre licence. Les détails se trouvent dans la politique de confidentialité.
+148	Dans les 14 jours suivant l'achat. Désactivez d'abord l'activation dans le plugin (fenêtre de licence → DEACTIVATE). Vos droits légaux de consommateur ne sont pas affectés. Voir les conditions de vente.
+149	Elle exécute le vrai moteur HOUZY dans votre navigateur, elle sonne donc comme le plugin. Chargez un MP3 ou un WAV : les 75 premières secondes tournent en boucle, de quoi entendre un drop et le groove. Le morceau est ouvert et traité dans votre navigateur et ne quitte jamais votre ordinateur. Elle fonctionne avec les versions actuelles de Chrome, Edge, Firefox et Safari. Essayez-la ici.
+150	Masteriser avec HOUZY : tous les genres, tous les mix.
+151	ACRONA
+152	Démo en ligne de HOUZY — essayez-le dans votre navigateur | ACRONA AUDIO
+153	Démo en ligne
+154	Essayez HOUZY directement dans votre navigateur.
+155	Compression homogène sur toutes les fréquences. Les passages forts et les passages faibles sont comprimés de la même manière.
+156	<b>Essayez HOUZY sur votre propre morceau</b>MP3 / WAV · 75 premières secondes · lecture dans votre navigateur, rien n'est envoyé
+157	Ce que contient la démo
+158	Dans la démo
+159	Limiteurs SMART, T6 et T8
+160	UPWARD, CLIP SHAPE et DASH
+161	ATTACK, RELEASE, INPUT, OUTPUT, MIX
+162	Phase LINEAR et NATURAL
+163	Suréchantillonnage jusqu'à 16x
+164	GAIN MATCH
+165	La version complète ajoute
+166	Moteurs CLASSIC et MODERN
+167	Suréchantillonnage 32x et 64x
+168	ALL MIX : six bandes, chacune avec son propre bouton
+169	CHARACTER
+170	Comment écouter et régler : le manuel complet →
+171	© 2026 ACRONA AUDIO. VST est une marque de Steinberg Media Technologies GmbH. Audio Units, Logic Pro et macOS sont des marques d'Apple Inc. Les autres noms appartiennent à leurs propriétaires.
+172	Jouez avec la vraie interface du compresseur de mastering HOUZY dans votre navigateur et écoutez-le sur votre propre morceau. MP3 ou WAV, rien n'est envoyé.
+173	Essayez le compresseur de mastering HOUZY dans votre navigateur | ACRONA AUDIO
+174	Démo en ligne de HOUZY
+175	Accueil
+176	Télécharger HOUZY — installation et activation | ACRONA AUDIO
+177	Télécharger HOUZY
+179	Windows 10/11 · 64 bits<br>macOS 10.15+ · Apple Silicon et Intel
+181	VST3 · 64 bits
+182	Installateur · .exe
+183	VST3 · .zip
+185	VST3 · AU
+186	Installateur · .pkg
+187	AU · .zip
+188	<b>Fermez votre DAW avant d'installer ou de mettre à jour</b> — une DAW ouverte verrouille le fichier du plugin.
+189	<b>Windows.</b> Lancez <code>HOUZY-Setup.exe</code>. Le plugin est installé dans <code>C:\Program Files\Common Files\VST3</code>.
+190	<b>Windows sans l'installateur.</b> Décompressez l'archive VST3 et placez <code>HOUZY.vst3</code> dans <code>C:\Program Files\Common Files\VST3</code>.
+191	<b>macOS.</b> Double-cliquez sur <code>HOUZY-Installer.pkg</code> et cochez les formats souhaités : <b>AU</b> pour Logic Pro et GarageBand, <b>VST3</b> pour tout le reste. Les deux sont Universal (Apple Silicon et Intel).
+192	Le paquet n'est pas encore signé avec un certificat Apple, donc macOS le bloque au premier lancement. Clic droit sur le fichier → <b>Ouvrir</b> → de nouveau <b>Ouvrir</b> dans l'avertissement. Ou : Réglages Système → Confidentialité et sécurité → <b>Ouvrir quand même</b>. Rien n'est cassé — macOS traite ainsi tous les installateurs non signés.
+193	<b>Installation manuelle.</b> Placez <code>HOUZY.vst3</code> dans <code>/Library/Audio/Plug-Ins/VST3/</code> ou <code>HOUZY.component</code> dans <code>/Library/Audio/Plug-Ins/Components/</code>, puis levez la quarantaine dans le Terminal (uniquement la ligne correspondant à ce que vous avez installé) :
+194	Redémarrez votre DAW et relancez l'analyse des plugins.
+195	Essai et activation
+196	Ouvrez HOUZY. La fenêtre de licence propose un <b>essai gratuit</b> — tout fonctionne pendant sa durée. Le temps restant s'affiche dans la fenêtre et dans la carte ACRONA.
+197	Pour conserver HOUZY, appuyez sur <b>BUY</b>. Le paiement se fait sur Gumroad ; votre <b>clé de licence</b> arrive dans l'e-mail d'achat et se trouve toujours dans votre <a href="https://gumroad.com/library" rel="noopener">bibliothèque Gumroad</a>.
+198	Dans HOUZY, appuyez sur <b>ACTIVATE</b>, collez la clé, puis appuyez de nouveau sur <b>ACTIVATE</b>. Une connexion Internet n'est nécessaire qu'une fois ; ensuite HOUZY fonctionne hors ligne.
+199	Une clé fonctionne sur <b>deux ordinateurs</b>. Pour passer à un nouvel ordinateur : ouvrez la fenêtre de licence sur l'ancien et appuyez sur <b>DEACTIVATE</b>.
+200	En cas de problème
+201	<b>Pas d'e-mail avec la clé</b> — vérifiez l'adresse utilisée pour la commande, y compris les spams, puis votre <a href="https://gumroad.com/library" rel="noopener">bibliothèque Gumroad</a> : la clé s'y trouve toujours. Toujours rien ? Contactez le <a href="https://gumroad.com/help" rel="noopener">support Gumroad</a> — il gère les commandes et les clés.
+202	<b>« Pas de connexion au serveur de licence »</b> — vérifiez votre connexion Internet et appuyez de nouveau sur ACTIVATE. Un incident du serveur ne retire jamais une licence déjà active.
+203	<b>« Déjà active sur le nombre maximal d'ordinateurs »</b> — désactivez-la sur l'un d'eux, ou écrivez-nous.
+204	Tout autre problème : le bouton <b>REPORT</b> de la fenêtre de licence copie tout ce dont nous avons besoin — collez-le dans votre e-mail.
+205	Téléchargez le compresseur de mastering HOUZY pour Windows et macOS, installez-le et activez votre licence. Essai gratuit de 14 jours.
+206	Comment installer et activer HOUZY sous Windows
+207	Fermez votre DAW avant d'installer ou de mettre à jour : une DAW ouverte verrouille le fichier du plugin.
+208	Lancez HOUZY-Setup.exe. Le plugin est installé dans C:\Program Files\Common Files\VST3.
+209	Ouvrez HOUZY. La fenêtre de licence propose un essai gratuit ; tout fonctionne pendant sa durée.
+210	Pour conserver HOUZY, appuyez sur BUY. Le paiement se fait sur Gumroad ; votre clé de licence arrive dans l'e-mail d'achat et se trouve toujours dans votre bibliothèque Gumroad.
+211	Dans HOUZY, appuyez sur ACTIVATE, collez la clé, puis appuyez de nouveau sur ACTIVATE. Une connexion Internet n'est nécessaire qu'une fois ; ensuite HOUZY fonctionne hors ligne.
+212	Comment masteriser de la musique électronique avec HOUZY | Manuel
+213	Comment masteriser de la musique électronique avec HOUZY
+214	Le manuel de HOUZY : par où commencer (AMOUNT à 15–30), ce que fait chaque réglage sur le son, et comment affiner un morceau de musique électronique et de dance.
+216	Deux minutes entre l'ouverture de HOUZY et un morceau dense et homogène. Le même guide est intégré à HOUZY, dans la carte ACRONA.
+217	Mode
+218	Choisissez <b>HOUZY</b> — c'est lui qui donne la meilleure qualité sonore.
+220	Commencez par le bouton AMOUNT. Pour un morceau bien mixé, 15 à 30 donnent généralement une compression douce et modérée. Pour tout le reste, réglez à l'oreille.
+222	Une fois la compression satisfaisante, montez INPUT en surveillant l'indicateur LUFS. Pour un son doux, −10 à −9 LUFS suffisent.
+224	Pour un kick doux, réglez entre 3 et 4.
+226	Laissez <b>AUTO</b> activé : le plugin mesure la vitesse à laquelle les sons de votre morceau s'éteignent et règle le release à votre place.
+227	5. BEAT ou SMART
+228	Choisissez à l'oreille.
+229	<b>BEAT</b> garde le release exactement comme réglé : un son plus régulier, qui pulse avec le beat.
+230	<b>SMART</b> traite le release comme un maximum : un son qui s'éteint plus tôt est relâché plus tôt. Plus aéré et plus naturel.
+231	Réglages fins
+232	<b>DASH</b> — si la compression sonne bien mais que le morceau n'est pas encore assez homogène, ajoutez un peu de DASH.
+233	<b>UPWARD</b> — remonte les passages faibles : queues de réverbération, air, haut du spectre.
+234	<b>CLIP SHAPE</b> — légère saturation sur tout le morceau. Le volume est compensé automatiquement : vous entendez la couleur, pas un gain de niveau.
+235	<b>ALL MIX</b> — si le morceau est globalement dense mais que, par exemple, les aigus ou les médiums ressortent, activez ALL MIX et baissez cette bande avec son bouton. Pour voir quelles fréquences couvre une bande, laissez le pointeur sur son bouton quelques secondes — une info-bulle indique la plage.
+236	Clipper : HI-Q ou ACR
+237	Nous recommandons <b>ACR</b>, notre propre clipper. Il déplace la distorsion là où le coup la masque, les attaques restent donc propres. Cela reste une affaire de goût — essayez les deux.
+238	OVERSAMPLE
+239	16x suffit largement pendant le travail ; passez à 32x pour le rendu final.
+240	TRUE PEAK
+241	Le bouton <b>TP</b> se trouve sur le bouton OUTPUT. Activez-le pour un export destiné au streaming : il supprime les crêtes inter-échantillons qui craquent après la conversion en MP3/AAC.
+242	En bref
+243	AMOUNT de 15 à 30, CYCLES de 3 à 4.
+244	Montez INPUT si nécessaire.
+245	Un peu de DASH et d'UPWARD selon votre goût.
+246	Dans ALL MIX, baissez ce qui ressort.
+247	C'est tout.
+248	Tout cela, vous pouvez le faire avec HOUZY
+249	Essayez HOUZY directement dans votre navigateur
+250	Téléchargement gratuit — essai de 14 jours
+251	Comment régler le compresseur de mastering HOUZY en deux minutes : AMOUNT, INPUT, CYCLES, RELEASE et réglages fins.
+252	Manuel de HOUZY
+253	Laissez AUTO activé : le plugin mesure la vitesse à laquelle les sons de votre morceau s'éteignent et règle le release à votre place.
+254	HOUZY 5 pour les utilisateurs de HOUZY 4.x — 60 % de réduction | ACRONA AUDIO
+255	Pour les utilisateurs de HOUZY 4.x
+256	Merci d'être avec nous
+257	HOUZY 5 est sorti : un nouveau design Liquid Glass, le limiteur T8, environ un tiers de CPU en moins et une version pour macOS. Pour remercier tous ceux qui ont utilisé la version gratuite 4.x, HOUZY 5 est à 60 % de réduction pour vous.
+258	Code <b>HOUZY4FRIENDS</b> · 70 licences · jusqu'au 19 novembre 2026
+259	Obtenir HOUZY 5 pour 27,60 254 $	Essayer gratuitement pendant 14 jours
+261	Le bouton applique le code automatiquement. Votre HOUZY 4.8 continue de fonctionner et vos projets s'ouvrent dans HOUZY 5. Une licence fonctionne sur deux ordinateurs.
+262	Un merci à tous ceux qui ont utilisé le HOUZY 4.x gratuit : HOUZY 5 à 60 % de réduction, code HOUZY4FRIENDS.
+263	Compression par tonalité ou multibande — pourquoi HOUZY | ACRONA AUDIO
+264	Un seul gain, quelques bandes, ou chaque tonalité
+265	En quoi HOUZY diffère d'un compresseur ordinaire et d'un multibande.
+266	Mis à jour le <time datetime="2026-10-28">28 octobre 2026</time>
+267	Qu'est-ce que HOUZY ?
+268	HOUZY est un plugin de compresseur de mastering (VST3 et AU) d'ACRONA AUDIO. Au lieu d'un seul gain pour tout le mix, il donne à chaque tonalité du spectre sa propre enveloppe : un kick ou une basse puissants n'entraînent plus le reste du mix. Pas de pompage, un kick percutant, des graves propres. Né dans la musique électronique et dance, il fonctionne dans tous les genres.
+269	Un multibande aide, mais seulement à moitié
+270	Découper le mix en 3 à 6 bandes donne à chaque bande son propre gain : le kick n'entraîne plus les charleys vers le bas. Mais à l'intérieur d'une bande, rien ne change : le kick et la basse partagent toujours un seul gain, la bande grave pompe toujours, et les filtres de croisement décalent la phase à chaque coupure.
+271	Compresseur ordinaire
+272	Multibande (3–6 bandes)
+273	Gains
+274	un pour tout le mix
+275	un par bande
+276	un par tonalité
+277	Un kick fort écrase…
+278	tout
+279	toute sa bande (basses, bas-médiums)
+280	seulement lui-même
+281	Pompage
+282	oui
+283	à l'intérieur de chaque bande
+284	pas de gain commun, rien à pomper
+285	Attaque contre punch
+286	une enveloppe pour tout
+287	une nouvelle tonalité n'est pas comprimée ; attaque réglée en cycles d'onde
+288	Bandes latérales sur les basses
+289	le gain bouge à l'intérieur de l'onde
+290	pareil, dans la bande grave
+291	l'attaque n'est jamais plus rapide qu'une demi-période de la tonalité
+292	Phase des filtres de croisement
+293	décalée à chaque coupure
+294	aucun filtre de croisement dans le chemin du signal
+295	Latence
+296	quasi nulle
+297	faible
+298	environ 0,1 s, compensée par la DAW
+299	Quand un multibande reste le bon outil
+300	En live et à l'enregistrement, où la latence compte, ou pour un travail chirurgical sur une bande avec des points de croisement précis. HOUZY est conçu pour le master et les bus. Si vous voulez en plus un contrôle par bande, son mode ALL MIX offre six bandes, chacune avec son propre réglage.
+301	Questions fréquentes
+302	HOUZY pompe-t-il ?
+303	Non. Il n'y a pas de gain commun, donc rien ne peut pomper : chaque tonalité est comprimée par sa propre enveloppe.
+304	En quoi HOUZY diffère-t-il d'un compresseur multibande ?
+305	Un multibande donne à chaque bande son propre gain, mais à l'intérieur d'une bande, le kick et la basse partagent toujours le même. HOUZY donne à chaque tonalité son propre gain, sans filtres de croisement dans le chemin du signal.
+306	Puis-je utiliser HOUZY sur des pistes isolées, pas seulement sur le master ?
+307	Oui, sur n'importe quelle piste ou bus. HOUZY analyse chaque tonalité séparément, sa charge CPU est donc plus élevée que celle d'un compresseur ordinaire. Sa latence est signalée à la DAW et compensée automatiquement.
+308	Quels formats et quelles DAW HOUZY prend-il en charge ?
+309	VST3 sous Windows, VST3 et AU sous macOS : Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro et les autres hôtes qui chargent le VST3 ou l'AU.
+310	Télécharger — essai de 14 jours
+311	En quoi la compression par tonalité de HOUZY diffère d'un compresseur classique et d'un multibande : pompage, attaque et punch, basses, phase, latence.
+312	Programme partenaire : gagnez 30 % en vendant HOUZY | ACRONA AUDIO
+313	Programme partenaire
+314	Vendez HOUZY sur votre site. Gagnez 30 %.
+315	Vous tenez un blog, une chaîne YouTube, une communauté de producteurs ou un site de bons plans ? Mettez-y un lien vers HOUZY. Chaque fois que quelqu'un achète via votre lien personnel, 30 % de la vente sont pour vous. Gumroad compte les ventes et vous paie.
+316	Devenir partenaire
+317	Essayez HOUZY gratuitement pendant 14 jours
+318	de chaque vente via votre lien
+319	20,70 $ sur chaque vente à 69 314 $	Comment ça marche
+321	Inscription
+322	Créez un compte Gumroad gratuit et renseignez vos informations de paiement.
+323	Envoyez une demande
+324	Cliquez sur le bouton ci-dessus et envoyez une demande de partenariat sur notre page Gumroad.
+325	Recevez votre lien
+326	Une fois la demande approuvée, Gumroad vous donne un lien personnel vers HOUZY.
+327	Partagez et gagnez
+328	Publiez-le dans un test, une vidéo ou sur votre site. Chaque achat via ce lien vous rapporte 30 %.
+329	À qui s'adresse-t-il
+330	Producteurs et YouTubeurs
+331	Montrez HOUZY sur vos propres morceaux et dans vos tutoriels.
+332	Blogs et sites de tests
+333	Ajoutez HOUZY à vos tests de plugins et à vos classements.
+334	Sites de bons plans plugins
+335	Présentez HOUZY à côté des autres outils de mastering.
+336	Écoles et communautés
+337	Recommandez un compresseur de mastering à vos élèves.
+338	Questions
+339	Combien coûte l'inscription ?
+340	Rien. C'est gratuit, il suffit d'avoir un compte Gumroad.
+341	Comment suis-je payé ?
+342	Via Gumroad. Votre commission est ajoutée à votre solde Gumroad au moment de la vente et versée comme tous les autres gains Gumroad.
+343	Sur quoi les 30 % sont-ils calculés ?
+344	Sur le prix réellement payé par l'acheteur. Si un code de réduction est utilisé, ce sont 30 % du prix réduit.
+345	Ai-je besoin de mon propre site ?
+346	Non. Une chaîne, un profil ou une liste de diffusion suffisent : il vous suffit de partager votre lien.
+347	Prêt à commencer ? Cela prend environ cinq minutes.
+348	Mettez HOUZY sur votre site, votre chaîne ou votre blog et gagnez 30 % de chaque vente réalisée via votre lien personnel. Inscription gratuite via Gumroad.
+349	Meilleurs plugins compresseurs de mastering (2026) | ACRONA AUDIO
+350	Les meilleurs plugins compresseurs de mastering en 2026
+351	Le meilleur compresseur de mastering dépend du travail : coller un mix, contrôler la dynamique ou gagner en densité sans perdre les transitoires. Dans la musique électronique et dance, le problème principal est le pompage, et c'est pourquoi existent des compresseurs par tonalité comme HOUZY.
+352	Que chercher dans un compresseur de mastering
+353	<b>Transparence</b> — peu de distorsion et pas de pompage sur le kick et la basse.
+354	<b>Contrôle</b> — attaque, release, ratio, filtre de sidechain et options mid/side.
+355	<b>Égalisation du volume</b> — gain automatique, pour juger le son et non le volume.
+356	<b>Sécurité des crêtes</b> — un limiteur ou un étage true peak pour le streaming et les exports MP3.
+357	<b>Coût pour votre flux de travail</b> — latence, charge CPU, prix et conditions de licence.
+358	Les compresseurs de mastering comparés
+359	Plugin
+360	Type
+361	Idéal pour
+363	Compresseur numérique à huit styles, EQ de sidechain et traitement mid/side
+364	Contrôle flexible sur tout type de matériau
+366	Modèle Plugin Alliance d'un compresseur de mastering matériel
+367	Couleur analogique sur le master
+369	Compresseur de bus
+370	Coller un mix ou un groupe
+372	Compresseur de mastering gratuit et transparent
+373	Contrôle propre de la dynamique à petit budget
+375	Suite de mastering tout-en-un avec modules de dynamique
+376	Une chaîne de mastering complète dans un seul plugin
+377	Compresseur de mastering par tonalité avec le clipper ACR et le limiteur T8
+378	Musique électronique et dance : compression homogène sans pompage
+379	Les descriptions sont de courts résumés issus des éditeurs et de tests publiés ; consultez le site de chaque éditeur pour les fonctions et prix actuels.
+380	Quand HOUZY est le bon choix
+381	Choisissez HOUZY quand vous voulez une compression homogène de tous les passages et de toutes les sections du morceau. Chaque tonalité a sa propre enveloppe : le kick n'entraîne plus les charleys ni la voix, et l'attaque se règle en cycles d'onde pour que la basse reste propre. Il convient à tous les styles de musique : HOUZY est le meilleur compresseur de mastering quand vous voulez un master homogène et naturel. Il coûte 69 $ en une fois, avec un essai gratuit de 14 jours et une démo en ligne dans le navigateur.
+382	Quand un autre compresseur est le meilleur outil
+383	Choisissez une unité à modélisation analogique pour sa couleur, un multibande ou un compresseur de bus pour travailler des bandes isolées ou coller un groupe, et un compresseur à faible latence pour le live et l'enregistrement : HOUZY est conçu pour le master et les bus.
+384	Quel est le meilleur compresseur pour le mastering ?
+385	Il n'y en a pas un seul : FabFilter Pro-C 2 est le polyvalent flexible, les unités à modélisation analogique ajoutent de la couleur, et HOUZY est conçu pour la musique électronique et dance, où le pompage est le problème principal.
+386	Quel est le meilleur compresseur de mastering pour la musique électronique et dance ?
+387	Un compresseur qui ne pompe pas sur un kick et une basse durs. HOUZY comprime chaque tonalité séparément : un kick puissant n'entraîne pas le reste du mix.
+388	Faut-il un compresseur et un limiteur pour le mastering ?
+389	En général oui : le compresseur égalise la dynamique et le limiteur tient le plafond. HOUZY inclut le clipper ACR et le limiteur T8, donc un seul plugin couvre les deux.
+390	Comment choisir un compresseur de mastering, et en quoi FabFilter Pro-C 2, Shadow Hills, The Glue, TDR Kotelnikov, Ozone et HOUZY diffèrent.
+391	Transparence — peu de distorsion et pas de pompage sur le kick et la basse.
+392	Contrôle — attaque, release, ratio, filtre de sidechain et options mid/side.
+393	Égalisation du volume — gain automatique, pour juger le son et non le volume.
+394	Sécurité des crêtes — un limiteur ou un étage true peak pour le streaming et les exports MP3.
+395	Coût pour votre flux de travail — latence, charge CPU, prix et conditions de licence.
+396	Acheter
+397	69 $, avec un essai gratuit de 14 jours
+398	Essayez le compresseur de mastering HOUZY
+399	La démo utilise le moteur HOUZY avec SMART, T6 et T8, UPWARD, CLIP SHAPE, DASH et un suréchantillonnage jusqu'à 16x. CLASSIC, MODERN, 32x / 64x, ALL MIX et CHARACTER sont dans la version complète.
+400	Télécharger
+401	Remboursement sous 14 jours après l'achat
+402	Votre audio ne quitte jamais votre ordinateur
+403	Windows VST3 · macOS VST3 et AU
+404	Vidéo · 0:49
+405	Calcul de la démo de 75 s…
+406	Enregistré : les 75 premières secondes, traitées par HOUZY
+407	Échec du calcul : {msg}
