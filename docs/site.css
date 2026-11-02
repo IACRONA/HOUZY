@@ -499,7 +499,7 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 .buy-row .cta{background:linear-gradient(180deg,rgba(60,150,165,.22),rgba(20,84,96,.34));
   -webkit-backdrop-filter:blur(14px) saturate(1.8) brightness(1.05);backdrop-filter:blur(14px) saturate(1.8) brightness(1.05);
   text-shadow:0 1px 3px rgba(0,30,40,.6),0 0 12px rgba(0,30,40,.35)}
-.buy-row .cta:hover{background:linear-gradient(180deg,rgba(70,165,180,.30),rgba(22,92,105,.42))}
+.buy-row .cta:hover{background:linear-gradient(180deg,rgba(70,165,180,.53),rgba(22,92,105,.61))}
 /* the SEO kicker over the claim: a small accent line, the same voice as the reader's "HOUZY 5 · Coming soon" */
 .hero-title .kick{display:block;margin:0 0 12px;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent-ink);font-variation-settings:'wght' 650;line-height:1.4}
 .hero-title .t{display:block}
