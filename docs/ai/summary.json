@@ -2,8 +2,8 @@
  "name": "HOUZY",
  "publisher": "ACRONA AUDIO",
  "url": "https://acronaaudio.shop/",
- "updated": "2026-10-28",
- "version": "5.0.3",
+ "updated": "2026-11-02",
+ "version": "5.1.0",
  "category": "Mastering compressor audio plugin (VST3, AU)",
  "description": "HOUZY is a mastering compressor plugin for Windows and macOS. Instead of one gain for the whole mix it gives every tone of the spectrum its own envelope, so a loud kick or bass does not pull the rest of the mix down: no pumping, a punchy kick, a clean low end. Born in electronic and dance music, it works on any genre.",
  "platforms": {

@@ -47,10 +47,10 @@
 50	<b>DASH</b> — du punchy à l'homogène : un seul bouton échange la dynamique contre un niveau stable.
 51	<b>UPWARD</b> — remonte les passages faibles : queues, air, détails.
 52	<b>CLIP SHAPE</b> — légère saturation sur tout le spectre, à volume compensé.
-53	<b>CHARACTER</b> — plus doux vers la gauche, plus dense vers la droite.
+53	<b>HOUZY | HOUZY II</b> — deux cœurs : HOUZY égalise le bas, HOUZY II aussi les médiums et les aigus.
 54	<b>ALL MIX</b> — 6 bandes avec leur propre compression et leur propre niveau (−6…+6 dB).
 55	<b>TP</b> — true peak pour le streaming et les exports MP3.
-56	<b>PRESETS</b> — de SNOOZE à SQUISHY ; la liste reste ouverte pour comparer à l'oreille.
+56	<b>PRESETS</b> — de SUSHI à DRUMUZI ; la liste reste ouverte pour comparer à l'oreille.
 57	<b>A / B</b> — deux emplacements, comparés à volume égal.
 58	<b>BEAT | SMART</b> — release exact, ou release comme maximum qui laisse partir plus tôt une tonalité éteinte.
 59	<b>Indicateurs</b> — RMS et LUFS, réduction de gain par étage et forme d'onde en direct.
@@ -114,7 +114,7 @@
 128	Meilleurs compresseurs de mastering
 129	Spotify
 130	Yandex Music
-131	Version 5.0.3 · mis à jour le <time datetime="2026-10-28">28 octobre 2026</time>
+131	Version 5.1.0 · mis à jour le <time datetime="2026-11-02">2 novembre 2026</time>
 132	© 2026 ACRONA AUDIO. HOUZY, ACR et T8 sont des noms d'ACRONA AUDIO. VST est une marque de Steinberg Media Technologies GmbH. Audio Units, Logic Pro et macOS sont des marques d'Apple Inc. Les autres noms appartiennent à leurs propriétaires.
 133	Compresseur de mastering VST universel : chaque tonalité comprimée séparément, sans pompage, kick percutant, graves propres. Clipper ACR, limiteur T8.
 134	Versions de HOUZY
@@ -240,7 +240,7 @@
 263	Compression par tonalité ou multibande — pourquoi HOUZY | ACRONA AUDIO
 264	Un seul gain, quelques bandes, ou chaque tonalité
 265	En quoi HOUZY diffère d'un compresseur ordinaire et d'un multibande.
-266	Mis à jour le <time datetime="2026-10-28">28 octobre 2026</time>
+266	Mis à jour le <time datetime="2026-11-02">2 novembre 2026</time>
 267	Qu'est-ce que HOUZY ?
 268	HOUZY est un plugin de compresseur de mastering (VST3 et AU) d'ACRONA AUDIO. Au lieu d'un seul gain pour tout le mix, il donne à chaque tonalité du spectre sa propre enveloppe : un kick ou une basse puissants n'entraînent plus le reste du mix. Pas de pompage, un kick percutant, des graves propres. Né dans la musique électronique et dance, il fonctionne dans tous les genres.
 269	Un multibande aide, mais seulement à moitié
@@ -367,7 +367,7 @@
 396	Acheter
 397	69 $, avec un essai gratuit de 14 jours
 398	Essayez le compresseur de mastering HOUZY
-399	La démo utilise le moteur HOUZY avec SMART, T6 et T8, UPWARD, CLIP SHAPE, DASH et un suréchantillonnage jusqu'à 16x. CLASSIC, MODERN, 32x / 64x, ALL MIX et CHARACTER sont dans la version complète.
+399	La démo utilise le moteur HOUZY avec SMART, T6 et T8, UPWARD, CLIP SHAPE, DASH et un suréchantillonnage jusqu'à 16x. 32x / 64x et ALL MIX sont dans la version complète.
 400	Télécharger
 401	Remboursement sous 14 jours après l'achat
 402	Votre audio ne quitte jamais votre ordinateur

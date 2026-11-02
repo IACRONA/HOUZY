@@ -2,9 +2,9 @@
 
 > HOUZY is a mastering compressor plugin (VST3, AU) for Windows and macOS, made by ACRONA AUDIO. Instead of one gain for the whole mix, it gives every tone of the spectrum its own envelope, so a loud kick or bass does not pull the rest of the mix down: no pumping, a punchy kick, a clean low end. It was born in electronic and dance music and works on any genre.
 
-## Facts (updated 2026-10-28)
+## Facts (updated 2026-11-02)
 
-- Product: HOUZY, version 5.0.3 for Windows and macOS (first release 5.0.0 on 17 October 2026).
+- Product: HOUZY, version 5.1.0 for Windows, 5.0.3 for macOS (first release 5.0.0 on 17 October 2026).
 - Type: mastering compressor audio plugin with a clipper (ACR) and a limiter (T8) built in.
 - Formats: VST3 on Windows; VST3 and AU on macOS (Universal: Apple Silicon and Intel).
 - Hosts: any DAW that loads VST3 or AU: Ableton Live, FL Studio, Cubase, Reaper, Bitwig, Logic Pro, GarageBand and others.

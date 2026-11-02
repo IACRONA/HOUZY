@@ -78,13 +78,13 @@ Release can be set two ways, click its label to switch. **MS** is plain millisec
 
 - **CLIP SHAPE** — light saturation across the whole spectrum, level matched.
 
-- **CHARACTER** — softer to the left, denser to the right.
+- **HOUZY | HOUZY II** — two cores: HOUZY evens the low end, HOUZY II evens the mids and the top as well.
 
 - **ALL MIX** — 6 bands with their own compression and level (−6…+6 dB).
 
 - **TP** — true peak for streaming and MP3 exports.
 
-- **PRESETS** — SNOOZE to SQUISHY; the list stays open to compare by ear.
+- **PRESETS** — SUSHI to DRUMUZI; the list stays open to compare by ear.
 
 - **A / B** — two slots, compared at matched loudness.
 
@@ -173,7 +173,7 @@ Page: Why HOUZY (https://acronaaudio.shop/why-houzy.html)
 
 How HOUZY differs from an ordinary compressor and from a multiband.
 
-Updated 28 October 2026
+Updated 2 November 2026
 
 ## What is HOUZY?
 
@@ -254,7 +254,7 @@ Page: Best mastering compressor plugins 2026 (https://acronaaudio.shop/best-mast
 
 The best mastering compressor depends on the job: gluing a mix, controlling dynamics, or adding density without losing the transients. For electronic and dance music the main problem is pumping, which is why per-tone compressors such as HOUZY exist.
 
-Updated 28 October 2026
+Updated 2 November 2026
 
 ## What to look for in a mastering compressor
 
@@ -388,7 +388,7 @@ Page: Download and activation (https://acronaaudio.shop/download.html)
 
 # Download HOUZY
 
-Latest version 5.0.0 · 17.10.2026
+Latest version 5.1.0 · 02.11.2026
 
 Windows 10/11 · 64-bitmacOS 10.15+ · Apple Silicon & Intel
 
