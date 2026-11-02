@@ -496,7 +496,7 @@ details p{color:var(--sub);margin:-6px 0 20px;max-width:62ch}
 .cta.trial{white-space:nowrap;text-decoration:none}   /* the free-trial download next to Buy (15.10.2026) */
 .buy-row .cta.trial,.buy-big{min-height:56px;min-width:260px;padding:15px 44px;font-size:18px;font-variation-settings:'wght' 650;letter-spacing:.01em}   /* Buy and Download: one size (17.10.2026) */
 /* Buy and Download: CLEAR liquid glass (18.10.2026) - a thin turquoise tint over the blurred page instead of the dense fill */
-.buy-row .cta{background:linear-gradient(180deg,rgba(60,150,165,.22),rgba(20,84,96,.34));
+.buy-row .cta{background:linear-gradient(180deg,rgba(60,150,165,.48),rgba(20,84,96,.56));
   -webkit-backdrop-filter:blur(14px) saturate(1.8) brightness(1.05);backdrop-filter:blur(14px) saturate(1.8) brightness(1.05);
   text-shadow:0 1px 3px rgba(0,30,40,.6),0 0 12px rgba(0,30,40,.35)}
 .buy-row .cta:hover{background:linear-gradient(180deg,rgba(70,165,180,.53),rgba(22,92,105,.61))}
