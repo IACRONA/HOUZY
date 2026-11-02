@@ -78,7 +78,7 @@ Release can be set two ways, click its label to switch. **MS** is plain millisec
 
 - **CLIP SHAPE** — light saturation across the whole spectrum, level matched.
 
-- **HOUZY | HOUZY II** — two cores: HOUZY evens the low end, HOUZY II evens the mids and the top as well.
+- **HOUZY | HOUZY II** — two cores: the original HOUZY and HOUZY II, a new, more advanced core.
 
 - **ALL MIX** — 6 bands with their own compression and level (−6…+6 dB).
 

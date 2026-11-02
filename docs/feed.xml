@@ -12,7 +12,9 @@
     <id>tag:acronaaudio.shop,2026:houzy-5.1.0</id>
     <link href="https://acronaaudio.shop/download.html"/>
     <updated>2026-11-02T00:00:00Z</updated>
-    <summary type="text">New: HOUZY II, a second core. It evens out the mids and the top as well as the low end. New windows start on it; your projects stay on the core they were saved with.
+    <summary type="text">New: HOUZY II, a new, more advanced core. New windows start on it; your projects stay on the core they were saved with.
+ALL MIX repaired: each knob now works on its own band, the first nudge no longer jumps, and a preset no longer leaves the last preset's bands behind.
+DELTA and GAIN MATCH are more accurate.
 Important: AUTO GAIN now returns only what the compression took. Old projects play quieter; raise INPUT to get the level back.
 CLASSIC, MODERN and CHARACTER are gone: every project now opens in HOUZY.
 The plugin's delay is now about 0.39 s. Your DAW compensates for it, but it is not for live monitoring.
