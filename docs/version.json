@@ -1,7 +1,7 @@
 {
   "version": "5.0.0",
   "version_win": "5.1.0",
-  "version_mac": "5.0.3",
+  "version_mac": "5.1.0",
   "url": "https://acronaaudio.shop/download.html",
   "releases": [
     {
@@ -9,6 +9,9 @@
       "date": "2026-11-02",
       "win": "https://acronawar.gumroad.com/l/houzy-trial",
       "win_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
+      "mac": "https://acronawar.gumroad.com/l/houzy-trial",
+      "mac_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
+      "mac_au": "https://acronawar.gumroad.com/l/houzy-trial",
       "notes": {
         "en": "New: HOUZY II, a new, more advanced core. New windows start on it; your projects stay on the core they were saved with.\nALL MIX repaired: each knob now works on its own band, the first nudge no longer jumps, and a preset no longer leaves the last preset's bands behind.\nDELTA and GAIN MATCH are more accurate.\nImportant: AUTO GAIN now returns only what the compression took. Old projects play quieter; raise INPUT to get the level back.\nCLASSIC, MODERN and CHARACTER are gone: every project now opens in HOUZY.\nThe plugin's delay is now about 0.39 s. Your DAW compensates for it, but it is not for live monitoring.\nNew preset DEFAULT puts every setting back. The ACRONA AUDIO card is tidier, the licence has its own button.",
         "ru": "Новое: HOUZY II, новое, более совершенное ядро. Новые окна открываются на нём, проекты остаются на том ядре, с которым сохранены.\nИсправлен ALL MIX: каждая ручка работает на своей полосе, первое движение ручки больше не даёт скачка, пресет не оставляет полосы от прошлого пресета.\nDELTA и GAIN MATCH стали точнее.\nВажно: AUTO GAIN теперь возвращает только то, что сняло сжатие. Старые проекты зазвучат тише, громкость возвращается ручкой INPUT.\nCLASSIC, MODERN и CHARACTER убраны: любой проект открывается в HOUZY.\nЗадержка плагина теперь около 0.39 с. DAW её компенсирует, но для живой игры он не подходит.\nНовый пресет DEFAULT сбрасывает все настройки. Карточка ACRONA AUDIO аккуратнее, у лицензии своя кнопка.",
