@@ -1035,3 +1035,12 @@ html[lang="ja"]{word-break:auto-phrase}   /* Chrome / Edge / Safari break Japane
 @media (max-width:1359px){.qs{width:min(780px,100%);margin:20px auto 0}}
 /* 7 header items (Download added): menu centred between the brand and the language button, equal gaps on both sides */
 @media (min-width:1000px){.bar{grid-template-columns:auto 1fr auto}}
+/* download page, top block: one 24 px gutter both ways, the left card's text on the same line as "What's new" below (40 px),
+   platform cards 32 px; groups inside the left card separated more than their lines */
+@media (min-width:861px){
+  .dl:not(.man) .dl-top{gap:24px;margin-bottom:24px}
+  .dl:not(.man) .dl-platforms{gap:24px}
+  .dl:not(.man) .dl-head{padding:40px}
+  .dl:not(.man) .dl-card{padding:32px}
+  .dl:not(.man) .dl-head .dl-update{margin:8px 0 0}
+  .dl:not(.man) .dl-head .dl-req{margin-top:24px}}
