@@ -1,12 +1,14 @@
-"""py build.py fr|it|ja [...]  - build docs/<lang>/*.html from the English pages + <lang>.tsv (index = line of units.json),
+"""py build.py fr|it|ja|de|pl|zh|th [...]  - build docs/<lang>/*.html from the English pages + <lang>.tsv (index = line of units.json),
 write docs/i18n/<lang>.json (the in-place switch of the home page), then re-issue hreflang, footer language links and the
 sitemap for ALL languages (existing ones included). Re-run any time: output is a pure function of the inputs."""
 import re, json, os, sys
 from lib import *
 
 LANGS = {  # code: (html lang, og:locale, hreflang, native name)
-    'fr': ('fr', 'fr_FR', 'fr', 'Français'), 'it': ('it', 'it_IT', 'it', 'Italiano'), 'ja': ('ja', 'ja_JP', 'ja', '日本語')}
-ALL = [('en', 'en', ''), ('ru', 'ru', '/ru'), ('es', 'es', '/es'), ('pt-BR', 'pt', '/pt'), ('fr', 'fr', '/fr'), ('it', 'it', '/it'), ('ja', 'ja', '/ja')]
+    'fr': ('fr', 'fr_FR', 'fr', 'Français'), 'it': ('it', 'it_IT', 'it', 'Italiano'), 'ja': ('ja', 'ja_JP', 'ja', '日本語'),
+    'de': ('de', 'de_DE', 'de', 'Deutsch'), 'pl': ('pl', 'pl_PL', 'pl', 'Polski'), 'zh': ('zh-Hans', 'zh_CN', 'zh-Hans', '简体中文'),
+    'th': ('th', 'th_TH', 'th', 'ไทย')}
+ALL = [('en', 'en', ''), ('ru', 'ru', '/ru'), ('es', 'es', '/es'), ('pt-BR', 'pt', '/pt'), ('fr', 'fr', '/fr'), ('it', 'it', '/it'), ('ja', 'ja', '/ja'), ('de', 'de', '/de'), ('pl', 'pl', '/pl'), ('zh-Hans', 'zh', '/zh'), ('th', 'th', '/th')]
 LOCAL = re.compile(r'^/(?:(?:plugin|download|manual|upgrade|why-houzy|affiliates|best-mastering-compressor)\.html)?(#.*)?$')
 rd = lambda p: open(p, encoding='utf-8').read()
 def wr(p, s):
@@ -84,7 +86,7 @@ def build_json(code, T):
 # ---- everything that lists the languages: hreflang, footer links, sitemap ----------------------------------------------
 def path_of(f):
     rel = os.path.relpath(f, DOCS).replace('\\', '/')
-    m = re.match(r'^(ru|es|pt|fr|it|ja)/(.*)$', rel)
+    m = re.match(r'^(ru|es|pt|fr|it|ja|de|pl|zh|th)/(.*)$', rel)
     name = m.group(2) if m else rel
     return '/' if name == 'index.html' else '/' + name
 def url_for(path, prefix):
@@ -99,7 +101,7 @@ def fix_lang_lists():
         block += '<link rel="alternate" hreflang="x-default" href="%s">\n' % url_for(path, '')
         s2 = re.sub(r'(<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n)+', lambda m: block, s, 1)
         add = ''.join(' · <a href="%s" hreflang="%s" lang="%s">%s</a>' % (pr + path, h, h, LANGS[l][3]) for h, l, pr in ALL if l in LANGS)
-        s2 = re.sub(r'(<a href="[^"]*" hreflang="pt-BR" lang="pt-BR">Português</a>)(?: · <a href="[^"]*" hreflang="(?:fr|it|ja)" lang="(?:fr|it|ja)">[^<]*</a>)*', lambda m: m.group(1) + add, s2)
+        s2 = re.sub(r'(<a href="[^"]*" hreflang="pt-BR" lang="pt-BR">Português</a>)(?: · <a href="[^"]*" hreflang="(?:fr|it|ja|de|pl|zh-Hans|th)" lang="(?:fr|it|ja|de|pl|zh-Hans|th)">[^<]*</a>)*', lambda m: m.group(1) + add, s2)
         if s2 != s: wr(f, s2)
 
 def sitemap():
@@ -107,7 +109,7 @@ def sitemap():
     ents = re.findall(r'<url><loc>(.*?)</loc>.*?<lastmod>(.*?)</lastmod><priority>(.*?)</priority></url>', s, re.S)
     keep = []; seen = set()
     for u, lm, pr in ents:
-        path = u[len(SITE):]; m = re.match(r'^/(ru|es|pt|fr|it|ja)(/.*)$', path); base = m.group(2) if m else path
+        path = u[len(SITE):]; m = re.match(r'^/(ru|es|pt|fr|it|ja|de|pl|zh|th)(/.*)$', path); base = m.group(2) if m else path
         if LOCAL.match(base):
             if base not in seen: seen.add(base); keep.append((base, lm, pr))
         else: keep.append((None, u, (lm, pr)))

@@ -12,7 +12,7 @@
 - Trial: 14 days free, every feature works during the trial. Refund within 14 days of purchase.
 - Free online demo: the real HOUZY engine in a web browser on your own MP3 or WAV; the audio never leaves the browser.
 - Privacy: audio stays on the user's computer; the plugin goes online only to activate the licence and check for updates.
-- Languages of the site: English, Russian, Spanish, Brazilian Portuguese, French, Italian, Japanese.
+- Languages of the site: English, Russian, Spanish, Brazilian Portuguese, French, Italian, Japanese, German, Polish, Simplified Chinese, Thai.
 
 ## What makes it different
 
@@ -38,7 +38,7 @@
 - [Buy on Gumroad](https://acronawar.gumroad.com/l/houzy)
 - [Terms of Use & Sale](https://acronaaudio.shop/terms.html), [EULA](https://acronaaudio.shop/eula.html), [Privacy Policy](https://acronaaudio.shop/privacy.html)
 
-Every page above also exists in Russian, Spanish, Brazilian Portuguese, French, Italian and Japanese: add /ru/, /es/, /pt/, /fr/, /it/ or /ja/ after the domain (for example https://acronaaudio.shop/fr/why-houzy.html).
+Every page above also exists in Russian, Spanish, Brazilian Portuguese, French, Italian, Japanese, German, Polish, Simplified Chinese and Thai: add /ru/, /es/, /pt/, /fr/, /it/, /ja/, /de/, /pl/, /zh/ or /th/ after the domain (for example https://acronaaudio.shop/fr/why-houzy.html).
 
 ## Machine-readable
 

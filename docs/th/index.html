@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob: https://download.acronaaudio.shop; connect-src 'self' https://cloudflareinsights.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HOUZY: คอมเพรสเซอร์มาสเตอริง VST ที่เข้ากับทุกสไตล์</title>
+<meta name="description" content="HOUZY คือคอมเพรสเซอร์มาสเตอริงอเนกประสงค์ที่บีบอัดทุกโทนแยกกัน: ไม่ปั๊ม คิกมีพันช์ ย่านต่ำสะอาด ทุกแนวเพลง คลิปเปอร์ ACR ลิมิตเตอร์ T8 VST3">
+<meta name="msvalidate.01" content="86820A0EEB04CCF51969A802C012D637">
+<meta name="theme-color" content="#e7e7ef">
+<link rel="alternate" hreflang="en" href="https://acronaaudio.shop/">
+<link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/">
+<link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/">
+<link rel="alternate" hreflang="fr" href="https://acronaaudio.shop/fr/">
+<link rel="alternate" hreflang="it" href="https://acronaaudio.shop/it/">
+<link rel="alternate" hreflang="ja" href="https://acronaaudio.shop/ja/">
+<link rel="alternate" hreflang="de" href="https://acronaaudio.shop/de/">
+<link rel="alternate" hreflang="pl" href="https://acronaaudio.shop/pl/">
+<link rel="alternate" hreflang="zh-Hans" href="https://acronaaudio.shop/zh/">
+<link rel="alternate" hreflang="th" href="https://acronaaudio.shop/th/">
+<link rel="alternate" hreflang="x-default" href="https://acronaaudio.shop/">
+<link rel="canonical" href="https://acronaaudio.shop/th/">
+<link rel="alternate" type="application/atom+xml" title="รุ่นของ HOUZY" href="/feed.xml">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
+<meta property="og:url" content="https://acronaaudio.shop/th/">
+<meta property="og:locale" content="th_TH">
+<meta property="og:title" content="HOUZY: คอมเพรสเซอร์มาสเตอริง VST ที่เข้ากับทุกสไตล์">
+<meta property="og:description" content="HOUZY คือคอมเพรสเซอร์มาสเตอริงอเนกประสงค์ที่บีบอัดทุกโทนแยกกัน: ไม่ปั๊ม คิกมีพันช์ ย่านต่ำสะอาด ทุกแนวเพลง คลิปเปอร์ ACR ลิมิตเตอร์ T8 VST3">
+<meta property="og:image" content="https://acronaaudio.shop/img/houzy-card.jpg">
+<meta property="og:image:width" content="1640">
+<meta property="og:image:height" content="912">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HOUZY",
+  "alternateName": "คอมเพรสเซอร์มาสเตอริง HOUZY",
+  "description": "ปลั๊กอินคอมเพรสเซอร์มาสเตอริงที่บีบอัดทุกโทนแยกกัน พร้อมคลิปเปอร์ ACR และลิมิตเตอร์ครึ่งคลื่น T8",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Audio plugin (VST3, AU)",
+  "operatingSystem": "Windows, macOS",
+  "url": "https://acronaaudio.shop/th/",
+  "image": "https://acronaaudio.shop/img/houzy-card.jpg",
+  "author": {
+   "@type": "Organization",
+   "name": "ACRONA AUDIO",
+   "url": "https://acronaaudio.shop/th/",
+   "email": "acronaaudio@proton.me",
+   "sameAs": [
+    "https://acronawar.gumroad.com",
+    "https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7"
+   ]
+  },
+  "publisher": {
+   "@type": "Organization",
+   "name": "ACRONA AUDIO",
+   "url": "https://acronaaudio.shop/th/",
+   "email": "acronaaudio@proton.me",
+   "sameAs": [
+    "https://acronawar.gumroad.com",
+    "https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7"
+   ]
+  },
+  "softwareVersion": "5.1.0",
+  "datePublished": "2026-10-17",
+  "downloadUrl": "https://acronaaudio.shop/download.html",
+  "screenshot": "https://acronaaudio.shop/img/plugin/t4/chrome.webp",
+  "offers": {
+   "@type": "Offer",
+   "price": "69",
+   "priceCurrency": "USD",
+   "url": "https://acronawar.gumroad.com/l/houzy",
+   "availability": "https://schema.org/InStock",
+   "category": "Lifetime licence for two computers, 14-day free trial"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "HOUZY ราคาเท่าไร?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "$69 จ่ายครั้งเดียว: ใบอนุญาตตลอดชีพสำหรับคอมพิวเตอร์สองเครื่อง มีทดลองใช้ฟรี 14 วัน คุณจึงลองกับเพลงของตัวเองก่อนได้"
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "T6 กับ T8 ต่างกันอย่างไร?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "T6 คือลิมิตเตอร์หกย่านที่นุ่มนวล T8 เปลี่ยนเกนเฉพาะตรงที่คลื่นตัดศูนย์ เบสและคิกจึงถูกลดลงโดยไม่เปลี่ยนรูปทรง HOUZY มีทั้งสองแบบ เลือกด้วยหูได้เลย"
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "เสียงของฉันออกจากคอมพิวเตอร์ไหม?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "ไม่เลย การประมวลผลทั้งหมดเกิดขึ้นบนเครื่องของคุณ ปลั๊กอินออนไลน์เพียงเพื่อตรวจหาอัปเดต (ปิดได้) และเปิดใช้งานใบอนุญาต รายละเอียดอยู่ในนโยบายความเป็นส่วนตัว (ภาษาอังกฤษ)"
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "การคืนเงินทำอย่างไร?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "ภายใน 14 วันหลังซื้อ ก่อนอื่นให้ยกเลิกการเปิดใช้งานในปลั๊กอิน (หน้าต่างใบอนุญาต → DEACTIVATE) สิทธิผู้บริโภคตามกฎหมายของคุณไม่ได้รับผลกระทบ ดูเงื่อนไขการขาย (ภาษาอังกฤษ)"
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "ใช้กับแทร็กเดี่ยวได้ไหม ไม่ใช่แค่มาสเตอร์?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "ได้ บนแทร็กหรือบัสใดก็ได้ HOUZY วิเคราะห์ทุกโทนแยกกัน จึงใช้ CPU มากกว่าคอมเพรสเซอร์ทั่วไป"
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "รองรับ DAW อะไรบ้าง?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "โฮสต์ใดก็ได้ที่โหลด VST3 บน Windows หรือ macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig และอื่น ๆ) รวมถึง AU สำหรับ Logic Pro และ GarageBand ทั้งเวอร์ชัน Windows และ macOS พร้อมให้ใช้แล้ว"
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "เดโมออนไลน์ทำงานอย่างไร?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "มันรันเอนจิน HOUZY ตัวจริงในเบราว์เซอร์ของคุณ จึงให้เสียงเหมือนปลั๊กอิน โหลด MP3 หรือ WAV: 75 วินาทีแรกจะเล่นวนซ้ำ พอให้ได้ยินดรอปและกรูฟ เพลงถูกเปิดและประมวลผลในเบราว์เซอร์ และไม่เคยออกจากคอมพิวเตอร์ของคุณ ใช้ได้กับ Chrome, Edge, Firefox และ Safari เวอร์ชันล่าสุด ลองที่นี่"
+    }
+   }
+  ],
+  "name": "HOUZY: คอมเพรสเซอร์มาสเตอริง VST ที่เข้ากับทุกสไตล์",
+  "url": "https://acronaaudio.shop/th/",
+  "description": "HOUZY คือคอมเพรสเซอร์มาสเตอริงอเนกประสงค์ที่บีบอัดทุกโทนแยกกัน: ไม่ปั๊ม คิกมีพันช์ ย่านต่ำสะอาด ทุกแนวเพลง คลิปเปอร์ ACR ลิมิตเตอร์ T8 VST3",
+  "dateModified": "2026-10-28"
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ACRONA AUDIO",
+  "alternateName": "HOUZY",
+  "url": "https://acronaaudio.shop/th/",
+  "inLanguage": "th",
+  "description": "HOUZY คือคอมเพรสเซอร์มาสเตอริงอเนกประสงค์ที่บีบอัดทุกโทนแยกกัน: ไม่ปั๊ม คิกมีพันช์ ย่านต่ำสะอาด ทุกแนวเพลง คลิปเปอร์ ACR ลิมิตเตอร์ T8 VST3"
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "มาสเตอริงด้วย HOUZY: ทุกแนวเพลง ทุกมิกซ์",
+  "description": "มาสเตอริงด้วย HOUZY: ทุกแนวเพลง ทุกมิกซ์",
+  "inLanguage": "th",
+  "thumbnailUrl": "https://acronaaudio.shop/video/houzy-mastering.jpg",
+  "contentUrl": "https://download.acronaaudio.shop/houzy-mastering.mp4",
+  "uploadDate": "2026-10-18",
+  "duration": "PT49S",
+  "publisher": {
+   "@type": "Organization",
+   "name": "ACRONA AUDIO",
+   "url": "https://acronaaudio.shop/th/"
+  }
+ }
+]
+</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/vendor/plyr/plyr.css">
+<link rel="stylesheet" href="/site.css?v=20261103d">
+<script>document.documentElement.classList.add('pt')</script>
+<script src="/vendor/framer-motion/dom.js" defer></script>
+<script src="/orb.js" defer></script>
+<script src="/site.js?v=20261103a" defer></script>
+<script src="/i18n.js?v=20261103a" defer></script>
+<script src="/plugin.js?v=20261102a" defer></script>
+<script src="/houzy-live.js?v=20261102a" defer></script>
+<script src="/buy.js?v=20261018a" defer></script>
+<script src="/vendor/plyr/plyr.min.js" defer></script>
+<script src="/video.js?v=20261018d" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Organization",
+ "@id": "https://acronaaudio.shop/th/#organization",
+ "name": "ACRONA AUDIO",
+ "alternateName": "ACRONA",
+ "url": "https://acronaaudio.shop/th/",
+ "logo": {
+  "@type": "ImageObject",
+  "url": "https://acronaaudio.shop/img/acrona-logo.jpg",
+  "width": 512,
+  "height": 512
+ },
+ "image": "https://acronaaudio.shop/img/houzy-card.jpg",
+ "sameAs": [
+  "https://t.me/acronalife",
+  "https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7",
+  "https://music.yandex.ru/artist/5852436",
+  "https://acronawar.gumroad.com/",
+  "https://github.com/IACRONA/HOUZY",
+  "https://www.youtube.com/@acronaaudio",
+  "https://www.instagram.com/acrona_audio"
+ ],
+ "contactPoint": {
+  "@type": "ContactPoint",
+  "contactType": "customer support",
+  "email": "acronaaudio@proton.me",
+  "availableLanguage": [
+   "English",
+   "Russian",
+   "Spanish",
+   "Portuguese",
+   "French",
+   "Italian",
+   "Japanese"
+  ]
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "ImageObject",
+ "contentUrl": "https://acronaaudio.shop/img/houzy-card.jpg",
+ "url": "https://acronaaudio.shop/img/houzy-card.jpg",
+ "width": 1640,
+ "height": 912,
+ "encodingFormat": "image/jpeg",
+ "name": "หน้าต่างปลั๊กอินคอมเพรสเซอร์มาสเตอริง HOUZY",
+ "creator": {
+  "@id": "https://acronaaudio.shop/th/#organization"
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Product",
+ "name": "HOUZY",
+ "description": "ปลั๊กอินคอมเพรสเซอร์มาสเตอริงที่บีบอัดทุกโทนแยกกัน พร้อมคลิปเปอร์ ACR และลิมิตเตอร์ครึ่งคลื่น T8",
+ "image": "https://acronaaudio.shop/img/houzy-card.jpg",
+ "category": "Audio plugin (VST3, AU)",
+ "brand": {
+  "@type": "Brand",
+  "name": "ACRONA AUDIO"
+ },
+ "url": "https://acronaaudio.shop/th/",
+ "offers": {
+  "@type": "Offer",
+  "price": "69",
+  "priceCurrency": "USD",
+  "availability": "https://schema.org/InStock",
+  "url": "https://acronawar.gumroad.com/l/houzy"
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "HowTo",
+ "name": "HOUZY: คอมเพรสเซอร์มาสเตอริง VST ที่เข้ากับทุกสไตล์",
+ "description": "HOUZY คือคอมเพรสเซอร์มาสเตอริงอเนกประสงค์ที่บีบอัดทุกโทนแยกกัน: ไม่ปั๊ม คิกมีพันช์ ย่านต่ำสะอาด ทุกแนวเพลง คลิปเปอร์ ACR ลิมิตเตอร์ T8 VST3",
+ "url": "https://acronaaudio.shop/th/",
+ "dateModified": "2026-10-28",
+ "tool": [
+  {
+   "@type": "HowToTool",
+   "name": "HOUZY"
+  }
+ ],
+ "step": [
+  {
+   "@type": "HowToStep",
+   "position": 1,
+   "text": "1AMOUNT 15–30"
+  },
+  {
+   "@type": "HowToStep",
+   "position": 2,
+   "text": "2INPUT สูงสุด −10…−9 LUFS"
+  },
+  {
+   "@type": "HowToStep",
+   "position": 3,
+   "text": "3CYCLES 3–4"
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main" data-i18n="0">ข้ามไปยังเนื้อหา</a>
+
+<div class="bg" aria-hidden="true">
+  <!-- two copies crossfade at the seam (site.js): the stones keep drifting forward, no jump back -->
+  <video class="art" autoplay muted playsinline preload="auto" poster="/video/bg-poster.jpg"></video>
+  <video class="art art-b" muted playsinline preload="none"></video>
+</div>
+<div class="veil" aria-hidden="true"></div>
+
+<header class="bar">
+  <a class="brand" href="/th/" aria-label="หน้าแรก HOUZY" data-i18n-a="aria-label:91">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg>
+    <b>HOUZY</b><small>ACRONA AUDIO</small>
+  </a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="เปิดเมนู" data-i18n-a="aria-label:92">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" role="button" aria-label="เมนู" data-i18n-a="aria-label:93">
+    <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
+  </label>
+  <div class="navpanel">
+    <nav class="menu" aria-label="เมนูหลัก" data-i18n-a="aria-label:94">
+      <a href="#top" data-i18n="1">เทคโนโลยี</a>
+      <a data-home="why-houzy.html" href="/th/why-houzy.html" data-i18n="107">ทำไมต้อง HOUZY</a>
+      <a data-manual href="/th/manual.html" data-i18n="2">คู่มือ</a>
+      <a href="#about" data-i18n="3">เกี่ยวกับ</a>
+      <a href="#faq">คำถามที่พบบ่อย</a>
+      <a data-home="affiliates.html" href="/th/affiliates.html" data-i18n="129">พาร์ทเนอร์</a>
+      <a data-home="download.html" href="/th/download.html" data-i18n="103">ดาวน์โหลด</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- THE PLUGIN WINDOW: the same live panel as plugin.html, first, the sphere under it -->
+  <section class="try" id="plugin">
+    <div class="head glass" data-reveal>
+      <h1 class="hero-title"><span class="kick" data-i18n="6">HOUZY · ACRONA AUDIO</span><span class="t" data-i18n="7">คอมเพรสเซอร์มาสเตอริงตัวเดียว สำหรับดนตรีทุกแนว</span></h1>
+      <p class="lead" data-i18n="8">HOUZY คือปลั๊กอินคอมเพรสเซอร์สำหรับงานมาสเตอริง (VST3, AU) บน Windows และ macOS บีบอัดเสียงสม่ำเสมอทุกย่านความถี่ ท่อนดังและท่อนเบาถูกบีบอัดแบบเดียวกัน</p>
+      <p class="tech4"><a class="tech4-n" href="#top" aria-label="4">4</a><span class="tech4-t" data-i18n="105">สี่เทคโนโลยีที่สร้างขึ้นใหม่ทั้งหมด รวมอยู่ในปลั๊กอินเดียว: บีบอัดแยกทีละโทนโดยไม่มีเกนร่วม, คลิปเปอร์ที่หักล้างพีคแทนการตัดทิ้ง, ลิมิตเตอร์ที่ขยับเกนเฉพาะตอนคลื่นตัดศูนย์ และการตั้งเวลาเป็นรอบคลื่นและเศษส่วนของห้องเพลง</span></p>
+    </div>
+    <div class="plugin" id="panel" role="img" aria-label="หน้าต่างปลั๊กอิน HOUZY" data-i18n-a="aria-label:95">
+      <img src="/img/plugin/t4/chrome.webp?v=20261102a" width="1480" height="1000" alt="หน้าต่างปลั๊กอินคอมเพรสเซอร์มาสเตอริง HOUZY" fetchpriority="high" data-i18n-a="alt:96">
+      <div class="porb" aria-hidden="true"></div>
+      <canvas id="live" aria-hidden="true"></canvas>
+      <div class="live-toast" role="status" aria-live="polite"></div>
+    </div>
+    <div class="live glass" id="live-ui">
+      <label class="cta live-pick" aria-label="อัปโหลดเพลงของคุณ (MP3 หรือ WAV)" data-i18n-a="aria-label:97">
+        <input type="file" accept=".mp3,.wav,audio/mpeg,audio/wav,audio/x-wav" hidden>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 14V3M5.5 7.5 10 3l4.5 4.5M3 13v3.5h14V13"/></svg>
+        <span data-i18n="9">อัปโหลด</span>
+      </label>
+      <p class="live-note" data-i18n="10"><b>ลอง HOUZY กับเพลงของคุณเอง</b>MP3 / WAV · 75 วินาทีแรก · เล่นในเบราว์เซอร์ ไม่ถูกอัปโหลด<span class="live-tip">เริ่มจาก AMOUNT ที่ 15–30 <a data-manual href="/th/manual.html">คู่มือฉบับเต็ม</a></span></p>
+      <label class="live-amount">AMOUNT <input type="range" min="0" max="100" step="1" value="0" aria-label="ปริมาณ"><output>0</output></label>
+      <div class="live-progress" hidden><i></i><span></span></div>
+      <div class="live-row" hidden>
+        <button class="pill live-play" type="button" data-i18n="11">เล่น</button>
+        <div class="live-track"><span class="live-name"></span><div class="live-bar" role="slider" aria-label="ตำแหน่ง" data-i18n-a="aria-label:98"><i></i></div></div>
+        <span class="live-time">0:00</span>
+        <button class="pill live-ab" type="button" aria-pressed="false" title="เปรียบเทียบกับต้นฉบับ" data-i18n-a="title:99">HOUZY</button>
+        <button class="pill live-dl" type="button" data-i18n="128">ดาวน์โหลด WAV</button>
+        <button class="pill live-clear" type="button" data-i18n="12">ล้าง</button>
+      </div>
+    </div>
+    <div class="buy-row"><a class="cta buy buy-big" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">ซื้อ HOUZY — $69</a><a class="cta trial dl" href="/th/download.html" data-i18n="104">ดาวน์โหลดฟรี<small>ทดลองใช้ 14 วัน</small></a></div>
+    <p class="promo" data-i18n="126"><b>ข้อเสนอเปิดตัว:</b> ผู้ซื้อ 20 คนแรกรับ <b>ส่วนลด 15%</b> ด้วยโค้ด <b>FIRST20</b> — <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">HOUZY ราคา $58.65</a> จากปกติ $69 ถึง 19 พฤศจิกายน</p>
+  </section>
+
+  <!-- THE SPHERE in the centre, chapter tabs left and right, the reading panel on top.
+       Point at a tab or at the sphere on that side (or click / tap / arrow keys): the sphere turns and the chapter opens on top. -->
+  <section class="stage" id="top" aria-label="HOUZY">
+    <div class="pin">
+      <div class="reader glass">
+        <div class="reader-top">
+          <span class="num" data-i18n="14">HOUZY · วางจำหน่ายแล้ว</span>
+        </div>
+        <div class="panels" aria-live="polite">
+          <div class="panel is-active" id="p-houzy" data-ch="houzy">
+            <h2 data-i18n="15">บีบอัดสม่ำเสมอทุกความถี่ในเพลง</h2>
+            <div class="cols">
+              <p data-i18n="16">เสียงถูกแยกออกเป็นโทนแต่ละตัว และความดังของแต่ละโทนถูกปรับให้สม่ำเสมอด้วยเอนเวโลปของตัวเอง เสียงดังไม่ดึงเสียงอื่นให้ลดลงตาม และคอมเพรสเซอร์จัดการทุกเสียงอย่างนิ่งเท่ากัน ไม่ว่าความถี่ใดในมิกซ์จะดังแค่ไหน ไม่ว่าจะเป็นคิกดัง ๆ ย่านต่ำ หรือย่านกลาง มันบีบย่านต่ำและย่านสูงเท่ากันทุกประการ</p>
+              <p data-i18n="17">เทรชโฮลด์เป็นอัตโนมัติ: ตั้งตามเสียงที่ดังที่สุดและเคลื่อนไปตามเพลง รีลีสก็อัตโนมัติเช่นกัน (AUTO): ปลั๊กอินวัดว่าเสียงจางหายเร็วแค่ไหนแล้วตั้งเวลาเอง ทุกโทน ไม่ว่าคิก กลอง หรือเสียงร้อง ถูกบีบอัดแบบเดียวกัน จากนั้นระดับเสียงจะถูกยกกลับขึ้นอัตโนมัติ คุณจะได้เพลงที่ถูกบีบอัดอย่างดีและแน่น</p>
+              <p class="small" data-i18n="18">ใช้ได้มากกว่างานมาสเตอริง ทั้งบนแทร็กหรือบัสใดก็ได้ แต่ใช้ CPU มากขึ้น</p>
+            </div>
+          </div>
+          <div class="panel" id="p-problem" data-ch="problem">
+            <h2 data-i18n="19">ตัวเลขเดียวสำหรับเสียงทั้งหมด</h2>
+            <div class="cols">
+              <p data-i18n="20">คอมเพรสเซอร์ทั่วไปคือ <span class="code">เอาต์พุต = เกน × สัญญาณ</span> ปัญหาคลาสสิกทุกข้อเกิดจากตรงนี้:</p>
+              <ul>
+                <li data-i18n="21"><b>ตัวตรวจจับมองไม่เห็น</b> — สเปกตรัมทั้งหมดถูกยุบเหลือตัวเลขเดียว จึงแยกคิกกับเสียงร้องที่มีแอมพลิจูดเท่ากันไม่ออก</li>
+                <li data-i18n="22"><b>คิกลากทุกอย่างลงไปด้วย</b> — เกนลดลง แล้วไฮแฮต เสียงร้อง และหางรีเวิร์บก็ดิ่งลงตาม นี่คืออาการปั๊ม (pumping)</li>
+                <li data-i18n="23"><b>แอทแทคขัดกับพันช์</b> — เอนเวโลปเดียวต้องดูแลทั้งทรานเซียนต์และตัวเสียง</li>
+                <li data-i18n="24"><b>เบสสกปรก</b> — เกนขยับ และไซด์แบนด์ก็งอกขึ้นรอบคิก 50 Hz คอมเพรสเซอร์ทำลายสิ่งที่มันควรจะเกลี่ยให้เรียบ</li>
+              </ul>
+              <p class="solves" data-i18n="102">ตั้งแต่คอมเพรสเซอร์ยุคแรกในทศวรรษ 1930 หลักการไม่เคยเปลี่ยน: เกนเดียวสำหรับสัญญาณทั้งหมด <b>HOUZY ละทิ้งหลักการนั้น</b> ทุกโทนมีเอนเวโลปของตัวเอง อาการปั๊ม ความขัดแย้งระหว่างแอทแทคกับพันช์ และไซด์แบนด์บนเบสจึงไม่เกิดขึ้นตั้งแต่แรก</p>
+              <p class="why-link"><a data-home="why-houzy.html" href="/th/why-houzy.html" data-i18n="108">เปรียบเทียบกับมัลติแบนด์ →</a></p>
+            </div>
+          </div>
+          <div class="panel" id="p-acr" data-ch="acr">
+            <h2 data-i18n="25">ACR — คลิปเปอร์ที่ไม่สับย่านสูง</h2>
+            <div class="cols">
+              <p data-i18n="26">คลิปเปอร์ทั่วไปตัดยอดของคลื่นทิ้ง การตัดนั้นกระชาก และความผิดพลาดของมันกว้างทุกย่าน ทุกจังหวะคิกจึงลบความผิดพลาดนั้นออกจากไฮแฮต เสียงร้อง และหางรีเวิร์บ นี่คือปัญหาคลาสสิกของเฮาส์ที่ถูกคลิป: ยิ่งดันคิกแรง ย่านสูงยิ่งทึบและหยาบ โอเวอร์แซมปลิงทำให้ความผิดพลาดสะอาดขึ้น แต่ไม่เปลี่ยนตำแหน่งของมันในสเปกตรัม</p>
+              <p data-i18n="27"><b>แทนที่จะตัด ACR ลบพัลส์สั้น ๆ ที่วางไว้ตรงจังหวะพีคพอดี</b> สเปกตรัมของมันย้ายความเพี้ยนไปไว้ย่านสูง ซึ่งไฮแฮตและแอทแทคของคิกช่วยกลบ วิธีนี้มาจากเครื่องส่งสัญญาณ LTE เคอร์เนลของพัลส์ออกแบบจากแบบจำลองไซโคอะคูสติกของการได้ยิน</p>
+              <p class="small" data-i18n="28">ACR เป็นค่าเริ่มต้น HI-Q — คลิปเปอร์แบบดั้งเดิมที่มีโอเวอร์แซมปลิง — คืออีกตำแหน่งของสวิตช์</p>
+            </div>
+          </div>
+          <div class="panel" id="p-t8" data-ch="t8">
+            <h2 data-i18n="29">T8 — ลิมิตเตอร์ครึ่งคลื่น</h2>
+            <div class="cols">
+              <p data-i18n="30">ลิมิตเตอร์ทั่วไปขยับเกนทุกครั้งที่จำเป็น บ่อยครั้งกลางคลื่นพอดี บนคิกหรือเบสนั่นทำให้ตัวคลื่นบิดงอ และคุณได้ยินเป็นความหยาบในทุกจังหวะ</p>
+              <p data-i18n="31"><b>T8 เปลี่ยนเกนเฉพาะตรงที่คลื่นตัดศูนย์</b> แต่ละครึ่งคลื่นของคิกและเบสถูกลดลงทั้งชิ้น รูปทรงจึงคงเดิมทุกประการ เปลี่ยนแค่ความสูง</p>
+              <p class="small" data-i18n="32">พัฒนาเองโดยเรา ใหม่ใน HOUZY 5 ในการทดสอบคิกของเรา สะอาดกว่า T6 ประมาณ 5–6 dB ที่ความดังเท่ากัน อยู่บนสวิตช์ SMART | T6 | T8</p>
+            </div>
+          </div>
+          <div class="panel" id="p-cycles" data-ch="cycles">
+            <h2 data-i18n="33">แอทแทคเป็นรอบคลื่น รีลีสเป็นเศษส่วนของจังหวะ</h2>
+            <div class="cols">
+              <p data-i18n="34"><b>5 มิลลิวินาทีบนโน้ตเบส 50 Hz คือหนึ่งในสี่ของคลื่น</b> — เกนขยับภายในการสั่นครั้งเดียว ตรงจุดที่คอมเพรสเซอร์ทำให้ย่านต่ำสกปรก 5 มิลลิวินาทีเดียวกันบนไฮแฮต 8 kHz คือสี่สิบรอบ แอทแทคจึงตั้งเป็นรอบ: ปุ่มเดียวให้ 45 มิลลิวินาทีที่ 50 Hz และ 1 มิลลิวินาทีที่ 8 kHz และไม่เร็วกว่าครึ่งรอบ</p>
+              <p data-i18n="35">รีลีสตั้งได้สองแบบ คลิกที่ป้ายเพื่อสลับ <b>MS</b> คือมิลลิวินาทีปกติ (ค่าเริ่มต้น) <b>NOTE</b> คือเศษส่วนของห้องเพลง: รีลีสตามเทมโปของโปรเจกต์ เปลี่ยนเทมโปก็ไม่ต้องปรับใหม่ ส่วน <b>AUTO</b> ฟังว่าเสียงในเพลงจางหายเร็วแค่ไหน แล้วตั้งรีลีสให้ตรงกัน</p>
+            </div>
+          </div>
+          <div class="panel" id="p-more" data-ch="more">
+            <h2 data-i18n="36">ทุกอย่างที่มาสเตอร์บัสต้องการ</h2>
+            <ul class="cols">
+              <li data-i18n="37"><b>AUTO GAIN</b> — คืนกลับมาเท่ากับที่การบีบอัดเอาไป</li>
+              <li data-i18n="38"><b>สเปกตรัลลิมิตเตอร์</b> — SMART (3 ย่าน), T6 (6 ย่าน) หรือ T8 (เกนขยับเฉพาะตอนคลื่นตัดศูนย์ ใน HOUZY): พีคของเบสไม่เคยกดย่านสูง</li>
+              <li data-i18n="39"><b>GAIN MATCH</b> — BYPASS เปรียบเทียบคาแรกเตอร์ ไม่ใช่ความดัง</li>
+              <li data-i18n="40"><b>DASH</b> — จากมีพันช์ไปสู่ความสม่ำเสมอ: ปุ่มเดียวแลกไดนามิกกับระดับเสียงที่นิ่ง</li>
+              <li data-i18n="41"><b>UPWARD</b> — ยกส่วนที่เบา: หางเสียง ความโปร่ง รายละเอียด</li>
+              <li data-i18n="42"><b>CLIP SHAPE</b> — แซทูเรชันเบา ๆ ทั่วทั้งสเปกตรัม พร้อมปรับระดับให้เท่ากัน</li>
+              <li data-i18n="43"><b>HOUZY | HOUZY II</b> — สองคอร์: HOUZY ดั้งเดิม และ HOUZY II คอร์ใหม่ที่ล้ำกว่า</li>
+              <li data-i18n="44"><b>ALL MIX</b> — 6 ย่าน แต่ละย่านมีการบีบอัดและระดับของตัวเอง (−6…+6 dB)</li>
+              <li data-i18n="45"><b>TP</b> — ทรูพีคสำหรับสตรีมมิงและการส่งออกเป็น MP3</li>
+              <li data-i18n="46"><b>PRESETS</b> — ตั้งแต่ SUSHI ถึง DRUMUZI รายการเปิดค้างไว้ให้เทียบด้วยหู</li>
+              <li data-i18n="47"><b>A / B</b> — สองช่อง เปรียบเทียบที่ความดังเท่ากัน</li>
+              <li data-i18n="48"><b>BEAT | SMART</b> — รีลีสตรงตามที่ตั้ง หรือรีลีสเป็นค่าสูงสุดที่ปล่อยโทนที่เงียบแล้วให้เร็วขึ้น</li>
+              <li data-i18n="49"><b>มิเตอร์</b> — RMS และ LUFS, การลดเกนในแต่ละขั้น และเวฟฟอร์มแบบเรียลไทม์</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabs left">
+        <button class="tab glass" type="button" data-ch="houzy" data-angle="300" aria-controls="p-houzy"><span class="n">01</span><span class="tt"><b data-i18n="50">เอนจิน HOUZY</b><small data-i18n="51">ทุกโทนถูกบีบอัดแยกกัน</small></span></button>
+        <button class="tab glass" type="button" data-ch="problem" data-angle="270" aria-controls="p-problem"><span class="n">02</span><span class="tt"><b data-i18n="52">ปัญหา</b><small data-i18n="53">เกนเดียวสำหรับทั้งมิกซ์</small></span></button>
+        <button class="tab glass" type="button" data-ch="acr" data-angle="240" aria-controls="p-acr"><span class="n">03</span><span class="tt"><b data-i18n="54">คลิปเปอร์ ACR</b><small data-i18n="55">พัลส์แทนการตัด</small></span></button>
+      </div>
+
+      <div class="orb-wrap" id="orb-wrap" aria-hidden="true">
+        <div class="orb-ring"><i class="marker"></i></div>
+        <div class="orb" id="orb"></div>
+      </div>
+
+      <div class="tabs right">
+        <button class="tab glass" type="button" data-ch="t8" data-angle="60" aria-controls="p-t8"><span class="n">04</span><span class="tt"><b data-i18n="56">ลิมิตเตอร์ T8 <em>ใหม่</em></b><small data-i18n="57">เกนขยับเฉพาะที่ศูนย์</small></span></button>
+        <button class="tab glass" type="button" data-ch="cycles" data-angle="90" aria-controls="p-cycles"><span class="n">05</span><span class="tt"><b data-i18n="58">CYCLES / NOTE</b><small data-i18n="59">แอทแทคเป็นรอบ รีลีสเป็นจังหวะ</small></span></button>
+        <button class="tab glass" type="button" data-ch="more" data-angle="120" aria-controls="p-more"><span class="n">06</span><span class="tt"><b data-i18n="60">มีอะไรอีกข้างใน</b><small data-i18n="61">เครื่องมืออีกสิบสามอย่าง</small></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO (18.10.2026): Plyr player in dark liquid glass; the file streams from the download server at its own resolution -->
+  <section class="block video-block" id="video">
+    <div class="wrap">
+      <div class="glass head video-head">
+        <h2 data-i18n="124">มาสเตอริงด้วย HOUZY: ทุกแนวเพลง ทุกมิกซ์</h2>
+      </div>
+      <div class="video-row">
+      <div class="video-stage">
+        <div class="video-frame">
+          <video id="houzy-video" playsinline controls preload="metadata" poster="/video/houzy-mastering.jpg" width="1132" height="636">
+            <source src="https://download.acronaaudio.shop/houzy-mastering.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+        <aside class="qs" data-reveal>
+          <p class="qs-kick">เริ่มต้นอย่างรวดเร็ว</p>
+          <ol class="qs-steps">
+            <li><span class="qs-n">1</span><span class="qs-t"><b>AMOUNT</b> 15–30</span></li>
+            <li><span class="qs-n">2</span><span class="qs-t"><b>INPUT</b> สูงสุด −10…−9 LUFS</span></li>
+            <li><span class="qs-n">3</span><span class="qs-t"><b>CYCLES</b> 3–4</span></li>
+          </ol>
+          <a class="qs-link" data-manual href="/th/manual.html">คู่มือฉบับเต็ม</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="block" id="about">
+    <div class="wrap about">
+      <div class="glass" data-reveal>
+        <p class="kicker" data-i18n="3">เกี่ยวกับ</p>
+        <h2 data-i18n="62">เกิดในเฮาส์ สร้างมาเพื่อทุกอย่าง</h2>
+        <p class="lead" data-i18n="63">HOUZY เกิดในดนตรีอิเล็กทรอนิกส์ ที่ซึ่งคิกหนัก ๆ กับย่านสูงที่สะอาดอยู่ด้วยกันได้ยากที่สุด แนวทางเดียวกันใช้ได้กับทุกแนวเพลง: มันบีบอัดทุกโทนแยกกัน จึงไม่มีอะไรปั๊ม ผู้สร้างใช้เวลากว่า 15 ปีตามหาคอมเพรสเซอร์ในอุดมคติสำหรับเพลงของตัวเอง และสุดท้ายตัดสินใจประดิษฐ์มันขึ้นเอง</p>
+        <div class="links">
+          <a data-manual class="pill" href="/th/manual.html" data-i18n="64">คู่มือการใช้งาน</a>
+        </div>
+      </div>
+      <div class="glass sale" data-reveal>
+        <p class="kicker">HOUZY</p>
+        <p class="sale-price">$69</p>
+        <p class="sale-once" data-i18n="111">จ่ายครั้งเดียว ใบอนุญาตเป็นของคุณตลอดไป</p>
+        <p class="sale-promo" data-i18n="127">ด้วยโค้ด <b>FIRST20</b>: <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">$58.65</a> · ผู้ซื้อ 20 คนแรก ถึง 19 พ.ย.</p>
+        <ul class="sale-list">
+          <li data-i18n="112">ใบอนุญาตตลอดชีพสำหรับคอมพิวเตอร์สองเครื่อง</li>
+          <li data-i18n="113">ทดลองใช้ฟรี 14 วัน ปลดล็อกทุกฟีเจอร์</li>
+        </ul>
+        <p class="sale-tech-h" data-i18n="119">4 เทคโนโลยีที่คุณไม่พบในปลั๊กอินอื่น</p>
+        <ul class="sale-tech">
+          <li data-i18n="120"><b>เอนจิน HOUZY</b> — บีบอัดทุกโทนแยกกัน: ไม่มีเกนร่วม ไม่มีอาการปั๊ม</li>
+          <li data-i18n="121"><b>คลิปเปอร์ ACR</b> — หักล้างพีคแทนการตัดทิ้ง พันช์จึงยังอยู่</li>
+          <li data-i18n="122"><b>ลิมิตเตอร์ T8</b> — ขยับเกนเฉพาะตอนคลื่นตัดศูนย์: เบสและคิกคงรูปทรงเดิม</li>
+          <li data-i18n="123"><b>CYCLES / NOTE</b> — แอทแทคเป็นรอบคลื่น รีลีสเป็นเศษส่วนของห้องเพลง</li>
+        </ul>
+        <div class="sale-keys"><a class="cta buy" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">ซื้อ HOUZY — $69</a><a class="pill" data-home="download.html" href="/th/download.html" data-i18n="117">ดาวน์โหลดฟรี</a></div>
+        <p class="sale-note"><span data-i18n="66">ใหม่ในเวอร์ชัน 5: ดีไซน์ Liquid Glass, ห้าธีม, สี่สีของทรงกลม, ลิมิตเตอร์ T8 และใช้ CPU น้อยลงหนึ่งในสาม</span> <span data-i18n="118">ชำระเงินอย่างปลอดภัยผ่าน Gumroad</span></p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <div class="wrap faq">
+      <div class="head" data-reveal>
+        <p class="kicker">คำถามที่พบบ่อย</p>
+        <h2 data-i18n="68">คำถามที่มีคนถามบ่อย</h2>
+        <p class="lead" data-i18n="69">มีอะไรอีกไหม? เขียนมาที่ <a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a></p>
+      </div>
+      <div class="glass faq-list" data-reveal>
+        <details><summary data-i18n="70">HOUZY ราคาเท่าไร?</summary><p data-i18n="71">$69 จ่ายครั้งเดียว: ใบอนุญาตตลอดชีพสำหรับคอมพิวเตอร์สองเครื่อง มีทดลองใช้ฟรี 14 วัน คุณจึงลองกับเพลงของตัวเองก่อนได้</p></details>
+        <details><summary data-i18n="72">T6 กับ T8 ต่างกันอย่างไร?</summary><p data-i18n="73">T6 คือลิมิตเตอร์หกย่านที่นุ่มนวล T8 เปลี่ยนเกนเฉพาะตรงที่คลื่นตัดศูนย์ เบสและคิกจึงถูกลดลงโดยไม่เปลี่ยนรูปทรง HOUZY มีทั้งสองแบบ เลือกด้วยหูได้เลย</p></details>
+        <details><summary data-i18n="74">เสียงของฉันออกจากคอมพิวเตอร์ไหม?</summary><p data-i18n="75">ไม่เลย การประมวลผลทั้งหมดเกิดขึ้นบนเครื่องของคุณ ปลั๊กอินออนไลน์เพียงเพื่อตรวจหาอัปเดต (ปิดได้) และเปิดใช้งานใบอนุญาต รายละเอียดอยู่ใน<a href="/privacy.html">นโยบายความเป็นส่วนตัว</a> (ภาษาอังกฤษ)</p></details>
+        <details><summary data-i18n="76">การคืนเงินทำอย่างไร?</summary><p data-i18n="77">ภายใน 14 วันหลังซื้อ ก่อนอื่นให้ยกเลิกการเปิดใช้งานในปลั๊กอิน (หน้าต่างใบอนุญาต → DEACTIVATE) สิทธิผู้บริโภคตามกฎหมายของคุณไม่ได้รับผลกระทบ ดู<a href="/terms.html#refunds">เงื่อนไขการขาย</a> (ภาษาอังกฤษ)</p></details>
+        <details><summary data-i18n="78">ใช้กับแทร็กเดี่ยวได้ไหม ไม่ใช่แค่มาสเตอร์?</summary><p data-i18n="79">ได้ บนแทร็กหรือบัสใดก็ได้ HOUZY วิเคราะห์ทุกโทนแยกกัน จึงใช้ CPU มากกว่าคอมเพรสเซอร์ทั่วไป</p></details>
+        <details><summary data-i18n="80">รองรับ DAW อะไรบ้าง?</summary><p data-i18n="81">โฮสต์ใดก็ได้ที่โหลด VST3 บน Windows หรือ macOS (Ableton Live, FL Studio, Cubase, Reaper, Bitwig และอื่น ๆ) รวมถึง AU สำหรับ Logic Pro และ GarageBand ทั้งเวอร์ชัน Windows และ macOS พร้อมให้ใช้แล้ว</p></details>
+        <details><summary data-i18n="109">เดโมออนไลน์ทำงานอย่างไร?</summary><p data-i18n="110">มันรันเอนจิน HOUZY ตัวจริงในเบราว์เซอร์ของคุณ จึงให้เสียงเหมือนปลั๊กอิน โหลด MP3 หรือ WAV: 75 วินาทีแรกจะเล่นวนซ้ำ พอให้ได้ยินดรอปและกรูฟ เพลงถูกเปิดและประมวลผลในเบราว์เซอร์ และไม่เคยออกจากคอมพิวเตอร์ของคุณ ใช้ได้กับ Chrome, Edge, Firefox และ Safari เวอร์ชันล่าสุด <a data-home="plugin.html" href="/th/plugin.html">ลองที่นี่</a></p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="glass contact-panel" data-reveal>
+        <p class="kicker" data-i18n="4">ติดต่อ</p>
+        <h2 data-i18n="82">คำถาม บั๊ก ใบอนุญาต: เขียนถึงผม</h2>
+        <p class="lead" data-i18n="83">หากเจอบั๊ก โปรดระบุเวอร์ชัน HOUZY ระบบ และ DAW ของคุณ ใน HOUZY ปุ่ม REPORT จะคัดลอกทั้งหมดนี้ให้</p>
+        <div class="contact">
+          <a class="cta" href="mailto:acronaaudio@proton.me">acronaaudio@proton.me <svg class="arrow" viewBox="0 0 16 11" aria-hidden="true"><path d="M0 5.5 H14.6 M10.3 1.2 L14.9 5.5 L10.3 9.8"/></svg></a>
+          <a class="pill" href="https://t.me/acronalife" rel="noopener">Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a data-home="" class="brand" href="/th/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2-7 4.5-7 6 0s4 7 6 0 4-5 6-2"/></svg><b>HOUZY</b></a>
+      <p data-i18n="84">คอมเพรสเซอร์มาสเตอริงโดย ACRONA AUDIO<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <p class="foot-langs"><a data-home="plugin.html" href="/th/plugin.html" data-i18n="106">ลองในเบราว์เซอร์</a><br><a href="/" hreflang="en" lang="en">English</a> · <a href="/ru/" hreflang="ru" lang="ru">Русский</a> · <a href="/es/" hreflang="es" lang="es">Español</a> · <a href="/pt/" hreflang="pt-BR" lang="pt-BR">Português</a> · <a href="/fr/" hreflang="fr" lang="fr">Français</a> · <a href="/it/" hreflang="it" lang="it">Italiano</a> · <a href="/ja/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/" hreflang="de" lang="de">Deutsch</a> · <a href="/pl/" hreflang="pl" lang="pl">Polski</a> · <a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/th/" hreflang="th" lang="th">ไทย</a></p>
+    </div>
+    <div>
+      <h2 data-i18n="85">ข้อกฎหมาย</h2>
+      <ul>
+        <li><a href="/privacy.html" data-i18n="86">นโยบายความเป็นส่วนตัว (EN)</a></li>
+        <li><a href="/cookies.html" data-i18n="87">นโยบายคุกกี้ (EN)</a></li>
+        <li><a href="/terms.html" data-i18n="88">ข้อกำหนดการใช้งานและการขาย (EN)</a></li>
+        <li><a href="/eula.html" data-i18n="89">ข้อตกลงใบอนุญาต (EULA, EN)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>HOUZY</h2>
+      <ul>
+        <li><a href="#top">HOUZY</a></li>
+        <li><a data-manual href="/th/manual.html" data-i18n="64">คู่มือการใช้งาน</a></li>
+        <li><a href="/th/best-mastering-compressor.html">คอมเพรสเซอร์มาสเตอริงที่ดีที่สุด</a></li>
+        <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
+      </ul>
+    </div>
+    <p class="foot-updated" data-i18n="130">เวอร์ชัน 5.1.0 · อัปเดต <time datetime="2026-11-02">2 พฤศจิกายน 2026</time></p>
+    <p class="copy" data-i18n="90">© 2026 ACRONA AUDIO. HOUZY, ACR และ T8 เป็นชื่อของ ACRONA AUDIO. VST เป็นเครื่องหมายการค้าของ Steinberg Media Technologies GmbH. Audio Units, Logic Pro และ macOS เป็นเครื่องหมายการค้าของ Apple Inc. ชื่ออื่น ๆ เป็นของเจ้าของแต่ละราย</p>
+  </div>
+</footer>
+
+<!--/email_off-->
+</body>
+</html>

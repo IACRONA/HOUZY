@@ -1,10 +1,10 @@
 // HOUZY site: the language switch. One glass button with the current code (EN / RU / ES / PT); a click opens a menu with the seven
 // languages (fades and grows in from the button, silent - site.js leaves .lang out of the click sound).
-// A click on a language swaps the text of the page IN PLACE (no reload), moves the address to /ru/ /es/ /pt/ /fr/ /it/ /ja/ (the
+// A click on a language swaps the text of the page IN PLACE (no reload), moves the address to /ru/ /es/ /pt/ /fr/ /it/ /ja/ /de/ /pl/ /zh/ /th/ (the
 // real, indexed pages) and back; every code is also a plain link to its page, so the switch works without scripts.
 // Text blocks carry data-i18n="N" (index into the language file's "t"), attributes data-i18n-a="aria-label:N,title:M".
 (function () {
-  var LANGS = [['en', 'EN', 'English'], ['ru', 'RU', 'Русский'], ['es', 'ES', 'Español'], ['pt', 'PT', 'Português'], ['fr', 'FR', 'Français'], ['it', 'IT', 'Italiano'], ['ja', 'JA', '日本語']];
+  var LANGS = [['en', 'EN', 'English'], ['ru', 'RU', 'Русский'], ['es', 'ES', 'Español'], ['pt', 'PT', 'Português'], ['fr', 'FR', 'Français'], ['it', 'IT', 'Italiano'], ['ja', 'JA', '日本語'], ['de', 'DE', 'Deutsch'], ['pl', 'PL', 'Polski'], ['zh', 'ZH', '简体中文'], ['th', 'TH', 'ไทย']];
   var nav = document.querySelector('.navpanel');
   if (!nav || !document.querySelector('[data-i18n]')) return;
   var T = function (s) { return window.houzyT ? window.houzyT(s) : s; };
@@ -12,7 +12,7 @@
   if (!LANGS.some(function (l) { return l[0] === cur; })) cur = 'en';
 
   // /ru/plugin.html -> /plugin.html ; /ru/ -> /
-  var base = location.pathname.replace(/^\/(ru|es|pt|fr|it|ja)(?=\/|$)/, '') || '/';
+  var base = location.pathname.replace(/^\/(ru|es|pt|fr|it|ja|de|pl|zh|th)(?=\/|$)/, '') || '/';
   // 18.10.2026: Download and Manual have their own address per language (/ru/download.html ...), like the home page, and
   // each file holds ONE language (they used to hold four, picked by #ru / #es / #pt-BR - not indexable).
   var ownPage = /(download|manual|why-houzy|affiliates|plugin|upgrade|best-mastering-compressor).html$/.test(base);
@@ -20,7 +20,7 @@
   function urlOf(l) { return l === 'en' ? base : '/' + l + (base === '/' ? '/' : base); }
   var indexOf = function (l) { return LANGS.findIndex(function (x) { return x[0] === l; }); };
   // the old addresses keep working: download.html#ru (the UPDATE badge of HOUZY 5.0.0 opens these) -> /ru/download.html
-  var oldHash = ownPage && cur === 'en' && /^#(ru|es|pt|fr|it|ja)(-BR)?$/.exec(location.hash);
+  var oldHash = ownPage && cur === 'en' && /^#(ru|es|pt|fr|it|ja|de|pl|zh|th)(-BR)?$/.exec(location.hash);
   if (oldHash) { location.replace(urlOf(oldHash[1])); return; }
 
   // ---- 18.10.2026 (owner): no automatic language at all - no redirect, no offer card. The visitor picks a language with the
@@ -126,7 +126,7 @@
     if (a.lang !== cur) setLang(a.lang, true);
   });
   window.addEventListener('popstate', function () {
-    var m = /^\/(ru|es|pt|fr|it|ja)(?=\/|$)/.exec(location.pathname), l = m ? m[1] : 'en';
+    var m = /^\/(ru|es|pt|fr|it|ja|de|pl|zh|th)(?=\/|$)/.exec(location.pathname), l = m ? m[1] : 'en';
     if (l !== cur) setLang(l, false);
   });
 })();

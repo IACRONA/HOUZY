@@ -1044,3 +1044,10 @@ html[lang="ja"]{word-break:auto-phrase}   /* Chrome / Edge / Safari break Japane
   .dl:not(.man) .dl-card{padding:32px}
   .dl:not(.man) .dl-head .dl-update{margin:8px 0 0}
   .dl:not(.man) .dl-head .dl-req{margin-top:24px}}
+/* zh / th (03.11.2026): Sora has no Han or Thai letters - system fonts take them, like Japanese above */
+html:lang(zh){--font:'Sora','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC','Noto Sans CJK SC',system-ui,sans-serif}
+html:lang(zh) body{line-break:strict;word-break:normal;overflow-wrap:anywhere;line-height:1.75}
+html:lang(zh) h1,html:lang(zh) h2,html:lang(zh) h3,html:lang(zh) .brand small,html:lang(zh) .kicker{letter-spacing:0;font-variation-settings:'wght' 600}
+html:lang(th){--font:'Sora','Leelawadee UI','Thonburi','Noto Sans Thai',Tahoma,system-ui,sans-serif}
+html:lang(th) body{line-height:1.75;overflow-wrap:anywhere}
+html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-spacing:0;line-height:1.3}
