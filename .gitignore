@@ -61,3 +61,39 @@ installer/Output/
 
 # --- зависимости сайта (npm) ---------------------------------------------
 node_modules/
+
+# --- СТРАХОВКА ОТ УТЕЧЕК (03.11.2026) ---------------------------------------
+# Всё ниже живёт только в ЗАКРЫТОМ репозитории IACRONA/tt (папка HouseComp).
+# Сюда не должно попасть никогда, даже если проект скопируют сюда целиком.
+
+# код и сборки плагина
+server/
+external/
+Source_backup*/
+build*/
+dist/
+*.mm
+*.ps1
+*.iss
+*.command
+wrangler.toml
+.wrangler/
+
+# ключи, пароли, лицензии
+gumroad.*
+*.key
+*.pem
+*.p12
+*.pfx
+.env*
+.dev.vars
+*.userbackup
+license.mb*
+*KVR-keys*
+*keys*.txt
+
+# внутренние заметки (в CLAUDE.md адреса серверов и порты)
+CLAUDE.md
+GATES*.md
+.claude/
+kvr-description*
