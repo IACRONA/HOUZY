@@ -714,7 +714,7 @@
     if (!bar || !small || !links.length) return;
     var items = [small].concat(links);
     var at = function (end) { for (var i = 1; i < items.length; i++) if (items[i].getAttribute('href').slice(-end.length) === end) return i; return 0; };
-    var IDX = { tech: at('#top'), manual: at('manual.html'), about: at('#about'), faq: at('#faq'), contact: at('#contact'), why: at('why-houzy.html'), partners: at('affiliates.html') };
+    var IDX = { tech: at('#top'), manual: at('manual.html'), about: at('#about'), faq: at('#faq'), contact: at('#contact'), why: at('why-houzy.html'), partners: at('affiliates.html'), download: at('download.html') };
     var drop = document.createElement('i'); drop.className = 'bar-drop'; drop.setAttribute('aria-hidden', 'true');
     bar.insertBefore(drop, bar.firstChild);
     var PADX = 9, PADY = 5, L = 0, R = 0, tL = 0, tR = 0, tTop = 0, tH = 0, cur = -1, lock = -1, lockUntil = 0, running = false, last = 0;
@@ -751,6 +751,7 @@
       if (/manual\.html$/.test(location.pathname)) return IDX.manual;
       if (/why-houzy\.html$/.test(location.pathname)) return IDX.why;
       if (/affiliates\.html$/.test(location.pathname)) return IDX.partners;
+      if (/download\.html$/.test(location.pathname)) return IDX.download;
       var vh = window.innerHeight * 0.4, top = function (s) { var e = document.querySelector(s); return e ? e.getBoundingClientRect().top : Infinity; };
       if (top('#contact') <= vh) return IDX.contact;
       if (top('#faq') <= vh) return IDX.faq;
