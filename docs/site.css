@@ -1033,10 +1033,5 @@ html[lang="ja"]{word-break:auto-phrase}   /* Chrome / Edge / Safari break Japane
 .qs{width:232px;margin:0}
 @media (min-width:1360px){.qs{position:absolute;top:50%;left:calc(50% + 390px + 24px);transform:translateY(-50%)}}
 @media (max-width:1359px){.qs{width:min(780px,100%);margin:20px auto 0}}
-/* 7 header items (Download added): long languages scaled so the menu is no wider than English (521 px at 1280) */
-@media (min-width:1000px){
-  html[lang="ru"] .navpanel,html[lang="es"] .navpanel,html[lang="fr"] .navpanel,html[lang="it"] .navpanel{--nav-gap:12px}
-  html[lang="ru"] .menu a{font-size:12.5px}
-  html[lang="es"] .menu a{font-size:13px}
-  html[lang="fr"] .menu a{font-size:12px}
-  html[lang="it"] .menu a{font-size:13.5px}}
+/* 7 header items (Download added): menu centred between the brand and the language button, equal gaps on both sides */
+@media (min-width:1000px){.bar{grid-template-columns:auto 1fr auto}}
