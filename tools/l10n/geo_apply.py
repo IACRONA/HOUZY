@@ -17,8 +17,8 @@ FEED = '<link rel="alternate" type="application/atom+xml" title="HOUZY releases"
 def ld(o): return '<script type="application/ld+json">\n' + json.dumps(o, ensure_ascii=False, indent=1) + '\n</script>\n'
 
 def org(prefix):
-    return {"@context": "https://schema.org", "@type": "Organization", "@id": SITE + prefix + "/#organization",
-            "name": "ACRONA AUDIO", "alternateName": "ACRONA", "url": SITE + prefix + "/",
+    return {"@context": "https://schema.org", "@type": "Organization", "@id": SITE + "/#organization",   # one entity for all languages
+            "name": "ACRONA AUDIO", "alternateName": "ACRONA", "url": SITE + "/",
             "logo": {"@type": "ImageObject", "url": SITE + "/img/acrona-logo.jpg", "width": 512, "height": 512},
             "image": SITE + "/img/houzy-card.jpg",
             "sameAs": ["https://t.me/acronalife", "https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7",
@@ -29,7 +29,7 @@ def org(prefix):
 def imgobj(lang, prefix):
     return {"@context": "https://schema.org", "@type": "ImageObject", "contentUrl": SITE + "/img/houzy-card.jpg",
             "url": SITE + "/img/houzy-card.jpg", "width": 1640, "height": 912, "encodingFormat": "image/jpeg",
-            "name": IMGNAME[lang], "creator": {"@id": SITE + prefix + "/#organization"}}
+            "name": IMGNAME[lang], "creator": {"@id": SITE + "/#organization"}}
 
 def faqld(S, lang):
     return {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": {'en': 'en', 'ru': 'ru', 'es': 'es', 'pt': 'pt-BR'}[lang],

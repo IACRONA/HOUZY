@@ -56,6 +56,7 @@ def run(path):
                 if isinstance(o, dict) and o.get('@type') == 'SoftwareApplication': app = o
     if 'class="qs-steps"' in s2 and '"HowTo"' not in s2:     # the "In short" steps shown on the home page
         box = re.search(r'<ol class="qs-steps">(.*?)</ol>', s2, re.S).group(1)
+        box = re.sub(r'<span class="qs-n">.*?</span>', '', box)   # the step number is a badge, not part of the step text
         steps = [html.unescape(re.sub('<[^>]+>', '', x)).strip() for x in re.findall(r'<li>(.*?)</li>', box, re.S)]
         ht = {"@context": "https://schema.org", "@type": "HowTo", "name": page['title'], "description": page['desc'], "url": page['url'],
               "dateModified": DATE, "tool": [{"@type": "HowToTool", "name": "HOUZY"}],

@@ -15,8 +15,14 @@ rd = lambda p: open(p, encoding='utf-8').read()
 def wr(p, s): open(p, 'w', encoding='utf-8', newline='').write(s)
 def ld(o): return '<script type="application/ld+json">\n' + json.dumps(o, ensure_ascii=False, indent=1) + '\n</script>\n'
 
+REVIEW = ('      <a class="best-review" href="https://www.youtube.com/watch?v=Cqv7JIaMmGI" rel="noopener" target="_blank"><span class="qs-n qs-play" aria-hidden="true"></span>'
+          '<span><span class="qs-kick">%s</span><b>The Plugin Guy</b> · “Meet HOUZY, a Mastering Compressor Like No Other!”</span><span class="qs-link best-go">%s</span></a>\n')   # independent review (05.11.2026)
+
 def main_html(S, cta):
-    rows = ''.join('<tr><th scope="row">%s</th><td>%s</td><td>%s</td></tr>\n' % (NAMES[i], S['R%da' % (i + 1)], S['R%db' % (i + 1)]) for i in range(6))
+    return _main_html(S, cta).replace('<p>%s</p>\n' % S['P_WHEN'], '<p>%s</p>\n' % S['P_WHEN'] + REVIEW % (S['REV'], S['REVW']), 1)
+
+def _main_html(S, cta):
+    rows =''.join('<tr><th scope="row">%s</th><td>%s</td><td>%s</td></tr>\n' % (NAMES[i], S['R%da' % (i + 1)], S['R%db' % (i + 1)]) for i in range(6))
     return ('<main id="main" class="legal dl man why">\n  <div class="wrap">\n    <div class="glass dl-head" data-reveal>\n      <p class="kicker">HOUZY</p>\n'
             '      <h1>%s</h1>\n      <p class="man-lead">%s</p>\n      <p class="small why-upd">%s</p>\n    </div>\n'
             '    <section class="glass prose" data-reveal>\n      <h2>%s</h2>\n      <ul>\n%s      </ul>\n'

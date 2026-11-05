@@ -50,6 +50,8 @@ def build_page(page, code, T, stats):
         walk_ld(d, lambda v: T.get(norm(v), v))
         def fix(o):
             if isinstance(o, dict):
+                if o.get('@type') == 'Organization' or str(o.get('@id', '')).endswith('#organization'):
+                    return   # one company on every language: same @id and url, or search engines see 11 different ACRONA AUDIOs
                 for k, v in list(o.items()):
                     if k == 'inLanguage': o[k] = hl
                     elif isinstance(v, str) and v.startswith(SITE + '/') and k in ('url', 'item', '@id'):
