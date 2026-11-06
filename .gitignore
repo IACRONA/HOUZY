@@ -97,3 +97,26 @@ CLAUDE.md
 GATES*.md
 .claude/
 kvr-description*
+
+# --- НОВАЯ ВЕРСИЯ ПЛАГИНА (06.11.2026, решение пользователя) -----------------
+# Этот репозиторий остаётся витриной СТАРОЙ открытой версии. Ничего из новой
+# (код, сервер, ресурсы, харнесс, тулзы, звуки) сюда не попадает: всё это живёт
+# только в закрытом IACRONA/tt. Уже лежащие здесь файлы (CMakeLists.txt,
+# Resources/AppFont.ttf, bg_sprite.png) — старые, их не обновлять.
+Resources/
+tools/*
+!tools/l10n/
+tools/l10n/__pycache__/
+__pycache__/
+*.pyc
+*.mjs
+!docs/**/*.mjs
+*.wav
+*.flac
+*.ogg
+!docs/audio/*.wav
+Source*/
+server*/
+GATES*
+T7_PLAN.md
+test_engineer*
