@@ -51,7 +51,7 @@
 <main id="main" class="legal">
   <div class="wrap">
     <h1>Privacy Policy</h1>
-    <p class="meta">HOUZY · ACRONA AUDIO · Effective 12 October 2026 · Last updated 14 October 2026</p>
+    <p class="meta">HOUZY · ACRONA AUDIO · Effective 12 October 2026 · Last updated 6 November 2026</p>
     <nav class="glass toc" aria-label="Contents"><ol>
       <li><a href="#who">Who is responsible</a></li>
       <li><a href="#website">This website</a></li>
@@ -89,7 +89,7 @@
 
 <h2 id="plugin">The HOUZY plugin</h2>
 <h3>Update check</h3>
-<p>Up to once every 8 hours the plugin downloads one small public file from this website to see whether a newer version exists. No personal identifiers are sent. As with any web request, the website host can see your IP address. You can turn the check off in the ACRONA AUDIO card inside the plugin.</p>
+<p>Up to once every 8 hours the plugin downloads one small public file from this website to see whether a newer version exists. No personal identifiers are sent. As with any web request, the website host can see your IP address. In HOUZY 5.1 and earlier the check can be turned off in the ACRONA AUDIO card; from the next version it is always on.</p>
 <h3>Licence activation (HOUZY 5 and later)</h3>
 <p>When you activate HOUZY, start a trial, or when the plugin confirms your licence (at most every 12 hours, and only when online), it contacts our licence server (<span class="code">licence.acronaaudio.shop</span>, run on Cloudflare), which checks the key with Gumroad, and sends:</p>
 <ul>
@@ -97,6 +97,21 @@
   <li>a device identifier: a one-way hash of your computer's system information, used only to count activations per licence and to give each computer one trial.</li>
 </ul>
 <p>The licence file is stored on your computer in your user application-data folder. You can release a computer's activation at any time from the plugin's licence window. The server keeps only the licence key, the device identifiers using it and the trial start time.</p>
+<h3>Bug reports</h3>
+<p>The <b>BUG REPORT</b> button sends, only when you press <b>SEND</b>: the text you wrote, the plugin version, your operating system, your host program, the plugin language, where in the plugin you pressed it, and a short technical log (licence status with only the last 4 characters of the key, sample rate and block size). No licence key, no device identifier and no IP address are stored with it; the IP address is used for one hour only to limit reports to 10 per hour. Reports are kept on our server (Cloudflare D1) to fix the problem and deleted within 2 years.</p>
+<h3>MASTERING: the catalogue of mastering engineers</h3>
+<p>MASTERING is an optional part of the plugin. Opening it loads the catalogue from our licence server. A trial computer sends its device identifier and sees nicknames, styles and example tracks; a bought licence uses a <b>pass</b> handed out with the licence check, so the licence key itself is never sent again.</p>
+<p>If you create an engineer profile, we store what you enter: <b>nickname, up to 3 styles, a short bio, the contacts you choose to publish</b> (email, Telegram, Instagram, website) and <b>one example track</b> (FLAC, in Cloudflare R2). The profile is linked to your licence key on our server; the key is never shown to anyone. Other licensed users see your nickname, styles, bio, contacts and can listen to the track inside the plugin; trial users see the nickname, styles and track only. Tracks cannot be downloaded from the catalogue. You can change or delete the profile at any time (<b>MY PROFILE → DELETE PROFILE</b>); deleting it erases the profile, the track and your chats at once.</p>
+<p>Profiles are hidden when the licence is refunded or disputed and erased 30 days later; a profile whose owner has not opened HOUZY online for 90 days is hidden and erased on day 120 (it comes back by itself if you return before that). Reports about a profile go to us and may lead to hiding or deleting it.</p>
+<h3>MASTERING: chat</h3>
+<p>Licensed users can write to each other inside the plugin. We store the messages, edits, read marks, pins and blocks of your conversations so they can be delivered. <b>Message text is encrypted on our server</b> (AES-GCM) and is visible only to the two people in the conversation; in the chat you are shown by your profile nickname, or as <span class="code">USER-XXXX</span> without one. While the MASTERING window is open the plugin keeps a connection to the server to receive new messages; when it is closed, it only asks for the number of unread messages at start and once an hour.</p>
+<ul>
+  <li><b>Text messages</b> are kept for 3 months; the last week of every conversation is always kept. You can delete a message or the whole conversation for yourself or for both people at any time.</li>
+  <li><b>Tracks</b> sent in a chat are kept for exactly 3 days, <b>voice messages</b> for 30 days, then deleted automatically. The receiver may download a track to their computer. Voice messages are recorded from your computer's microphone only while you hold the microphone button.</li>
+  <li><b>Translation</b> happens only when you press <b>TRANSLATE</b>: that message's text is translated by Cloudflare Workers AI and the result is stored with the message.</li>
+  <li>Files are accepted only if they are real audio (checked by their content), and the plugin never runs anything it receives.</li>
+</ul>
+<p>Do not share personal data of other people in the chat, and never send licence keys (the plugin and the server refuse them).</p>
 <h3>Data that stays on your computer</h3>
 <p>Settings, the licence file, its backup and a small diagnostic log (<span class="code">licence.log</span>, at most 64 KB, without your licence key) are kept locally and are never sent automatically. The <b>REPORT</b> button only copies a summary to your clipboard. You decide whether to send it to us.</p>
 
@@ -108,8 +123,10 @@
   <tr><th>Purpose</th><th>Legal basis (GDPR / UK GDPR)</th></tr>
   <tr><td>Delivering the website, security logs</td><td>Legitimate interest in a working, secure site — Art. 6(1)(f)</td></tr>
   <tr><td>Remembering in your browser that you accepted the Terms</td><td>Strictly necessary for the service you asked for — Art. 6(1)(b)</td></tr>
-  <tr><td>Update check</td><td>Legitimate interest in telling you about fixes; you can switch it off — Art. 6(1)(f)</td></tr>
+  <tr><td>Update check</td><td>Legitimate interest in telling you about fixes; switchable in 5.1 and earlier — Art. 6(1)(f)</td></tr>
   <tr><td>Licence activation, trials, purchases, refunds</td><td>Performance of a contract with you — Art. 6(1)(b)</td></tr>
+  <tr><td>MASTERING catalogue, profiles, chat, file delivery, translation on request</td><td>Performance of a contract with you (a feature you choose to use) — Art. 6(1)(b)</td></tr>
+  <tr><td>Bug reports; handling reports about profiles and chats</td><td>Legitimate interest in fixing the plugin and keeping MASTERING safe — Art. 6(1)(f)</td></tr>
   <tr><td>Keeping order records</td><td>Legal obligation (tax and accounting law) — Art. 6(1)(c)</td></tr>
   <tr><td>Answering your emails</td><td>Contract or pre-contract steps, otherwise legitimate interest — Art. 6(1)(b)/(f)</td></tr>
 </table>
@@ -118,7 +135,8 @@
 <table>
   <tr><th>Recipient</th><th>Role</th><th>Location</th></tr>
   <tr><td>GitHub, Inc.</td><td>Website hosting, downloads, update file</td><td>USA</td></tr>
-  <tr><td>Cloudflare, Inc.</td><td>Content delivery and HTTPS for this website; the licence server</td><td>USA (servers worldwide)</td></tr>
+  <tr><td>Cloudflare, Inc.</td><td>Content delivery and HTTPS for this website; the licence server; MASTERING profiles, tracks, chat and bug reports (Workers, D1, R2, Durable Objects); translation on request (Workers AI)</td><td>USA (servers worldwide)</td></tr>
+  <tr><td>Other HOUZY users</td><td>See what you publish in your MASTERING profile and what you write to them in a chat</td><td>Worldwide</td></tr>
   <tr><td>Google Ireland Ltd. / Google LLC</td><td>Email (Gmail)</td><td>EU / USA</td></tr>
   <tr><td>Gumroad, Inc.</td><td>Store, merchant of record, licence keys</td><td>USA</td></tr>
   <tr><td>Authorised resellers</td><td>Sales, if you buy through one</td><td>Varies</td></tr>
@@ -133,6 +151,9 @@
   <li>Emails: as long as needed to help you, then deleted within 2 years of the last message, unless they relate to an order.</li>
   <li>Order and licence records: while your licence is valid and for as long as tax and accounting law requires (usually 5–10 years).</li>
   <li>Your acceptance of the Terms (a flag in your browser): until you clear it.</li>
+  <li>MASTERING profile and its track: until you delete it; hidden after a refund/dispute or 90 days offline, erased 30 days after a refund or on day 120 offline.</li>
+  <li>Chat: text 3 months (the last week of a conversation always stays, at most 2 000 messages per conversation), tracks 3 days, voice messages 30 days; everything at once when you delete it for everyone or delete your profile.</li>
+  <li>MASTERING passes: 30 days. Bug reports: up to 2 years.</li>
   <li>Server logs: kept by GitHub and Cloudflare under their own policies; we hold none.</li>
 </ul>
 
