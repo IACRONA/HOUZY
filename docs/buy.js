@@ -119,7 +119,11 @@
   function drawArm(dt) {
     var target = null;
     S.forEach(function (st) { if (st.hover) target = st; });
-    var sr = porb && porb.getBoundingClientRect(), vis = sr && sr.width > 0 && sr.bottom > 0 && sr.top < innerHeight;
+    // 09.11.2026: "near", not "on screen": the sphere sits ~340 px above the keys under the plugin, so with the keys in the
+    // top part of the window it is scrolled off and the arm never came (owner: "не с первого раза"). Now it reaches in from
+    // beyond the window edge; a key far from the sphere (Buy in the price block) still gets none.
+    var sr = porb && porb.getBoundingClientRect(), kb = target && target.el.getBoundingClientRect();
+    var vis = sr && sr.width > 0 && kb && Math.hypot(kb.left + kb.width / 2 - sr.left - sr.width / 2, kb.top + kb.height / 2 - sr.top - sr.height / 2) < 900;
     if (target && vis) armFor = target;
     var goal = target && vis && armFor === target ? 1 : 0;
     var kS = 70, cS = 2 * Math.sqrt(kS) * 0.7;                                 // a little overshoot, like the stage's arms
