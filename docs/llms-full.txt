@@ -58,7 +58,7 @@ An ordinary limiter moves its gain whenever it needs to, often right in the midd
 
 **T8 changes its gain only where the wave crosses zero.** Each half-wave of the kick and bass is lowered as one whole piece, so its shape stays exactly as it was. Only its height changes.
 
-Our own design, new in HOUZY 5. In our kick tests about 5–6 dB cleaner than T6 at the same loudness. On the SMART | T6 | T8 switch.
+Our own design, new in HOUZY 5. In our kick tests about 5–6 dB cleaner than T6 at the same loudness. On the T6 | T8 switch.
 
 ## Attack in wave cycles, release in beat fractions.
 
@@ -70,7 +70,7 @@ Release can be set two ways, click its label to switch. **MS** is plain millisec
 
 - **AUTO GAIN** — gives back exactly what the compression took.
 
-- **Spectral limiter** — SMART (3 bands), T6 (6 bands) or T8 (gain moves only at zero crossings, in HOUZY): a bass peak never ducks the highs.
+- **Spectral limiter** — T6 (6 bands) or T8 (gain moves only at zero crossings, in HOUZY): a bass peak never ducks the highs.
 
 - **GAIN MATCH** — BYPASS compares character, not loudness.
 

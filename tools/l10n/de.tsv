@@ -36,13 +36,13 @@
 39	T8 — der Halbwellen-Limiter.
 40	Ein gewöhnlicher Limiter bewegt seinen Gain, wann immer er muss, oft mitten in der Welle. Bei Kick und Bass verbiegt das die Welle selbst, und du hörst es als Körnigkeit in jedem Schlag.
 41	<b>T8 ändert seinen Gain nur dort, wo die Welle die Null kreuzt.</b> Jede Halbwelle von Kick und Bass wird als Ganzes abgesenkt, ihre Form bleibt also genau wie sie war. Nur ihre Höhe ändert sich.
-42	Unsere eigene Entwicklung, neu in HOUZY 5. In unseren Kick-Tests etwa 5–6 dB sauberer als T6 bei gleicher Lautheit. Auf dem Schalter SMART | T6 | T8.
+42	Unsere eigene Entwicklung, neu in HOUZY 5. In unseren Kick-Tests etwa 5–6 dB sauberer als T6 bei gleicher Lautheit. Auf dem Schalter T6 | T8.
 43	Attack in Wellenperioden, Release in Taktbruchteilen.
 44	<b>5 ms bei einer 50-Hz-Bassnote sind ein Viertel ihrer Welle</b> — der Gain bewegt sich innerhalb einer einzigen Schwingung, genau dort, wo ein Kompressor den Bass verschmutzt. Dieselben 5 ms bei einer 8-kHz-Hat sind vierzig Perioden. Deshalb wird Attack in Perioden eingestellt: Ein Regler ergibt 45 ms bei 50 Hz und 1 ms bei 8 kHz, nie schneller als eine halbe Periode.
 45	Release lässt sich auf zwei Arten einstellen, ein Klick auf die Beschriftung schaltet um. <b>MS</b> sind normale Millisekunden (Standard). <b>NOTE</b> ist ein Taktbruchteil: Das Release folgt dem Projekttempo, ein Tempowechsel braucht kein Nachstellen. Und <b>AUTO</b> hört, wie schnell die Klänge im Track ausklingen, und stellt das Release passend ein.
 46	Alles, was ein Master-Bus braucht.
 47	<b>AUTO GAIN</b> — gibt genau das zurück, was die Kompression genommen hat.
-48	<b>Spektral-Limiter</b> — SMART (3 Bänder), T6 (6 Bänder) oder T8 (Gain bewegt sich nur in Nulldurchgängen, in HOUZY): Eine Bassspitze drückt nie die Höhen.
+48	<b>Spektral-Limiter</b> — T6 (6 Bänder) oder T8 (Gain bewegt sich nur in Nulldurchgängen, in HOUZY): Eine Bassspitze drückt nie die Höhen.
 49	<b>GAIN MATCH</b> — BYPASS vergleicht den Charakter, nicht die Lautheit.
 50	<b>DASH</b> — von punchy bis gleichmäßig: Ein Regler tauscht Dynamik gegen einen ruhigen Pegel.
 51	<b>UPWARD</b> — hebt das Leise an: Ausklänge, Luft, Details.
@@ -138,10 +138,10 @@
 156	<b>Teste HOUZY mit deinem eigenen Track</b>MP3 / WAV · erste 75 s · läuft im Browser, wird nie hochgeladen
 157	Was die Demo kann
 158	In der Demo
-159	Limiter SMART, T6 und T8
+159	Limiter T6 und T8
 160	UPWARD, CLIP SHAPE und DASH
 161	ATTACK, RELEASE, INPUT, OUTPUT, MIX
-162	Phase LINEAR und NATURAL
+162	Phase LINEAR, NATURAL und CLEAN L
 163	Oversampling bis 16x
 165	Die Vollversion bietet zusätzlich
 166	Engines CLASSIC und MODERN
@@ -358,7 +358,7 @@
 396	Kaufen
 397	$69, mit 14 Tagen kostenloser Testversion
 398	Teste den Mastering-Kompressor HOUZY
-399	Die Demo nutzt die HOUZY-Engine mit SMART, T6 und T8, UPWARD, CLIP SHAPE, DASH und bis zu 16x Oversampling. 32x / 64x und ALL MIX gibt es in der Vollversion.
+399	Die Demo nutzt die HOUZY-Engine mit T6 und T8, UPWARD, CLIP SHAPE, DASH und bis zu 16x Oversampling. 32x / 64x und ALL MIX gibt es in der Vollversion.
 400	Herunterladen
 401	Rückerstattung innerhalb von 14 Tagen nach dem Kauf
 402	Dein Audio verlässt nie deinen Computer

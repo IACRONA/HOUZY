@@ -24,9 +24,9 @@
     { id: 'mix', param: 'mix', r: [645, 425, 62, 62], min: 0, max: 100, v: 100 },   // 24.10.2026: dry/wet, HOUZY + LINEAR only
     { id: 'attack', param: 'atkcycles', r: [222, 229, 76, 76], min: 0.5, max: 4, v: 2.95, digits: 2 },
     { id: 'release', param: 'relms', r: [530, 229, 76, 76], min: 20, max: 1200, v: 234, digits: 0 },
-    { id: 'sub', param: 'complow', r: [26, 118, 62, 62], min: 0, max: 100, v: 15 }, { id: 'low', param: 'compbass', r: [124, 118, 62, 62], min: 0, max: 100, v: 15 },
-    { id: 'lomid', param: 'complomid', r: [26, 204, 62, 62], min: 0, max: 100, v: 15 }, { id: 'mid', param: 'compmid', r: [124, 204, 62, 62], min: 0, max: 100, v: 15 },
-    { id: 'himid', param: 'comphimid', r: [26, 290, 62, 62], min: 0, max: 100, v: 15 }, { id: 'high', param: 'comphigh', r: [124, 290, 62, 62], min: 0, max: 100, v: 15 }
+    { id: 'sub', param: 'complow', r: [26, 118, 62, 62], min: 0, max: 100, v: 0 }, { id: 'low', param: 'compbass', r: [124, 118, 62, 62], min: 0, max: 100, v: 0 },
+    { id: 'lomid', param: 'complomid', r: [26, 204, 62, 62], min: 0, max: 100, v: 0 }, { id: 'mid', param: 'compmid', r: [124, 204, 62, 62], min: 0, max: 100, v: 0 },
+    { id: 'himid', param: 'comphimid', r: [26, 290, 62, 62], min: 0, max: 100, v: 0 }, { id: 'high', param: 'comphigh', r: [124, 290, 62, 62], min: 0, max: 100, v: 0 }
   ];
   var SLIDERS = [
     { id: 'upward', param: 'upcomp', r: [280, 310, 80, 20], min: 0, max: 100, v: 0 },
@@ -312,11 +312,12 @@
   // its default is drawn by pasting its own region from the other bake - the plugin's real look.
   // 2x of the 740 x 500 grid, WebP. The flipped bakes load only when a switch first leaves its default.
   // 24.10.2026: T8 is the plugin's default now, so the third bake is T6 (chrome_t6), and chrome_alt has NATURAL lit.
-  var BAKE = 2, ALT = new Image(), OS4 = new Image(), T6 = new Image(), bakeDir = '/img/plugin/t4/';   // PULIK by default (24.10.2026)
-  ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T6.file = 'chrome_t6.webp';
-  var BAKE_V = '?v=20261102a';   // the bakes change with the panel (HOUZY | HOUZY II, DELTA, CHARACTER gone: 02.11.2026; chrome_alt has HOUZY and DELTA lit)
-  var STATE = { allmix: 0, bypass: 0, gainmatch: 0, delta: 0, clipmode: 2, limmode: 3, relsmart: 1,
-                osfactor: 4, autogain: 1, relauto: 1, truepeak: 0, phasemode: 0, houzycore: 1 };
+  var BAKE = 2, ALT = new Image(), OS4 = new Image(), T6 = new Image(), CLEAN = new Image(), bakeDir = '/img/plugin/t4/';   // PULIK by default (24.10.2026)
+  ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T6.file = 'chrome_t6.webp'; CLEAN.file = 'chrome_clean.webp';
+  var BAKE_V = '?v=20261109a';   // 5.2.0 panel: MIX & MASTER, T6 | T8, CLEAN L (chrome_clean), BEAT and 8x by default
+  //   // the bakes change with the panel (HOUZY | HOUZY II, DELTA, CHARACTER gone: 02.11.2026; chrome_alt has HOUZY and DELTA lit)
+  var STATE = { allmix: 0, bypass: 0, gainmatch: 0, delta: 0, clipmode: 2, limmode: 3, relsmart: 0,
+                osfactor: 3, autogain: 1, relauto: 1, truepeak: 0, phasemode: 0, houzycore: 1 };
   var DEF = JSON.parse(JSON.stringify(STATE));
   // GAIN MATCH starts OFF, as in the plugin (it was on in the demo, to compare at matched loudness; the visitor can switch it on)
   // layout.json (base 740 x 500)
@@ -327,7 +328,7 @@
     bands: [8, 100, 198, 260], presets: [12, 22, 74, 17], themes: [94, 22, 74, 17], ui: [176, 22, 40, 17],
     a: [590, 22, 30, 17], copy: [624, 22, 24, 17], b: [652, 22, 30, 17], lang: [698, 22, 30, 17],
     rms: [630, 108, 44, 284], lufs: [678, 108, 44, 284], graph: [214, 430, 400, 62],   // meters shorter: the MIX card sits under them
-    phase: [12, 47, 74, 17], mix: [622, 408, 108, 84]
+    phase: [12, 47, 74, 17], mix: [622, 408, 108, 84], master: [94, 47, 74, 17]
   };
   var MIX = KNOBS.filter(function (c) { return c.param === 'mix'; })[0];
   // ALL MIX with its band controls is the full version: not draggable, held in the .wasm too.
@@ -345,7 +346,8 @@
     if (STATE.allmix !== DEF.allmix) paste(ALT, R.bands, 0);
     PATCHES.forEach(function (k) {
       if (STATE[k] === DEF[k]) return;
-      var img = k === 'osfactor' ? (STATE.osfactor === 2 ? OS4 : ALT) : k === 'limmode' && STATE.limmode === 1 ? T6 : ALT;
+      var img = k === 'osfactor' ? (STATE.osfactor === 2 ? OS4 : ALT) : k === 'limmode' && STATE.limmode === 1 ? T6
+              : k === 'phasemode' && STATE.phasemode === 2 ? CLEAN : ALT;
       paste(img, R[k], 3);
     });
   }
@@ -358,14 +360,14 @@
   var bypassOn = false;
   document.addEventListener('houzy-bypass', function (e) { bypassOn = e.detail; STATE.bypass = e.detail ? 1 : 0; });
 
-  // PRESETS (presetTable in PluginEditor.cpp, real units; their 32x becomes the demo's 16x)
+  // PRESETS (presetTable in PluginEditor.cpp 5.2.0, real units; OVERSAMPLE is in no preset, as in the plugin)
   var PRESETS = [
-    ['SUSHI',    { amount: 25.8, ingain: 1.5, outgain: 0, clipshape: 0, dash: 60, atkcycles: 3.2, upcomp: 0, relsmart: 0, autogain: 1, osfactor: 4, mix: 100, houzycore: 1 }],   // its ALL MIX bands are the full version
-    ['SMOOTH',   { amount: 25.2, ingain: 3.5, outgain: 0, clipshape: 0, dash: 33, atkcycles: 3.2, upcomp: 0, relsmart: 1, autogain: 0, osfactor: 4, mix: 100, houzycore: 1 }],
-    ['SMOOTHIE', { amount: 15.9, ingain: 1, outgain: 0, clipshape: 0, dash: 33, atkcycles: 3.0, upcomp: 0, relsmart: 1, autogain: 1, osfactor: 4, mix: 100, houzycore: 1 }],
-    ['SQUISHY',  { amount: 30, ingain: 2, outgain: 0, clipshape: 0.43, dash: 82, atkcycles: 3.25, upcomp: 32, relsmart: 0, autogain: 1, osfactor: 4, mix: 100, houzycore: 1 }],
-    ['DRUMUZI',  { amount: 96.9, ingain: 6, outgain: 0, clipshape: 0, dash: 0, atkcycles: 3.35, upcomp: 47, relsmart: 1, autogain: 0, osfactor: 4, mix: 50.1, houzycore: 0 }],
-    ['DEFAULT',  { amount: 15, ingain: 0, outgain: 0, clipshape: 0, dash: 0, atkcycles: 2.95, upcomp: 0, relsmart: 1, autogain: 1, osfactor: 4, mix: 100, houzycore: 1,
+    ['SUSHI',    { amount: 25.8, ingain: 1.5, outgain: 0, clipshape: 0, dash: 60, atkcycles: 3.2, upcomp: 0, relsmart: 0, autogain: 1, mix: 100, houzycore: 1 }],   // its ALL MIX bands are the full version
+    ['SMOOTH',   { amount: 15, ingain: 3, outgain: 0, clipshape: 0, dash: 0, atkcycles: 3.2, upcomp: 0, relsmart: 0, autogain: 1, mix: 100, houzycore: 1 }],
+    ['SMOOTHIE', { amount: 15.9, ingain: 1, outgain: 0, clipshape: 0, dash: 33, atkcycles: 3.0, upcomp: 0, relsmart: 0, autogain: 1, mix: 100, houzycore: 1 }],
+    ['SQUISHY',  { amount: 30, ingain: 2, outgain: 0, clipshape: 0.43, dash: 82, atkcycles: 3.25, upcomp: 32, relsmart: 0, autogain: 1, mix: 100, houzycore: 1 }],
+    ['DRUMUZI',  { amount: 96.9, ingain: 6, outgain: 0, clipshape: 0, dash: 0, atkcycles: 3.35, upcomp: 47, relsmart: 0, autogain: 0, mix: 50.1, houzycore: 0 }],
+    ['DEFAULT',  { amount: 0, ingain: 0, outgain: 0, clipshape: 0, dash: 0, atkcycles: 2.95, upcomp: 0, relsmart: 0, autogain: 1, mix: 100, houzycore: 1,
                    gainmatch: 0, delta: 0, clipmode: 2, limmode: 3, truepeak: 0, phasemode: 0 }]
   ];
   function applySettings(s, keepAuto) {
@@ -466,13 +468,14 @@
       if (inR(p, R[k])) setState(k, STATE[k] ? 0 : 1);
     });
     if (inR(p, R.allmix) || inR(p, R.bands)) { locked('ALL MIX'); return; }
+    if (inR(p, R.master)) { if (window.houzyMaster) window.houzyMaster(); return; }   // MIX & MASTER: a look at the window (houzy-live.js)
     if (inR(p, R.houzycore)) setState('houzycore', half(p, R.houzycore));
     if (inR(p, R.clipmode)) setState('clipmode', half(p, R.clipmode) ? 2 : 1);
-    if (inR(p, R.limmode)) { var t = third(p, R.limmode); setState('limmode', t === 2 ? 3 : t); }
+    if (inR(p, R.limmode)) setState('limmode', half(p, R.limmode) ? 3 : 1);   // T6 | T8 (SMART left the plugin 06.11.2026)
     if (inR(p, R.relsmart)) setState('relsmart', half(p, R.relsmart));
-    if (inR(p, R.phase)) setState('phasemode', STATE.phasemode ? 0 : 1);   // one key: click = the other mode
-    if (inR(p, R.osfactor)) {       // 16x -> 4x -> 8x -> 16x; 32x and 64x are the full version
-      var next = STATE.osfactor === 4 ? 2 : STATE.osfactor === 2 ? 3 : 4;
+    if (inR(p, R.phase)) setState('phasemode', (STATE.phasemode + 1) % 3);   // one key: LINEAR -> NATURAL -> CLEAN L -> LINEAR
+    if (inR(p, R.osfactor)) {       // 8x -> 16x -> 4x -> 8x; 32x and 64x are the full version
+      var next = STATE.osfactor === 3 ? 4 : STATE.osfactor === 4 ? 2 : 3;
       setState('osfactor', next); say(T('Oversampling {n}x · 32x and 64x in the full version', { n: [1, 2, 4, 8, 16][next] }));
     }
     if (inR(p, R.a)) useSlot(0);
@@ -659,7 +662,7 @@
   (function loop(now) {
     if (!onScreen || document.hidden) { t0 = 0; sendChanged(); requestAnimationFrame(loop); return; }   // asleep off screen
     var dt = t0 ? Math.min(0.05, (now - t0) / 1000) : 0.016; t0 = now;
-    MIX.off = STATE.phasemode === 1;                  // MIX only in LINEAR, as in the plugin (locked and dimmed in NATURAL)
+    MIX.off = STATE.phasemode !== 0;                  // MIX only in LINEAR, as in the plugin (locked and dimmed in NATURAL and CLEAN L)
     if (MIX.off && hovered === MIX) hovered = null;
     all.forEach(function (c) {
       c.hover += ((c === hovered || c === active ? 1 : 0) - c.hover) * (1 - Math.exp(-dt / 0.158));

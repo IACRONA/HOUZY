@@ -36,6 +36,32 @@
   window.houzyLocked = function (what) { say(T('{what} — only in the full version', { what: T(what) })); };
   window.houzySay = function (text) { say(text); };
   window.houzyBypass = function () { setBypass(!bypass); };
+  // MIX & MASTER (09.11.2026, owner: "just the UI"): the plugin's catalogue window shown over the panel as it looks in the
+  // plugin (harness `mastertour`, sample engineers), nothing behind it. A click anywhere or Esc closes it.
+  window.houzyMaster = function () {
+    var panel = document.getElementById('panel');
+    if (!panel) return;
+    var v = panel.querySelector('.mm-view');
+    if (!v) {
+      var lang = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+      v = document.createElement('div'); v.className = 'mm-view'; v.hidden = true;
+      var img = document.createElement('img');
+      img.src = '/img/plugin/mixmaster_' + (lang === 'ru' ? 'ru' : 'en') + '.webp?v=20261109a';
+      img.alt = 'MIX & MASTER'; img.decoding = 'async';
+      var x = document.createElement('button'); x.type = 'button'; x.className = 'mm-close'; x.textContent = '×';
+      x.setAttribute('aria-label', T('Close'));
+      v.appendChild(img); v.appendChild(x);
+      v.addEventListener('click', function () { hideMaster(v); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !v.hidden) hideMaster(v); });
+      panel.appendChild(v);
+    }
+    v.hidden = false;
+    requestAnimationFrame(function () { v.classList.add('on'); });
+  };
+  function hideMaster(v) {
+    v.classList.remove('on');
+    setTimeout(function () { if (!v.classList.contains('on')) v.hidden = true; }, 320);
+  }
 
   function setBypass(on) {
     bypass = on; params.bypass = on ? 1 : 0; send('bypass', params.bypass);
@@ -52,7 +78,7 @@
       ctx = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
       // browsers give a page AudioWorklet only over https (or on localhost): say so instead of blaming the browser
       if (!ctx.audioWorklet) throw new Error(window.isSecureContext ? T('this browser has no AudioWorklet') : T('the live demo needs the secure (https) version of this page'));
-      var res = await fetch('/houzy-engine.wasm?v=20261102a');
+      var res = await fetch('/houzy-engine.wasm?v=20261109a');
       if (!res.ok) throw new Error(T('engine not found'));
       var total = +res.headers.get('content-length') || 0, got = 0, parts = [], reader = res.body.getReader();
       for (;;) {
@@ -63,7 +89,7 @@
       var wasm = new Uint8Array(got), at = 0;
       parts.forEach(function (p) { wasm.set(p, at); at += p.length; });
       wasmBytes = wasm;            // kept for the WAV export (a second, offline engine)
-      await ctx.audioWorklet.addModule('/houzy-worklet.js?v=20261102a');
+      await ctx.audioWorklet.addModule('/houzy-worklet.js?v=20261109a');
       node = new AudioWorkletNode(ctx, 'houzy', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [2],
         processorOptions: { wasm: wasm.buffer, host: location.hostname } });
       node.connect(ctx.destination);
@@ -186,7 +212,7 @@
   async function renderThrough(buf, len) {
     var sr = buf.sampleRate, lead = Math.round(0.5 * sr);
     var off = new OfflineAudioContext(2, lead + len, sr);
-    await off.audioWorklet.addModule('/houzy-worklet.js?v=20261102a');
+    await off.audioWorklet.addModule('/houzy-worklet.js?v=20261109a');
     var en = new AudioWorkletNode(off, 'houzy', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [2],
       processorOptions: { wasm: wasmBytes.buffer.slice(0), host: location.hostname } });
     var ready = new Promise(function (ok, fail) {

@@ -36,13 +36,13 @@
 39	T8 — le limiteur à demi-onde.
 40	Un limiteur ordinaire bouge son gain dès qu'il en a besoin, souvent en plein milieu d'une onde. Sur un kick ou une basse, cela déforme l'onde elle-même, et on l'entend comme du grain dans chaque coup.
 41	<b>T8 ne modifie son gain que là où l'onde passe par zéro.</b> Chaque demi-onde du kick et de la basse est abaissée d'un bloc, sa forme reste donc exactement la même. Seule sa hauteur change.
-42	Notre propre conception, nouveauté de HOUZY 5. Dans nos tests sur kick, environ 5–6 dB plus propre que T6 à volume égal. Sur le commutateur SMART | T6 | T8.
+42	Notre propre conception, nouveauté de HOUZY 5. Dans nos tests sur kick, environ 5–6 dB plus propre que T6 à volume égal. Sur le commutateur T6 | T8.
 43	Attaque en cycles d'onde, release en fractions de temps.
 44	<b>5 ms sur une basse à 50 Hz, c'est un quart de son onde</b> — le gain bouge à l'intérieur d'une seule oscillation, exactement là où un compresseur salit les graves. Les mêmes 5 ms sur un charley à 8 kHz font quarante cycles. L'attaque se règle donc en cycles : un seul bouton donne 45 ms à 50 Hz et 1 ms à 8 kHz, jamais plus rapide qu'un demi-cycle.
 45	Le release se règle de deux façons, un clic sur son libellé permet de basculer. <b>MS</b> : de simples millisecondes (par défaut). <b>NOTE</b> : une fraction de mesure — le release suit le tempo de votre projet, un changement de tempo n'exige donc aucun réglage. Et <b>AUTO</b> écoute la vitesse à laquelle les sons de votre morceau s'éteignent et ajuste le release en conséquence.
 46	Tout ce dont un bus master a besoin.
 47	<b>AUTO GAIN</b> — rend exactement ce que la compression a retiré.
-48	<b>Limiteur spectral</b> — SMART (3 bandes), T6 (6 bandes) ou T8 (le gain ne bouge qu'aux passages par zéro, dans HOUZY) : un pic de basse n'écrase jamais les aigus.
+48	<b>Limiteur spectral</b> — T6 (6 bandes) ou T8 (le gain ne bouge qu'aux passages par zéro, dans HOUZY) : un pic de basse n'écrase jamais les aigus.
 49	<b>GAIN MATCH</b> — BYPASS compare le caractère, pas le volume.
 50	<b>DASH</b> — du punchy à l'homogène : un seul bouton échange la dynamique contre un niveau stable.
 51	<b>UPWARD</b> — remonte les passages faibles : queues, air, détails.
@@ -142,10 +142,10 @@
 156	<b>Essayez HOUZY sur votre propre morceau</b>MP3 / WAV · 75 premières secondes · lecture dans votre navigateur, rien n'est envoyé
 157	Ce que contient la démo
 158	Dans la démo
-159	Limiteurs SMART, T6 et T8
+159	Limiteurs T6 et T8
 160	UPWARD, CLIP SHAPE et DASH
 161	ATTACK, RELEASE, INPUT, OUTPUT, MIX
-162	Phase LINEAR et NATURAL
+162	Phase LINEAR, NATURAL et CLEAN L
 163	Suréchantillonnage jusqu'à 16x
 164	GAIN MATCH
 165	La version complète ajoute
@@ -367,7 +367,7 @@
 396	Acheter
 397	69 $, avec un essai gratuit de 14 jours
 398	Essayez le compresseur de mastering HOUZY
-399	La démo utilise le moteur HOUZY avec SMART, T6 et T8, UPWARD, CLIP SHAPE, DASH et un suréchantillonnage jusqu'à 16x. 32x / 64x et ALL MIX sont dans la version complète.
+399	La démo utilise le moteur HOUZY avec T6 et T8, UPWARD, CLIP SHAPE, DASH et un suréchantillonnage jusqu'à 16x. 32x / 64x et ALL MIX sont dans la version complète.
 400	Télécharger
 401	Remboursement sous 14 jours après l'achat
 402	Votre audio ne quitte jamais votre ordinateur

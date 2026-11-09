@@ -36,13 +36,13 @@
 39	T8 — limiter półfalowy.
 40	Zwykły limiter zmienia gain, kiedy tylko musi, często w samym środku fali. Na kicku i basie wygina to samą falę, a ty słyszysz to jako ziarno w każdym uderzeniu.
 41	<b>T8 zmienia gain tylko tam, gdzie fala przechodzi przez zero.</b> Każda półfala kicka i basu jest obniżana w całości, więc jej kształt zostaje dokładnie taki, jaki był. Zmienia się tylko wysokość.
-42	Nasze własne rozwiązanie, nowość w HOUZY 5. W naszych testach na kickach około 5–6 dB czystszy niż T6 przy tej samej głośności. Na przełączniku SMART | T6 | T8.
+42	Nasze własne rozwiązanie, nowość w HOUZY 5. W naszych testach na kickach około 5–6 dB czystszy niż T6 przy tej samej głośności. Na przełączniku T6 | T8.
 43	Atak w okresach fali, release w ułamkach taktu.
 44	<b>5 ms na nucie basu 50 Hz to ćwierć jej fali</b> — gain porusza się wewnątrz jednego drgania, dokładnie tam, gdzie kompresor brudzi dół. Te same 5 ms na hi-hacie 8 kHz to czterdzieści okresów. Dlatego atak ustawia się w okresach: jedno pokrętło daje 45 ms przy 50 Hz i 1 ms przy 8 kHz, nigdy szybciej niż pół okresu.
 45	Release można ustawić na dwa sposoby, kliknij jego podpis, żeby przełączyć. <b>MS</b> to zwykłe milisekundy (domyślnie). <b>NOTE</b> to ułamek taktu: release podąża za tempem projektu, więc zmiana tempa nie wymaga ponownego kręcenia. A <b>AUTO</b> słucha, jak szybko wygasają dźwięki w utworze, i dopasowuje release.
 46	Wszystko, czego potrzebuje szyna master.
 47	<b>AUTO GAIN</b> — oddaje dokładnie tyle, ile zabrała kompresja.
-48	<b>Limiter widmowy</b> — SMART (3 pasma), T6 (6 pasm) lub T8 (gain zmienia się tylko w przejściach przez zero, w HOUZY): szczyt basu nigdy nie przygniata gór.
+48	<b>Limiter widmowy</b> — T6 (6 pasm) lub T8 (gain zmienia się tylko w przejściach przez zero, w HOUZY): szczyt basu nigdy nie przygniata gór.
 49	<b>GAIN MATCH</b> — BYPASS porównuje charakter, nie głośność.
 50	<b>DASH</b> — od punchu do równości: jedno pokrętło zamienia dynamikę na stały poziom.
 51	<b>UPWARD</b> — podnosi to, co ciche: ogony, powietrze, detale.
@@ -138,10 +138,10 @@
 156	<b>Wypróbuj HOUZY na własnym utworze</b>MP3 / WAV · pierwsze 75 s · gra w przeglądarce, nigdzie nie jest wysyłany
 157	Co jest w demo
 158	W demo
-159	Limitery SMART, T6 i T8
+159	Limitery T6 i T8
 160	UPWARD, CLIP SHAPE i DASH
 161	ATTACK, RELEASE, INPUT, OUTPUT, MIX
-162	Faza LINEAR i NATURAL
+162	Faza LINEAR, NATURAL i CLEAN L
 163	Oversampling do 16x
 165	Pełna wersja dodaje
 166	Silniki CLASSIC i MODERN
@@ -358,7 +358,7 @@
 396	Kup
 397	$69, z 14-dniową wersją próbną
 398	Wypróbuj kompresor masteringowy HOUZY
-399	Demo uruchamia silnik HOUZY z SMART, T6 i T8, UPWARD, CLIP SHAPE, DASH i oversamplingiem do 16x. 32x / 64x i ALL MIX są w pełnej wersji.
+399	Demo uruchamia silnik HOUZY z T6 i T8, UPWARD, CLIP SHAPE, DASH i oversamplingiem do 16x. 32x / 64x i ALL MIX są w pełnej wersji.
 400	Pobierz
 401	Zwrot w ciągu 14 dni od zakupu
 402	Twój dźwięk nigdy nie opuszcza komputera
