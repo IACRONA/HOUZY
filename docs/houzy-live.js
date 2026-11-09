@@ -37,8 +37,8 @@
   window.houzySay = function (text) { say(text); };
   window.houzyBypass = function () { setBypass(!bypass); };
   // MIX & MASTER (09.11.2026, owner: "just the UI"): the plugin's own window over the panel, as it looks in the plugin
-  // (harness `mastertour`, sample engineers), nothing behind it. First the "who are you here?" screen that says what the
-  // window is for, a click shows the catalogue, the next click (or × / Esc) closes. In the plugin's four languages
+  // (harness `mastertour`), nothing behind it: the "who are you here?" screen that says what the window is for;
+  // a click on it = "MIX & MASTER - only in the full version", × / Esc closes. In the plugin's four languages
   // (owner: "all four languages"); the site's other languages get English.
   var MM_V = '?v=20261109b';
   window.houzyMaster = function () {
@@ -54,16 +54,17 @@
       var x = document.createElement('button'); x.type = 'button'; x.className = 'mm-close'; x.textContent = '×';
       x.setAttribute('aria-label', T('Close'));
       v.appendChild(img); v.appendChild(x);
-      v.mmPages = ['/img/plugin/mixmaster_welcome_' + lang + '.webp' + MM_V, '/img/plugin/mixmaster_' + lang + '.webp' + MM_V];
-      new Image().src = v.mmPages[1];                       // the catalogue is ready by the first click
+      // owner 09.11.2026: only this first screen in the demo - going further says "full version"; × or Esc closes
+      v.mmPages = ['/img/plugin/mixmaster_welcome_' + lang + '.webp' + MM_V];
       v.addEventListener('click', function (e) {
-        if (e.target !== x && v.mmPage === 0) { v.mmPage = 1; img.src = v.mmPages[1]; return; }
-        hideMaster(v);
+        if (e.target === x) { hideMaster(v); return; }
+        window.houzyLocked('MIX & MASTER');
       });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !v.hidden) hideMaster(v); });
       panel.appendChild(v);
     }
-    v.mmPage = 0; v.querySelector('img').src = v.mmPages[0];
+    var dl = window.houzyDemoLang || 'en';   // the demo's language button (plugin.js)
+    v.querySelector('img').src = '/img/plugin/mixmaster_welcome_' + dl + '.webp' + MM_V;
     v.hidden = false;
     requestAnimationFrame(function () { v.classList.add('on'); });
   };

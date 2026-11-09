@@ -314,8 +314,13 @@
   // 24.10.2026: T8 is the plugin's default now, so the third bake is T6 (chrome_t6), and chrome_alt has NATURAL lit.
   var BAKE = 2, ALT = new Image(), OS4 = new Image(), T6 = new Image(), CLEAN = new Image(), bakeDir = '/img/plugin/t4/';   // PULIK by default (24.10.2026)
   ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T6.file = 'chrome_t6.webp'; CLEAN.file = 'chrome_clean.webp';
-  var BAKE_V = '?v=20261109a';   // 5.2.0 panel: MIX & MASTER, T6 | T8, CLEAN L (chrome_clean), BEAT and 8x by default
+  var BAKE_V = '?v=20261109c';   // 5.2.0 panel: MIX & MASTER, T6 | T8, CLEAN L (chrome_clean), BEAT and 8x by default
   //   // the bakes change with the panel (HOUZY | HOUZY II, DELTA, CHARACTER gone: 02.11.2026; chrome_alt has HOUZY and DELTA lit)
+  var LANGS = ['en', 'ru', 'es', 'pt'], LANG_IMG = {};
+  var demoLang = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+  if (LANGS.indexOf(demoLang) < 0) demoLang = 'en';
+  window.houzyDemoLang = demoLang;
+  LANGS.forEach(function (l) { var im = new Image(); im.file = 'lang_' + l + '.webp'; LANG_IMG[l] = im; });
   var STATE = { allmix: 0, bypass: 0, gainmatch: 0, delta: 0, clipmode: 2, limmode: 3, relsmart: 0,
                 osfactor: 3, autogain: 1, relauto: 1, truepeak: 0, phasemode: 0, houzycore: 1 };
   var DEF = JSON.parse(JSON.stringify(STATE));
@@ -343,6 +348,11 @@
     ctx.drawImage(img, x * BAKE, y * BAKE, w * BAKE, h * BAKE, x, y, w, h);
   }
   function drawSwitches() {
+    if (demoLang !== 'en') {
+      var li = LANG_IMG[demoLang];
+      if (!li.getAttribute('src')) { li.onload = function () { lastSig = ''; }; li.src = bakeDir + li.file + BAKE_V; }   // redraw once it is in
+      if (li.complete && li.naturalWidth) ctx.drawImage(li, R.lang[0] - 3, R.lang[1] - 3, R.lang[2] + 6, R.lang[3] + 6);
+    }
     if (STATE.allmix !== DEF.allmix) paste(ALT, R.bands, 0);
     PATCHES.forEach(function (k) {
       if (STATE[k] === DEF[k]) return;
@@ -429,10 +439,13 @@
     var next = new Image();
     next.onload = function () {
       chromeImg.src = next.src; bakeDir = dir;
-      [ALT, OS4, T6].forEach(function (im) { if (im.getAttribute('src')) im.src = dir + im.file + BAKE_V; });   // reload only what was in use
+      [ALT, OS4, T6, CLEAN].concat(LANGS.map(function (l) { return LANG_IMG[l]; })).forEach(function (im) { if (im.getAttribute('src')) im.src = dir + im.file + BAKE_V; });   // reload only what was in use
     };
     next.src = dir + 'chrome.webp' + BAKE_V;
   }
+  var langMenu = makeMenu('LANGUAGE', ['EN', 'RU', 'ES', 'PT'], 80, function (i) {
+    demoLang = LANGS[i]; window.houzyDemoLang = demoLang; TIP_LANG = demoLang; hideTip(); lastSig = '';   // the canvas redraws only on a change
+  }, LANGS.indexOf(demoLang));
   var themeMenu = makeMenu('THEMES', THEMES.map(function (t) { return t[0]; }), 12.7, setTheme, 3);
 
   // UI: the four spheres (kOrbColours) and UI OFF, which stops the picture
@@ -462,6 +475,7 @@
     if (inR(p, R.presets)) { toggleMenu(presetMenu); return; }
     if (inR(p, R.themes)) { toggleMenu(themeMenu); return; }
     if (inR(p, R.ui)) { toggleMenu(uiMenu); return; }
+    if (inR(p, R.lang)) { toggleMenu(langMenu); return; }
     menus.forEach(function (m) { m.hidden = true; });
     if (inR(p, R.bypass)) { if (window.houzyBypass) window.houzyBypass(); return; }
     ['gainmatch', 'delta', 'autogain', 'relauto', 'truepeak'].forEach(function (k) {
@@ -481,14 +495,12 @@
     if (inR(p, R.a)) useSlot(0);
     if (inR(p, R.b)) useSlot(1);
     if (inR(p, R.copy)) { slots[1 - slot] = snapshot(); say(T('Copied {from} to {to}', { from: slot ? 'B' : 'A', to: slot ? 'A' : 'B' })); }
-    if (inR(p, R.lang)) say(T('English, Russian, Spanish and Portuguese in the plugin'));
   }
   // ---- tooltips: the plugin's own texts (img/plugin/tips.json, written by the harness `webchrome` from the editor, all
   //      four languages, captions answer with their knob), shown like DwellTooltip (24.10.2026): 0.9 s of dwell on one
   //      control, never while dragging, three shows of one tip and it rests 90 s; it settles in like a drop and dissolves
   //      like vapour (site.css .ptip). The flip key (LINEAR | NATURAL) shows the text of its current mode.
-  var TIPS = [], TIP_LANG = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
-  if (['en', 'ru', 'es', 'pt'].indexOf(TIP_LANG) < 0) TIP_LANG = 'en';
+  var TIPS = [], TIP_LANG = demoLang;   // the language button's pick (starts on the page's language)
   fetch('/img/plugin/tips.json' + BAKE_V).then(function (r) { return r.json(); }).then(function (t) { TIPS = t; }).catch(function () {});
   var tipEl = document.createElement('div'); tipEl.className = 'ptip'; tipEl.hidden = true; tipEl.setAttribute('role', 'tooltip');
   panel.appendChild(tipEl);
