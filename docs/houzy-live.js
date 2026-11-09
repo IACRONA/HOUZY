@@ -36,25 +36,34 @@
   window.houzyLocked = function (what) { say(T('{what} — only in the full version', { what: T(what) })); };
   window.houzySay = function (text) { say(text); };
   window.houzyBypass = function () { setBypass(!bypass); };
-  // MIX & MASTER (09.11.2026, owner: "just the UI"): the plugin's catalogue window shown over the panel as it looks in the
-  // plugin (harness `mastertour`, sample engineers), nothing behind it. A click anywhere or Esc closes it.
+  // MIX & MASTER (09.11.2026, owner: "just the UI"): the plugin's own window over the panel, as it looks in the plugin
+  // (harness `mastertour`, sample engineers), nothing behind it. First the "who are you here?" screen that says what the
+  // window is for, a click shows the catalogue, the next click (or × / Esc) closes. In the plugin's four languages
+  // (owner: "all four languages"); the site's other languages get English.
+  var MM_V = '?v=20261109b';
   window.houzyMaster = function () {
     var panel = document.getElementById('panel');
     if (!panel) return;
     var v = panel.querySelector('.mm-view');
     if (!v) {
       var lang = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+      if (['en', 'ru', 'es', 'pt'].indexOf(lang) < 0) lang = 'en';
       v = document.createElement('div'); v.className = 'mm-view'; v.hidden = true;
       var img = document.createElement('img');
-      img.src = '/img/plugin/mixmaster_' + (lang === 'ru' ? 'ru' : 'en') + '.webp?v=20261109a';
       img.alt = 'MIX & MASTER'; img.decoding = 'async';
       var x = document.createElement('button'); x.type = 'button'; x.className = 'mm-close'; x.textContent = '×';
       x.setAttribute('aria-label', T('Close'));
       v.appendChild(img); v.appendChild(x);
-      v.addEventListener('click', function () { hideMaster(v); });
+      v.mmPages = ['/img/plugin/mixmaster_welcome_' + lang + '.webp' + MM_V, '/img/plugin/mixmaster_' + lang + '.webp' + MM_V];
+      new Image().src = v.mmPages[1];                       // the catalogue is ready by the first click
+      v.addEventListener('click', function (e) {
+        if (e.target !== x && v.mmPage === 0) { v.mmPage = 1; img.src = v.mmPages[1]; return; }
+        hideMaster(v);
+      });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !v.hidden) hideMaster(v); });
       panel.appendChild(v);
     }
+    v.mmPage = 0; v.querySelector('img').src = v.mmPages[0];
     v.hidden = false;
     requestAnimationFrame(function () { v.classList.add('on'); });
   };
