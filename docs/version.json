@@ -17,7 +17,13 @@
    },
    "mac": "https://acronawar.gumroad.com/l/houzy-trial",
    "mac_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
-   "mac_au": "https://acronawar.gumroad.com/l/houzy-trial"
+   "mac_au": "https://acronawar.gumroad.com/l/houzy-trial",
+   "more": {
+    "en": "/houzy-5-2.html",
+    "ru": "/ru/houzy-5-2.html",
+    "es": "/es/houzy-5-2.html",
+    "pt": "/pt/houzy-5-2.html"
+   }
   },
   {
    "version": "5.1.0",

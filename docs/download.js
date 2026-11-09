@@ -5,17 +5,17 @@
 // ONE language per file since 18.10.2026 (/download.html, /ru/ /es/ /pt/download.html): the page language is <html lang>.
 (function () {
   var TXT = {
-    en: ['What\'s new', 'Latest version', 'Download', 'Installer', 'Download HOUZY', 'Coming soon'],
-    ru: ['Что нового', 'Последняя версия', 'Скачать', 'Установщик', 'Скачать HOUZY', 'Скоро'],
-    es: ['Novedades', 'Última versión', 'Descargar', 'Instalador', 'Descargar HOUZY', 'Próximamente'],
-    pt: ['Novidades', 'Última versão', 'Baixar', 'Instalador', 'Baixar HOUZY', 'Em breve'],
-    fr: ['Nouveautés', 'Dernière version', 'Télécharger', 'Installateur', 'Télécharger HOUZY', 'Bientôt'],
-    it: ['Novità', 'Ultima versione', 'Scarica', 'Installer', 'Scarica HOUZY', 'Prossimamente'],
-    ja: ['新機能', '最新バージョン', 'ダウンロード', 'インストーラー', 'HOUZYをダウンロード', '近日公開'],
-    de: ['Neuigkeiten', 'Neueste Version', 'Herunterladen', 'Installer', 'HOUZY herunterladen', 'Demnächst'],
-    pl: ['Nowości', 'Najnowsza wersja', 'Pobierz', 'Instalator', 'Pobierz HOUZY', 'Wkrótce'],
-    zh: ['更新内容', '最新版本', '下载', '安装程序', '下载 HOUZY', '即将推出'],
-    th: ['มีอะไรใหม่', 'เวอร์ชันล่าสุด', 'ดาวน์โหลด', 'ตัวติดตั้ง', 'ดาวน์โหลด HOUZY', 'เร็ว ๆ นี้']
+    en: ['What\'s new', 'Latest version', 'Download', 'Installer', 'Download HOUZY', 'Coming soon', "Read the full story"],
+    ru: ['Что нового', 'Последняя версия', 'Скачать', 'Установщик', 'Скачать HOUZY', 'Скоро', "Читать подробнее"],
+    es: ['Novedades', 'Última versión', 'Descargar', 'Instalador', 'Descargar HOUZY', 'Próximamente', "Leer más"],
+    pt: ['Novidades', 'Última versão', 'Baixar', 'Instalador', 'Baixar HOUZY', 'Em breve', "Leia mais"],
+    fr: ['Nouveautés', 'Dernière version', 'Télécharger', 'Installateur', 'Télécharger HOUZY', 'Bientôt', "En savoir plus"],
+    it: ['Novità', 'Ultima versione', 'Scarica', 'Installer', 'Scarica HOUZY', 'Prossimamente', "Scopri di più"],
+    ja: ['新機能', '最新バージョン', 'ダウンロード', 'インストーラー', 'HOUZYをダウンロード', '近日公開', "詳しく読む"],
+    de: ['Neuigkeiten', 'Neueste Version', 'Herunterladen', 'Installer', 'HOUZY herunterladen', 'Demnächst', "Mehr lesen"],
+    pl: ['Nowości', 'Najnowsza wersja', 'Pobierz', 'Instalator', 'Pobierz HOUZY', 'Wkrótce', "Czytaj więcej"],
+    zh: ['更新内容', '最新版本', '下载', '安装程序', '下载 HOUZY', '即将推出', "阅读全文"],
+    th: ['มีอะไรใหม่', 'เวอร์ชันล่าสุด', 'ดาวน์โหลด', 'ตัวติดตั้ง', 'ดาวน์โหลด HOUZY', 'เร็ว ๆ นี้', "อ่านเพิ่มเติม"]
   };
   var L = (document.documentElement.lang || 'en').slice(0, 2), data = null;   // 18.10.2026: one language per file (/ru/download.html)
   if (!TXT[L]) L = 'en';
@@ -53,6 +53,10 @@
       var ul = el('ul');
       n.split('\n').forEach(function (line) { if (line.trim()) ul.appendChild(el('li', '', line)); });
       box.appendChild(ul);
+      if (r.more) {   // 09.11.2026: the release has a page of its own (houzy-5-2.html): "Read more" under its notes
+        var mp = el('p', 'more'), ma = el('a', '', T[6] + ' →');
+        ma.href = r.more[L] || r.more.en; mp.appendChild(ma); box.appendChild(mp);
+      }
       if (i > 0) {   // older releases: their own files, in case the newest one does not suit
         var p = el('p', 'meta');
         FILES.forEach(function (f) {
