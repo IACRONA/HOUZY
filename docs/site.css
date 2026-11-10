@@ -1105,3 +1105,9 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
 .logo{display:block;border-radius:12px;
   box-shadow:0 0 0 1px rgba(255,255,255,.75),0 0 0 2px rgba(22,25,31,.06),0 2px 4px rgba(10,20,26,.22),0 8px 18px -8px rgba(10,20,26,.45),0 0 16px -6px rgba(95,212,228,.55)}
 .bar{padding-left:9px}
+
+/* ---------- 5.3 COMING SOON (owner, 10.11.2026): one line between the hero card and the plugin window, in halftone dots
+   like the claim (site.js HALFTONE SEL), the same gap above and below it. Remove: this rule, <p class="soon"> on the 11 home
+   pages, '.soon' in SEL, t[131] in i18n/*.json. The canvas over the header logo (site.js VECTOR WORDMARK) keeps its corners. ---------- */
+.try .soon{margin:0 auto clamp(28px,3.6vw,44px);text-align:center;font-size:clamp(20px,2.4vw,30px);line-height:1.15;color:var(--ink);font-variation-settings:'wght' 540;text-wrap:balance}
+.brand .wordmark{border-radius:12px}

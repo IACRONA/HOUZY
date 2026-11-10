@@ -554,62 +554,84 @@
   }, { passive: true });
   document.addEventListener('pointerleave', function () { if (litEl) litEl.style.setProperty('--lit', '0'); litEl = null; });
 
-  /* ---------- VECTOR WORDMARK on the header's HOUZY: the plugin's HouzyWordmark (PluginEditor.h), same rules ----------
-     Only while the pointer is over the word (at rest the ordinary text shows and this costs nothing): the letters dissolve
+  /* ---------- VECTOR WORDMARK on the header LOGO: the plugin's HouzyWordmark (PluginEditor.h), same rules ----------
+     Only while the pointer is over the logo (at rest the picture shows and this costs nothing): the HOUZY letters dissolve
      toward their bottom, turn into a dotted outline around the pointer, and three vector handles - squares joined by a
-     dashed triangle, each labelled x, y - snap to the grid cells next to the pointer and drift. Pointer, fade and drift
-     run on elapsed time. Composed per pixel like the plugin (~15k px); takes no clicks, the link under it still works. */
+     dashed triangle, each labelled x, y - snap to the grid cells next to the pointer and drift. The letters are taken from
+     the picture itself (its bright pixels above ACRONA AUDIO, which keeps still): the frame is the picture with them wiped
+     (a local minimum = the dark badge) and the effect drawn in their place, in the plugin's colours. Pointer, fade and drift
+     run on elapsed time; takes no clicks, the link under it still works. */
   (function () {
-    var word = document.querySelector('.bar .brand b');
-    if (!word || !window.matchMedia('(hover: hover)').matches) return;
-    var brand = word.parentElement, bar = brand.closest('.bar'), PAD = 14;
+    var logo = document.querySelector('.bar .brand .logo');
+    if (!logo || !window.matchMedia('(hover: hover)').matches) return;
+    var brand = logo.parentElement, bar = brand.closest('.bar');
     var cv = document.createElement('canvas'); cv.className = 'wordmark'; cv.setAttribute('aria-hidden', 'true');
     brand.appendChild(cv);
     var c = cv.getContext('2d');
-    var W = 0, H = 0, cssW = 0, cssH = 0, dpr = 1, fill, soft, dots, img, tTop = 0, tH = 1, dirty = true;
+    var W = 0, H = 0, cssW = 0, cssH = 0, dpr = 1, base, bare, fill, soft, dots, img, tTop = 0, tH = 1, dirty = true;
     var hover = 0, active = false, hasPtr = false, ptr = [0, 0], eased = [0, 0], drift = 0, last = 0, running = false;
     var cells = [[0, 0], [0, 0], [0, 0]], verts = [[0, 0], [0, 0], [0, 0]];
-    var INK = [22, 25, 31], SHADE = [31, 111, 125], ACC = '31,111,125';    // --ink, --accent-ink
+    var TOP = [230, 244, 248], SHADE = [68, 106, 113], ACC = '141,202,212';   // pal::title, pal::cyanDim, pal::cyan
+    var BAND = 0.69;   // houzy-logo.webp: HOUZY on rows 30..131 of 210, ACRONA AUDIO on 159..189 - letters only above this
 
-    function layer(draw) {
-      var o = document.createElement('canvas'); o.width = W; o.height = H;
-      var x = o.getContext('2d'); x.setTransform(dpr, 0, 0, dpr, 0, 0); draw(x, o); return o;
-    }
-    function alphaOf(o) {
-      var d = o.getContext('2d').getImageData(0, 0, W, H).data, a = new Float32Array(W * H);
-      for (var i = 0; i < a.length; i++) a[i] = d[i * 4 + 3] / 255;
-      return a;
+    // square window of radius r over one W x H channel, two passes: the minimum (min = true) or the mean
+    function filt(a, r, min) {
+      var t = new Float32Array(a.length), o = new Float32Array(a.length), x, y, k, v, s;
+      for (y = 0; y < H; y++) for (x = 0; x < W; x++) {
+        v = min ? 1e9 : 0;
+        for (k = -r; k <= r; k++) { s = a[y * W + clamp(x + k, 0, W - 1)]; v = min ? Math.min(v, s) : v + s; }
+        t[y * W + x] = min ? v : v / (2 * r + 1);
+      }
+      for (y = 0; y < H; y++) for (x = 0; x < W; x++) {
+        v = min ? 1e9 : 0;
+        for (k = -r; k <= r; k++) { s = t[clamp(y + k, 0, H - 1) * W + x]; v = min ? Math.min(v, s) : v + s; }
+        o[y * W + x] = min ? v : v / (2 * r + 1);
+      }
+      return o;
     }
     // the layers - rebuilt only when the size or the screen scale changes
     function build() {
-      var br = brand.getBoundingClientRect(), wr = word.getBoundingClientRect();
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      cssW = wr.width + 2 * PAD; cssH = wr.height + 2 * PAD;
-      cv.style.left = (wr.left - br.left - PAD) + 'px'; cv.style.top = (wr.top - br.top - PAD) + 'px';
+      cssW = logo.offsetWidth; cssH = logo.offsetHeight;
+      cv.style.left = logo.offsetLeft + 'px'; cv.style.top = logo.offsetTop + 'px';
       cv.style.width = cssW + 'px'; cv.style.height = cssH + 'px';
       W = Math.round(cssW * dpr); H = Math.round(cssH * dpr); cv.width = W; cv.height = H;
-      var cs = getComputedStyle(word), font = '650 ' + cs.fontSize + ' ' + cs.fontFamily;
-      var mc = document.createElement('canvas').getContext('2d'); mc.font = font;
-      var asc = mc.measureText('H').fontBoundingBoxAscent, gm = mc.measureText('HOUZY');
-      // every letter exactly where the page put it (letter-spacing included), from the text's own boxes
-      var node = word.firstChild, rng = document.createRange(), chars = [];
-      for (var i = 0; i < node.length; i++) {
-        rng.setStart(node, i); rng.setEnd(node, i + 1);
-        var r = rng.getBoundingClientRect();
-        chars.push([node.data[i], r.left - wr.left + PAD, r.top - wr.top + PAD + asc]);
+      var o = document.createElement('canvas'); o.width = W; o.height = H;
+      var ox = o.getContext('2d', { willReadFrequently: true }); ox.drawImage(logo, 0, 0, W, H);
+      base = ox.getImageData(0, 0, W, H).data;
+      var n = W * H, i, y, ch, y0 = H, y1 = 0;
+      fill = new Float32Array(n);
+      for (i = 0; i < n; i++) {
+        y = Math.floor(i / W);
+        var t = clamp((Math.max(base[i * 4], base[i * 4 + 1], base[i * 4 + 2]) / 255 - 0.3) / 0.3, 0, 1);   // badge <= .25, letters >= .55
+        fill[i] = y < H * BAND ? t * t * (3 - 2 * t) : 0;
+        if (fill[i] > 0.5) { y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
       }
-      tTop = chars[0][2] - gm.actualBoundingBoxAscent; tH = gm.actualBoundingBoxAscent + gm.actualBoundingBoxDescent;
-      var each = function (x, how) { x.font = font; x.textBaseline = 'alphabetic'; chars.forEach(function (ch) { how(x, ch); }); };
-      var fillC = layer(function (x) { x.fillStyle = '#fff'; each(x, function (x, ch) { x.fillText(ch[0], ch[1], ch[2]); }); });
-      var dotD = Math.max(1.1 / dpr, tH * 0.045), pitch = dotD * 2.6;     // the dotted outline: round dots along every contour
-      var dotC = layer(function (x) {
-        x.strokeStyle = '#fff'; x.lineWidth = dotD; x.lineCap = 'round'; x.setLineDash([0.001, pitch]);
-        each(x, function (x, ch) { x.strokeText(ch[0], ch[1], ch[2]); });
-      });
-      var softC = layer(function (x) {                                      // the soft copy: a small blur of the fill
-        x.setTransform(1, 0, 0, 1, 0, 0); x.filter = 'blur(' + Math.max(1, Math.round(tH * 0.06 * dpr)) + 'px)'; x.drawImage(fillC, 0, 0);
-      });
-      fill = alphaOf(fillC); dots = alphaOf(dotC); soft = alphaOf(softC);
+      tTop = y0 / dpr; tH = Math.max(1, (y1 - y0 + 1) / dpr);
+      // the picture without its letters: a minimum wider than half a stroke lands on the badge between them
+      var r = Math.max(2, Math.round(H * 0.07)), cover = filt(fill, r, false), mins = [];
+      for (ch = 0; ch < 3; ch++) { var a = new Float32Array(n); for (i = 0; i < n; i++) a[i] = base[i * 4 + ch]; mins.push(filt(a, r, true)); }
+      bare = new Float32Array(n * 3);
+      for (i = 0; i < n; i++) {
+        var w = Math.min(1, cover[i] * 3);
+        for (ch = 0; ch < 3; ch++) bare[i * 3 + ch] = base[i * 4 + ch] + (mins[ch][i] - base[i * 4 + ch]) * w;
+      }
+      soft = filt(fill, Math.max(1, Math.round(tH * 0.06 * dpr)), false);   // the soft copy: a small blur of the fill
+      // the dotted outline: one round dot per pitch cell, on the edge pixels of the letters in it
+      var dotD = Math.max(1.6, tH * 0.045 * dpr), pc = Math.max(2, Math.round(dotD * 2.6)), inside = new Float32Array(n);
+      for (i = 0; i < n; i++) inside[i] = fill[i] > 0.5 ? 1 : 0;
+      var core = filt(inside, Math.max(1, Math.round(dotD)), true);
+      var d = document.createElement('canvas'); d.width = W; d.height = H;
+      var dx = d.getContext('2d', { willReadFrequently: true }); dx.fillStyle = '#fff';
+      for (var cy = 0; cy < H; cy += pc) for (var cx = 0; cx < W; cx += pc) {
+        var sx = 0, sy = 0, m = 0;
+        for (y = cy; y < Math.min(H, cy + pc); y++) for (var x = cx; x < Math.min(W, cx + pc); x++) {
+          var q = y * W + x; if (inside[q] && !core[q]) { sx += x; sy += y; m++; }
+        }
+        if (m) { dx.beginPath(); dx.arc(sx / m + 0.5, sy / m + 0.5, dotD / 2, 0, 6.2832); dx.fill(); }
+      }
+      var dd = dx.getImageData(0, 0, W, H).data; dots = new Float32Array(n);
+      for (i = 0; i < n; i++) dots[i] = dd[i * 4 + 3] / 255;
       img = c.createImageData(W, H);
       dirty = false;
     }
@@ -617,14 +639,18 @@
     function compose() {
       var d = img.data, px = eased[0] * dpr, py = eased[1] * dpr, reach = tH * 1.9 * dpr, T = tTop * dpr, TH = Math.max(1, tH * dpr);
       for (var y = 0; y < H; y++) {
-        var ey = Math.min(1, Math.max(0, 1 - (y - T) / TH));               // 0 bottom .. 1 top
-        var softMix = Math.min(1, Math.max(0, 1 - ey * 3.5)), fade = Math.pow(ey, 0.7), g = ey * ey * (3 - 2 * ey);
-        var cr = SHADE[0] + (INK[0] - SHADE[0]) * g, cg = SHADE[1] + (INK[1] - SHADE[1]) * g, cb = SHADE[2] + (INK[2] - SHADE[2]) * g;
+        var ey = clamp(1 - (y - T) / TH, 0, 1);                             // 0 bottom .. 1 top
+        var softMix = clamp(1 - ey * 3.5, 0, 1), fade = Math.pow(ey, 0.7), g = ey * ey * (3 - 2 * ey);
+        var col = [0, 1, 2].map(function (k) { return SHADE[k] + (TOP[k] - SHADE[k]) * g; });
         for (var x = 0; x < W; x++) {
-          var i = y * W + x, sf = fill[i] + (soft[i] - fill[i]) * softMix, k = 0;
+          var i = y * W + x, j = i * 4, sf = fill[i] + (soft[i] - fill[i]) * softMix, k = 0;
           if (hasPtr) { var t = Math.min(1, Math.hypot(x - px, y - py) / reach), s = t * t * (3 - 2 * t); k = 1 - s * s * s; }
-          var a = Math.min(1, Math.max(0, (sf + (dots[i] - sf) * k) * fade * hover)), j = i * 4;
-          d[j] = cr; d[j + 1] = cg; d[j + 2] = cb; d[j + 3] = a * 255;
+          var a = clamp((sf + (dots[i] - sf) * k) * fade, 0, 1) * hover;
+          for (var ch = 0; ch < 3; ch++) {
+            var b = base[j + ch] + (bare[i * 3 + ch] - base[j + ch]) * hover;   // the picture's letters fade out under the effect
+            d[j + ch] = b + (col[ch] - b) * a;
+          }
+          d[j + 3] = 255;
         }
       }
       c.putImageData(img, 0, 0);
@@ -644,6 +670,7 @@
         c.strokeStyle = 'rgba(' + ACC + ',' + a + ')'; c.strokeRect(v[0] - half, v[1] - half, half * 2, half * 2);
         var txt = Math.round(clamp(v[0] / cssW * 100, 0, 100)) + ', ' + Math.round(clamp((1 - v[1] / cssH) * 100, 0, 100));
         var lr = [v[0] - half, v[1] - half - 9, c.measureText(txt).width + 2, 7];
+        if (lr[1] < 1) lr[1] = v[1] + half + 2;                             // no room above inside the badge: under the square
         var clash = taken.some(function (t) { return lr[0] < t[0] + t[2] && t[0] < lr[0] + lr[2] && lr[1] < t[1] + t[3] && t[1] < lr[1] + lr[3]; });
         if (!clash) { c.fillStyle = 'rgba(' + ACC + ',' + Math.min(1, a * 1.1) + ')'; c.fillText(txt, lr[0], lr[1] + 7); taken.push([lr[0] - 2, lr[1] - 1, lr[2] + 4, lr[3] + 2]); }
       }
@@ -676,10 +703,9 @@
       eased[0] += (ptr[0] - eased[0]) * damp; eased[1] += (ptr[1] - eased[1]) * damp;
       drift += dt;
       if (hasPtr) { snapCells(); updateVerts(); }
-      word.style.opacity = (1 - hover).toFixed(3);                          // the ordinary word fades out under the effect
       c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, W, H);
       if (hover > 0.002) { compose(); handles(); }
-      if (!active && hover === 0) { hasPtr = false; running = false; last = 0; word.style.opacity = ''; return; }
+      if (!active && hover === 0) { hasPtr = false; running = false; last = 0; return; }
       requestAnimationFrame(loop);
     }
     function setActive(a) {
@@ -688,12 +714,11 @@
     }
     bar.addEventListener('pointermove', function (e) {
       if (e.pointerType !== 'mouse') return;
-      var r = word.getBoundingClientRect();
-      var inside = e.clientX > r.left - 10 && e.clientX < r.right + 10 && e.clientY > r.top - 6 && e.clientY < r.bottom + 6;
+      var r = logo.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
       if (inside) {
-        if (dirty || !W) build();
-        var cr = cv.getBoundingClientRect();
-        ptr = [e.clientX - cr.left, e.clientY - cr.top];
+        if (dirty || !W) { if (!logo.complete || !logo.naturalWidth) return; build(); }
+        ptr = [(e.clientX - r.left) * cssW / (r.width || 1), (e.clientY - r.top) * cssH / (r.height || 1)];
         if (!hasPtr) eased = ptr.slice();
         hasPtr = true;
       }
@@ -701,7 +726,6 @@
     });
     bar.addEventListener('pointerleave', function () { setActive(false); });
     window.addEventListener('resize', function () { dirty = true; });
-    if (document.fonts) document.fonts.ready.then(function () { dirty = true; });   // the letters are measured in Sora
   })();
 
   /* ---------- the header's selection: a DROP of liquid glass, like the selected key of the plugin's switches ----------
@@ -785,14 +809,14 @@
    covers its cell (area-true), the pointer parts the dots on springs and they warm toward the accent colour, a click sends
    a ring through the words. Which headings (owner): the claim at the top of the home page, Technology's first chapter
    ("Even compression across every frequency..."), the home FAQ title, and the page titles of Why HOUZY, Manual, Partners
-   and Download - in every language. The real text stays in the page (transparent) for search, screen readers and
+   and Download, and the "5.3 coming soon" line over the home plugin - in every language. The real text stays in the page (transparent) for search, screen readers and
    selection. Starts at once: the dots fly in from below and settle. Word places come from a hidden copy of the heading
    laid out by the browser (offsets - transform-free, so reveal animations do not skew them), so line breaks, text-wrap
    and every language match; a text swap (language) re-sets the dots. Works with reduced motion too (the owner's Windows
    has animations off). Delete this block and the site.css "HALFTONE" lines to remove it. ---------- */
 (function () {
   var page = location.pathname.replace(/^\/(ru|es|pt|fr|it|ja|de|pl|zh|th)\//, '/');
-  var SEL = ['.hero-title .t', '#p-houzy h2', '#faq .head h2', '#dl-title'];
+  var SEL = ['.hero-title .t', '#p-houzy h2', '#faq .head h2', '#dl-title', '.soon'];
   if (/^\/(why-houzy|manual|affiliates)\.html$/.test(page)) SEL.push('main h1');
   var root = getComputedStyle(document.documentElement);
   var hex = function (s) { var m = /^#?([0-9a-f]{6})$/i.exec((s || '').trim()); return m ? [0, 2, 4].map(function (i) { return parseInt(m[1].substr(i, 2), 16); }) : null; };

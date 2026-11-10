@@ -68,7 +68,7 @@
 
   // ---- swapping the page
   var files = {};
-  function load(l) { return files[l] || (files[l] = fetch('/i18n/' + l + '.json?v=20261028b').then(function (r) { return r.json(); })); }
+  function load(l) { return files[l] || (files[l] = fetch('/i18n/' + l + '.json?v=20261110a').then(function (r) { return r.json(); })); }
   function setMeta(sel, attr, v) { var e = document.querySelector(sel); if (e && v != null) e.setAttribute(attr, v); }
   function apply(l, data) {
     var t = data.t || [];
