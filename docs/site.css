@@ -1091,23 +1091,12 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
 #whatsnew .more a{color:var(--accent-ink);text-decoration:none;font-variation-settings:'wght' 600}
 #whatsnew .more a:hover{text-decoration:underline}
 
-/* ---------- PAGE TRANSITION: PARTICLE MORPH (owner, 10.11.2026) - the particles are drawn by site.js (end, WebGL2): one page breaks
-   into particles and the same particles fly onto the next one. This part only bridges the page change: the old page's last
-   picture (white + its particles) is held until the next page has drawn its own moving particles (site.js skipTransition, 1 s cap as a safety net).
-   Header links only (site.js skips every other navigation). Rejected by the owner before it: big pixel squares to white,
-   a parallax slide, a fine-dot dissolve, the section name in particles between the pages. ---------- */
-@view-transition{navigation:auto}
-::view-transition-group(root){animation:none}
-::view-transition-old(root){animation:vt-hold 1s step-end both;mix-blend-mode:normal;z-index:1}   /* safety net only: site.js drops it (skipTransition) as soon as the next page draws its moving particles */
-::view-transition-new(root){animation:none;mix-blend-mode:normal}
-@keyframes vt-hold{to{opacity:1}}
-
-/* ---------- HALFTONE TITLE (owner, 10.11.2026): the claim at the top printed in dots, the pointer parts them - site.js, end.
+/* ---------- HALFTONE headings (owner, 10.11.2026): headings printed in dots, the pointer parts them - site.js, end.
    The text stays in the page, transparent; the canvas reaches 40 px past it (PAD in site.js) so pushed dots are not cut off.
    No fade: the dots fly in by themselves. ---------- */
-.hero-title .t{position:relative}
-.hero-title .ht-cv{position:absolute;left:-40px;top:-40px;width:calc(100% + 80px);height:calc(100% + 80px);pointer-events:none}
-.hero-title.ht-on .t{color:transparent}
+.ht{position:relative}
+.ht .ht-cv{position:absolute;left:-40px;top:-40px;width:calc(100% + 80px);height:calc(100% + 80px);pointer-events:none}
+.ht-on,.ht-on *{color:transparent!important}
 
 /* ---------- HEADER LOGO (owner, 10.11.2026): the new dark HOUZY badge sits in the header's round end. All four corners 12 px
    (symmetric; a full pill would clip the H and the Y, they run 6 px from the picture's edge), the gap to the bar's left end =
