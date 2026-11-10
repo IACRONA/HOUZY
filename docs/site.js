@@ -709,7 +709,7 @@
      to them (to Manual on the manual page). Like SegmentedSwitch in the plugin: the leading edge runs ahead, the trailing
      one follows, and the drop thins across while it stretches, then gathers on the new place. Time based, no bounce. */
   (function () {
-    var bar = document.querySelector('.bar'), small = bar && bar.querySelector('.brand small');
+    var bar = document.querySelector('.bar'), small = bar && (bar.querySelector('.brand small') || bar.querySelector('.brand .logo'));   // the logo image stands in for the old ACRONA AUDIO text
     var links = bar ? [].slice.call(bar.querySelectorAll('.menu a')) : [];
     if (!bar || !small || !links.length) return;
     var items = [small].concat(links);
@@ -778,4 +778,286 @@
           if (p.length === 2 && Date.now() - +p[1] < 5000) from = +p[0]; } catch (e) {}
     if (from >= 0 && from < items.length && from !== w) { go(from, true); requestAnimationFrame(function () { go(w); }); } else go(w, true);
   })();
+})();
+
+/* ---------- PAGE TRANSITION: PARTICLE MORPH (owner, 10.11.2026), plain WebGL2, no library. A header link: the text, pictures and
+   glass blocks on screen break into particles while the page fades to white, and the SAME particles fly straight onto the
+   next page's text and pictures while the white fades away - one page turns into the other (no word in between: the owner
+   did not want "MANUAL appears, then the page"). Nothing ever stands still: after the break-up every particle keeps floating
+   on its own fixed velocity (a function of its index and of the click time), so while the next page loads they drift on,
+   and the next page picks them up exactly where they are by now (`houzy-morph` in sessionStorage: click time + where they
+   started). Header links prefetch their page on hover / focus / touch, so the click usually finds it in the cache.
+   A script cannot read a picture of the page, so particles are born where the text / images / glass blocks are.
+   Technology (#top) keeps its plain scroll; About / FAQ on the home page morph in place. Cross-page: a short View Transition
+   (site.css, end) holds the old page's last picture until this script draws the same on the next page. Without WebGL2 or
+   View Transitions (Firefox) the links work as before. The click handler is in CAPTURE phase: the site's own fade-out on
+   link clicks (above) would take the click first. Delete this block and the site.css block to remove it all. ---------- */
+(function () {
+  var C = document.createElement('canvas'), gl = C.getContext('webgl2', { premultipliedAlpha: false, preserveDrawingBuffer: true, antialias: false });
+  if (!gl || !document.startViewTransition || !window.CSSViewTransitionRule) return;
+  C.setAttribute('aria-hidden', 'true');
+  C.style.cssText = 'position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:45;pointer-events:none;display:none';
+  document.body.appendChild(C);
+  var N = innerWidth < 700 ? 3500 : 7000, BG = [0.957, 0.957, 0.973], KEY = 'houzy-morph', busy = false, fromMenu = false;
+  // T_NAV: the page is left when the click sound (audio/click.wav, 0.5 s, site.js "UI sounds") has died away - measured
+  // -17 dB at 0, -41 at 300 ms, -53 at 420 ms; leaving at the click cut it in half (owner, 10.11). The break-up (T_OUT) is
+  // long and lively enough to cover that time, so it never reads as a stop.
+  var T_OUT = 460, T_MIN = 220, T_NAV = 420, T_MORPH = 520, SEL = '.bar nav a[href], .bar a.brand';   // break-up, flight (ms); menu + logo, not the language menu
+
+  function sh(t, s) { var o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o); return o; }
+  var P = gl.createProgram();
+  gl.attachShader(P, sh(gl.VERTEX_SHADER, '#version 300 es\nin vec2 a;in vec2 b;in float r;uniform vec2 uR;uniform float uT,uS,uL;out float vC;' +
+    // uL = 1: plain drift, p = a + (b - a) * seconds; uL = 0: the flight - every particle leaves AT ONCE and fast, its own
+    // length by r, bowed sideways. An ease-in or a staggered start read as "it stops, then it goes"; a CUBIC ease-out over
+    // 760 ms made the slowest particle crawl its last 5 % for 280 ms - "собирается с замедлением, зависает" (owner, 10.11).
+    // Quadratic ease-out over T_MORPH 520 ms: that tail is 116 ms (scratchpad morph-verify.mjs measures it).
+    'void main(){vec2 d=b-a,p;float k;if(uL>.5){p=a+d*uT;k=0.;}else{k=clamp(uT/(.75+.25*r),0.,1.);k=1.-pow(1.-k,2.);' +
+    'p=a+d*k+vec2(-d.y,d.x)*(fract(r*7.31)-.5)*.6*sin(3.14159*k);}' +
+    'gl_Position=vec4(p.x/uR.x*2.-1.,1.-p.y/uR.y*2.,0.,1.);gl_PointSize=uS*(1.+.8*sin(3.14159*k));vC=fract(r*13.7);}'));
+  gl.attachShader(P, sh(gl.FRAGMENT_SHADER, '#version 300 es\nprecision mediump float;in float vC;uniform float uA;out vec4 o;' +
+    'void main(){float d=length(gl_PointCoord-.5);if(d>.5)discard;vec3 c=vC<.22?vec3(.18,.62,.70):vec3(.10,.12,.15);o=vec4(c,uA*smoothstep(.5,.15,d));}'));
+  gl.linkProgram(P);
+  if (!gl.getProgramParameter(P, gl.LINK_STATUS)) return;
+  gl.useProgram(P);
+  var U = {}; ['uR', 'uT', 'uS', 'uA', 'uL'].forEach(function (n) { U[n] = gl.getUniformLocation(P, n); });
+  var buf = {}; ['a', 'b', 'r'].forEach(function (n) {
+    buf[n] = gl.createBuffer(); var l = gl.getAttribLocation(P, n);
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf[n]); gl.enableVertexAttribArray(l); gl.vertexAttribPointer(l, n === 'r' ? 1 : 2, gl.FLOAT, false, 0, 0);
+  });
+  var rr = new Float32Array(N), V = new Float32Array(N * 2), fr = function (x) { return x - Math.floor(x); };
+  for (var i = 0; i < N; i++) {
+    rr[i] = Math.random();
+    // drift velocity: fixed per particle index, the same on every page (px / s)
+    var ang = fr(Math.sin(i * 12.9898) * 43758.5453) * 6.2832, sp = 70 + 80 * fr(Math.sin(i * 78.233) * 12543.67);
+    V[2 * i] = Math.cos(ang) * sp; V[2 * i + 1] = Math.sin(ang) * sp;
+  }
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf.r); gl.bufferData(gl.ARRAY_BUFFER, rr, gl.STATIC_DRAW);
+  gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+  function size() {
+    var d = Math.min(devicePixelRatio || 1, 2); C.width = Math.round(innerWidth * d); C.height = Math.round(innerHeight * d);
+    gl.viewport(0, 0, C.width, C.height); gl.uniform2f(U.uR, innerWidth, innerHeight); gl.uniform1f(U.uS, 2.2 * d);
+  }
+  // particles where the visible text, pictures and glass blocks are (text weighs more); the header is not part of it
+  function contentPts() {
+    var w = innerWidth, h = innerHeight, R = [], cum = [], tot = 0, rg = document.createRange(), t;
+    function add(rc, wt) {
+      var x0 = Math.max(rc.left, 0), y0 = Math.max(rc.top, 0), x1 = Math.min(rc.right, w), y1 = Math.min(rc.bottom, h);
+      if (x1 - x0 < 2 || y1 - y0 < 2) return;
+      R.push([x0, y0, x1 - x0, y1 - y0]); tot += (x1 - x0) * (y1 - y0) * wt; cum.push(tot);
+    }
+    var tw = document.createTreeWalker(document.querySelector('main') || document.body, NodeFilter.SHOW_TEXT);
+    while ((t = tw.nextNode())) {
+      if (!t.data.trim()) continue;
+      var pr = t.parentElement.getBoundingClientRect(); if (pr.bottom < 0 || pr.top > h || !pr.width) continue;
+      rg.selectNodeContents(t); [].forEach.call(rg.getClientRects(), function (rc) { add(rc, 4); });
+    }
+    [].forEach.call(document.querySelectorAll('main img, main canvas, main .glass, main .cta'), function (el) { add(el.getBoundingClientRect(), 0.3); });
+    if (!R.length) add({ left: 0, top: 0, right: w, bottom: h }, 1);
+    var out = new Float32Array(N * 2);
+    for (var i = 0; i < N; i++) {
+      var u = Math.random() * tot, lo = 0, hi = cum.length - 1;
+      while (lo < hi) { var m = (lo + hi) >> 1; if (cum[m] < u) lo = m + 1; else hi = m; }
+      var q = R[lo]; out[2 * i] = q[0] + Math.random() * q[2]; out[2 * i + 1] = q[1] + Math.random() * q[3];
+    }
+    return out;
+  }
+  function at(a0, sec) { var o = new Float32Array(a0.length); for (var k = 0; k < a0.length; k++) o[k] = a0[k] + V[k] * sec; return o; }
+  function load(from, to) {
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf.a); gl.bufferData(gl.ARRAY_BUFFER, from, gl.DYNAMIC_DRAW);
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf.b); gl.bufferData(gl.ARRAY_BUFFER, to, gl.DYNAMIC_DRAW);
+  }
+  function draw(t, bgA, pA) {
+    gl.clearColor(BG[0], BG[1], BG[2], bgA); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform1f(U.uT, t); gl.uniform1f(U.uA, pA); gl.drawArrays(gl.POINTS, 0, N);
+  }
+  var sm = function (a, b, t) { t = Math.min(Math.max((t - a) / (b - a), 0), 1); return t * t * (3 - 2 * t); };
+  var floatRaf = 0, flyRaf = 0;
+  // the break-up and the drift: the page goes white under its own particles, which float on until stopped
+  function float(a0, t0) {
+    cancelAnimationFrame(flyRaf); load(a0, at(a0, 1)); gl.uniform1f(U.uL, 1); C.style.display = 'block';
+    var o = T_OUT / 1000;
+    (function f() { var s = (Date.now() - t0) / 1000; draw(s, sm(0, o * 0.85, s), sm(0, o * 0.35, s)); floatRaf = requestAnimationFrame(f); })();
+  }
+  // the flight: from wherever the drift has got to (click time t0) onto this page's content, the white fading away;
+  // it picks up the break-up's white and particle strength where they are, so nothing jumps if it starts early
+  function fly(a0, t0) {
+    cancelAnimationFrame(floatRaf); var e = (Date.now() - t0) / 1000, o = T_OUT / 1000, from = at(a0, e);
+    var bg0 = sm(0, o * 0.85, e), pa0 = sm(0, o * 0.35, e);
+    load(from, contentPts()); gl.uniform1f(U.uL, 0); var s0 = performance.now();
+    (function f() {
+      var t = Math.min((performance.now() - s0) / T_MORPH, 1);
+      draw(t, bg0 * (1 - sm(0.1, 0.75, t)), Math.min(1, pa0 + t * 4) * (1 - sm(0.7, 1, t)));   // the white is gone by 3/4 of the flight
+      if (t < 1) flyRaf = requestAnimationFrame(f); else { C.style.display = 'none'; busy = false; }
+    })();
+  }
+
+  // hover / focus / touch on a header link: PRERENDER its page (Chrome / Edge speculation rules - the whole next page is
+  // built in the background, and the click swaps it in at once: no load gap between the break-up and the flight, owner
+  // 10.11: "можно заранее, чтобы всё было прогружено"); other browsers: a plain prefetch. Needs 'inline-speculation-rules'
+  // in the pages' CSP. Only the last two hovered pages are kept prerendered.
+  var pf = {}, rules = [], SR = window.HTMLScriptElement && HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules');
+  function prefetch(e) {
+    var a = e.target && e.target.closest && e.target.closest(SEL); if (!a) return;
+    var u = new URL(a.href, location.href); if (u.origin !== location.origin || u.pathname === location.pathname || pf[u.pathname]) return;
+    pf[u.pathname] = 1;
+    if (SR) {
+      var s = document.createElement('script'); s.type = 'speculationrules';
+      s.textContent = JSON.stringify({ prerender: [{ urls: [u.pathname], eagerness: 'immediate' }] });
+      document.head.appendChild(s); rules.push([s, u.pathname]);
+      if (rules.length > 2) { var old = rules.shift(); old[0].remove(); delete pf[old[1]]; }
+    } else { var l = document.createElement('link'); l.rel = 'prefetch'; l.href = u.pathname; document.head.appendChild(l); }
+  }
+  document.addEventListener('pointerover', prefetch, { passive: true });
+  document.addEventListener('focusin', prefetch);
+  document.addEventListener('touchstart', prefetch, { passive: true });
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest(SEL);
+    fromMenu = !!a;
+    if (!a || /#top$/.test(a.getAttribute('href')) || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
+    var u = new URL(a.href, location.href); if (u.origin !== location.origin) return;
+    var same = u.pathname === location.pathname, el = same && u.hash && document.getElementById(u.hash.slice(1));
+    if (same && !el) return;
+    e.preventDefault(); if (busy) return; busy = true;
+    size(); var a0 = contentPts(), t0 = Date.now();
+    float(a0, t0);
+    if (same) {
+      setTimeout(function () { el.scrollIntoView({ behavior: 'instant' }); history.pushState(null, '', u.hash); fly(a0, t0); }, T_MIN);
+      return;
+    }
+    try {
+      var p = new Array(a0.length); for (var i = 0; i < a0.length; i++) p[i] = Math.round(a0[i]);
+      sessionStorage.setItem(KEY, JSON.stringify({ w: innerWidth, h: innerHeight, t: t0, p: p.join(',') }));
+    } catch (x) {}
+    // leave once the click sound is over (T_NAV); the next page continues the break-up from the click time and flies on
+    // at once, so there is no stop between the break-up and the flight
+    setTimeout(function () { location.href = u.href; }, T_NAV);
+  }, true);
+  window.addEventListener('pageswap', function (e) { if (e.viewTransition && !fromMenu) e.viewTransition.skipTransition(); fromMenu = false; });
+  window.addEventListener('pageshow', function (e) {   // back to this page from the cache: no stale picture
+    if (e.persisted) { cancelAnimationFrame(floatRaf); cancelAnimationFrame(flyRaf); C.style.display = 'none'; busy = false; }
+  });
+
+  // arriving from a header link: the previous page's particles, still drifting, exactly where they are by now; then the flight
+  // a prerendered page runs this before anyone looks at it: wait until it is actually shown
+  if (document.prerendering) document.addEventListener('prerenderingchange', arrive, { once: true }); else arrive();
+  function arrive() {
+  var s = null; try { s = JSON.parse(sessionStorage.getItem(KEY) || 'null'); sessionStorage.removeItem(KEY); } catch (x) {}
+  if (s && Date.now() - s.t < 10000) {
+    var p = s.p.split(','), a0 = new Float32Array(N * 2), kx = innerWidth / s.w, ky = innerHeight / s.h;
+    for (var j = 0; j < N * 2; j++) a0[j] = (+p[j % p.length] || 0) * (j % 2 ? ky : kx);
+    // the page's own entrances (site.js: main / footer rise in, [data-reveal] cards spring in) would make the content arrive
+    // AFTER the particles have landed - a second, late arrival read as a lag. Here the particles are the entrance, so what is
+    // on screen now is simply there; cards further down still spring in on scroll.
+    [].forEach.call(document.querySelectorAll('main, .foot, [data-reveal]'), function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight) { el.style.setProperty('opacity', '1', 'important'); el.style.setProperty('transform', 'none', 'important'); }
+    });
+    busy = true; size(); float(a0, s.t);
+    // the old page's held picture (site.css) is static: drop it the moment this page's own moving particles are on
+    // screen, instead of after a fixed hold - the hold read as a stop between the break-up and the flight (measured
+    // 0.2 s of near-still frames, 10.11.2026)
+    var vt = document.activeViewTransition;
+    if (vt) requestAnimationFrame(function () { try { vt.skipTransition(); } catch (x) {} });
+    // the flight starts as soon as the break-up has shown for T_MIN since the click - not after the View Transition hold
+    // (site.css cross-fades the held picture into this live one, which is already moving)
+    setTimeout(function () { fly(a0, s.t); }, Math.max(0, T_MIN - (Date.now() - s.t)));
+  }
+  }
+})();
+
+/* ---------- HALFTONE TITLE (owner, 10.11.2026): the claim at the top ("One mastering compressor...") printed as halftone dots,
+   after the halftone-wordmark-footer component the owner sent (21st.dev, React) - ported to plain canvas, same rules: a dot's
+   size = how much of the letter covers its cell (area-true), the pointer parts the dots on springs and they warm toward the
+   accent colour, a click sends a ring through the words. The real text stays in the page (transparent) for search, screen
+   readers and selection. Starts at once: the dots fly in from below and settle into the letters (this replaces the words'
+   rise-in for the title - the first version waited 1.9 s for it and the owner saw it as a hang). Word places come from a
+   hidden copy of the title laid out by the browser (offsets, so the card's own reveal transform does not skew them), so
+   line breaks / text-wrap / 11 languages always match. Works with reduced motion too (the owner's Windows has animations
+   off). Delete this block and the site.css "HALFTONE TITLE" lines to remove it. ---------- */
+(function () {
+  var t = document.querySelector('.hero-title .t'), h1 = t && t.closest('.hero-title'), host = t && t.closest('.head');
+  var cv = document.createElement('canvas'), ctx = cv.getContext('2d');
+  if (!t || !host || !ctx) return;
+  var PAD = 40;   // the canvas reaches this far past the title (site.css), so pushed dots are not cut off
+  cv.className = 'ht-cv'; cv.setAttribute('aria-hidden', 'true');
+  var dots = new Float32Array(0), n = 0, W = 0, H = 0, dpr = 1, gap = 3, R = 60, px = -1e5, py = -1e5, raf = 0, awake = false, first = true;
+  var ring = { x: 0, y: 0, t: -1 }, ink = [20, 24, 28], warm = [42, 169, 187], inkS = 'rgb(20,24,28)';
+  var rgb = function (s) { var m = (s || '').match(/[\d.]+/g); return m && m.length >= 3 ? [+m[0], +m[1], +m[2]] : null; };
+  ink = rgb(getComputedStyle(h1).color) || ink; inkS = 'rgb(' + ink.join(',') + ')';
+  var kick = h1.querySelector('.kick'); warm = (kick && rgb(getComputedStyle(kick).color)) || warm;
+  var words = t.textContent.trim().split(/\s+/);
+  t.appendChild(cv); h1.classList.add('ht-on');   // the text goes transparent now; the dots arrive as soon as the font is in
+
+  function layout() {
+    W = cv.offsetWidth; H = cv.offsetHeight; if (W < 2 || H < 2) return;
+    dpr = Math.min(window.devicePixelRatio || 1, 2); cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    var cs = getComputedStyle(t), fs = parseFloat(cs.fontSize) || 40;
+    var wt = (/\d+/.exec(cs.fontVariationSettings || '') || [cs.fontWeight])[0];
+    gap = Math.max(2, Math.min(3.4, fs / 15)); R = Math.max(40, fs * 1.5);
+    // a hidden copy of the title, one inline-block per word (as the page sets them), measured by offsets
+    var cl = document.createElement('span'); cl.className = 't'; cl.setAttribute('aria-hidden', 'true');
+    cl.style.cssText = 'position:absolute;left:0;top:0;visibility:hidden;pointer-events:none;width:' + t.clientWidth + 'px';
+    words.forEach(function (w, i) { var s = document.createElement('span'); s.className = 'w'; s.textContent = w; cl.appendChild(s); if (i < words.length - 1) cl.appendChild(document.createTextNode(' ')); });
+    t.appendChild(cl);
+    var m = document.createElement('canvas'); m.width = W; m.height = H;
+    var x = m.getContext('2d', { willReadFrequently: true }); if (!x) { cl.remove(); return; }
+    x.font = wt + ' ' + fs + 'px ' + cs.fontFamily; x.fillStyle = '#000'; x.textBaseline = 'alphabetic';
+    var mt = x.measureText('Hg'), asc = mt.fontBoundingBoxAscent || fs * 0.8, desc = mt.fontBoundingBoxDescent || fs * 0.2;
+    [].forEach.call(cl.children, function (s) {
+      var ww = x.measureText(s.textContent).width; if (!s.offsetWidth || !ww) return;
+      x.save(); x.translate(PAD + s.offsetLeft, PAD + s.offsetTop + (s.offsetHeight - asc - desc) / 2 + asc); x.scale(s.offsetWidth / ww, 1);
+      x.fillText(s.textContent, 0, 0); x.restore();
+    });
+    cl.remove();
+    var img = x.getImageData(0, 0, W, H).data, cols = Math.ceil(W / gap), rows = Math.ceil(H / gap), tmp = [];
+    for (var gy = 0; gy < rows; gy++) for (var gx = 0; gx < cols; gx++) {
+      var sum = 0;   // coverage: average alpha over a 3x3 sample of the cell
+      for (var sy = 0; sy < 3; sy++) for (var sx = 0; sx < 3; sx++) {
+        var X = Math.min(W - 1, Math.floor(gx * gap + (sx + 0.5) * gap / 3)), Y = Math.min(H - 1, Math.floor(gy * gap + (sy + 0.5) * gap / 3));
+        sum += img[(Y * W + X) * 4 + 3];
+      }
+      var c = sum / (9 * 255); if (c < 0.06) continue;
+      var hx = gx * gap + gap / 2, hy = gy * gap + gap / 2, sx0 = hx, sy0 = hy;
+      if (first) { sx0 = hx + (Math.random() - 0.5) * 50; sy0 = hy + 30 + Math.random() * 60; }   // the fly-in: start below, scattered
+      tmp.push(sx0, sy0, 0, 0, hx, hy, Math.sqrt(c) * gap * 0.56);   // x, y, vx, vy, home x, home y, radius
+    }
+    dots = new Float32Array(tmp); n = tmp.length / 7; first = false; wake();
+  }
+
+  function draw(now) {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    var age = ring.t < 0 ? 1e9 : now - ring.t, rr = age * 0.6, moving = false;
+    for (var i = 0; i < n; i++) {
+      var j = i * 7, x = dots[j], y = dots[j + 1], vx = dots[j + 2], vy = dots[j + 3], hx = dots[j + 4], hy = dots[j + 5];
+      if (age < 900) {   // the click ring
+        var ex = hx - ring.x, ey = hy - ring.y, e = Math.sqrt(ex * ex + ey * ey) + 0.001, band = 1 - Math.min(1, Math.abs(e - rr) / 18);
+        if (band > 0) { var f = band * 2.4 * (1 - age / 900); vx += ex / e * f; vy += ey / e * f; }
+      }
+      var dx = x - px, dy = y - py, d2 = dx * dx + dy * dy;
+      if (d2 < R * R) { var d = Math.sqrt(d2) + 0.001, p = (1 - d / R) * 2.2; vx += dx / d * p; vy += dy / d * p; }
+      vx = (vx + (hx - x) * 0.05) * 0.84; vy = (vy + (hy - y) * 0.05) * 0.84; x += vx; y += vy;
+      if (Math.abs(vx) + Math.abs(vy) > 0.02 || Math.abs(x - hx) + Math.abs(y - hy) > 0.05) moving = true; else { x = hx; y = hy; vx = vy = 0; }
+      dots[j] = x; dots[j + 1] = y; dots[j + 2] = vx; dots[j + 3] = vy;
+      var k = Math.min(1, Math.hypot(x - hx, y - hy) / 16);   // warmth: 0 at home, 1 once 16 px away
+      ctx.fillStyle = k > 0.02 ? 'rgb(' + Math.round(ink[0] + (warm[0] - ink[0]) * k) + ',' + Math.round(ink[1] + (warm[1] - ink[1]) * k) + ',' +
+        Math.round(ink[2] + (warm[2] - ink[2]) * k) + ')' : inkS;
+      ctx.beginPath(); ctx.arc(x, y, dots[j + 6], 0, 6.2832); ctx.fill();
+    }
+    awake = moving || age < 900 || px > -1e4;   // sleeps once every dot is home and nothing pushes
+  }
+  function loop(now) { raf = 0; draw(now); if (awake) raf = requestAnimationFrame(loop); }
+  function wake() { awake = true; if (!raf) raf = requestAnimationFrame(loop); }
+  function local(e) { var b = cv.getBoundingClientRect(); return [(e.clientX - b.left) * W / b.width, (e.clientY - b.top) * H / b.height]; }
+
+  host.addEventListener('pointermove', function (e) { var p = local(e); px = p[0]; py = p[1]; wake(); });
+  host.addEventListener('pointerleave', function () { px = py = -1e5; wake(); });
+  host.addEventListener('pointerdown', function (e) {
+    if (e.target.closest('a,button,input,label')) return; var p = local(e); ring = { x: p[0], y: p[1], t: performance.now() }; wake();
+  });
+  var rt = 0; new ResizeObserver(function () { if (!first) { clearTimeout(rt); rt = setTimeout(layout, 120); } }).observe(t);
+  // the face is usually in already (preloaded / cached); wait for it at most 400 ms, then set it again when it lands
+  var started = false, go = function () { if (!started) { started = true; layout(); } };
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { if (started) layout(); else go(); }); setTimeout(go, 400); } else go();
 })();
