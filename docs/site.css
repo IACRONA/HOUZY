@@ -1056,8 +1056,6 @@ html[lang="ja"]{word-break:auto-phrase}   /* Chrome / Edge / Safari break Japane
 .best-go{margin-left:auto;padding-left:12px;flex:none;white-space:nowrap;align-self:center}
 @media (max-width:640px){.best-review{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:8px}.best-go{grid-column:2;margin:0;padding:0;justify-self:start}}
 .qs-rv:hover b,.best-review:hover b{color:var(--accent-ink)}
-/* 7 header items (Download added): menu centred between the brand and the language button, equal gaps on both sides */
-@media (min-width:1000px){.bar{grid-template-columns:auto 1fr auto}}
 /* download page, top block: one 24 px gutter both ways, the left card's text on the same line as "What's new" below (40 px),
    platform cards 32 px; groups inside the left card separated more than their lines */
 @media (min-width:861px){
