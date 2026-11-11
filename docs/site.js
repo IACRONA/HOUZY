@@ -816,7 +816,7 @@
    has animations off). Delete this block and the site.css "HALFTONE" lines to remove it. ---------- */
 (function () {
   var page = location.pathname.replace(/^\/(ru|es|pt|fr|it|ja|de|pl|zh|th)\//, '/');
-  var SEL = ['.hero-title .t', '#p-houzy h2', '#faq .head h2', '#dl-title', '.soon'];
+  var SEL = ['.hero-title .t', '#p-houzy h2', '#faq .head h2', '#dl-title'];
   if (/^\/(why-houzy|manual|affiliates)\.html$/.test(page)) SEL.push('main h1');
   var root = getComputedStyle(document.documentElement);
   var hex = function (s) { var m = /^#?([0-9a-f]{6})$/i.exec((s || '').trim()); return m ? [0, 2, 4].map(function (i) { return parseInt(m[1].substr(i, 2), 16); }) : null; };
