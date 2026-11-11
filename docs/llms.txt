@@ -34,7 +34,7 @@
 - [Best mastering compressor plugins 2026](https://acronaaudio.shop/best-mastering-compressor.html): how to choose a mastering compressor and how FabFilter Pro-C 3, Shadow Hills, The Glue, TDR Kotelnikov, Ozone and HOUZY compare, with FAQ.
 - [Online demo](https://acronaaudio.shop/plugin.html): try HOUZY on your own track in the browser.
 - [Download](https://acronaaudio.shop/download.html): installers, installation and licence activation.
-- [User manual](https://acronaaudio.shop/manual.html): how to master electronic music with HOUZY, every control explained.
+- [User manual](https://acronaaudio.shop/manual.html): how to master music with HOUZY, every control explained.
 - [Buy on Gumroad](https://acronawar.gumroad.com/l/houzy)
 - [Terms of Use & Sale](https://acronaaudio.shop/terms.html), [EULA](https://acronaaudio.shop/eula.html), [Privacy Policy](https://acronaaudio.shop/privacy.html)
 
