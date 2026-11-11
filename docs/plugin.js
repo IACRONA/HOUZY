@@ -60,6 +60,13 @@
     host.style.width = (half * 2 / BASE_W * 100) + '%'; host.style.height = (half * 2 / BASE_H * 100) + '%';
   })();
   var orb = window.HouzyOrb ? window.HouzyOrb(panel.querySelector('.porb')) : null;
+  // FLURIK (theme 0): the live waves under a chrome baked with a transparent background (flurik.js). The chrome is then
+  // drawn on its own canvas in the <img>'s place (under the sphere, as the <img>): a switch's patch must REPLACE its
+  // region (clearRect), not lie over the default one showing through its glass.
+  var flurik = window.HouzyFlurik ? window.HouzyFlurik(panel) : null, bgLive = false;
+  var chromeCv = document.createElement('canvas'), cctx = chromeCv.getContext('2d');
+  chromeCv.className = 'pchrome'; chromeCv.setAttribute('aria-hidden', 'true');
+  panel.insertBefore(chromeCv, panel.querySelector('.porb'));
   var sprite = new Image(), SPRITE_N = 144, SPRITE_S = 160, SPRITE_COLS = 12;   // knob faces, the plugin's knob_sprite.png
   sprite.src = '/img/plugin/knobs.webp';
 
@@ -242,7 +249,13 @@
     var scale = cv.width / BASE_W;
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
     ctx.setTransform(scale, 0, 0, scale, 0, 0);
-    drawSwitches();
+    if (bgLive) {
+      if (chromeCv.width !== cv.width || chromeCv.height !== cv.height) { chromeCv.width = cv.width; chromeCv.height = cv.height; }
+      cctx.setTransform(1, 0, 0, 1, 0, 0); cctx.clearRect(0, 0, chromeCv.width, chromeCv.height);
+      cctx.setTransform(scale, 0, 0, scale, 0, 0);
+      if (chromeImg.complete && chromeImg.naturalWidth) cctx.drawImage(chromeImg, 0, 0, BASE_W, BASE_H);
+      var top = ctx; ctx = cctx; drawSwitches(); ctx = top;   // the switch patches go into the chrome layer
+    } else drawSwitches();
     KNOBS.forEach(function (c) {         // MIX locked in NATURAL: dimmed, as in the plugin (setLocked + colour)
       if (c === MIX && c.off) { ctx.save(); ctx.globalAlpha = 0.35; drawKnob(c); ctx.restore(); } else drawKnob(c);
     });
@@ -312,9 +325,10 @@
   // its default is drawn by pasting its own region from the other bake - the plugin's real look.
   // 2x of the 740 x 500 grid, WebP. The flipped bakes load only when a switch first leaves its default.
   // 24.10.2026: T8 is the plugin's default now, so the third bake is T6 (chrome_t6), and chrome_alt has NATURAL lit.
-  var BAKE = 2, ALT = new Image(), OS4 = new Image(), T6 = new Image(), CLEAN = new Image(), bakeDir = '/img/plugin/t4/';   // PULIK by default (24.10.2026)
+  var BAKE = 2, ALT = new Image(), OS4 = new Image(), T6 = new Image(), CLEAN = new Image(), bakeDir = '/img/plugin/t0/';   // FLURIK by default (10.11.2026, as the plugin; was PULIK)
   ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T6.file = 'chrome_t6.webp'; CLEAN.file = 'chrome_clean.webp';
-  var BAKE_V = '?v=20261109c';   // 5.2.0 panel: MIX & MASTER, T6 | T8, CLEAN L (chrome_clean), BEAT and 8x by default
+  var BAKE_V = '?v=20261110c';   // t0 = FLURIK (still frame of the plugin's live waves)
+  // was 20261109c - 5.2.0 panel: MIX & MASTER, T6 | T8, CLEAN L (chrome_clean), BEAT and 8x by default
   //   // the bakes change with the panel (HOUZY | HOUZY II, DELTA, CHARACTER gone: 02.11.2026; chrome_alt has HOUZY and DELTA lit)
   var LANGS = ['en', 'ru', 'es', 'pt'], LANG_IMG = {};
   var demoLang = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
@@ -345,13 +359,17 @@
     if (!img.getAttribute('src')) img.src = bakeDir + img.file + BAKE_V;
     if (!img.complete || !img.naturalWidth) return;
     var x = r[0] - pad, y = r[1] - pad, w = r[2] + 2 * pad, h = r[3] + 2 * pad;
+    if (bgLive) ctx.clearRect(x, y, w, h);
     ctx.drawImage(img, x * BAKE, y * BAKE, w * BAKE, h * BAKE, x, y, w, h);
   }
   function drawSwitches() {
     if (demoLang !== 'en') {
       var li = LANG_IMG[demoLang];
       if (!li.getAttribute('src')) { li.onload = function () { lastSig = ''; }; li.src = bakeDir + li.file + BAKE_V; }   // redraw once it is in
-      if (li.complete && li.naturalWidth) ctx.drawImage(li, R.lang[0] - 3, R.lang[1] - 3, R.lang[2] + 6, R.lang[3] + 6);
+      if (li.complete && li.naturalWidth) {
+        if (bgLive) ctx.clearRect(R.lang[0] - 3, R.lang[1] - 3, R.lang[2] + 6, R.lang[3] + 6);
+        ctx.drawImage(li, R.lang[0] - 3, R.lang[1] - 3, R.lang[2] + 6, R.lang[3] + 6);
+      }
     }
     if (STATE.allmix !== DEF.allmix) paste(ALT, R.bands, 0);
     PATCHES.forEach(function (k) {
@@ -432,13 +450,22 @@
   var presetMenu = makeMenu('PRESETS', PRESETS.map(function (p) { return p[0]; }), 1.6, function (i) { applySettings(PRESETS[i][1]); }, -1);
 
   // THEMES: the plugin's five backgrounds, each baked by the plugin (img/plugin/t<id>/), loaded when picked
-  var THEMES = [['BLURIK', 0], ['DARKIK', 1], ['MEDIUMIK', 3], ['PULIK', 4], ['UILIK', 5]];
+  var THEMES = [['FLURIK', 0], ['DARKIK', 1], ['MEDIUMIK', 3], ['PULIK', 4], ['UILIK', 5]];
   var chromeImg = panel.querySelector('img');
+  chromeImg.addEventListener('load', function () { lastSig = ''; });
+  function liveBg(on) {
+    bgLive = !!(on && flurik);
+    if (flurik) flurik.show(bgLive);
+    chromeImg.style.visibility = bgLive ? 'hidden' : '';
+    chromeCv.style.display = bgLive ? '' : 'none';
+    lastSig = '';
+  }
+  liveBg(bakeDir === '/img/plugin/t0/');
   function setTheme(i) {
     var dir = '/img/plugin/t' + THEMES[i][1] + '/';
     var next = new Image();
     next.onload = function () {
-      chromeImg.src = next.src; bakeDir = dir;
+      chromeImg.src = next.src; bakeDir = dir; liveBg(THEMES[i][1] === 0);
       [ALT, OS4, T6, CLEAN].concat(LANGS.map(function (l) { return LANG_IMG[l]; })).forEach(function (im) { if (im.getAttribute('src')) im.src = dir + im.file + BAKE_V; });   // reload only what was in use
     };
     next.src = dir + 'chrome.webp' + BAKE_V;
@@ -446,7 +473,7 @@
   var langMenu = makeMenu('LANGUAGE', ['EN', 'RU', 'ES', 'PT'], 80, function (i) {
     demoLang = LANGS[i]; window.houzyDemoLang = demoLang; TIP_LANG = demoLang; hideTip(); lastSig = '';   // the canvas redraws only on a change
   }, LANGS.indexOf(demoLang));
-  var themeMenu = makeMenu('THEMES', THEMES.map(function (t) { return t[0]; }), 12.7, setTheme, 3);
+  var themeMenu = makeMenu('THEMES', THEMES.map(function (t) { return t[0]; }), 12.7, setTheme, 0);   // FLURIK by default (10.11.2026)
 
   // UI: the four spheres (kOrbColours) and UI OFF, which stops the picture
   var ORBS = [['MINT', 0x33B9B9, 0xFFFFFF, 0xFFFFFF], ['GRAPHITE', 0x5A6B6B, 0xFFFFFF, 0xFFFFFF],
@@ -455,13 +482,13 @@
   var uiMenu = makeMenu('UI', ORBS.map(function (o) { return o[0]; }).concat(['UI OFF']), 23.8, function (i) {
     uiOff = i === ORBS.length;
     if (!uiOff) setOrb(i);
-  }, 1);
+  }, 1);   // GRAPHITE by default (owner 11.11.2026: on the site GRAPHITE, the plugin stays PLUM)
   // the sphere's colour is also --orb-tint: the BUY key's tendril (buy.js) takes it
   function setOrb(i) {
     if (orb && orb.setColours) orb.setColours(ORBS[i][1], ORBS[i][2], ORBS[i][3]);
     document.documentElement.style.setProperty('--orb-tint', '#' + ORBS[i][1].toString(16).padStart(6, '0'));
   }
-  setOrb(1);   // GRAPHITE by default
+  setOrb(1);   // GRAPHITE by default (owner 11.11.2026)
 
   function inR(p, r) { return p[0] >= r[0] && p[0] <= r[0] + r[2] && p[1] >= r[1] && p[1] <= r[1] + r[3]; }
   function third(p, r) { return Math.min(2, Math.floor((p[0] - r[0]) / (r[2] / 3))); }
