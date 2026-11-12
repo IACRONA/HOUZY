@@ -41,15 +41,31 @@
   var chev = document.createElement('i'); chev.className = 'lang-chev'; chev.setAttribute('aria-hidden', 'true'); btn.appendChild(chev);
   var menu = document.createElement('div'); menu.className = 'lang-menu'; menu.setAttribute('role', 'group');
   box.appendChild(btn); box.appendChild(menu);
+  // small flags right of the names (12.11.2026, user): inline SVG - emoji flags show as letters on Windows
+  var r = function (x, y, w, h, c) { return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" fill="' + c + '"/>'; };
+  var FLAGS = {
+    en: '<rect width="60" height="30" fill="#012169"/><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30M60 0L0 30" stroke="#C8102E" stroke-width="2"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>',
+    ru: r(0, 0, 3, 2, '#fff') + r(0, .667, 3, .667, '#0039A6') + r(0, 1.333, 3, .667, '#D52B1E'),
+    es: r(0, 0, 3, 2, '#AA151B') + r(0, .5, 3, 1, '#F1BF00'),
+    pt: r(0, 0, 3, 2, '#FF0000') + r(0, 0, 1.2, 2, '#006600') + '<circle cx="1.2" cy="1" r=".4" fill="#FFCC00"/>',
+    fr: r(0, 0, 1, 2, '#0055A4') + r(1, 0, 1, 2, '#fff') + r(2, 0, 1, 2, '#EF4135'),
+    it: r(0, 0, 1, 2, '#009246') + r(1, 0, 1, 2, '#fff') + r(2, 0, 1, 2, '#CE2B37'),
+    ja: r(0, 0, 3, 2, '#fff') + '<circle cx="1.5" cy="1" r=".6" fill="#BC002D"/>',
+    de: r(0, 0, 3, .667, '#000') + r(0, .667, 3, .667, '#DD0000') + r(0, 1.333, 3, .667, '#FFCE00'),
+    pl: r(0, 0, 3, 1, '#fff') + r(0, 1, 3, 1, '#DC143C'),
+    zh: r(0, 0, 3, 2, '#EE1C25') + '<polygon fill="#FFDE00" points=".5,.2 .568,.407 .785,.407 .609,.536 .676,.743 .5,.615 .324,.743 .391,.536 .215,.407 .432,.407"/>',
+    th: r(0, 0, 3, 2, '#A51931') + r(0, .333, 3, 1.333, '#F4F5F8') + r(0, .667, 3, .667, '#2D2A4A')
+  };
   var links = LANGS.map(function (l) {
     var a = document.createElement('a'); a.href = urlOf(l[0]); a.lang = l[0]; a.hreflang = l[0];
-    a.innerHTML = '<b>' + l[1] + '</b>' + l[2];
+    a.innerHTML = '<b>' + l[1] + '</b>' + l[2] + '<svg class="lang-flag" viewBox="' + (l[0] === 'en' ? '0 0 60 30' : '0 0 3 2') +
+      '" preserveAspectRatio="none" aria-hidden="true">' + FLAGS[l[0]] + '</svg>';
     menu.appendChild(a); return a;
   });
   nav.appendChild(box);   // the last column of the bar: the right corner (18.10.2026, Buy / Download left the header)
   // an old stylesheet from the browser cache (a page cached before this switch existed) has no rules for the menu, and the seven
   // languages would spill into the header as a row of text: hide the switch and fetch the current stylesheet.
-  if (getComputedStyle(menu).flexDirection !== 'column') {
+  if (getComputedStyle(menu).display !== 'grid') {
     box.style.visibility = 'hidden';
     var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/site.css?v=' + Date.now();
     css.onload = function () { box.style.visibility = ''; }; document.head.appendChild(css);
@@ -68,7 +84,7 @@
 
   // ---- swapping the page
   var files = {};
-  function load(l) { return files[l] || (files[l] = fetch('/i18n/' + l + '.json?v=20261110a').then(function (r) { return r.json(); })); }
+  function load(l) { return files[l] || (files[l] = fetch('/i18n/' + l + '.json?v=20261112a').then(function (r) { return r.json(); })); }
   function setMeta(sel, attr, v) { var e = document.querySelector(sel); if (e && v != null) e.setAttribute(attr, v); }
   function apply(l, data) {
     var t = data.t || [];

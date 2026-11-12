@@ -13,7 +13,7 @@
 16	Abspielen
 17	WAV herunterladen
 18	Entfernen
-19	HOUZY kaufen — $69
+19	HOUZY kaufen — <s class="was-btn">$118</s> $69
 20	Kostenlos herunterladen<small>14 Tage Testversion</small>
 21	<b>Startangebot:</b> Die ersten 20 Käufer erhalten <b>15 % Rabatt</b> mit dem Code <b>FIRST20</b> — <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">HOUZY für $58.65</a> statt $69. Bis 19. November.
 22	HOUZY · Jetzt erhältlich
@@ -111,7 +111,7 @@
 126	Nutzungs- und Verkaufsbedingungen (EN)
 127	Lizenzvereinbarung (EULA, EN)
 128	Die besten Mastering-Kompressoren
-131	Version 5.1.0 · aktualisiert am <time datetime="2026-11-02">2. November 2026</time>
+131	Version 5.2.0 · aktualisiert am <time datetime="2026-11-09">9. November 2026</time>
 132	© 2026 ACRONA AUDIO. HOUZY, ACR und T8 sind Namen von ACRONA AUDIO. VST ist eine Marke der Steinberg Media Technologies GmbH. Audio Units, Logic Pro und macOS sind Marken der Apple Inc. Andere Namen gehören ihren Inhabern.
 133	HOUZY ist ein universeller Mastering-Kompressor, der jeden Ton für sich komprimiert: kein Pumpen, ein knackiger Kick, ein sauberer Bass, jedes Genre. ACR-Clipper, T8-Limiter. VST3.
 134	HOUZY-Releases
@@ -371,7 +371,7 @@
 409	2INPUT bis −10…−9 LUFS
 410	3CYCLES 3–4
 411	Engine HOUZY / HOUZY II
-413	Neueste Version 5.1.0 · 02.11.2026
+413	Neueste Version 5.2.0 · 09.11.2026
 414	Version aktualisieren · kostenlos
 415	Unabhängiger Test
 416	Videotest

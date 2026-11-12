@@ -390,7 +390,7 @@ Page: Download and activation (https://acronaaudio.shop/download.html)
 
 # Download HOUZY
 
-Latest version 5.1.0 · 02.11.2026
+Latest version 5.2.0 · 09.11.2026
 
 Windows 10/11 · 64-bitmacOS 10.15+ · Apple Silicon & Intel
 

@@ -14,7 +14,7 @@
 16	播放
 17	下载 WAV
 18	清除
-19	购买 HOUZY — $69
+19	购买 HOUZY — <s class="was-btn">$118</s> $69
 20	免费下载<small>14 天试用</small>
 21	<b>首发优惠：</b>前 20 位买家使用优惠码 <b>FIRST20</b> 可享 <b>85 折</b> — <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">HOUZY 只需 $58.65</a>（原价 $69）。截至 11 月 19 日。
 22	HOUZY · 现已发布
@@ -112,7 +112,7 @@
 126	使用与销售条款（英文）
 127	许可协议（EULA，英文）
 128	最佳母带压缩器
-131	版本 5.1.0 · 更新于 <time datetime="2026-11-02">2026 年 11 月 2 日</time>
+131	版本 5.2.0 · 更新于 <time datetime="2026-11-09">2026 年 11 月 9 日</time>
 132	© 2026 ACRONA AUDIO。HOUZY、ACR 和 T8 是 ACRONA AUDIO 的名称。VST 是 Steinberg Media Technologies GmbH 的商标。Audio Units、Logic Pro 和 macOS 是 Apple Inc. 的商标。其他名称归各自所有者所有。
 133	HOUZY 是一款通用母带压缩器，单独压缩每一个音：没有抽吸，底鼓有力，低频干净，适合任何风格。ACR 削波器、T8 限制器。VST3。
 134	HOUZY 版本发布
@@ -372,7 +372,7 @@
 409	2INPUT 最高到 −10…−9 LUFS
 410	3CYCLES 3–4
 411	HOUZY / HOUZY II 引擎
-413	最新版本 5.1.0 · 2026.11.02
+413	最新版本 5.2.0 · 2026.11.09
 414	更新版本 · 免费
 415	独立评测
 416	视频评测

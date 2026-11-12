@@ -6,7 +6,19 @@
   <link href="https://acronaaudio.shop/feed.xml" rel="self"/>
   <link href="https://acronaaudio.shop/download.html"/>
   <author><name>ACRONA AUDIO</name></author>
-  <updated>2026-11-02T00:00:00Z</updated>
+  <updated>2026-11-09T00:00:00Z</updated>
+  <entry>
+    <title>HOUZY 5.2.0</title>
+    <id>tag:acronaaudio.shop,2026:houzy-5.2.0</id>
+    <link href="https://acronaaudio.shop/houzy-5-2.html"/>
+    <updated>2026-11-09T00:00:00Z</updated>
+    <summary type="text">HOUZY II rebuilt: the bands work as one team, the tone stays as it was, every range is evened out, the punch of every hit is kept, the level no longer drifts.
+New CLEAN L phase mode: the clarity of LINEAR with a kick that hits more distinctly.
+BEAT now releases in exactly the time you set; SMART lets go of fading sounds earlier. BEAT is the default.
+2.5 times lighter on the CPU: from about 12 % of a core to under 5 %.
+MIX &amp; MASTER: a catalogue of mixing and mastering engineers inside the plugin, with their tracks and a live chat.
+Limiter T6 | T8, oversampling 8x by default and only working when there is something to cut. Presets re-tuned, AMOUNT starts at 0, bug report button.</summary>
+  </entry>
   <entry>
     <title>HOUZY 5.1.0</title>
     <id>tag:acronaaudio.shop,2026:houzy-5.1.0</id>
