@@ -327,7 +327,7 @@
   // 24.10.2026: T8 is the plugin's default now, so the third bake is T6 (chrome_t6), and chrome_alt has NATURAL lit.
   var BAKE = 2, ALT = new Image(), OS4 = new Image(), T6 = new Image(), CLEAN = new Image(), bakeDir = '/img/plugin/t0/';   // FLURIK by default (10.11.2026, as the plugin; was PULIK)
   ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T6.file = 'chrome_t6.webp'; CLEAN.file = 'chrome_clean.webp';
-  var BAKE_V = '?v=20261110c';   // t0 = FLURIK (still frame of the plugin's live waves)
+  var BAKE_V = '?v=20261116a';   // t0 = FLURIK (still frame of the plugin's live waves)
   // was 20261109c - 5.2.0 panel: MIX & MASTER, T6 | T8, CLEAN L (chrome_clean), BEAT and 8x by default
   //   // the bakes change with the panel (HOUZY | HOUZY II, DELTA, CHARACTER gone: 02.11.2026; chrome_alt has HOUZY and DELTA lit)
   var LANGS = ['en', 'ru', 'es', 'pt'], LANG_IMG = {};
@@ -450,22 +450,25 @@
   var presetMenu = makeMenu('PRESETS', PRESETS.map(function (p) { return p[0]; }), 1.6, function (i) { applySettings(PRESETS[i][1]); }, -1);
 
   // THEMES: the plugin's five backgrounds, each baked by the plugin (img/plugin/t<id>/), loaded when picked
-  var THEMES = [['FLURIK', 0], ['DARKIK', 1], ['MEDIUMIK', 3], ['PULIK', 4], ['UILIK', 5]];
+  // 16.11.2026: DARKIK -> WARPIK and MEDIUMIK -> AURORIK, live like FLURIK (as in the plugin 5.3; flurik.js runs all three)
+  var THEMES = [['FLURIK', 0], ['WARPIK', 1], ['AURORIK', 3], ['PULIK', 4], ['UILIK', 5]], LIVE = { 0: 1, 1: 1, 3: 1 };
   var chromeImg = panel.querySelector('img');
   chromeImg.addEventListener('load', function () { lastSig = ''; });
-  function liveBg(on) {
-    bgLive = !!(on && flurik);
-    if (flurik) flurik.show(bgLive);
+  function liveBg(id) {
+    bgLive = !!(LIVE[id] && flurik && flurik.can(id));
+    if (flurik) flurik.show(bgLive, id);
+    // a live theme's chrome is see-through: its still frame lies under it (before WebGL, or without it)
+    if (LIVE[id]) panel.style.backgroundImage = 'url(/img/plugin/t' + id + '/bg.webp' + BAKE_V + ')';
     chromeImg.style.visibility = bgLive ? 'hidden' : '';
     chromeCv.style.display = bgLive ? '' : 'none';
     lastSig = '';
   }
-  liveBg(bakeDir === '/img/plugin/t0/');
+  liveBg(0);
   function setTheme(i) {
     var dir = '/img/plugin/t' + THEMES[i][1] + '/';
     var next = new Image();
     next.onload = function () {
-      chromeImg.src = next.src; bakeDir = dir; liveBg(THEMES[i][1] === 0);
+      chromeImg.src = next.src; bakeDir = dir; liveBg(THEMES[i][1]);
       [ALT, OS4, T6, CLEAN].concat(LANGS.map(function (l) { return LANG_IMG[l]; })).forEach(function (im) { if (im.getAttribute('src')) im.src = dir + im.file + BAKE_V; });   // reload only what was in use
     };
     next.src = dir + 'chrome.webp' + BAKE_V;
