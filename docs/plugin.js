@@ -327,7 +327,7 @@
   // 24.10.2026: T8 is the plugin's default now, so the third bake is T6 (chrome_t6), and chrome_alt has NATURAL lit.
   var BAKE = 2, ALT = new Image(), OS4 = new Image(), T6 = new Image(), CLEAN = new Image(), bakeDir = '/img/plugin/t0/';   // FLURIK by default (10.11.2026, as the plugin; was PULIK)
   ALT.file = 'chrome_alt.webp'; OS4.file = 'chrome_os4.webp'; T6.file = 'chrome_t6.webp'; CLEAN.file = 'chrome_clean.webp';
-  var BAKE_V = '?v=20261116b';   // t0 = FLURIK (still frame of the plugin's live waves)
+  var BAKE_V = '?v=20261116c';   // t0 = FLURIK (still frame of the plugin's live waves)
   // was 20261109c - 5.2.0 panel: MIX & MASTER, T6 | T8, CLEAN L (chrome_clean), BEAT and 8x by default
   //   // the bakes change with the panel (HOUZY | HOUZY II, DELTA, CHARACTER gone: 02.11.2026; chrome_alt has HOUZY and DELTA lit)
   var LANGS = ['en', 'ru', 'es', 'pt'], LANG_IMG = {};
