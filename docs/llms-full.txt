@@ -22,7 +22,7 @@ HOUZY · Out now
 
 ## Even compression across every frequency in the track.
 
-The sound is taken apart into individual tones, and each one's loudness is evened out by its own envelope. Loud sounds don't drag the rest down, and the compressor treats every sound equally steadily, whatever the loudness of any frequency in the mix. With a loud kick, low end or midrange, it squeezes the lows and the highs just the same.
+The sound is taken apart into individual tones, and the loudness of each one is evened out by its own envelope. When compressing, loud sounds don't drag the rest down: HOUZY treats every sound equally steadily, whatever the loudness of any given frequency in the mix. Be it a kick, a hi-hat or a vocal, it squeezes them all equally well, thanks to new technologies and non-obvious solutions.
 
 The threshold is automatic: it sets itself from the loudest sound and moves along with the track. The release is automatic too (AUTO): the plugin measures how fast the sounds fade out and sets the time itself. Every tone — kick, drums or vocal — is compressed the same way, then the level is raised back automatically, which gives you a well and densely compressed track.
 
@@ -108,7 +108,7 @@ About
 
 ## Born in house. Made for everything.
 
-HOUZY was born in electronic music, where a hard kick and a clean top end are hardest to get together. The same approach works on any genre: it compresses every tone on its own, so nothing pumps. For more than 15 years its author searched for the ideal compressor for his own tracks, and in the end decided to invent it himself.
+HOUZY was born in electronic music, where a hard kick and a clean top end are hardest to get together. Over the years its author put, perhaps, more than a hundred compressors on the master channel, but none of them fit: either the bass gets squeezed while the top end is crushed, or the other way round. Multiband compressors didn't fit either: they changed the tone and didn't give the needed effect, because once the compressed signal was turned up, the compression fell apart. In the end the author took everything into his own hands and made what he needed himself, and it has won the hearts of hundreds of people: HOUZY.
 
 User manual
 
@@ -217,7 +217,7 @@ Splitting the mix into 3–6 bands gives each band its own gain, so the kick no 
 
 ## Even compression across every frequency in the track.
 
-The sound is taken apart into individual tones, and each one's loudness is evened out by its own envelope. Loud sounds don't drag the rest down, and the compressor treats every sound equally steadily, whatever the loudness of any frequency in the mix. With a loud kick, low end or midrange, it squeezes the lows and the highs just the same.
+The sound is taken apart into individual tones, and the loudness of each one is evened out by its own envelope. When compressing, loud sounds don't drag the rest down: HOUZY treats every sound equally steadily, whatever the loudness of any given frequency in the mix. Be it a kick, a hi-hat or a vocal, it squeezes them all equally well, thanks to new technologies and non-obvious solutions.
 
 The threshold is automatic: it sets itself from the loudest sound and moves along with the track. The release is automatic too (AUTO): the plugin measures how fast the sounds fade out and sets the time itself. Every tone — kick, drums or vocal — is compressed the same way, then the level is raised back automatically, which gives you a well and densely compressed track.
 

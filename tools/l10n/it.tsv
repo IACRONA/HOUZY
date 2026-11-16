@@ -19,7 +19,7 @@
 21	<b>Offerta di lancio:</b> i primi 20 acquirenti ottengono il <b>15% di sconto</b> con il codice <b>FIRST20</b> — <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">HOUZY a $58,65</a> invece di $69. Fino al 19 novembre.
 22	HOUZY · Disponibile ora
 23	Una compressione uniforme su tutte le frequenze del brano.
-24	Il suono viene scomposto in singole tonalità e il volume di ciascuna viene uniformato dal suo inviluppo. I suoni forti non trascinano giù il resto: il compressore tratta ogni suono con la stessa costanza, qualunque sia il livello di ciascuna frequenza nel mix. Che si tratti di un kick potente, dei bassi o dei medi, comprime i gravi e gli acuti allo stesso modo.
+24	Il suono viene scomposto in singole tonalità e il volume di ciascuna viene livellato dal proprio inviluppo. Durante la compressione i suoni forti non trascinano con sé gli altri: HOUZY tratta con la stessa uniformità qualsiasi suono, qualunque sia il volume di questa o quella frequenza nel mix. Che si tratti di kick, hi-hat o voce, li comprime tutti ugualmente bene, grazie a nuove tecnologie e a soluzioni non scontate.
 25	La soglia è automatica: si regola sul suono più forte e segue il brano. Anche il release è automatico (AUTO): il plugin misura quanto in fretta i suoni si spengono e imposta il tempo da solo. Ogni tonalità — kick, batteria o voce — viene compressa nello stesso modo, poi il livello viene rialzato automaticamente: ottieni un brano ben compresso e denso.
 26	Funziona anche oltre il mastering, su qualsiasi traccia o bus, con un carico di CPU più alto.
 27	Un solo numero per tutto il suono.
@@ -72,7 +72,7 @@
 75	<b>INPUT</b> fino a −10…−9 LUFS
 77	Manuale completo
 78	Nato nella house. Fatto per tutto.
-79	HOUZY è nato nella musica elettronica, dove un kick duro e un'alta frequenza pulita sono più difficili da ottenere insieme. Lo stesso approccio funziona in ogni genere: comprime ogni tonalità da sola, quindi niente pompa. Per più di 15 anni il suo autore ha cercato il compressore ideale per i propri brani e alla fine ha deciso di inventarlo da sé.
+79	HOUZY è nato nella musica elettronica, dove è più difficile mettere insieme un kick duro e delle alte frequenze pulite. Negli anni il suo autore ha messo sul canale master forse più di cento compressori, ma nessuno andava bene: o i bassi vengono schiacciati e le alte compresse troppo, o viceversa. Nemmeno i compressori multibanda andavano bene: cambiavano il timbro e non davano l'effetto necessario, perché dopo aver alzato il volume del segnale compresso la compressione si sfaldava. Alla fine il suo autore ha deciso di prendere tutto nelle proprie mani e di creare da sé ciò che gli serviva, e ha conquistato il cuore di centinaia di persone: HOUZY.
 80	Manuale d'uso
 81	un solo pagamento, una licenza che resta tua
 82	Con il codice <b>FIRST20</b>: <a href="https://acronawar.gumroad.com/l/houzy/FIRST20" target="_blank" rel="noopener">$58,65</a> · primi 20 acquirenti, fino al 19 nov.
@@ -388,3 +388,4 @@
 415	Recensione indipendente
 416	Recensione video
 417	Guarda su YouTube
+418	HOUZY è un plugin compressore di mastering (VST3 e AU). Il suono viene scomposto in singole tonalità e il volume di ciascuna viene livellato dal proprio inviluppo. Durante la compressione i suoni forti non trascinano con sé gli altri: HOUZY tratta con la stessa uniformità qualsiasi suono, qualunque sia il volume di questa o quella frequenza nel mix. Che si tratti di kick, hi-hat o voce, li comprime tutti ugualmente bene, grazie a nuove tecnologie e a soluzioni non scontate.
