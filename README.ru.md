@@ -22,10 +22,10 @@
 
 ### [⬇ Скачать HOUZY 5 — acronaaudio.shop](https://acronaaudio.shop/ru/download.html)
 
-**[acronaaudio.shop](https://acronaaudio.shop/ru/)** · [Купить — $47](https://acronawar.gumroad.com/l/houzy) · [Попробовать в браузере](https://acronaaudio.shop/ru/plugin.html)
+**[acronaaudio.shop](https://acronaaudio.shop/ru/)** · [Купить — $69](https://acronawar.gumroad.com/l/houzy) · [Попробовать в браузере](https://acronaaudio.shop/ru/plugin.html)
 
 HOUZY 5 скачивается с нашего сайта. **14 дней бесплатно** со всеми функциями, дальше —
-один платёж **$47** за бессрочную лицензию на два компьютера.
+один платёж **$69** за бессрочную лицензию на два компьютера.
 
 **Windows 10 / 11** (64-бит) · **macOS 10.15+** (Apple Silicon и Intel), VST3 и AU.
 

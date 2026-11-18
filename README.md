@@ -24,10 +24,10 @@ Four original technologies: **HOUZY** — compresses every tone on its own, with
 
 ### [⬇ Download HOUZY 5 — acronaaudio.shop](https://acronaaudio.shop/download.html)
 
-**[acronaaudio.shop](https://acronaaudio.shop)** · [Buy — $47](https://acronawar.gumroad.com/l/houzy) · [Try it in your browser](https://acronaaudio.shop/plugin.html)
+**[acronaaudio.shop](https://acronaaudio.shop)** · [Buy — $69](https://acronawar.gumroad.com/l/houzy) · [Try it in your browser](https://acronaaudio.shop/plugin.html)
 
 HOUZY 5 is downloaded from our website. It comes with a **14-day free trial** with every
-feature unlocked, then a one-time **$47** for a lifetime licence on two computers.
+feature unlocked, then a one-time **$69** for a lifetime licence on two computers.
 
 **Windows 10 / 11** (64-bit) · **macOS 10.15+** (Apple Silicon and Intel), VST3 and AU.
 
