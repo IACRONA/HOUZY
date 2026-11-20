@@ -924,9 +924,3 @@
 })();
 
 
-/* PROMO BEAM (20.11.2026, user): the Black Friday line burns along the bottom, colours flowing, always */
-(function () {
-  var el = document.querySelector('.promo'); if (!el) return;
-  var t0 = performance.now();
-  (function f(now) { el.style.setProperty('--bx', ((now - t0) / 3100 % 1).toFixed(4));   /* the bottom line's colours flow, 3.1 s a cycle */ requestAnimationFrame(f); })(t0);
-})();

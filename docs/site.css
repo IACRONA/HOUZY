@@ -1131,22 +1131,20 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
   #plugin.try .head .tech4-n{font-size:clamp(49px,6.5vw,69px)}
   #plugin.try .head .tech4-t{font-size:clamp(16.3px,1.35vw,18.3px)}
 }
-/* BLACK FRIDAY (20.11.2026, user): dark Liquid Glass plate; the Border Beam "line" look - a colourful line burns along the
-   BOTTOM edge, brightest in the middle, colours flowing through it (site.js PROMO BEAM moves --bx), plus its glow under the text. */
-.promo{position:relative;isolation:isolate;overflow:hidden;padding:11px 22px;font-size:16.5px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.45);border-radius:20px;
-  background:linear-gradient(180deg,rgba(40,40,46,.62),rgba(14,14,18,.78));
-  -webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),inset 1.5px 1.5px 0 rgba(255,255,255,.35),inset 0 0 50px rgba(255,255,255,.03),0 14px 30px -12px rgba(0,0,0,.55);
-  animation:promo-in .7s cubic-bezier(.16,1,.3,1) .2s both}
+/* BLACK FRIDAY (20.11.2026, user): the offer looks exactly like the hero Buy key did in the gradient style - dark rose
+   radial gradient that morphs warm on hover, 1px gradient rim, corners 11px, white text (uses the --gb-* of HERO KEYS below) */
+.promo{position:relative;isolation:isolate;padding:11px 22px;font-size:16.5px;color:#fff;text-shadow:none;border-radius:11px;
+  background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5));
+  -webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 12px 28px -12px rgba(0,0,0,.55);
+  transition:--gb-x .5s,--gb-y .5s,--gb-sx .5s,--gb-sy .5s,--gb-c1 .5s,--gb-c2 .5s,--gb-c3 .5s,--gb-c4 .5s,--gb-c5 .5s,--gb-a .5s,--gb-b1 .5s,--gb-b2 .5s,--gb-s1 .5s,--gb-s2 .5s,--gb-s3 .5s,--gb-s4 .5s,--gb-s5 .5s}
+.promo::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(var(--gb-a),var(--gb-b1),var(--gb-b2));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box exclude,linear-gradient(#fff 0 0)}
+.promo:hover{--gb-x:0%;--gb-y:91.51%;--gb-sx:120.24%;--gb-sy:103.18%;--gb-c1:#c96287;--gb-c2:#c66c64;--gb-c3:#cc7d23;--gb-c4:#37140a;--gb-c5:#000;
+  --gb-a:190deg;--gb-b1:hsla(340,78%,90%,.1);--gb-b2:hsla(340,75%,90%,.6);--gb-s1:0%;--gb-s2:8.8%;--gb-s3:21.44%;--gb-s4:71.34%;--gb-s5:85.76%}
 .promo b{color:#fff}
 .promo a{color:#fff;text-decoration-color:rgba(255,255,255,.5)}
-.promo::before,.promo::after{content:'';position:absolute;left:0;right:0;bottom:0;pointer-events:none;z-index:-1;
-  background:linear-gradient(90deg,#ff4fd8,#8a5cff,#3fd0ff,#7dffb0,#ffd36b,#ff4fd8) 0 0/300% 100%;background-position:calc(var(--bx,0) * 100%) 0;
-  -webkit-mask:linear-gradient(90deg,transparent 8%,#000 38%,#000 62%,transparent 92%);mask:linear-gradient(90deg,transparent 8%,#000 38%,#000 62%,transparent 92%)}
-.promo::before{height:1.5px}
-.promo::after{height:60%;filter:blur(14px);opacity:.55;transform:translateY(45%)}
-@keyframes promo-in{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.promo{animation:none}}
 /* HERO KEYS (20.11.2026, user): Buy and Download in the "gradient button" style (radial gradient that morphs on hover,
    1px gradient rim, corners 11px); sizes unchanged. Buy = default (dark rose), Download = variant (navy / teal / lime). */
 @property --gb-x{syntax:'<percentage>';initial-value:11.14%;inherits:false}
