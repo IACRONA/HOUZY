@@ -923,3 +923,10 @@
   }
 })();
 
+
+/* PROMO BEAM (20.11.2026, user): the Black Friday line runs round the offer, one lap per 3.1 s, always */
+(function () {
+  var el = document.querySelector('.promo'); if (!el) return;
+  var t0 = performance.now();
+  (function f(now) { el.style.setProperty('--beam', (((now - t0) / 3100 % 1) * 360).toFixed(1) + 'deg'); requestAnimationFrame(f); })(t0);
+})();
