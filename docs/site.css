@@ -1131,32 +1131,19 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
   #plugin.try .head .tech4-n{font-size:clamp(49px,6.5vw,69px)}
   #plugin.try .head .tech4-t{font-size:clamp(16.3px,1.35vw,18.3px)}
 }
-/* BLACK FRIDAY (20.11.2026, user): the hero offer glows with the same Neon Border as "Products" (site.js PROMO NEON) */
-.promo{position:relative;isolation:isolate}
-.promo-fx{position:absolute;inset:-14px;width:calc(100% + 28px);height:calc(100% + 28px);pointer-events:none;z-index:-1}
-/* BLACK FRIDAY look (20.11.2026, user): the offer stands out - turquoise glass like "Buy HOUZY", 10% bigger,
-   white text, a slow light sweep (background-position, so the outside neon canvas is not clipped) */
-.promo{padding:11px 22px;font-size:16.5px;color:#fff;text-shadow:0 1px 2px rgba(0,40,50,.45);
-  background:linear-gradient(105deg,rgba(255,255,255,0) 35%,rgba(255,255,255,.32) 50%,rgba(255,255,255,0) 65%) no-repeat,
-    linear-gradient(180deg,rgba(40,128,143,.80),rgba(20,84,96,.90));
-  background-size:250% 100%,100% 100%;background-position:150% 0,0 0;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.38),inset 1.5px 1.5px 0 rgba(255,255,255,.75),inset 0 0 14px rgba(170,235,245,.28),
-    0 12px 28px -10px rgba(20,82,93,.6);
-  animation:promo-in .7s cubic-bezier(.16,1,.3,1) .2s both,promo-sweep 6s cubic-bezier(.4,0,.2,1) 1.2s infinite}
+/* BLACK FRIDAY (20.11.2026, user): the offer as a dark plate with a colourful Border Beam (the border-beam "line" look,
+   done in CSS - the site has no React): one bright line runs round the edge, 3.1 s a lap, with its own glow. All text white. */
+@property --beam{syntax:'<angle>';inherits:false;initial-value:0deg}
+.promo{position:relative;isolation:isolate;padding:11px 22px;font-size:16.5px;color:#fff;text-shadow:none;border-radius:20px;
+  background:#1d1d1d;box-shadow:inset 0 0 0 1px rgba(44,47,54,.52),inset 0 0 50px 0 rgba(255,255,255,.02),0 14px 30px -12px rgba(0,0,0,.55);
+  -webkit-backdrop-filter:none;backdrop-filter:none;animation:promo-in .7s cubic-bezier(.16,1,.3,1) .2s both}
 .promo b{color:#fff}
-.promo a{color:#d9f6fb;text-decoration-color:rgba(217,246,251,.55)}
+.promo a{color:#fff;text-decoration-color:rgba(255,255,255,.5)}
+.promo::before,.promo::after{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;
+  background:conic-gradient(from var(--beam),transparent 0deg 250deg,#ff4fd8 285deg,#8a5cff 315deg,#3fd0ff 340deg,#7dffb0 355deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);animation:promo-beam 3.1s linear infinite}
+.promo::after{inset:-3px;padding:4px;filter:blur(8px);opacity:.9;z-index:-1}
 @keyframes promo-in{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
-@keyframes promo-sweep{0%{background-position:150% 0,0 0}40%,100%{background-position:-50% 0,0 0}}
-@media (prefers-reduced-motion:reduce){.promo{animation:none}}
-/* 20.11.2026 (user: "pale"): brighter neon - wider glow canvas, plus a steady gold halo round the offer */
-.promo-fx{inset:-24px;width:calc(100% + 48px);height:calc(100% + 48px)}
-.promo{box-shadow:inset 0 0 0 1px rgba(255,236,200,.55),inset 1.5px 1.5px 0 rgba(255,255,255,.75),inset 0 0 14px rgba(170,235,245,.28),
-  0 0 0 1.5px rgba(213,187,155,.85),0 0 18px 2px rgba(232,195,120,.55),0 0 42px 6px rgba(232,195,120,.28),0 12px 28px -10px rgba(20,82,93,.6)}
-/* 20.11.2026 (user): "Black Friday:" in black with the same gold neon glow, breathing; the rest stays white */
-.promo b:first-child{color:#000;text-shadow:0 0 4px rgba(255,226,160,.95),0 0 10px rgba(232,195,120,.85),0 0 20px rgba(232,195,120,.55);
-  animation:promo-word 2.8s ease-in-out infinite}
-@keyframes promo-word{50%{text-shadow:0 0 6px rgba(255,236,190,1),0 0 16px rgba(240,205,130,.95),0 0 30px rgba(232,195,120,.7)}}
-@media (prefers-reduced-motion:reduce){.promo b:first-child{animation:none}}
-/* 20.11.2026 (user): the steady gold halo hid the arcs running corner to corner - back to the plain glass rim, only the moving neon glows */
-.promo{box-shadow:inset 0 0 0 1px rgba(255,255,255,.38),inset 1.5px 1.5px 0 rgba(255,255,255,.75),inset 0 0 14px rgba(170,235,245,.28),
-  0 12px 28px -10px rgba(20,82,93,.6)}
+@keyframes promo-beam{to{--beam:360deg}}
+@media (prefers-reduced-motion:reduce){.promo,.promo::before,.promo::after{animation:none}}
