@@ -1184,9 +1184,9 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
 /* HERO KEYS same size (20.11.2026, user): Buy and Download as two equal columns, as wide as the wider one; stacked on phones */
 .buy-row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto}   /* fit-content: the row is as wide as two Buy keys, not the page (user) */
 @media (max-width:620px){.buy-row{grid-auto-flow:row}}
-/* KEYS 23% (20.11.2026, user): Buy, Download and Black Friday 23% see-through - the gradient moves to ::after at .77,
+/* KEYS 18% (20.11.2026, user: 23% then +5% solid): Buy, Download and Black Friday 18% see-through - the gradient moves to ::after at .77,
    text stays solid (--gb-* inherit, so the hover morph reaches the layer) */
 .buy-row .cta,.buy-row .cta:hover,.promo{background:none}
 .buy-row .cta{isolation:isolate}
-.buy-row .cta::after,.promo::after{content:'';display:block;position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.77;
+.buy-row .cta::after,.promo::after{content:'';display:block;position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.82;
   background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5))}
