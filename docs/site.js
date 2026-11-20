@@ -966,7 +966,7 @@
     if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
     c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H);
     var x0 = REACH, y0 = REACH, th = 2.5, ex = x0 - th / 2, ey = y0 - th / 2, ew = w + th, eh = h + th, er = r + th / 2;
-    var lap = neonLap((now - t0) / 1000, ew, eh, er), N = 40;
+    var lap = neonLap((now - t0) / 1000, ew, eh, er), N = Math.max(40, Math.ceil((ew + eh) / 4));   /* ~2 px per piece: 40 pieces stepped on the wide offer */
     c.save(); c.beginPath(); c.rect(0, 0, W, H); c.roundRect(x0, y0, w, h, r); c.clip('evenodd'); c.lineCap = 'butt';
     for (var arcI = 0; arcI < 2; arcI++) {
       var pts = [], al = [], j;
