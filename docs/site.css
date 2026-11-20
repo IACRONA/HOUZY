@@ -1147,23 +1147,23 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
 .promo a{color:#fff;text-decoration-color:rgba(255,255,255,.5)}
 /* HERO KEYS (20.11.2026, user): Buy and Download in the "gradient button" style (radial gradient that morphs on hover,
    1px gradient rim, corners 11px); sizes unchanged. Buy = default (dark rose), Download = variant (navy / teal / lime). */
-@property --gb-x{syntax:'<percentage>';initial-value:11.14%;inherits:false}
-@property --gb-y{syntax:'<percentage>';initial-value:140%;inherits:false}
-@property --gb-sx{syntax:'<percentage>';initial-value:150%;inherits:false}
-@property --gb-sy{syntax:'<percentage>';initial-value:180.06%;inherits:false}
-@property --gb-c1{syntax:'<color>';initial-value:#000;inherits:false}
-@property --gb-c2{syntax:'<color>';initial-value:#08012c;inherits:false}
-@property --gb-c3{syntax:'<color>';initial-value:#4e1e40;inherits:false}
-@property --gb-c4{syntax:'<color>';initial-value:#70464e;inherits:false}
-@property --gb-c5{syntax:'<color>';initial-value:#88394c;inherits:false}
+@property --gb-x{syntax:'<percentage>';initial-value:11.14%;inherits:true}
+@property --gb-y{syntax:'<percentage>';initial-value:140%;inherits:true}
+@property --gb-sx{syntax:'<percentage>';initial-value:150%;inherits:true}
+@property --gb-sy{syntax:'<percentage>';initial-value:180.06%;inherits:true}
+@property --gb-c1{syntax:'<color>';initial-value:#000;inherits:true}
+@property --gb-c2{syntax:'<color>';initial-value:#08012c;inherits:true}
+@property --gb-c3{syntax:'<color>';initial-value:#4e1e40;inherits:true}
+@property --gb-c4{syntax:'<color>';initial-value:#70464e;inherits:true}
+@property --gb-c5{syntax:'<color>';initial-value:#88394c;inherits:true}
 @property --gb-a{syntax:'<angle>';initial-value:20deg;inherits:true}
 @property --gb-b1{syntax:'<color>';initial-value:hsla(340,75%,60%,.2);inherits:true}
 @property --gb-b2{syntax:'<color>';initial-value:hsla(340,75%,40%,.75);inherits:true}
-@property --gb-s1{syntax:'<percentage>';initial-value:37.35%;inherits:false}
-@property --gb-s2{syntax:'<percentage>';initial-value:61.36%;inherits:false}
-@property --gb-s3{syntax:'<percentage>';initial-value:78.42%;inherits:false}
-@property --gb-s4{syntax:'<percentage>';initial-value:89.52%;inherits:false}
-@property --gb-s5{syntax:'<percentage>';initial-value:100%;inherits:false}
+@property --gb-s1{syntax:'<percentage>';initial-value:37.35%;inherits:true}
+@property --gb-s2{syntax:'<percentage>';initial-value:61.36%;inherits:true}
+@property --gb-s3{syntax:'<percentage>';initial-value:78.42%;inherits:true}
+@property --gb-s4{syntax:'<percentage>';initial-value:89.52%;inherits:true}
+@property --gb-s5{syntax:'<percentage>';initial-value:100%;inherits:true}
 .buy-row .cta,.buy-row .cta:hover{border-radius:11px;color:#fff;text-shadow:none;box-shadow:0 12px 28px -12px rgba(0,0,0,.55);
   background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5));
   -webkit-backdrop-filter:none;backdrop-filter:none;
@@ -1184,3 +1184,9 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
 /* HERO KEYS same size (20.11.2026, user): Buy and Download as two equal columns, as wide as the wider one; stacked on phones */
 .buy-row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto}   /* fit-content: the row is as wide as two Buy keys, not the page (user) */
 @media (max-width:620px){.buy-row{grid-auto-flow:row}}
+/* KEYS 23% (20.11.2026, user): Buy, Download and Black Friday 23% see-through - the gradient moves to ::after at .77,
+   text stays solid (--gb-* inherit, so the hover morph reaches the layer) */
+.buy-row .cta,.buy-row .cta:hover,.promo{background:none}
+.buy-row .cta{isolation:isolate}
+.buy-row .cta::after,.promo::after{content:'';display:block;position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.77;
+  background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5))}
