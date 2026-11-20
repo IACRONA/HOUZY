@@ -1157,3 +1157,6 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
   animation:promo-word 2.8s ease-in-out infinite}
 @keyframes promo-word{50%{text-shadow:0 0 6px rgba(255,236,190,1),0 0 16px rgba(240,205,130,.95),0 0 30px rgba(232,195,120,.7)}}
 @media (prefers-reduced-motion:reduce){.promo b:first-child{animation:none}}
+/* 20.11.2026 (user): the steady gold halo hid the arcs running corner to corner - back to the plain glass rim, only the moving neon glows */
+.promo{box-shadow:inset 0 0 0 1px rgba(255,255,255,.38),inset 1.5px 1.5px 0 rgba(255,255,255,.75),inset 0 0 14px rgba(170,235,245,.28),
+  0 12px 28px -10px rgba(20,82,93,.6)}
