@@ -1182,5 +1182,5 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
 /* HERO KEYS hover (20.11.2026, user): no yellow neon on Buy / Download in the hero; the sphere's tendril hugs the key (buy.js pad 1) */
 .buy-row .buy-fx{display:none}
 /* HERO KEYS same size (20.11.2026, user): Buy and Download as two equal columns, as wide as the wider one; stacked on phones */
-.buy-row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;justify-content:center}
+.buy-row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto}   /* fit-content: the row is as wide as two Buy keys, not the page (user) */
 @media (max-width:620px){.buy-row{grid-auto-flow:row}}
