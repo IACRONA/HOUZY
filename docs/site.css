@@ -1181,3 +1181,5 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
 .buy-row .cta.trial:hover{--gb-x:0%;--gb-y:95.51%;--gb-sx:110.24%;--gb-sy:110.2%;--gb-c1:#000020;--gb-c2:#f1ffa5;--gb-c3:#469396;--gb-c4:#1f3f6d;--gb-c5:#000;
   --gb-s1:0%;--gb-s2:10%;--gb-s3:35.44%;--gb-s4:71.34%;--gb-s5:90.76%;--gb-a:210deg;--gb-b1:hsla(320,75%,90%,.2);--gb-b2:hsla(320,50%,90%,.75)}
 .buy-row .cta .was-btn{opacity:.6}
+/* HERO KEYS hover (20.11.2026, user): no yellow neon on Buy / Download in the hero; the sphere's tendril hugs the key (buy.js pad 1) */
+.buy-row .buy-fx{display:none}

@@ -130,7 +130,7 @@
     reachV += (kS * (goal - reach) - cS * reachV) * dt; reach += reachV * dt;
     if (goal === 0 && reach < 0.002) { reach = 0; reachV = 0; armFor = null; svg.style.opacity = '0'; return false; }
     if (!armFor || !sr) return true;
-    var b = armFor.el.getBoundingClientRect(), pad = 5;
+    var b = armFor.el.getBoundingClientRect(), pad = 1;   /* 20.11.2026, user: 5 left a gap round the key */
     var rad = Math.min(b.height / 2, parseFloat(getComputedStyle(armFor.el).borderTopLeftRadius) || 0) + pad;
     var bx = b.left - pad, by = b.top - pad, bw = b.width + 2 * pad, bh = b.height + 2 * pad;
     var ox = sr.left + sr.width / 2, oy = sr.top + sr.height / 2, R = sr.width / 2 * 0.8;
