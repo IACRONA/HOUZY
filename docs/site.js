@@ -924,9 +924,9 @@
 })();
 
 
-/* PROMO BEAM (20.11.2026, user): the Black Friday line runs round the offer, one lap per 3.1 s, always */
+/* PROMO BEAM (20.11.2026, user): the Black Friday line burns along the bottom, colours flowing, always */
 (function () {
   var el = document.querySelector('.promo'); if (!el) return;
   var t0 = performance.now();
-  (function f(now) { el.style.setProperty('--beam', (((now - t0) / 3100 % 1) * 360).toFixed(1) + 'deg'); requestAnimationFrame(f); })(t0);
+  (function f(now) { el.style.setProperty('--bx', ((now - t0) / 3100 % 1).toFixed(4));   /* the bottom line's colours flow, 3.1 s a cycle */ requestAnimationFrame(f); })(t0);
 })();
