@@ -922,3 +922,64 @@
     if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { if (started) layout(); else go(); }); setTimeout(go, 400); } else go();
   }
 })();
+
+/* PROMO NEON (20.11.2026, user): the hero offer (.promo) glows with the same Neon Border as "Products"
+   (#D5BB9B, two arcs gliding corner to corner, one lap per 10 s, glow outside only), self-contained. */
+(function () {
+  var el = document.querySelector('.promo');
+  if (!el || !document.createElement('canvas').getContext) return;
+  var NEON = '213,187,155', REACH = 14, LAP = 10, t0 = performance.now();
+  var cv = document.createElement('canvas'); cv.className = 'promo-fx'; cv.setAttribute('aria-hidden', 'true'); el.appendChild(cv);
+  var c = cv.getContext('2d');
+  function onRR(t, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, w / 2, h / 2));
+    var sx = Math.max(0, w - 2 * r), sy = Math.max(0, h - 2 * r), arc = Math.PI / 2 * r, total = 2 * sx + 2 * sy + 4 * arc;
+    var d = ((((t % 1) + 1) % 1) * total + sx / 2) % total, a;
+    if (d < sx) return [x + r + d, y]; d -= sx;
+    if (d < arc) { a = d / r; return [x + w - r + r * Math.sin(a), y + r - r * Math.cos(a)]; } d -= arc;
+    if (d < sy) return [x + w, y + r + d]; d -= sy;
+    if (d < arc) { a = d / r; return [x + w - r + r * Math.cos(a), y + h - r + r * Math.sin(a)]; } d -= arc;
+    if (d < sx) return [x + w - r - d, y + h]; d -= sx;
+    if (d < arc) { a = d / r; return [x + r - r * Math.sin(a), y + h - r + r * Math.cos(a)]; } d -= arc;
+    if (d < sy) return [x, y + h - r - d]; d -= sy;
+    a = d / r; return [x + r - r * Math.cos(a), y + r - r * Math.sin(a)];
+  }
+  function glide(x) {
+    var b = function (a, q, s) { var u = 1 - s; return 3 * u * u * s * a + 3 * u * s * s * q + s * s * s; }, s = x;
+    for (var i = 0; i < 8; i++) { var u = 1 - s, dx = 3 * u * u * .65 + 6 * u * s * (.35 - .65) + 3 * s * s * (1 - .35); if (Math.abs(dx) < 1e-6) break; s = Math.min(1, Math.max(0, s - (b(.65, .35, s) - x) / dx)); }
+    return b(0, 1, s);
+  }
+  function neonLap(sec, w, h, r) {
+    var sx = Math.max(0, w - 2 * r), sy = Math.max(0, h - 2 * r), arc = Math.PI / 2 * r, T = 2 * sx + 2 * sy + 4 * arc;
+    var at = [(sx / 2 + arc / 2) / T, (sx / 2 + arc * 1.5 + sy) / T, (sx * 1.5 + arc * 2.5 + sy) / T, (sx * 1.5 + arc * 3.5 + sy * 2) / T];
+    var corner = function (k) { var q = Math.floor(k / 4); return q + at[k - q * 4]; };
+    var beats = sec / (LAP / 4), k = Math.floor(beats);
+    return corner(k) + (corner(k + 1) - corner(k)) * glide(beats - k);
+  }
+  var visible = true;
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(el);
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (!visible || document.hidden || !el.offsetWidth) return;
+    var w = el.offsetWidth, h = el.offsetHeight, dpr = Math.min(2, window.devicePixelRatio || 1);
+    var W = w + 2 * REACH, H = h + 2 * REACH, r = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 18;
+    if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+    c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H);
+    var x0 = REACH, y0 = REACH, th = 2.5, ex = x0 - th / 2, ey = y0 - th / 2, ew = w + th, eh = h + th, er = r + th / 2;
+    var lap = neonLap((now - t0) / 1000, ew, eh, er), N = 40;
+    c.save(); c.beginPath(); c.rect(0, 0, W, H); c.roundRect(x0, y0, w, h, r); c.clip('evenodd'); c.lineCap = 'butt';
+    for (var arcI = 0; arcI < 2; arcI++) {
+      var pts = [], al = [], j;
+      for (j = 0; j <= N; j++) { var f = j / N, tt = Math.abs(f - 0.5) * 2, kk = tt <= 0.5 ? 1 : 1 - (tt - 0.5) / 0.5; al.push(kk * kk * (3 - 2 * kk)); pts.push(onRR(lap + 0.5 * arcI + (f - 0.5) * 0.25, ex, ey, ew, eh, er)); }
+      for (j = 0; j < N; j++) {
+        var aa = 0.5 * (al[j] + al[j + 1]); if (aa < 0.01) continue;
+        c.beginPath(); c.moveTo(pts[j][0], pts[j][1]); c.lineTo(pts[j + 1][0], pts[j + 1][1]);
+        c.strokeStyle = 'rgba(' + NEON + ',' + (0.18 * aa) + ')'; c.lineWidth = REACH * 1.2; c.stroke();
+        c.strokeStyle = 'rgba(' + NEON + ',' + (0.30 * aa) + ')'; c.lineWidth = 7; c.stroke();
+        c.strokeStyle = 'rgba(' + NEON + ',' + aa + ')'; c.lineWidth = th; c.stroke();
+      }
+    }
+    c.restore();
+  }
+  requestAnimationFrame(frame);
+})();

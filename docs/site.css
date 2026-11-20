@@ -1131,3 +1131,6 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
   #plugin.try .head .tech4-n{font-size:clamp(49px,6.5vw,69px)}
   #plugin.try .head .tech4-t{font-size:clamp(16.3px,1.35vw,18.3px)}
 }
+/* BLACK FRIDAY (20.11.2026, user): the hero offer glows with the same Neon Border as "Products" (site.js PROMO NEON) */
+.promo{position:relative;isolation:isolate}
+.promo-fx{position:absolute;inset:-14px;width:calc(100% + 28px);height:calc(100% + 28px);pointer-events:none;z-index:-1}
