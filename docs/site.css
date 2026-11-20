@@ -1131,89 +1131,35 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
   #plugin.try .head .tech4-n{font-size:clamp(49px,6.5vw,69px)}
   #plugin.try .head .tech4-t{font-size:clamp(16.3px,1.35vw,18.3px)}
 }
-/* BLACK FRIDAY (20.11.2026, user): the offer looks exactly like the hero Buy key did in the gradient style - dark rose
-   radial gradient that morphs warm on hover, 1px gradient rim, corners 11px, white text (uses the --gb-* of HERO KEYS below) */
-.promo{position:relative;isolation:isolate;padding:11px 22px;font-size:16.5px;color:#fff;text-shadow:none;border-radius:11px;
-  background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5));
-  -webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 12px 28px -12px rgba(0,0,0,.55);
-  transition:--gb-x .5s,--gb-y .5s,--gb-sx .5s,--gb-sy .5s,--gb-c1 .5s,--gb-c2 .5s,--gb-c3 .5s,--gb-c4 .5s,--gb-c5 .5s,--gb-a .5s,--gb-b1 .5s,--gb-b2 .5s,--gb-s1 .5s,--gb-s2 .5s,--gb-s3 .5s,--gb-s4 .5s,--gb-s5 .5s}
-.promo::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
-  background:linear-gradient(var(--gb-a),var(--gb-b1),var(--gb-b2));
-  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
-  mask:linear-gradient(#fff 0 0) content-box exclude,linear-gradient(#fff 0 0)}
-.promo:hover{--gb-x:0%;--gb-y:91.51%;--gb-sx:120.24%;--gb-sy:103.18%;--gb-c1:#c96287;--gb-c2:#c66c64;--gb-c3:#cc7d23;--gb-c4:#37140a;--gb-c5:#000;
-  --gb-a:190deg;--gb-b1:hsla(340,78%,90%,.1);--gb-b2:hsla(340,75%,90%,.6);--gb-s1:0%;--gb-s2:8.8%;--gb-s3:21.44%;--gb-s4:71.34%;--gb-s5:85.76%}
-.promo b{color:#fff}
-.promo a{color:#fff;text-decoration-color:rgba(255,255,255,.5)}
-/* HERO KEYS (20.11.2026, user): Buy and Download in the "gradient button" style (radial gradient that morphs on hover,
-   1px gradient rim, corners 11px); sizes unchanged. Buy = default (dark rose), Download = variant (navy / teal / lime). */
+/* BLACK FRIDAY (20.11.2026, user): the offer looks like the Download free key looked on 20.11 - navy / teal flowing gradient
+   that morphs on hover, 1px gradient rim, corners 11px, 18% see-through, white text. The hero keys themselves were rolled back. */
 @property --gb-x{syntax:'<percentage>';initial-value:11.14%;inherits:true}
 @property --gb-y{syntax:'<percentage>';initial-value:140%;inherits:true}
 @property --gb-sx{syntax:'<percentage>';initial-value:150%;inherits:true}
 @property --gb-sy{syntax:'<percentage>';initial-value:180.06%;inherits:true}
-@property --gb-c1{syntax:'<color>';initial-value:#000;inherits:true}
-@property --gb-c2{syntax:'<color>';initial-value:#08012c;inherits:true}
-@property --gb-c3{syntax:'<color>';initial-value:#4e1e40;inherits:true}
-@property --gb-c4{syntax:'<color>';initial-value:#70464e;inherits:true}
+@property --gb-c1{syntax:'<color>';initial-value:#000022;inherits:true}
+@property --gb-c2{syntax:'<color>';initial-value:#1f3f6d;inherits:true}
+@property --gb-c3{syntax:'<color>';initial-value:#469396;inherits:true}
+@property --gb-c4{syntax:'<color>';initial-value:#8fd6dc;inherits:true}
 @property --gb-c5{syntax:'<color>';initial-value:#88394c;inherits:true}
-@property --gb-a{syntax:'<angle>';initial-value:20deg;inherits:true}
-@property --gb-b1{syntax:'<color>';initial-value:hsla(340,75%,60%,.2);inherits:true}
-@property --gb-b2{syntax:'<color>';initial-value:hsla(340,75%,40%,.75);inherits:true}
+@property --gb-a{syntax:'<angle>';initial-value:200deg;inherits:true}
+@property --gb-b1{syntax:'<color>';initial-value:hsla(320,75%,90%,.6);inherits:true}
+@property --gb-b2{syntax:'<color>';initial-value:hsla(320,50%,90%,.15);inherits:true}
 @property --gb-s1{syntax:'<percentage>';initial-value:37.35%;inherits:true}
 @property --gb-s2{syntax:'<percentage>';initial-value:61.36%;inherits:true}
 @property --gb-s3{syntax:'<percentage>';initial-value:78.42%;inherits:true}
 @property --gb-s4{syntax:'<percentage>';initial-value:89.52%;inherits:true}
 @property --gb-s5{syntax:'<percentage>';initial-value:100%;inherits:true}
-.buy-row .cta,.buy-row .cta:hover{border-radius:11px;color:#fff;text-shadow:none;box-shadow:0 12px 28px -12px rgba(0,0,0,.55);
-  background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5));
-  -webkit-backdrop-filter:none;backdrop-filter:none;
-  transition:--gb-x .5s,--gb-y .5s,--gb-sx .5s,--gb-sy .5s,--gb-c1 .5s,--gb-c2 .5s,--gb-c3 .5s,--gb-c4 .5s,--gb-c5 .5s,--gb-a .5s,--gb-b1 .5s,--gb-b2 .5s,--gb-s1 .5s,--gb-s2 .5s,--gb-s3 .5s,--gb-s4 .5s,--gb-s5 .5s,transform .3s}
-.buy-row .cta::before{content:'';position:absolute;inset:0;left:0;right:0;top:0;height:auto;z-index:0;border-radius:inherit;padding:1px;
-  background:linear-gradient(var(--gb-a),var(--gb-b1),var(--gb-b2));
-  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
-  mask:linear-gradient(#fff 0 0) content-box exclude,linear-gradient(#fff 0 0);pointer-events:none}
-.buy-row .cta::after{display:none}
-.buy-row .cta:hover{--gb-x:0%;--gb-y:91.51%;--gb-sx:120.24%;--gb-sy:103.18%;--gb-c1:#c96287;--gb-c2:#c66c64;--gb-c3:#cc7d23;--gb-c4:#37140a;--gb-c5:#000;
-  --gb-a:190deg;--gb-b1:hsla(340,78%,90%,.1);--gb-b2:hsla(340,75%,90%,.6);--gb-s1:0%;--gb-s2:8.8%;--gb-s3:21.44%;--gb-s4:71.34%;--gb-s5:85.76%}
-.buy-row .cta.buy,.buy-row .cta.trial{--gb-c1:#000022;--gb-c2:#1f3f6d;--gb-c3:#469396;--gb-c4:#f1ffa5;--gb-a:200deg;--gb-b1:hsla(320,75%,90%,.6);--gb-b2:hsla(320,50%,90%,.15)}
-.buy-row .cta.buy:hover,.buy-row .cta.trial:hover{--gb-x:0%;--gb-y:95.51%;--gb-sx:110.24%;--gb-sy:110.2%;--gb-c1:#000020;--gb-c2:#f1ffa5;--gb-c3:#469396;--gb-c4:#1f3f6d;--gb-c5:#000;
-  --gb-s1:0%;--gb-s2:10%;--gb-s3:35.44%;--gb-s4:71.34%;--gb-s5:90.76%;--gb-a:210deg;--gb-b1:hsla(320,75%,90%,.2);--gb-b2:hsla(320,50%,90%,.75)}
-.buy-row .cta .was-btn{opacity:.6}
-/* HERO KEYS hover (20.11.2026, user): no yellow neon on Buy / Download in the hero; the sphere's tendril hugs the key (buy.js pad 1) */
-.buy-row .buy-fx{display:none}
-/* HERO KEYS same size (20.11.2026, user): Buy and Download as two equal columns, as wide as the wider one; stacked on phones */
-.buy-row{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto}   /* fit-content: the row is as wide as two Buy keys, not the page (user) */
-@media (max-width:620px){.buy-row{grid-auto-flow:row}}
-/* KEYS 18% (20.11.2026, user: 23% then +5% solid): Buy, Download and Black Friday 18% see-through - the gradient moves to ::after at .77,
-   text stays solid (--gb-* inherit, so the hover morph reaches the layer) */
-.buy-row .cta,.buy-row .cta:hover,.promo{background:none}
-.buy-row .cta{isolation:isolate}
-.buy-row .cta::after,.promo::after{content:'';display:block;position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.82;
-  background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5))}
-/* UPLOAD like Download free (20.11.2026, user): the small Upload key gets the hero keys' gradient (navy / teal / lime, morphs on hover),
-   1px gradient rim, corners 11px, 18% see-through; its size stays */
-.try .live .live-pick,.try .live .live-pick:hover{position:relative;isolation:isolate;border-radius:11px;color:#fff;text-shadow:none;background:none;
-  -webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);
-  --gb-c1:#000022;--gb-c2:#1f3f6d;--gb-c3:#469396;--gb-c4:#f1ffa5;--gb-a:200deg;--gb-b1:hsla(320,75%,90%,.6);--gb-b2:hsla(320,50%,90%,.15);
+.promo{position:relative;isolation:isolate;padding:11px 22px;font-size:16.5px;color:#fff;text-shadow:none;border-radius:11px;background:none;
+  -webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 12px 28px -12px rgba(0,0,0,.55);
   transition:--gb-x .5s,--gb-y .5s,--gb-sx .5s,--gb-sy .5s,--gb-c1 .5s,--gb-c2 .5s,--gb-c3 .5s,--gb-c4 .5s,--gb-c5 .5s,--gb-a .5s,--gb-b1 .5s,--gb-b2 .5s,--gb-s1 .5s,--gb-s2 .5s,--gb-s3 .5s,--gb-s4 .5s,--gb-s5 .5s}
-.try .live .live-pick:hover{--gb-x:0%;--gb-y:95.51%;--gb-sx:110.24%;--gb-sy:110.2%;--gb-c1:#000020;--gb-c2:#f1ffa5;--gb-c3:#469396;--gb-c4:#1f3f6d;--gb-c5:#000;
+.promo:hover{--gb-x:0%;--gb-y:95.51%;--gb-sx:110.24%;--gb-sy:110.2%;--gb-c1:#000020;--gb-c2:#8fd6dc;--gb-c3:#469396;--gb-c4:#1f3f6d;--gb-c5:#000;
   --gb-s1:0%;--gb-s2:10%;--gb-s3:35.44%;--gb-s4:71.34%;--gb-s5:90.76%;--gb-a:210deg;--gb-b1:hsla(320,75%,90%,.2);--gb-b2:hsla(320,50%,90%,.75)}
-.try .live .live-pick::before{content:'';position:absolute;inset:0;left:0;right:0;top:0;height:auto;z-index:0;border-radius:inherit;padding:1px;pointer-events:none;
+.promo::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
   background:linear-gradient(var(--gb-a),var(--gb-b1),var(--gb-b2));
   -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
   mask:linear-gradient(#fff 0 0) content-box exclude,linear-gradient(#fff 0 0)}
-.try .live .live-pick::after{content:'';display:block;position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.82;
+.promo::after{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.82;
   background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5))}
-/* VARIANT A (20.11.2026, user + ui-ux-pro-max: one primary CTA, one warm accent, aligned block): the flowing gradient stays;
-   Buy and Black Friday = warm amber (the buy path), Download and Upload = navy/teal without the lime; the keys row and
-   the offer share one width; pressed = scale .98, keyboard focus ring */
-.buy-row .cta.buy,.promo{--gb-c1:#0d0603;--gb-c2:#2a1205;--gb-c3:#6b2f0c;--gb-c4:#b4561a;--gb-c5:#e08a3c;
-  --gb-a:200deg;--gb-b1:hsla(32,90%,80%,.55);--gb-b2:hsla(28,70%,60%,.15)}
-.buy-row .cta.buy:hover,.promo:hover{--gb-x:0%;--gb-y:91.51%;--gb-sx:120.24%;--gb-sy:103.18%;--gb-c1:#f3b25e;--gb-c2:#e0843a;--gb-c3:#b4561a;--gb-c4:#2a1205;--gb-c5:#000;
-  --gb-s1:0%;--gb-s2:8.8%;--gb-s3:21.44%;--gb-s4:71.34%;--gb-s5:85.76%;--gb-a:190deg;--gb-b1:hsla(32,90%,85%,.15);--gb-b2:hsla(32,90%,85%,.7)}
-.buy-row .cta.trial,.try .live .live-pick{--gb-c4:#8fd6dc}
-.buy-row .cta.trial:hover,.try .live .live-pick:hover{--gb-c2:#8fd6dc}
-.buy-row{width:min(640px,100%);grid-auto-columns:minmax(0,1fr)}
-.promo{width:min(640px,100%);max-width:none;box-sizing:border-box;text-wrap:balance}
-.buy-row .cta:active,.try .live .live-pick:active{transform:scale(.98)}
-.buy-row .cta:focus-visible,.try .live .live-pick:focus-within,.promo a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.promo b{color:#fff}
+.promo a{color:#fff;text-decoration-color:rgba(255,255,255,.5)}
