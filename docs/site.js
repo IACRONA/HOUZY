@@ -928,7 +928,7 @@
 (function () {
   var el = document.querySelector('.promo');
   if (!el || !document.createElement('canvas').getContext) return;
-  var NEON = '213,187,155', REACH = 14, LAP = 10, t0 = performance.now();
+  var NEON = '213,187,155', REACH = 24, LAP = 10, t0 = performance.now();
   var cv = document.createElement('canvas'); cv.className = 'promo-fx'; cv.setAttribute('aria-hidden', 'true'); el.appendChild(cv);
   var c = cv.getContext('2d');
   function onRR(t, x, y, w, h, r) {
@@ -965,17 +965,17 @@
     var W = w + 2 * REACH, H = h + 2 * REACH, r = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 18;
     if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
     c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H);
-    var x0 = REACH, y0 = REACH, th = 2.5, ex = x0 - th / 2, ey = y0 - th / 2, ew = w + th, eh = h + th, er = r + th / 2;
+    var x0 = REACH, y0 = REACH, th = 3, ex = x0 - th / 2, ey = y0 - th / 2, ew = w + th, eh = h + th, er = r + th / 2;
     var lap = neonLap((now - t0) / 1000, ew, eh, er), N = Math.max(40, Math.ceil((ew + eh) / 4));   /* ~2 px per piece: 40 pieces stepped on the wide offer */
     c.save(); c.beginPath(); c.rect(0, 0, W, H); c.roundRect(x0, y0, w, h, r); c.clip('evenodd'); c.lineCap = 'butt';
     for (var arcI = 0; arcI < 2; arcI++) {
       var pts = [], al = [], j;
-      for (j = 0; j <= N; j++) { var f = j / N, tt = Math.abs(f - 0.5) * 2, kk = tt <= 0.5 ? 1 : 1 - (tt - 0.5) / 0.5; al.push(kk * kk * (3 - 2 * kk)); pts.push(onRR(lap + 0.5 * arcI + (f - 0.5) * 0.25, ex, ey, ew, eh, er)); }
+      for (j = 0; j <= N; j++) { var f = j / N, tt = Math.abs(f - 0.5) * 2, kk = tt <= 0.5 ? 1 : 1 - (tt - 0.5) / 0.5; al.push(kk * kk * (3 - 2 * kk)); pts.push(onRR(lap + 0.5 * arcI + (f - 0.5) * 0.34, ex, ey, ew, eh, er)); }
       for (j = 0; j < N; j++) {
         var aa = 0.5 * (al[j] + al[j + 1]); if (aa < 0.01) continue;
         c.beginPath(); c.moveTo(pts[j][0], pts[j][1]); c.lineTo(pts[j + 1][0], pts[j + 1][1]);
-        c.strokeStyle = 'rgba(' + NEON + ',' + (0.18 * aa) + ')'; c.lineWidth = REACH * 1.2; c.stroke();
-        c.strokeStyle = 'rgba(' + NEON + ',' + (0.30 * aa) + ')'; c.lineWidth = 7; c.stroke();
+        c.strokeStyle = 'rgba(' + NEON + ',' + (0.38 * aa) + ')'; c.lineWidth = REACH * 1.2; c.stroke();
+        c.strokeStyle = 'rgba(' + NEON + ',' + (0.7 * aa) + ')'; c.lineWidth = 9; c.stroke();
         c.strokeStyle = 'rgba(' + NEON + ',' + aa + ')'; c.lineWidth = th; c.stroke();
       }
     }
