@@ -1134,3 +1134,17 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
 /* BLACK FRIDAY (20.11.2026, user): the hero offer glows with the same Neon Border as "Products" (site.js PROMO NEON) */
 .promo{position:relative;isolation:isolate}
 .promo-fx{position:absolute;inset:-14px;width:calc(100% + 28px);height:calc(100% + 28px);pointer-events:none;z-index:-1}
+/* BLACK FRIDAY look (20.11.2026, user): the offer stands out - turquoise glass like "Buy HOUZY", 10% bigger,
+   white text, a slow light sweep (background-position, so the outside neon canvas is not clipped) */
+.promo{padding:11px 22px;font-size:16.5px;color:#fff;text-shadow:0 1px 2px rgba(0,40,50,.45);
+  background:linear-gradient(105deg,rgba(255,255,255,0) 35%,rgba(255,255,255,.32) 50%,rgba(255,255,255,0) 65%) no-repeat,
+    linear-gradient(180deg,rgba(40,128,143,.80),rgba(20,84,96,.90));
+  background-size:250% 100%,100% 100%;background-position:150% 0,0 0;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.38),inset 1.5px 1.5px 0 rgba(255,255,255,.75),inset 0 0 14px rgba(170,235,245,.28),
+    0 12px 28px -10px rgba(20,82,93,.6);
+  animation:promo-in .7s cubic-bezier(.16,1,.3,1) .2s both,promo-sweep 6s cubic-bezier(.4,0,.2,1) 1.2s infinite}
+.promo b{color:#fff}
+.promo a{color:#d9f6fb;text-decoration-color:rgba(217,246,251,.55)}
+@keyframes promo-in{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes promo-sweep{0%{background-position:150% 0,0 0}40%,100%{background-position:-50% 0,0 0}}
+@media (prefers-reduced-motion:reduce){.promo{animation:none}}
