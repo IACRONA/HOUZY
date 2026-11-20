@@ -1190,3 +1190,17 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
 .buy-row .cta{isolation:isolate}
 .buy-row .cta::after,.promo::after{content:'';display:block;position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.82;
   background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5))}
+/* UPLOAD like Download free (20.11.2026, user): the small Upload key gets the hero keys' gradient (navy / teal / lime, morphs on hover),
+   1px gradient rim, corners 11px, 18% see-through; its size stays */
+.try .live .live-pick,.try .live .live-pick:hover{position:relative;isolation:isolate;border-radius:11px;color:#fff;text-shadow:none;background:none;
+  -webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);
+  --gb-c1:#000022;--gb-c2:#1f3f6d;--gb-c3:#469396;--gb-c4:#f1ffa5;--gb-a:200deg;--gb-b1:hsla(320,75%,90%,.6);--gb-b2:hsla(320,50%,90%,.15);
+  transition:--gb-x .5s,--gb-y .5s,--gb-sx .5s,--gb-sy .5s,--gb-c1 .5s,--gb-c2 .5s,--gb-c3 .5s,--gb-c4 .5s,--gb-c5 .5s,--gb-a .5s,--gb-b1 .5s,--gb-b2 .5s,--gb-s1 .5s,--gb-s2 .5s,--gb-s3 .5s,--gb-s4 .5s,--gb-s5 .5s}
+.try .live .live-pick:hover{--gb-x:0%;--gb-y:95.51%;--gb-sx:110.24%;--gb-sy:110.2%;--gb-c1:#000020;--gb-c2:#f1ffa5;--gb-c3:#469396;--gb-c4:#1f3f6d;--gb-c5:#000;
+  --gb-s1:0%;--gb-s2:10%;--gb-s3:35.44%;--gb-s4:71.34%;--gb-s5:90.76%;--gb-a:210deg;--gb-b1:hsla(320,75%,90%,.2);--gb-b2:hsla(320,50%,90%,.75)}
+.try .live .live-pick::before{content:'';position:absolute;inset:0;left:0;right:0;top:0;height:auto;z-index:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(var(--gb-a),var(--gb-b1),var(--gb-b2));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box exclude,linear-gradient(#fff 0 0)}
+.try .live .live-pick::after{content:'';display:block;position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.82;
+  background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5))}
