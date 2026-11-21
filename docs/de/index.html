@@ -67,7 +67,7 @@
     "https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7"
    ]
   },
-  "softwareVersion": "5.2.0",
+  "softwareVersion": "5.3.1",
   "datePublished": "2026-10-17",
   "downloadUrl": "https://acronaaudio.shop/download.html",
   "screenshot": "https://acronaaudio.shop/img/plugin/t4/chrome.webp",
@@ -177,16 +177,16 @@
 <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/vendor/plyr/plyr.css">
-<link rel="stylesheet" href="/site.css?v=20261120rb">
+<link rel="stylesheet" href="/site.css?v=20261121h">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/orb.js" defer></script>
-<script src="/site.js?v=20261120bfgb" defer></script>
-<script src="/i18n.js?v=20261112b" defer></script>
+<script src="/site.js?v=20261121a" defer></script>
+<script src="/i18n.js?v=20261121b" defer></script>
 <script src="/flurik.js?v=20261116a" defer></script>
 <script src="/plugin.js?v=20261116c" defer></script>
 <script src="/houzy-live.js?v=20261116a" defer></script>
-<script src="/buy.js?v=20261120rb" defer></script>
+<script src="/buy.js?v=20261119b" defer></script><script src="/pricing.js?v=20261121g" defer></script>
 <script src="/vendor/plyr/plyr.min.js" defer></script>
 <script src="/video.js?v=20261018d" defer></script>
 <script type="application/ld+json">
@@ -328,7 +328,7 @@
   <a class="brand" href="/de/" aria-label="HOUZY Startseite" data-i18n-a="aria-label:91"><img class="logo" src="/img/houzy-logo.webp" width="103" height="35" alt="HOUZY by ACRONA AUDIO" decoding="async"></a>
   <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Menü öffnen" data-i18n-a="aria-label:92">
   <label class="scrim" for="nav-open" aria-hidden="true"></label>
-  <label class="burger" for="nav-open" role="button" aria-label="Menü" data-i18n-a="aria-label:93">
+  <label class="burger" for="nav-open" aria-hidden="true">
     <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
   </label>
   <div class="navpanel">
@@ -340,6 +340,7 @@
       <a href="#faq">FAQ</a>
       <a data-home="affiliates.html" href="/de/affiliates.html" data-i18n="129">Partner</a>
       <a data-home="download.html" href="/de/download.html" data-i18n="103">Herunterladen</a>
+      <a class="nav-products" href="/de/products/">Produkte</a>
     </nav>
   </div>
 </header>
@@ -352,7 +353,7 @@
       <p class="lead" data-i18n="8">HOUZY ist ein Mastering-Kompressor-Plugin (VST3, AU) für Windows und macOS. Gleichmäßige Kompression über alle Frequenzen. Laute und leise Passagen werden gleich behandelt.</p>
       <p class="tech4"><a class="tech4-n" href="#top" aria-label="4">4</a><span class="tech4-t" data-i18n="105">Vier von Grund auf neu entwickelte Technologien in einem Plugin: Kompression pro Ton ohne gemeinsamen Gain, ein Clipper, der Spitzen auslöscht statt sie abzuschneiden, ein Limiter, der den Gain nur in Nulldurchgängen bewegt, und Zeiten in Wellenperioden und Taktbruchteilen.</span></p>
     </div>
-    <p class="soon" data-i18n="131">5.3 kommt bald · neue Themes</p>
+    <p class="soon" data-i18n="131">5.3 ist da · neue Themes</p>
     <div class="plugin" id="panel" role="img" aria-label="Das Fenster des HOUZY-Plugins" data-i18n-a="aria-label:95">
       <img src="/img/plugin/t0/chrome.webp?v=20261110c" width="1480" height="1000" alt="Fenster des Mastering-Kompressor-Plugins HOUZY" fetchpriority="high" data-i18n-a="alt:96">
       <div class="porb" aria-hidden="true"></div>
@@ -377,7 +378,7 @@
         <button class="pill live-clear" type="button" data-i18n="12">Entfernen</button>
       </div>
     </div>
-    <div class="buy-row"><a class="cta buy buy-big" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">HOUZY kaufen — <s class="was-btn">$118</s> $69</a><a class="cta trial dl" href="/de/download.html" data-i18n="104">Kostenlos herunterladen<small>14 Tage Testversion</small></a></div>
+    <div class="buy-row"><a class="cta buy buy-big" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">HOUZY kaufen</a><a class="cta trial dl" href="/de/download.html" data-i18n="104">Kostenlos herunterladen<small>14 Tage Testversion</small></a></div>
     <p class="promo" data-i18n="126"><b>Black Friday:</b> <b>45 % Rabatt</b> mit dem Code <b>BLACKFRIDAY45</b> — <a href="https://acronawar.gumroad.com/l/houzy/BLACKFRIDAY45" target="_blank" rel="noopener">HOUZY für $38</a> statt $69. Bis 27. November.</p>
   </section>
 
@@ -535,7 +536,7 @@
           <li data-i18n="122"><b>T8-Limiter</b> — bewegt den Gain nur in Nulldurchgängen: Bass und Kick behalten ihre Form</li>
           <li data-i18n="123"><b>CYCLES / NOTE</b> — Attack in Wellenperioden, Release in Taktbruchteilen</li>
         </ul>
-        <div class="sale-keys"><a class="cta buy" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">HOUZY kaufen — <s class="was-btn">$118</s> $69</a><a class="pill" data-home="download.html" href="/de/download.html" data-i18n="117">Kostenlos herunterladen</a></div>
+        <div class="sale-keys"><a class="cta buy" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">HOUZY kaufen</a><a class="pill" data-home="download.html" href="/de/download.html" data-i18n="117">Kostenlos herunterladen</a></div>
         <p class="sale-note"><span data-i18n="66">Neu in 5: Liquid-Glass-Design, fünf Themes, vier Farben der Kugel, der T8-Limiter und ein Drittel weniger CPU.</span> <span data-i18n="118">Sichere Zahlung über Gumroad.</span></p>
       </div>
     </div>
@@ -600,11 +601,12 @@
         <li><a href="#top">HOUZY</a></li>
         <li><a data-manual href="/de/manual.html" data-i18n="64">Benutzerhandbuch</a></li>
         <li><a href="/de/best-mastering-compressor.html">Die besten Mastering-Kompressoren</a></li>
+        <li><a class="foot-acr" href="/acr-limiter/">ACR LIMITER</a></li>
         <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
         <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
       </ul>
     </div>
-    <p class="foot-updated" data-i18n="130">Version 5.2.0 · aktualisiert am <time datetime="2026-11-09">9. November 2026</time></p>
+    <p class="foot-updated" data-i18n="130">Version 5.3.1 · aktualisiert am <time datetime="2026-11-21">21. November 2026</time></p>
     <p class="copy" data-i18n="90">© 2026 ACRONA AUDIO. HOUZY, ACR und T8 sind Namen von ACRONA AUDIO. VST ist eine Marke der Steinberg Media Technologies GmbH. Audio Units, Logic Pro und macOS sind Marken der Apple Inc. Andere Namen gehören ihren Inhabern.</p>
   </div>
 </footer>

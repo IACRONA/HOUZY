@@ -73,7 +73,7 @@
       if (e.pointerType !== 'mouse') return;
       st.hover = true; wake();
       if (window.houzyUiSound) window.houzyUiSound('buy');   // site.js: quiet while the demo track is audible
-      if (el.classList.contains('buy-big')) showTip(el, true);
+      if (el.classList.contains('buy-big') && !/acr-limiter/.test(el.getAttribute('href') || '')) showTip(el, true);   // the pitch is HOUZY's
     });
     el.addEventListener('pointerleave', function () { st.hover = false; wake(); hideTip(); });
     el.addEventListener('focus', function () { st.hover = true; wake(); });

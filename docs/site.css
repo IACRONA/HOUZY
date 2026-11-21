@@ -1131,6 +1131,45 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
   #plugin.try .head .tech4-n{font-size:clamp(49px,6.5vw,69px)}
   #plugin.try .head .tech4-t{font-size:clamp(16.3px,1.35vw,18.3px)}
 }
+
+/* ACR LIMITER page (19.11.2026): "the problems it solves" - four equal glass cards, 2 on tablets, 1 on phones */
+.pros-head{padding:clamp(20px,2.4vw,30px) clamp(22px,3.4vw,44px);text-align:center}
+.pros{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+.pros .glass{padding:clamp(20px,2.2vw,28px)}
+.pros h3{margin:0 0 8px;font-size:18px}
+.pros p{margin:0;color:var(--text);font-size:15px}
+@media (max-width:999px){.pros{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.pros{grid-template-columns:1fr}}
+/* ACR LIMITER page (19.11.2026): the stage sphere is PLUM - its tendrils too (site.js adds .plum to .arms) */
+.arms.plum .arm-finger{stroke:#331538}
+.arms.plum .arm-hl2{stroke:rgba(230,190,236,.22)}
+.arms.plum .arm-body,.arms.plum .arm-up-body{stroke:rgba(18,8,20,.55)}
+/* PRODUCTS (19.11.2026, user): the header grows a little to fit "Products" at its right end; the item always glows with the
+   plugin licence card's Neon Border (site.js NAV NEON, the same arcs as buy.js) - a glass pill in the menu row */
+.bar{width:min(1280px,calc(100% - 24px))}
+.menu a.nav-products{padding:5px 15px;margin:-5px 0 -5px 6px;border-radius:999px}
+.nav-fx{position:absolute;inset:-14px;width:calc(100% + 28px);height:calc(100% + 28px);pointer-events:none;z-index:-1}
+@media (max-width:999px){.menu a.nav-products{margin:0;padding:10px 14px}}
+/* the Products page: two big glass plates in the middle, nothing else */
+.products{min-height:calc(100vh - 220px);display:grid;place-items:center;padding:120px var(--pad) 40px}
+.products h1{text-align:center;margin:0 0 28px;font-size:clamp(26px,3.2vw,38px)}
+.pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,440px));gap:24px;justify-content:center;width:100%}
+.pcard{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;min-height:240px;padding:40px 32px;
+  border-radius:var(--radius);text-align:center;color:var(--text);text-decoration:none;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.pcard:hover{transform:translateY(-4px)}
+.pcard b{font-size:clamp(30px,3.6vw,46px);letter-spacing:.04em;font-variation-settings:'wght' 760;color:var(--accent-ink)}
+.pcard span{font-size:16px;color:var(--muted,#55606a);max-width:30ch}
+@media (max-width:760px){.pgrid{grid-template-columns:1fr}}
+
+.dl-soon{opacity:.55;pointer-events:none}   /* a platform not out yet (ACR LIMITER macOS, 19.11.2026) */
+/* Why ACR LIMITER: the plugin window as the page's picture (why-houzy has a video beside its shot) */
+.why-shot{margin:0 auto clamp(18px,2.4vw,28px);max-width:980px}
+.why-shot{width:min(980px,100%)}   /* in the video-stage glass frame, as Why HOUZY's video */
+.why-shot .why-duo-shot{display:block}
+.pcard img{display:block;width:100%;height:auto;aspect-ratio:1640/1000;object-fit:cover;border-radius:calc(var(--radius) - 10px);margin-bottom:10px;box-shadow:0 14px 34px rgba(30,34,50,.22)}   /* the product pictures on the Products plates (19.11.2026) */
+.pcard{justify-content:flex-start;padding:18px 18px 30px}
+.products-head{width:fit-content;margin:0 auto 28px;padding:14px 40px;border-radius:999px}   /* the Products heading on Liquid Glass (19.11.2026) */
+.products-head h1{margin:0}
 /* BLACK FRIDAY (20.11.2026, user): the offer looks like the Download free key looked on 20.11 - navy / teal flowing gradient
    that morphs on hover, 1px gradient rim, corners 11px, 18% see-through, white text. The hero keys themselves were rolled back. */
 @property --gb-x{syntax:'<percentage>';initial-value:11.14%;inherits:true}
@@ -1163,3 +1202,61 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
   background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5))}
 .promo b{color:#fff}
 .promo a{color:#fff;text-decoration-color:rgba(255,255,255,.5)}
+/* BLACK FRIDAY LOOK on more things (21.11.2026, user): the Products page heading and the price window's Buy keys get
+   .promo's navy / teal flowing gradient that morphs on hover, its 1 px gradient rim, white text. The header's Products key
+   went back to the glass pill with the neon (user: "наверху верни как было"). */
+.glass.products-head,.pm .pm-buy{isolation:isolate;color:#fff;text-shadow:none;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+  box-shadow:0 12px 28px -12px rgba(0,0,0,.55);
+  transition:transform .35s var(--ease-out),--gb-x .5s,--gb-y .5s,--gb-sx .5s,--gb-sy .5s,--gb-c1 .5s,--gb-c2 .5s,--gb-c3 .5s,--gb-c4 .5s,--gb-c5 .5s,--gb-a .5s,--gb-b1 .5s,--gb-b2 .5s,--gb-s1 .5s,--gb-s2 .5s,--gb-s3 .5s,--gb-s4 .5s,--gb-s5 .5s}
+.glass.products-head:hover,.pm .pm-buy:hover,.pm .pm-buy:focus-visible{background:none;--gb-x:0%;--gb-y:95.51%;--gb-sx:110.24%;--gb-sy:110.2%;--gb-c1:#000020;--gb-c2:#8fd6dc;--gb-c3:#469396;--gb-c4:#1f3f6d;--gb-c5:#000;
+  --gb-s1:0%;--gb-s2:10%;--gb-s3:35.44%;--gb-s4:71.34%;--gb-s5:90.76%;--gb-a:210deg;--gb-b1:hsla(320,75%,90%,.2);--gb-b2:hsla(320,50%,90%,.75)}
+.glass.products-head::before,.pm .pm-buy::before{content:'';position:absolute;inset:0;left:0;right:0;top:0;height:auto;z-index:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(var(--gb-a),var(--gb-b1),var(--gb-b2));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box exclude,linear-gradient(#fff 0 0)}
+.glass.products-head::after,.pm .pm-buy::after{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.82;
+  background:radial-gradient(var(--gb-sx) var(--gb-sy) at var(--gb-x) var(--gb-y),var(--gb-c1) var(--gb-s1),var(--gb-c2) var(--gb-s2),var(--gb-c3) var(--gb-s3),var(--gb-c4) var(--gb-s4),var(--gb-c5) var(--gb-s5))}
+.glass.products-head h1{color:#fff}
+
+/* ---------- PRICE WINDOW (21.11.2026, pricing.js): Buy opens three Liquid Glass cards over the page, the bundle in the middle ---------- */
+html.pm-lock{overflow:hidden}
+.pm{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px}
+.pm[hidden]{display:none}
+/* order (user 21.11.2026): the page blurs FIRST, then the window grows; closing - the window goes, then the blur */
+.pm-back{opacity:0;transition:opacity .2s ease-out .15s}
+.pm.on .pm-back{opacity:1;transition-delay:0s}
+.pm.on .pm-wrap{transition-delay:.18s}
+.pm-back{position:absolute;inset:0;background:rgba(22,25,31,.28);-webkit-backdrop-filter:blur(8px) saturate(1.2);backdrop-filter:blur(8px) saturate(1.2)}
+.pm-wrap{position:relative;width:min(1040px,100%);max-height:calc(100vh - 32px);overflow:auto;scrollbar-width:none;padding:24px 24px 16px;
+  opacity:0;transform:scale(.82);transform-origin:50% 55%;transition:transform .55s cubic-bezier(.32,.72,0,1),opacity .35s ease-out}   /* iOS app-open: all three grow together out of transparency (user 21.11.2026) */
+.pm.on .pm-wrap{opacity:1;transform:none}
+.pm-title{width:fit-content;margin:0 auto 32px;padding:8px 24px;border-radius:999px;background:var(--glass-strong);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);
+  box-shadow:var(--rim),var(--shadow);color:var(--ink);font-size:clamp(20px,2.2vw,24px);font-variation-settings:'wght' 600;letter-spacing:-.01em;text-align:center}
+.pm-x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;border-radius:50%;cursor:pointer;font:inherit;font-size:24px;line-height:1;color:var(--ink);
+  background:var(--glass-strong);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);box-shadow:var(--rim)}
+.pm-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(6,auto);column-gap:24px}
+.pm-card{display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:0;padding:24px;text-align:center}
+.pm-card h3{margin:0 0 8px;color:var(--ink);font-size:20px;font-variation-settings:'wght' 640;letter-spacing:.02em}
+.pm-lead{margin:0 0 8px;color:var(--sub);font-size:14px;line-height:1.5}
+.pm-price{display:flex;align-items:baseline;justify-content:center;gap:8px;margin:0;color:var(--ink)}
+.pm-price s{color:var(--dim);font-size:18px}
+.pm-price b{font-size:40px;line-height:1.1;font-variation-settings:'wght' 680;letter-spacing:-.02em}
+.pm-off{padding:2px 8px;border-radius:999px;font-size:13px;font-variation-settings:'wght' 600;color:#5a3d1c;background:rgba(213,187,155,.55);box-shadow:inset 0 0 0 1px rgba(213,187,155,.9)}
+.pm-note{margin:4px 0 0;color:#8a5a26;font-size:13px;line-height:1.4;font-variation-settings:'wght' 560}
+.pm-card ul{list-style:none;margin:16px 0;display:grid;gap:4px;align-content:start;text-align:left;color:var(--text);font-size:14px;line-height:1.45}
+.pm-card li{position:relative;padding-left:24px}
+.pm-card li::before{content:'';position:absolute;left:4px;top:.5em;width:10px;height:6px;border-left:2px solid var(--accent-ink);border-bottom:2px solid var(--accent-ink);transform:rotate(-45deg)}
+.pm-buy{align-self:end;width:100%}
+.pm-best{box-shadow:var(--rim),var(--shadow),0 0 0 2px rgba(213,187,155,.95),0 0 32px -4px rgba(213,187,155,.7)}
+.pm-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:4px 16px;border-radius:999px;white-space:nowrap;font-size:13px;font-variation-settings:'wght' 600;
+  color:#3d2a14;background:linear-gradient(180deg,#ead6bd,#d5bb9b);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 4px 12px -4px rgba(120,80,30,.5)}
+.pm-trust{margin:16px auto 0;width:fit-content;max-width:100%;padding:8px 16px;border-radius:999px;background:var(--glass);box-shadow:var(--rim);color:var(--sub);font-size:13px;text-align:center}
+@media (max-width:860px){
+  .pm{align-items:flex-start}
+  .pm-grid{grid-template-columns:1fr;grid-template-rows:none;row-gap:32px;max-width:440px;margin:0 auto}
+  .pm-card{display:flex;flex-direction:column;grid-row:auto}
+  .pm-best{order:-1}
+  .pm-note:empty{display:none}
+  .pm-trust{border-radius:18px}
+}
+/* "reduce motion" is NOT honoured here on purpose: the user's own Windows has it on and he asked for exactly this growth */

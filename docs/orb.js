@@ -7,7 +7,8 @@
     var cv = document.createElement('canvas'); host.appendChild(cv);
     var gl = cv.getContext('webgl2', { premultipliedAlpha: true, alpha: true, antialias: false });
     if (!gl) {   // no WebGL: a still graphite sphere in CSS
-      host.style.background = 'radial-gradient(circle at 34% 30%,#c9d2d2 0,#5a6b6b 22%,#26302f 58%,#141a1a 80%)';
+      host.style.background = host.dataset.orb === 'plum' ? 'radial-gradient(circle at 34% 30%,#c58fcf 0,#431b48 22%,#22102a 58%,#120814 80%)'
+                                                     : 'radial-gradient(circle at 34% 30%,#c9d2d2 0,#5a6b6b 22%,#26302f 58%,#141a1a 80%)';
       host.style.borderRadius = '50%'; host.style.transform += ' scale(.88)'; cv.remove();
       return { set: function () {}, setColours: function () {} };
     }
@@ -59,7 +60,8 @@
     var st = { t: 0, yaw: 0, pitch: 0, amp: 1.24, speed: 0.92, spin: 0 }, visible = true, last = 0, ready = false, U = {};
     // colours as kOrbColours in PluginEditor.cpp: tint, core (absorption), highlight. GRAPHITE by default.
     var rgb = function (h) { return [(h >> 16 & 255) / 255, (h >> 8 & 255) / 255, (h & 255) / 255]; };
-    var colours = [0x5A6B6B, 0xFFFFFF, 0xFFFFFF];
+    // data-orb="plum" (ACR LIMITER page, 19.11.2026): the plugin's PLUM row of kOrbColours
+    var colours = host.dataset.orb === 'plum' ? [0x431B48, 0x97EAC5, 0xFF1818] : [0x5A6B6B, 0xFFFFFF, 0xFFFFFF];
     function setColours(tint, core, hi) {
       colours = [tint, core, hi]; if (!ready) return;
       gl.uniform3fv(U.uTint, rgb(tint)); gl.uniform3fv(U.uCore, rgb(core)); gl.uniform3fv(U.uHi, rgb(hi));

@@ -1,0 +1,297 @@
+// ACR LIMITER live demo (19.11.2026): HOUZY's houzy-live.js with the ACR engine and worklet (/acr-limiter/), no panel script.
+// HOUZY live demo, page side: pick an MP3/WAV, decode it HERE (nothing is uploaded - the site is
+// static and this file sends no request with the audio), play it through the plugin's engine in an
+// AudioWorklet (houzy-worklet.js), and let the panel's knobs drive it (plugin.js calls houzyParam).
+(function () {
+  var ui = document.getElementById('live-ui');
+  if (!ui) return;
+  var $ = function (s) { return ui.querySelector(s); };
+  var pick = $('input[type=file]'), row = $('.live-row'), prog = $('.live-progress'), progBar = $('.live-progress i'),
+      progText = $('.live-progress span'), playBtn = $('.live-play'), abBtn = $('.live-ab'), clearBtn = $('.live-clear'),
+      bar = $('.live-bar'), barFill = $('.live-bar i'), timeEl = $('.live-time'), nameEl = $('.live-name');
+  var toast = document.querySelector('.live-toast');
+  var T = function (s, v) { return window.houzyT ? window.houzyT(s, v) : s; };   // site.js: the page language
+
+  var ctx = null, node = null, track = null, src = null, startedAt = 0, offset = 0, playing = false, bypass = false;
+  var params = {};          // last value of every knob: replayed into a freshly started engine
+  var MAX_MB = 300;
+
+  function say(text, ms) {
+    if (!toast) return;
+    toast.textContent = text; toast.classList.add('on');
+    clearTimeout(say.t); say.t = setTimeout(function () { toast.classList.remove('on'); }, ms || 2200);
+  }
+  function progress(frac, text) {
+    prog.hidden = false;
+    progBar.style.width = frac == null ? '' : Math.round(frac * 100) + '%';
+    prog.classList.toggle('busy', frac == null);
+    progText.textContent = text;
+  }
+  function send(id, value) { if (node) node.port.postMessage({ id: id, value: value }); }
+
+  // plugin.js: every knob / slider change lands here (also its defaults once at start)
+  window.houzySend = function (id, value) { send(id, value); };   // ACR panel: one-off commands (lufsreset), not replayed
+  window.houzyParam = function (id, value) {
+    params[id] = value;
+    send(id, value);
+  };
+  window.houzyLocked = function (what) { say(T('{what} — only in the full version', { what: T(what) })); };
+  window.houzySay = function (text) { say(text); };
+  window.houzyBypass = function () { setBypass(!bypass); };
+  // MIX & MASTER (09.11.2026, owner: "just the UI"): the plugin's own window over the panel, as it looks in the plugin
+  // (harness `mastertour`), nothing behind it: the "who are you here?" screen that says what the window is for;
+  // a click on it = "MIX & MASTER - only in the full version", × / Esc closes. In the plugin's four languages
+  // (owner: "all four languages"); the site's other languages get English.
+  var MM_V = '?v=20261109b';
+  window.houzyMaster = function () {
+    var panel = document.getElementById('panel');
+    if (!panel) return;
+    var v = panel.querySelector('.mm-view');
+    if (!v) {
+      var lang = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+      if (['en', 'ru', 'es', 'pt'].indexOf(lang) < 0) lang = 'en';
+      v = document.createElement('div'); v.className = 'mm-view'; v.hidden = true;
+      var img = document.createElement('img');
+      img.alt = 'MIX & MASTER'; img.decoding = 'async';
+      var x = document.createElement('button'); x.type = 'button'; x.className = 'mm-close'; x.textContent = '×';
+      x.setAttribute('aria-label', T('Close'));
+      v.appendChild(img); v.appendChild(x);
+      // owner 09.11.2026: only this first screen in the demo - going further says "full version"; × or Esc closes
+      v.mmPages = ['/img/plugin/mixmaster_welcome_' + lang + '.webp' + MM_V];
+      v.addEventListener('click', function (e) {
+        if (e.target === x) { hideMaster(v); return; }
+        window.houzyLocked('MIX & MASTER');
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !v.hidden) hideMaster(v); });
+      panel.appendChild(v);
+    }
+    var dl = window.houzyDemoLang || 'en';   // the demo's language button (plugin.js)
+    v.querySelector('img').src = '/img/plugin/mixmaster_welcome_' + dl + '.webp' + MM_V;
+    v.hidden = false;
+    requestAnimationFrame(function () { v.classList.add('on'); });
+  };
+  function hideMaster(v) {
+    v.classList.remove('on');
+    setTimeout(function () { if (!v.classList.contains('on')) v.hidden = true; }, 320);
+  }
+
+  function setBypass(on) {
+    bypass = on; params.bypass = on ? 1 : 0; send('bypass', params.bypass);
+    abBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    abBtn.textContent = on ? T('Original') : 'ACR LIMITER';
+    document.dispatchEvent(new CustomEvent('houzy-bypass', { detail: on }));
+  }
+
+  // the engine: fetched once, with progress; the worklet gets the bytes
+  var engineReady = null, wasmBytes = null;
+  function startEngine() {
+    if (engineReady) return engineReady;
+    engineReady = (async function () {
+      ctx = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'playback' });
+      // browsers give a page AudioWorklet only over https (or on localhost): say so instead of blaming the browser
+      if (!ctx.audioWorklet) throw new Error(window.isSecureContext ? T('this browser has no AudioWorklet') : T('the live demo needs the secure (https) version of this page'));
+      var res = await fetch('/acr-limiter/acr-engine.wasm?v=20261119a');
+      if (!res.ok) throw new Error(T('engine not found'));
+      var total = +res.headers.get('content-length') || 0, got = 0, parts = [], reader = res.body.getReader();
+      for (;;) {
+        var r = await reader.read(); if (r.done) break;
+        parts.push(r.value); got += r.value.length;
+        progress(total ? got / total : null, T('Loading the ACR LIMITER engine…'));
+      }
+      var wasm = new Uint8Array(got), at = 0;
+      parts.forEach(function (p) { wasm.set(p, at); at += p.length; });
+      wasmBytes = wasm;            // kept for the WAV export (a second, offline engine)
+      await ctx.audioWorklet.addModule('/acr-limiter/acr-worklet.js?v=20261119a');
+      node = new AudioWorkletNode(ctx, 'houzy', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [2],
+        processorOptions: { wasm: wasm.buffer, host: location.hostname } });
+      node.connect(ctx.destination);
+      await new Promise(function (ok, fail) {
+        node.port.onmessage = function (e) {
+          var m = e.data;
+          if (m.type === 'ready') ok();
+          else if (m.type === 'error') fail(new Error(m.message));
+          else if (m.type === 'locked') say(LOCKED[m.id] ? T('{what} — only in the full version', { what: T(LOCKED[m.id]) }) : T('Only in the full version'));
+          else if (m.type === 'meters') window.houzyMeters = m.m;   // plugin.js draws the meters and the GR graph
+        };
+      });
+      Object.keys(params).forEach(function (k) { send(k, params[k]); });
+    })();
+    engineReady.catch(function () { engineReady = null; });
+    return engineReady;
+  }
+  var LOCKED = {};   // ACR LIMITER: nothing is locked in the demo
+
+  function readFile(file) {
+    return new Promise(function (ok, fail) {
+      var fr = new FileReader();
+      fr.onprogress = function (e) { if (e.lengthComputable) progress(e.loaded / e.total, T('Reading {name}…', { name: file.name })); };
+      fr.onload = function () { ok(fr.result); };
+      fr.onerror = function () { fail(fr.error); };
+      fr.readAsArrayBuffer(file);
+    });
+  }
+
+  pick.addEventListener('change', async function () {
+    var file = pick.files && pick.files[0];
+    if (!file) return;
+    if (!/\.(mp3|wav)$/i.test(file.name)) { say(T('Please choose an MP3 or WAV file')); pick.value = ''; return; }
+    if (file.size > MAX_MB * 1024 * 1024) { say(T('That file is over {mb} MB', { mb: MAX_MB })); pick.value = ''; return; }
+    load(file.name, function () { return readFile(file); });
+  });
+
+  // The demo plays at most the first 75 s of a track (fading out over 50 ms where it is cut), then 1.2 s of silence before
+  // it loops. The engine (.wasm, web/houzy_web.cpp) enforces the same 75 s on its own: after 75 s of music without a 1 s
+  // pause it goes silent, so a longer track fed to it from the console does not get past the limit either.
+  var DEMO_S = 75, GAP_S = 1.2;
+  function demoCut(buf) {
+    var sr = buf.sampleRate, n = Math.min(buf.length, Math.round(DEMO_S * sr)), fade = Math.round(0.05 * sr);
+    var out = ctx.createBuffer(buf.numberOfChannels, n + Math.round(GAP_S * sr), sr);
+    for (var c = 0; c < buf.numberOfChannels; c++) {
+      var d = out.getChannelData(c);
+      d.set(buf.getChannelData(c).subarray(0, n));
+      if (buf.length > n) for (var i = 0; i < fade; i++) d[n - 1 - i] *= i / fade;   // cut mid-track: fade, no click
+    }
+    return out;
+  }
+
+  // one path for an uploaded file: engine, bytes, decode, play
+  async function load(name, getBytes) {
+    clearTrack(true);
+    try {
+      await startEngine();
+      var bytes = await getBytes();
+      progress(null, T('Decoding {name}…', { name: name }));
+      var full = await ctx.decodeAudioData(bytes);
+      bytes = null;
+      track = demoCut(full);
+      nameEl.textContent = name + ' — ' + (full.duration > DEMO_S ? T('demo: first 1:15 of {len}', { len: fmt(full.duration) }) : T('demo'));
+      full = null;                 // only the 75 s demo stays in memory
+      prog.hidden = true;
+      ui.classList.add('has-track'); row.hidden = false;
+      offset = 0; showTime();
+      play();
+    } catch (e) {
+      prog.hidden = true;
+      say(/decode|Decod/i.test(String(e)) ? T('This file could not be decoded') : T('Could not start: {msg}', { msg: e.message }), 4000);
+      clearTrack(true);
+    }
+  }
+
+  // phones: a big AMOUNT slider, in step with the knob on the panel
+  var amt = $('.live-amount input'), amtOut = $('.live-amount output');
+  if (amt) {
+    amt.addEventListener('input', function () { amtOut.textContent = '+' + (+amt.value).toFixed(1) + ' dB'; window.houzyParam('amount', +amt.value); });   // ACR LIMITER: dB straight to the engine
+    document.addEventListener('houzy-amount', function (e) { if (document.activeElement !== amt) { amt.value = e.detail; amtOut.textContent = (+e.detail).toFixed(0); } });
+  }
+
+  function now() { return playing ? (offset + ctx.currentTime - startedAt) % track.duration : offset; }
+  function play() {
+    if (!track || playing) return;
+    ctx.resume();
+    src = ctx.createBufferSource(); src.buffer = track; src.loop = true;
+    src.connect(node); src.start(0, offset);
+    startedAt = ctx.currentTime; playing = window.houzyPlaying = true; playBtn.textContent = T('Pause');   // site.js: UI sounds stay quiet while a track plays
+    tick();
+  }
+  function pause() {
+    if (!playing) return;
+    offset = now(); src.stop(); src.disconnect(); src = null; playing = window.houzyPlaying = false; playBtn.textContent = T('Play');
+  }
+  function seek(t) { var was = playing; pause(); offset = Math.max(0, Math.min(t, track.duration - 0.01)); showTime(); if (was) play(); }
+  function fmt(s) { s = Math.max(0, s | 0); return (s / 60 | 0) + ':' + ('0' + s % 60).slice(-2); }
+  function showTime() {
+    if (!track) return;
+    var t = now(), len = track.duration - GAP_S;   // the 1.2 s gap before the loop is not part of the shown length
+    barFill.style.width = (t / track.duration * 100) + '%'; timeEl.textContent = fmt(Math.min(t, len)) + ' / ' + fmt(len);
+  }
+  function tick() { if (!playing) return; showTime(); requestAnimationFrame(tick); }
+
+  // Clear: stop, drop every reference to the audio so the browser frees it; nothing was ever stored
+  function clearTrack(silent) {
+    if (src) { try { src.stop(); } catch (e) {} src.disconnect(); src = null; }
+    playing = window.houzyPlaying = false; track = null; offset = 0; pick.value = '';
+    ui.classList.remove('has-track'); row.hidden = true; nameEl.textContent = '';
+    playBtn.textContent = T('Play'); barFill.style.width = '0%';
+    if (!silent) say(T('Track removed from this page. It was never uploaded anywhere.'), 3200);
+  }
+
+  // Download (20.10.2026): the same 75 s demo through a second engine in an OfflineAudioContext, with the current knobs,
+  // as a 24-bit WAV. Never longer than the demo: it renders `track`, which demoCut already stopped at 75 s (and the .wasm
+  // goes silent after 75.5 s of music on its own). The engine starts asynchronously (wasm compile in the worklet), so
+  // rendering pauses at 0.25 s until it says "ready"; the track starts at 0.5 s and the engine's delay is cut off the front.
+  var dlBtn = $('.live-dl'), rendering = false;
+  // one offline pass through a fresh engine with the current knobs: `buf` starts at 0.5 s, the result is `len` samples long
+  async function renderThrough(buf, len) {
+    var sr = buf.sampleRate, lead = Math.round(0.5 * sr);
+    var off = new OfflineAudioContext(2, lead + len, sr);
+    await off.audioWorklet.addModule('/acr-limiter/acr-worklet.js?v=20261119a');
+    var en = new AudioWorkletNode(off, 'houzy', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [2],
+      processorOptions: { wasm: wasmBytes.buffer.slice(0), host: location.hostname } });
+    var ready = new Promise(function (ok, fail) {
+      en.port.onmessage = function (e) {
+        if (e.data.type === 'ready') ok(); else if (e.data.type === 'error') fail(new Error(e.data.message));
+      };
+    });
+    Object.keys(params).forEach(function (k) { en.port.postMessage({ id: k, value: params[k] }); });
+    en.port.postMessage({ id: 'bypass', value: 0 });               // the download is always the processed sound
+    var s = off.createBufferSource(); s.buffer = buf; s.connect(en); en.connect(off.destination); s.start(lead / sr);
+    var gate = off.suspend(Math.floor(0.25 * sr / 128) * 128 / sr)   // suspend times snap to the 128-sample quantum
+      .then(function () { return ready; }).then(function () { off.resume(); });
+    var out = await off.startRendering();
+    await gate;
+    return { out: out, lead: lead };
+  }
+  async function exportWav() {
+    if (!track || !wasmBytes || rendering) return;
+    rendering = true; dlBtn.disabled = true;
+    try {
+      var sr = track.sampleRate, n = track.length - Math.round(GAP_S * sr);
+      progress(null, T('Rendering the 75 s demo…'));
+      // the delay is MEASURED, not taken from the engine: its reported latency is short of the real one by a few hundred
+      // samples (oversampling filters, ADAA). A click through an engine with the same knobs shows where sound comes out.
+      var click = ctx.createBuffer(2, sr, sr); click.getChannelData(0)[0] = click.getChannelData(1)[0] = 0.25;
+      var ci = await renderThrough(click, sr), cd = ci.out.getChannelData(0), at = ci.lead, mx = 0;
+      for (var i = ci.lead; i < cd.length; i++) if (Math.abs(cd[i]) > mx) { mx = Math.abs(cd[i]); at = i; }
+      var delay = at - ci.lead;
+      var r = await renderThrough(track, n + delay + 128), from = r.lead + delay,
+          L = r.out.getChannelData(0).subarray(from, from + n), R = r.out.getChannelData(1).subarray(from, from + n);
+      var blob = wav24(L, R, sr), a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = (nameEl.textContent.split(' — ')[0].replace(/\.(mp3|wav)$/i, '') || 'track') + ' (ACR LIMITER demo).wav';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
+      prog.hidden = true;
+      say(T('Saved: the first 75 s, processed by ACR LIMITER'), 3200);
+    } catch (e) {
+      prog.hidden = true;
+      say(T('Could not render: {msg}', { msg: e.message }), 4000);
+    }
+    rendering = false; dlBtn.disabled = false;
+  }
+  function wav24(L, R, sr) {
+    var n = L.length, data = n * 6, b = new DataView(new ArrayBuffer(44 + data)), p = 0;
+    function str(s) { for (var i = 0; i < s.length; i++) b.setUint8(p++, s.charCodeAt(i)); }
+    function u32(v) { b.setUint32(p, v, true); p += 4; }
+    function u16(v) { b.setUint16(p, v, true); p += 2; }
+    str('RIFF'); u32(36 + data); str('WAVE'); str('fmt '); u32(16); u16(1); u16(2); u32(sr); u32(sr * 6); u16(6); u16(24);
+    str('data'); u32(data);
+    for (var i = 0; i < n; i++) for (var c = 0; c < 2; c++) {
+      var v = Math.max(-1, Math.min(1, (c ? R : L)[i])), x = Math.round(v * 8388607);
+      b.setUint8(p++, x & 255); b.setUint8(p++, (x >> 8) & 255); b.setUint8(p++, (x >> 16) & 255);
+    }
+    return new Blob([b.buffer], { type: 'audio/wav' });
+  }
+  if (dlBtn) dlBtn.addEventListener('click', exportWav);
+
+  playBtn.addEventListener('click', function () { playing ? pause() : play(); });
+  abBtn.addEventListener('click', function () { setBypass(!bypass); });
+  clearBtn.addEventListener('click', function () { clearTrack(false); });
+  bar.addEventListener('pointerdown', function (e) {
+    if (!track) return;
+    var r = bar.getBoundingClientRect(); seek((e.clientX - r.left) / r.width * track.duration);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!track || /INPUT|TEXTAREA|BUTTON/.test(document.activeElement.tagName)) return;
+    if (e.code === 'Space') { e.preventDefault(); playing ? pause() : play(); }
+  });
+})();

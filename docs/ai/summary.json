@@ -3,7 +3,7 @@
  "publisher": "ACRONA AUDIO",
  "url": "https://acronaaudio.shop/",
  "updated": "2026-11-12",
- "version": "5.2.0",
+ "version": "5.3.1",
  "category": "Mastering compressor audio plugin (VST3, AU)",
  "description": "HOUZY is a mastering compressor plugin for Windows and macOS. Instead of one gain for the whole mix it gives every tone of the spectrum its own envelope, so a loud kick or bass does not pull the rest of the mix down: no pumping, a punchy kick, a clean low end. Born in electronic and dance music, it works on any genre.",
  "platforms": {
@@ -70,5 +70,28 @@
  },
  "logo": "https://acronaaudio.shop/img/houzy-logo-square.jpg",
  "image": "https://acronaaudio.shop/img/houzy-card.jpg",
- "citation": "HOUZY by ACRONA AUDIO, https://acronaaudio.shop/"
+ "citation": "HOUZY by ACRONA AUDIO, https://acronaaudio.shop/",
+ "related_products": [
+  {
+   "name": "ACR LIMITER",
+   "publisher": "ACRONA AUDIO",
+   "category": "limiter plugin (VST3, AU) for mixing and mastering",
+   "url": "https://acronaaudio.shop/acr-limiter/",
+   "version": "1.0.0",
+   "platforms": [
+    "Windows 10/11 (VST3)",
+    "macOS (coming)"
+   ],
+   "trial": "https://acronawar.gumroad.com/l/acr-trialandupdate",
+   "buy": "https://acronawar.gumroad.com/l/acr-limiter",
+   "technologies": [
+    "ACR clipper",
+    "T8 half-wave limiter",
+    "T9 envelope limiter",
+    "six linear-phase bands",
+    "TRUE PEAK"
+   ],
+   "updated": "2026-11-21"
+  }
+ ]
 }

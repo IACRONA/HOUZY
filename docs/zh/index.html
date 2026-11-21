@@ -67,7 +67,7 @@
     "https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7"
    ]
   },
-  "softwareVersion": "5.2.0",
+  "softwareVersion": "5.3.1",
   "datePublished": "2026-10-17",
   "downloadUrl": "https://acronaaudio.shop/download.html",
   "screenshot": "https://acronaaudio.shop/img/plugin/t4/chrome.webp",
@@ -177,16 +177,16 @@
 <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/vendor/plyr/plyr.css">
-<link rel="stylesheet" href="/site.css?v=20261120rb">
+<link rel="stylesheet" href="/site.css?v=20261121h">
 <script>document.documentElement.classList.add('pt')</script>
 <script src="/vendor/framer-motion/dom.js" defer></script>
 <script src="/orb.js" defer></script>
-<script src="/site.js?v=20261120bfgb" defer></script>
-<script src="/i18n.js?v=20261112b" defer></script>
+<script src="/site.js?v=20261121a" defer></script>
+<script src="/i18n.js?v=20261121b" defer></script>
 <script src="/flurik.js?v=20261116a" defer></script>
 <script src="/plugin.js?v=20261116c" defer></script>
 <script src="/houzy-live.js?v=20261116a" defer></script>
-<script src="/buy.js?v=20261120rb" defer></script>
+<script src="/buy.js?v=20261119b" defer></script><script src="/pricing.js?v=20261121g" defer></script>
 <script src="/vendor/plyr/plyr.min.js" defer></script>
 <script src="/video.js?v=20261018d" defer></script>
 <script type="application/ld+json">
@@ -328,7 +328,7 @@
   <a class="brand" href="/zh/" aria-label="HOUZY 首页" data-i18n-a="aria-label:91"><img class="logo" src="/img/houzy-logo.webp" width="103" height="35" alt="HOUZY by ACRONA AUDIO" decoding="async"></a>
   <input class="navtoggle" type="checkbox" id="nav-open" aria-label="打开菜单" data-i18n-a="aria-label:92">
   <label class="scrim" for="nav-open" aria-hidden="true"></label>
-  <label class="burger" for="nav-open" role="button" aria-label="菜单" data-i18n-a="aria-label:93">
+  <label class="burger" for="nav-open" aria-hidden="true">
     <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
   </label>
   <div class="navpanel">
@@ -340,6 +340,7 @@
       <a href="#faq">常见问题</a>
       <a data-home="affiliates.html" href="/zh/affiliates.html" data-i18n="129">合作伙伴</a>
       <a data-home="download.html" href="/zh/download.html" data-i18n="103">下载</a>
+      <a class="nav-products" href="/zh/products/">产品</a>
     </nav>
   </div>
 </header>
@@ -352,7 +353,7 @@
       <p class="lead" data-i18n="8">HOUZY 是一款母带压缩器插件（VST3、AU），支持 Windows 和 macOS。全频段均匀压缩，响亮和安静的段落以同样的方式被压缩。</p>
       <p class="tech4"><a class="tech4-n" href="#top" aria-label="4">4</a><span class="tech4-t" data-i18n="105">四项从零研发的技术，集于一个插件：逐音压缩、没有共用增益；一个抵消峰值而不是削掉峰值的削波器；一个只在过零点改变增益的限制器；以及按波形周期和小节分数设定的时间参数。</span></p>
     </div>
-    <p class="soon" data-i18n="131">5.3 即将推出 · 全新主题</p>
+    <p class="soon" data-i18n="131">5.3 已发布 · 全新主题</p>
     <div class="plugin" id="panel" role="img" aria-label="HOUZY 插件窗口" data-i18n-a="aria-label:95">
       <img src="/img/plugin/t0/chrome.webp?v=20261110c" width="1480" height="1000" alt="HOUZY 母带压缩器插件窗口" fetchpriority="high" data-i18n-a="alt:96">
       <div class="porb" aria-hidden="true"></div>
@@ -377,7 +378,7 @@
         <button class="pill live-clear" type="button" data-i18n="12">清除</button>
       </div>
     </div>
-    <div class="buy-row"><a class="cta buy buy-big" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">购买 HOUZY — <s class="was-btn">$118</s> $69</a><a class="cta trial dl" href="/zh/download.html" data-i18n="104">免费下载<small>14 天试用</small></a></div>
+    <div class="buy-row"><a class="cta buy buy-big" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">购买 HOUZY</a><a class="cta trial dl" href="/zh/download.html" data-i18n="104">免费下载<small>14 天试用</small></a></div>
     <p class="promo" data-i18n="126"><b>黑色星期五：</b>使用优惠码 <b>BLACKFRIDAY45</b> 立减 <b>45%</b> — <a href="https://acronawar.gumroad.com/l/houzy/BLACKFRIDAY45" target="_blank" rel="noopener">HOUZY 只需 $38</a>（原价 $69）。截至 11 月 27 日。</p>
   </section>
 
@@ -535,7 +536,7 @@
           <li data-i18n="122"><b>T8 限制器</b>——只在过零点改变增益：贝斯和底鼓保持原有形状</li>
           <li data-i18n="123"><b>CYCLES / NOTE</b>——起音按波形周期，释放按小节分数</li>
         </ul>
-        <div class="sale-keys"><a class="cta buy" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">购买 HOUZY — <s class="was-btn">$118</s> $69</a><a class="pill" data-home="download.html" href="/zh/download.html" data-i18n="117">免费下载</a></div>
+        <div class="sale-keys"><a class="cta buy" href="https://acronawar.gumroad.com/l/houzy" target="_blank" rel="noopener" data-i18n="13">购买 HOUZY</a><a class="pill" data-home="download.html" href="/zh/download.html" data-i18n="117">免费下载</a></div>
         <p class="sale-note"><span data-i18n="66">5 代新功能：Liquid Glass 设计、五款主题、四种球体颜色、T8 限制器，CPU 占用降低三分之一。</span> <span data-i18n="118">通过 Gumroad 安全支付。</span></p>
       </div>
     </div>
@@ -600,11 +601,12 @@
         <li><a href="#top">HOUZY</a></li>
         <li><a data-manual href="/zh/manual.html" data-i18n="64">使用手册</a></li>
         <li><a href="/zh/best-mastering-compressor.html">最佳母带压缩器</a></li>
+        <li><a class="foot-acr" href="/acr-limiter/">ACR LIMITER</a></li>
         <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
         <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
       </ul>
     </div>
-    <p class="foot-updated" data-i18n="130">版本 5.2.0 · 更新于 <time datetime="2026-11-09">2026 年 11 月 9 日</time></p>
+    <p class="foot-updated" data-i18n="130">版本 5.3.1 · 更新于 <time datetime="2026-11-21">2026 年 11 月 21 日</time></p>
     <p class="copy" data-i18n="90">© 2026 ACRONA AUDIO。HOUZY、ACR 和 T8 是 ACRONA AUDIO 的名称。VST 是 Steinberg Media Technologies GmbH 的商标。Audio Units、Logic Pro 和 macOS 是 Apple Inc. 的商标。其他名称归各自所有者所有。</p>
   </div>
 </footer>

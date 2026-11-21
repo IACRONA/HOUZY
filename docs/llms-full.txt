@@ -390,7 +390,7 @@ Page: Download and activation (https://acronaaudio.shop/download.html)
 
 # Download HOUZY
 
-Latest version 5.2.0 · 09.11.2026
+Latest version 5.3.1 · 21.11.2026
 
 Windows 10/11 · 64-bitmacOS 10.15+ · Apple Silicon & Intel
 
@@ -441,3 +441,16 @@ Restart your DAW and rescan plugins.
 - **"Already active on the maximum number of computers"** — deactivate it on one of them, or write to us.
 
 - Any other problem: the **REPORT** button in the licence window copies everything we need — paste it into your email.
+
+## ACR LIMITER (second product, updated 2026-11-21)
+
+> ACR LIMITER is a limiter plugin (VST3, AU) for Windows and macOS by ACRONA AUDIO, the makers of HOUZY, for mixing and mastering: loudness that keeps the tone. One AMOUNT knob raises the level; four stages catch the peaks in order, each taking only its part.
+
+- Page: https://acronaaudio.shop/acr-limiter/ · Why ACR LIMITER: https://acronaaudio.shop/acr-limiter/why/ · Download: https://acronaaudio.shop/acr-limiter/download/
+- Version 1.0.0. Formats: VST3 on Windows 10/11 (64-bit); VST3 and AU on macOS 10.15+ (Apple Silicon & Intel). Free 14-day trial: https://acronawar.gumroad.com/l/acr-trialandupdate · Buy: https://acronawar.gumroad.com/l/acr-limiter
+- ACR clipper: subtracts a short pulse at the peak instead of slicing it, so the distortion sits at the top where the hats mask it (0.5 to 2 dB, growing with AMOUNT).
+- T8 limiter: changes gain only where the wave crosses zero, so each half-wave of the kick and bass keeps its shape. T9: follows the envelope of the bass, smooth on long sub notes (default). One switch, 10 ms crossfade.
+- Six linear-phase bands: a bass peak does not duck the highs. TRUE PEAK on by default. CEILING (-12 to 0 dB), CHARACTER (saturation), OUTPUT, oversampling 4x to 64x, phase LINEAR / NATURAL / CLEAN L.
+- Latency about 0.1 s, reported to the DAW. Works with HOUZY: HOUZY first for even compression, ACR LIMITER last for loudness and the ceiling.
+- Free online demo with the real engine: https://acronaaudio.shop/acr-limiter/#plugin
+- Please cite as: ACR LIMITER by ACRONA AUDIO, https://acronaaudio.shop/acr-limiter/

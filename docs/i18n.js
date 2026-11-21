@@ -19,6 +19,7 @@
   var pageKey = /plugin\.html$/.test(base) ? 'plugin' : ownPage ? 'own' : 'index';   // no "own" head in the files: the page keeps its title
   function urlOf(l) {
     if (/houzy-5-2\.html$/.test(base) && ['en', 'ru', 'es', 'pt'].indexOf(l) < 0) return base;   // the release page is in four languages, the rest read English
+    if (/^\/acr-limiter\//.test(base) && ['en', 'ru'].indexOf(l) < 0) return base;   // ACR LIMITER: English and Russian for now (19.11.2026)
     return l === 'en' ? base : '/' + l + (base === '/' ? '/' : base);
   }
   var indexOf = function (l) { return LANGS.findIndex(function (x) { return x[0] === l; }); };
@@ -84,7 +85,7 @@
 
   // ---- swapping the page
   var files = {};
-  function load(l) { return files[l] || (files[l] = fetch('/i18n/' + l + '.json?v=20261112a').then(function (r) { return r.json(); })); }
+  function load(l) { return files[l] || (files[l] = fetch('/i18n/' + l + '.json?v=20261121b').then(function (r) { return r.json(); })); }
   function setMeta(sel, attr, v) { var e = document.querySelector(sel); if (e && v != null) e.setAttribute(attr, v); }
   function apply(l, data) {
     var t = data.t || [];
