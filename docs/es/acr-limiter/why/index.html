@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob: https://download.acronaaudio.shop; connect-src 'self' https://cloudflareinsights.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Por qué ACR LIMITER: una ganancia, un clipper o cada semionda</title>
+<meta name="description" content="En qué se diferencia ACR LIMITER de un limitador normal, de un clipper y de un limitador multibanda: sin bombeo, graves limpios, agudos brillantes, true peak activado por defecto.">
+<meta name="theme-color" content="#e7e7ef">
+<link rel="canonical" href="https://acronaaudio.shop/es/acr-limiter/why/">
+<link rel="alternate" hreflang="en" href="https://acronaaudio.shop/acr-limiter/why/">
+<link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/acr-limiter/why/">
+<link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/acr-limiter/why/">
+<link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/acr-limiter/why/">
+<link rel="alternate" hreflang="fr" href="https://acronaaudio.shop/fr/acr-limiter/why/">
+<link rel="alternate" hreflang="it" href="https://acronaaudio.shop/it/acr-limiter/why/">
+<link rel="alternate" hreflang="ja" href="https://acronaaudio.shop/ja/acr-limiter/why/">
+<link rel="alternate" hreflang="de" href="https://acronaaudio.shop/de/acr-limiter/why/">
+<link rel="alternate" hreflang="pl" href="https://acronaaudio.shop/pl/acr-limiter/why/">
+<link rel="alternate" hreflang="zh-Hans" href="https://acronaaudio.shop/zh/acr-limiter/why/">
+<link rel="alternate" hreflang="th" href="https://acronaaudio.shop/th/acr-limiter/why/">
+<link rel="alternate" hreflang="x-default" href="https://acronaaudio.shop/acr-limiter/why/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
+<meta property="og:url" content="https://acronaaudio.shop/es/acr-limiter/why/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Por qué ACR LIMITER: una ganancia, un clipper o cada semionda">
+<meta property="og:description" content="En qué se diferencia ACR LIMITER de un limitador normal, de un clipper y de un limitador multibanda: sin bombeo, graves limpios, agudos brillantes, true peak activado por defecto.">
+<meta property="og:image" content="https://acronaaudio.shop/img/acr-card-20261119.jpg">
+<meta property="og:image:width" content="1640">
+<meta property="og:image:height" content="1099">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Por qué ACR LIMITER: una ganancia, un clipper o cada semionda">
+<meta name="twitter:description" content="En qué se diferencia ACR LIMITER de un limitador normal, de un clipper y de un limitador multibanda: sin bombeo, graves limpios, agudos brillantes, true peak activado por defecto.">
+<meta name="twitter:image" content="https://acronaaudio.shop/img/acr-card-20261119.jpg">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/site.css?v=20261121h">
+<script>document.documentElement.classList.add('pt')</script>
+<script src="/vendor/framer-motion/dom.js" defer></script>
+<script src="/site.js?v=20261121a" defer></script>
+<script src="/buy.js?v=20261119b" defer></script>
+<script src="/i18n.js?v=20261121c" defer></script>
+<link rel="stylesheet" href="/vendor/plyr/plyr.css">
+<script type="application/json" id="i18n-js">{"Loading the ACR LIMITER engine…": "Cargando el motor de ACR LIMITER…", "Saved: the first 75 s, processed by ACR LIMITER": "Listo: los primeros 75 s, procesados por ACR LIMITER", "Before you continue": "Antes de continuar", "By using this site and the HOUZY demo you agree to the {terms} and the {eula}. How we handle data is in the {privacy}.": "Al usar este sitio y la demo de HOUZY aceptas las {terms} y el {eula}. Cómo tratamos los datos está en la {privacy}.", "Terms of Use & Sale": "Condiciones de uso y venta (en inglés)", "Licence Agreement (EULA)": "Acuerdo de licencia (EULA, en inglés)", "Privacy Policy": "Política de privacidad (en inglés)", "I agree": "Acepto", "Coming soon": "Próximamente", "Original": "Original", "Pause": "Pausa", "Play": "Reproducir", "Reading {name}…": "Leyendo {name}…", "Decoding {name}…": "Decodificando {name}…", "Please choose an MP3 or WAV file": "Elige un archivo MP3 o WAV", "That file is over {mb} MB": "Ese archivo pesa más de {mb} MB", "This file could not be decoded": "No se pudo decodificar este archivo", "Could not start: {msg}": "No se pudo iniciar: {msg}", "this browser has no AudioWorklet": "este navegador no tiene AudioWorklet", "the live demo needs the secure (https) version of this page": "la demo en vivo necesita la versión segura (https) de esta página", "engine not found": "motor no encontrado", "Track removed from this page. It was never uploaded anywhere.": "Tema quitado de esta página. Nunca se subió a ningún sitio.", "demo: first 1:15 of {len}": "demo: primeros 1:15 de {len}", "demo": "demo", "{what} — only in the full version": "{what} — solo en la versión completa", "Only in the full version": "Solo en la versión completa", "Language": "Idioma", "HOUZY is a new method of compression, invented from scratch. With HOUZY you are buying the best solution there is": "HOUZY es un nuevo método de compresión, inventado desde cero. Con HOUZY compras la mejor solución posible"}</script>
+<script type="application/ld+json" id="acr-ld">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "@id": "https://acronaaudio.shop/acr-limiter/#app", "name": "ACR LIMITER", "applicationCategory": "MultimediaApplication", "applicationSubCategory": "Audio limiter plugin (VST3, AU)", "operatingSystem": "Windows 10, Windows 11, macOS", "softwareVersion": "1.0.0", "url": "https://acronaaudio.shop/es/acr-limiter/", "image": "https://acronaaudio.shop/img/acr-card-20261119.jpg", "description": "ACR LIMITER es un plugin limitador (VST3, AU) para Windows y macOS: volumen que conserva el tono. Clipper ACR, limitador de graves T8 / T9, true peak. 14 días de prueba gratis.", "downloadUrl": "https://acronawar.gumroad.com/l/acr-trialandupdate", "installUrl": "https://acronawar.gumroad.com/l/acr-trialandupdate", "inLanguage": "es", "dateModified": "2026-11-21", "featureList": ["ACR clipper: a short pulse at the peak instead of a slice", "T8 limiter: gain moves only at zero crossings", "T9 envelope limiter for the low end", "Six linear-phase bands", "TRUE PEAK on by default", "CEILING, CHARACTER, OUTPUT", "Oversampling 4x to 64x", "MIX & MASTER engineers catalogue"], "publisher": {"@type": "Organization", "@id": "https://acronaaudio.shop/#org", "name": "ACRONA AUDIO", "url": "https://acronaaudio.shop/"}, "isRelatedTo": {"@type": "SoftwareApplication", "name": "HOUZY", "url": "https://acronaaudio.shop/es/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ACRONA AUDIO", "item": "https://acronaaudio.shop/es/"}, {"@type": "ListItem", "position": 2, "name": "ACR LIMITER", "item": "https://acronaaudio.shop/es/acr-limiter/"}, {"@type": "ListItem", "position": 3, "name": "Por qué ACR LIMITER", "item": "https://acronaaudio.shop/es/acr-limiter/why/"}]}, {"@type": "WebPage", "@id": "https://acronaaudio.shop/es/acr-limiter/why/", "url": "https://acronaaudio.shop/es/acr-limiter/why/", "name": "Por qué ACR LIMITER: una ganancia, un clipper o cada semionda", "description": "En qué se diferencia ACR LIMITER de un limitador normal, de un clipper y de un limitador multibanda: sin bombeo, graves limpios, agudos brillantes, true peak activado por defecto.", "inLanguage": "es", "dateModified": "2026-11-21", "about": {"@id": "https://acronaaudio.shop/acr-limiter/#app"}, "primaryImageOfPage": "https://acronaaudio.shop/img/acr-card-20261119.jpg"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿ACR LIMITER produce bombeo?", "acceptedAnswer": {"@type": "Answer", "text": "Mucho menos que un limitador de una sola ganancia: las bandas se limitan una a una, así que un pico de bajo no arrastra los agudos, y la ganancia del bajo se mueve solo en los cruces por cero."}}, {"@type": "Question", "name": "¿T8 o T9?", "acceptedAnswer": {"@type": "Answer", "text": "Los dos sujetan los graves. T8 mantiene entera cada semionda; T9 sigue la envolvente y es más suave en las notas largas de sub. Cambia mientras suena el tema y elige de oído."}}, {"@type": "Question", "name": "¿Puedo usarlo con HOUZY?", "acceptedAnswer": {"@type": "Answer", "text": "Sí: primero HOUZY para una compresión pareja y ACR LIMITER al final para el volumen y el techo. Dos plugins, dos licencias."}}, {"@type": "Question", "name": "¿Qué formatos y DAW?", "acceptedAnswer": {"@type": "Answer", "text": "VST3 en Windows 10/11 de 64 bits: Ableton Live, FL Studio, Cubase, Reaper, Bitwig y otros hosts VST3."}}]}]}</script>
+</head>
+<body>
+<!--email_off-->
+<div class="bg" aria-hidden="true">
+  <!-- the same moving background as the home page (site.js starts it) -->
+  <video class="art" autoplay muted playsinline preload="auto" poster="/video/bg-poster.jpg"></video>
+  <video class="art art-b" muted playsinline preload="none"></video>
+</div>
+<div class="veil" aria-hidden="true"></div>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="bar">
+  <a class="brand" data-home="" href="/es/" aria-label="HOUZY — inicio" data-i18n-a="aria-label:91"><img class="logo" src="/img/houzy-logo.webp" width="103" height="35" alt="HOUZY by ACRONA AUDIO" decoding="async"></a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Abrir el menú" data-i18n-a="aria-label:92">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" aria-hidden="true">
+    <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
+  </label>
+  <div class="navpanel">
+    <nav class="menu" aria-label="Principal" data-i18n-a="aria-label:94">
+      <a href="/es/acr-limiter/#top">Tecnología</a>
+      <a href="/es/acr-limiter/why/">Por qué ACR LIMITER</a>
+      <a href="/es/acr-limiter/#faq">FAQ</a>
+      <a href="/es/affiliates.html">Afiliados</a>
+      <a href="/es/acr-limiter/download/">Descargar</a>
+      <a class="nav-products" href="/es/products/">Productos</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal dl man why">
+<div class="wrap">
+<div class="glass dl-head" data-reveal>
+<p class="kicker">ACR LIMITER</p>
+<h1>Una ganancia, un clipper o cada semionda</h1>
+<p class="man-lead">En qué se diferencia ACR LIMITER de un limitador normal, de un clipper y de un limitador multibanda.</p>
+<p class="small why-upd">Actualizado el <time datetime="2026-11-19">19 de noviembre de 2026</time></p>
+</div>
+<div class="video-stage why-shot" data-reveal><img class="why-duo-shot" src="/img/acr-card-20261119.webp" width="1640" height="1099" alt="La ventana del plugin limitador de mastering ACR LIMITER" loading="lazy" decoding="async"></div>
+<section class="glass prose" data-reveal>
+<h2>¿Qué es ACR LIMITER?</h2>
+<p>ACR LIMITER es un plugin limitador de mastering (VST3) de los creadores de HOUZY. Un solo mando AMOUNT sube el nivel y cuatro etapas atrapan los picos en orden, cada una con la parte que mejor maneja: el clipper <b>ACR</b> toma los picos cortos por encima de ~4 kHz, el limitador <b>T8 / T9</b> sujeta el bajo, el cuerpo del kick y los medios, seis <b>bandas de fase lineal</b> impiden que un pico de bajo hunda los agudos y <b>TRUE PEAK</b> vigila el techo entre muestras.</p>
+<h2>Una sola ganancia para todo el pico.</h2>
+<p>Un limitador normal es <span class="code">output = gain × signal</span>, con la ganancia bajando cada vez que un pico suena demasiado fuerte. De ahí salen todas las quejas clásicas:</p>
+<ul>
+<li><b>El kick hunde los agudos</b> — un pico de bajo arrastra consigo los hats, la voz y las colas de reverb. Es bombeo justo al final de la cadena.</li>
+<li><b>Aspereza en cada golpe</b> — la ganancia se mueve en mitad de una onda de bajo y la deforma; en un kick de unos 50 Hz se oye como un grave sucio y crujiente.</li>
+<li><b>Agudos apagados</b> — un clipper duro corta la forma de onda; su error es de banda ancha y cae sobre los hats y el aire.</li>
+<li><b>Picos entre muestras</b> — la exportación marca −0,1 dBFS y luego recorta tras la codificación a MP3 o para streaming.</li>
+</ul>
+<p class="solves">La respuesta habitual es apilar un clipper y un limitador y esperar que no se peleen. <b>ACR LIMITER une los dos en una sola cadena</b> donde cada etapa toma solo su parte: el clipper nunca ve el bajo, el limitador de graves nunca se mueve dentro de una onda y las bandas impiden que un pico arrastre hacia abajo el resto de la mezcla.</p>
+<h2>Un clipper o un limitador multibanda ayuda, pero solo a medias</h2>
+<p>Un clipper conserva el pegue y añade volumen, pero su corte es de banda ancha: si aprietas, el bajo cruje y los agudos se apagan. Un limitador multibanda evita que el kick hunda los hats, pero dentro de cada banda una sola ganancia sigue moviéndose en mitad de la onda. ACR LIMITER quita el clipper del bajo y mueve la ganancia del bajo solo donde la onda cruza el cero.</p>
+<table>
+<thead><tr><th></th><th>Limitador normal</th><th>Clipper</th><th>Limitador multibanda</th><th>ACR LIMITER</th></tr></thead>
+<tbody>
+<tr><th scope="row">Ganancias</th><td>una para toda la mezcla</td><td>ninguna, la onda se corta</td><td>una por banda</td><td>un pulso en los picos cortos (ACR), por semionda o envolvente en los graves (T8 / T9), una por banda alta</td></tr>
+<tr><th scope="row">Un kick fuerte baja…</th><td>todo</td><td>nada, se recorta su propio pico</td><td>toda su banda</td><td>solo su propia banda, una semionda cada vez</td></tr>
+<tr><th scope="row">Forma del bajo</th><td>se deforma donde se mueve la ganancia</td><td>aplastada, crujiente</td><td>se deforma dentro de la banda baja</td><td>cada semionda entera (T8) o una envolvente suave (T9)</td></tr>
+<tr><th scope="row">Agudos</th><td>se hunden con el kick</td><td>aspereza de banda ancha</td><td>mantienen su nivel</td><td>el error de recorte queda donde lo enmascaran los hats</td></tr>
+<tr><th scope="row">Picos entre muestras</th><td>depende del plugin</td><td>sí</td><td>depende del plugin</td><td>TRUE PEAK activado por defecto</td></tr>
+<tr><th scope="row">Latencia</th><td>unos pocos ms</td><td>casi ninguna</td><td>pequeña</td><td>unos 0,1 s, el DAW la compensa</td></tr>
+</tbody>
+</table>
+<h2>Más fuerte sin ensuciarse.</h2>
+<p><b>ACR</b> resta un pulso corto colocado justo en el pico en lugar de cortarlo. Su espectro lleva la distorsión a los agudos, donde los hats y el ataque la enmascaran; su profundidad crece con AMOUNT, de 0,5 dB a 2 dB.</p>
+<p><b>T8</b> cambia su ganancia solo donde la onda cruza el cero: cada semionda del kick y del bajo se baja como una pieza entera, así que su forma queda exactamente como era. <b>T9</b> sigue la envolvente del bajo y deja ir con suavidad las notas largas de sub, sin temblores. Un solo interruptor, crossfade de 10 ms, T9 por defecto.</p>
+<p class="small">CEILING, CHARACTER (saturación suave antes del limitador) y OUTPUT ajustan el resto. BYPASS está alineado con la latencia, así que comparas el mismo instante.</p>
+<h2>Cuándo es mejor otro limitador</h2>
+<p>Grabación y tocar en directo, donde cada milisegundo de latencia importa. ACR LIMITER mira 0,1 s por delante y está hecho para el bus master y el volumen final.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿ACR LIMITER produce bombeo?</h3>
+<p>Mucho menos que un limitador de una sola ganancia: las bandas se limitan una a una, así que un pico de bajo no arrastra los agudos, y la ganancia del bajo se mueve solo en los cruces por cero.</p>
+<h3>¿T8 o T9?</h3>
+<p>Los dos sujetan los graves. T8 mantiene entera cada semionda; T9 sigue la envolvente y es más suave en las notas largas de sub. Cambia mientras suena el tema y elige de oído.</p>
+<h3>¿Puedo usarlo con HOUZY?</h3>
+<p>Sí: primero HOUZY para una compresión pareja y ACR LIMITER al final para el volumen y el techo. Dos plugins, dos licencias.</p>
+<h3>¿Qué formatos y DAW?</h3>
+<p>VST3 en Windows 10/11 de 64 bits: Ableton Live, FL Studio, Cubase, Reaper, Bitwig y otros hosts VST3.</p>
+<p class="why-cta"><a class="cta" href="/es/acr-limiter/#plugin">Pruébalo en el navegador</a><a class="pill" href="/es/acr-limiter/download/">Descargar — 14 días gratis</a></p>
+</section>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/es/"><img class="logo logo-foot" src="/img/houzy-logo.webp" width="103" height="35" alt="HOUZY by ACRONA AUDIO" decoding="async"></a>
+      <p>Compresor de masterización de ACRONA AUDIO.<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <p class="foot-langs"><a data-home="plugin.html" href="/es/plugin.html" data-i18n="106">Pruébalo en el navegador</a><br><a href="/acr-limiter/why/" hreflang="en" lang="en">English</a> · <a href="/ru/acr-limiter/why/" hreflang="ru" lang="ru">Русский</a> · <a href="/es/acr-limiter/why/" hreflang="es" lang="es">Español</a> · <a href="/pt/acr-limiter/why/" hreflang="pt-BR" lang="pt-BR">Português</a> · <a href="/fr/acr-limiter/why/" hreflang="fr" lang="fr">Français</a> · <a href="/it/acr-limiter/why/" hreflang="it" lang="it">Italiano</a> · <a href="/ja/acr-limiter/why/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/acr-limiter/why/" hreflang="de" lang="de">Deutsch</a> · <a href="/pl/acr-limiter/why/" hreflang="pl" lang="pl">Polski</a> · <a href="/zh/acr-limiter/why/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/th/acr-limiter/why/" hreflang="th" lang="th">ไทย</a></p>
+    </div>
+    <div>
+      <h2>Aviso legal</h2>
+      <ul>
+        <li><a href="/privacy.html">Política de privacidad (EN)</a></li>
+        <li><a href="/cookies.html">Política de cookies (EN)</a></li>
+        <li><a href="/terms.html">Condiciones de uso y venta (EN)</a></li>
+        <li><a href="/eula.html">Acuerdo de licencia (EULA, EN)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>ACRONA</h2>
+      <ul>
+        <li><a href="/es/best-mastering-compressor.html">Mejores compresores de mastering</a></li>
+        <li><a class="foot-acr" href="/es/acr-limiter/">ACR LIMITER</a></li>
+        <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 ACRONA AUDIO. HOUZY, ACR y T8 son nombres de ACRONA AUDIO. VST es una marca registrada de Steinberg Media Technologies GmbH. Audio Units, Logic Pro y macOS son marcas registradas de Apple Inc. Los demás nombres pertenecen a sus propietarios.</p>
+  </div>
+</footer>
+
+<!--/email_off-->
+</body>
+</html>

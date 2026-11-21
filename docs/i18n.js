@@ -15,11 +15,11 @@
   var base = location.pathname.replace(/^\/(ru|es|pt|fr|it|ja|de|pl|zh|th)(?=\/|$)/, '') || '/';
   // 18.10.2026: Download and Manual have their own address per language (/ru/download.html ...), like the home page, and
   // each file holds ONE language (they used to hold four, picked by #ru / #es / #pt-BR - not indexable).
-  var ownPage = /(download|manual|why-houzy|affiliates|plugin|upgrade|best-mastering-compressor|houzy-5-2).html$/.test(base);
+  // 21.11.2026: the ACR LIMITER pages (/acr-limiter/, /why/, /download/) exist in all 11 languages, one language per file too
+  var ownPage = /(download|manual|why-houzy|affiliates|plugin|upgrade|best-mastering-compressor|houzy-5-2).html$/.test(base) || /^\/acr-limiter\//.test(base);
   var pageKey = /plugin\.html$/.test(base) ? 'plugin' : ownPage ? 'own' : 'index';   // no "own" head in the files: the page keeps its title
   function urlOf(l) {
     if (/houzy-5-2\.html$/.test(base) && ['en', 'ru', 'es', 'pt'].indexOf(l) < 0) return base;   // the release page is in four languages, the rest read English
-    if (/^\/acr-limiter\//.test(base) && ['en', 'ru'].indexOf(l) < 0) return base;   // ACR LIMITER: English and Russian for now (19.11.2026)
     return l === 'en' ? base : '/' + l + (base === '/' ? '/' : base);
   }
   var indexOf = function (l) { return LANGS.findIndex(function (x) { return x[0] === l; }); };

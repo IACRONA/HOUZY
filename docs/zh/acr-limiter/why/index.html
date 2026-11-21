@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob: https://download.acronaaudio.shop; connect-src 'self' https://cloudflareinsights.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>为什么选 ACR LIMITER：一个增益、削波器，还是每一个半波</title>
+<meta name="description" content="ACR LIMITER 与普通限制器、削波器和多频段限制器有什么不同：没有抽吸，低频干净，高频明亮，真峰值默认开启。">
+<meta name="theme-color" content="#e7e7ef">
+<link rel="canonical" href="https://acronaaudio.shop/zh/acr-limiter/why/">
+<link rel="alternate" hreflang="en" href="https://acronaaudio.shop/acr-limiter/why/">
+<link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/acr-limiter/why/">
+<link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/acr-limiter/why/">
+<link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/acr-limiter/why/">
+<link rel="alternate" hreflang="fr" href="https://acronaaudio.shop/fr/acr-limiter/why/">
+<link rel="alternate" hreflang="it" href="https://acronaaudio.shop/it/acr-limiter/why/">
+<link rel="alternate" hreflang="ja" href="https://acronaaudio.shop/ja/acr-limiter/why/">
+<link rel="alternate" hreflang="de" href="https://acronaaudio.shop/de/acr-limiter/why/">
+<link rel="alternate" hreflang="pl" href="https://acronaaudio.shop/pl/acr-limiter/why/">
+<link rel="alternate" hreflang="zh-Hans" href="https://acronaaudio.shop/zh/acr-limiter/why/">
+<link rel="alternate" hreflang="th" href="https://acronaaudio.shop/th/acr-limiter/why/">
+<link rel="alternate" hreflang="x-default" href="https://acronaaudio.shop/acr-limiter/why/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
+<meta property="og:url" content="https://acronaaudio.shop/zh/acr-limiter/why/">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="为什么选 ACR LIMITER：一个增益、削波器，还是每一个半波">
+<meta property="og:description" content="ACR LIMITER 与普通限制器、削波器和多频段限制器有什么不同：没有抽吸，低频干净，高频明亮，真峰值默认开启。">
+<meta property="og:image" content="https://acronaaudio.shop/img/acr-card-20261119.jpg">
+<meta property="og:image:width" content="1640">
+<meta property="og:image:height" content="1099">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="为什么选 ACR LIMITER：一个增益、削波器，还是每一个半波">
+<meta name="twitter:description" content="ACR LIMITER 与普通限制器、削波器和多频段限制器有什么不同：没有抽吸，低频干净，高频明亮，真峰值默认开启。">
+<meta name="twitter:image" content="https://acronaaudio.shop/img/acr-card-20261119.jpg">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/site.css?v=20261121h">
+<script>document.documentElement.classList.add('pt')</script>
+<script src="/vendor/framer-motion/dom.js" defer></script>
+<script src="/site.js?v=20261121a" defer></script>
+<script src="/buy.js?v=20261119b" defer></script>
+<script src="/i18n.js?v=20261121c" defer></script>
+<link rel="stylesheet" href="/vendor/plyr/plyr.css">
+<script type="application/json" id="i18n-js">{"Loading the ACR LIMITER engine…": "正在载入 ACR LIMITER 引擎…", "Saved: the first 75 s, processed by ACR LIMITER": "已保存：前 75 秒，经 ACR LIMITER 处理", "Before you continue": "继续之前", "By using this site and the HOUZY demo you agree to the {terms} and the {eula}. How we handle data is in the {privacy}.": "使用本网站和 HOUZY 演示，即表示你同意{terms}和{eula}。我们如何处理数据，请见{privacy}。", "Terms of Use & Sale": "使用与销售条款（英文）", "Licence Agreement (EULA)": "许可协议（EULA，英文）", "Privacy Policy": "隐私政策（英文）", "I agree": "我同意", "Coming soon": "即将推出", "Original": "原声", "Pause": "暂停", "Play": "播放", "Reading {name}…": "正在读取 {name}…", "Decoding {name}…": "正在解码 {name}…", "Please choose an MP3 or WAV file": "请选择 MP3 或 WAV 文件", "That file is over {mb} MB": "该文件超过 {mb} MB", "This file could not be decoded": "无法解码该文件", "Could not start: {msg}": "无法启动：{msg}", "this browser has no AudioWorklet": "此浏览器不支持 AudioWorklet", "the live demo needs the secure (https) version of this page": "在线演示需要本页面的安全（https）版本", "engine not found": "未找到引擎", "Track removed from this page. It was never uploaded anywhere.": "曲目已从本页移除。它从未被上传到任何地方。", "demo: first 1:15 of {len}": "演示：{len} 中的前 1:15", "demo": "演示", "{what} — only in the full version": "{what} — 仅限完整版", "Only in the full version": "仅限完整版", "Language": "语言"}</script>
+<script type="application/ld+json" id="acr-ld">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "@id": "https://acronaaudio.shop/acr-limiter/#app", "name": "ACR LIMITER", "applicationCategory": "MultimediaApplication", "applicationSubCategory": "Audio limiter plugin (VST3, AU)", "operatingSystem": "Windows 10, Windows 11, macOS", "softwareVersion": "1.0.0", "url": "https://acronaaudio.shop/zh/acr-limiter/", "image": "https://acronaaudio.shop/img/acr-card-20261119.jpg", "description": "ACR LIMITER 是支持 Windows 和 macOS 的限制器插件（VST3、AU）：音量更大，音色不变。ACR 削波器，T8 / T9 低频限制器，真峰值。免费试用 14 天。", "downloadUrl": "https://acronawar.gumroad.com/l/acr-trialandupdate", "installUrl": "https://acronawar.gumroad.com/l/acr-trialandupdate", "inLanguage": "zh-Hans", "dateModified": "2026-11-21", "featureList": ["ACR clipper: a short pulse at the peak instead of a slice", "T8 limiter: gain moves only at zero crossings", "T9 envelope limiter for the low end", "Six linear-phase bands", "TRUE PEAK on by default", "CEILING, CHARACTER, OUTPUT", "Oversampling 4x to 64x", "MIX & MASTER engineers catalogue"], "publisher": {"@type": "Organization", "@id": "https://acronaaudio.shop/#org", "name": "ACRONA AUDIO", "url": "https://acronaaudio.shop/"}, "isRelatedTo": {"@type": "SoftwareApplication", "name": "HOUZY", "url": "https://acronaaudio.shop/zh/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ACRONA AUDIO", "item": "https://acronaaudio.shop/zh/"}, {"@type": "ListItem", "position": 2, "name": "ACR LIMITER", "item": "https://acronaaudio.shop/zh/acr-limiter/"}, {"@type": "ListItem", "position": 3, "name": "为什么选 ACR LIMITER", "item": "https://acronaaudio.shop/zh/acr-limiter/why/"}]}, {"@type": "WebPage", "@id": "https://acronaaudio.shop/zh/acr-limiter/why/", "url": "https://acronaaudio.shop/zh/acr-limiter/why/", "name": "为什么选 ACR LIMITER：一个增益、削波器，还是每一个半波", "description": "ACR LIMITER 与普通限制器、削波器和多频段限制器有什么不同：没有抽吸，低频干净，高频明亮，真峰值默认开启。", "inLanguage": "zh-Hans", "dateModified": "2026-11-21", "about": {"@id": "https://acronaaudio.shop/acr-limiter/#app"}, "primaryImageOfPage": "https://acronaaudio.shop/img/acr-card-20261119.jpg"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ACR LIMITER 会抽吸吗？", "acceptedAnswer": {"@type": "Answer", "text": "比单增益限制器少得多：各频段逐个限制，所以低频峰值不会把高频拉下去，低频增益只在过零处移动。"}}, {"@type": "Question", "name": "T8 还是 T9？", "acceptedAnswer": {"@type": "Answer", "text": "两者都稳住低频。T8 保持每个半波完整；T9 跟随包络，对长音 sub 更平滑。播放时切换，用耳朵选择。"}}, {"@type": "Question", "name": "可以和 HOUZY 一起用吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以：先用 HOUZY 做均匀压缩，最后用 ACR LIMITER 决定响度和上限。两个插件，两份许可证。"}}, {"@type": "Question", "name": "支持哪些格式和 DAW？", "acceptedAnswer": {"@type": "Answer", "text": "Windows 10/11 64 位上的 VST3：Ableton Live、FL Studio、Cubase、Reaper、Bitwig 以及其他 VST3 宿主。"}}]}]}</script>
+</head>
+<body>
+<!--email_off-->
+<div class="bg" aria-hidden="true">
+  <!-- the same moving background as the home page (site.js starts it) -->
+  <video class="art" autoplay muted playsinline preload="auto" poster="/video/bg-poster.jpg"></video>
+  <video class="art art-b" muted playsinline preload="none"></video>
+</div>
+<div class="veil" aria-hidden="true"></div>
+<a class="skip" href="#main">跳到正文</a>
+<header class="bar">
+  <a class="brand" data-home="" href="/zh/" aria-label="HOUZY 首页" data-i18n-a="aria-label:91"><img class="logo" src="/img/houzy-logo.webp" width="103" height="35" alt="HOUZY by ACRONA AUDIO" decoding="async"></a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="打开菜单" data-i18n-a="aria-label:92">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" aria-hidden="true">
+    <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
+  </label>
+  <div class="navpanel">
+    <nav class="menu" aria-label="主菜单" data-i18n-a="aria-label:94">
+      <a href="/zh/acr-limiter/#top">技术</a>
+      <a href="/zh/acr-limiter/why/">为什么选 ACR LIMITER</a>
+      <a href="/zh/acr-limiter/#faq">常见问题</a>
+      <a href="/zh/affiliates.html">合作伙伴</a>
+      <a href="/zh/acr-limiter/download/">下载</a>
+      <a class="nav-products" href="/zh/products/">产品</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal dl man why">
+<div class="wrap">
+<div class="glass dl-head" data-reveal>
+<p class="kicker">ACR LIMITER</p>
+<h1>一个增益、削波器，还是每一个半波</h1>
+<p class="man-lead">ACR LIMITER 与普通限制器、削波器和多频段限制器有什么不同。</p>
+<p class="small why-upd">更新于 <time datetime="2026-11-19">2026 年 11 月 19 日</time></p>
+</div>
+<div class="video-stage why-shot" data-reveal><img class="why-duo-shot" src="/img/acr-card-20261119.webp" width="1640" height="1099" alt="ACR LIMITER 母带限制器插件窗口" loading="lazy" decoding="async"></div>
+<section class="glass prose" data-reveal>
+<h2>ACR LIMITER 是什么？</h2>
+<p>ACR LIMITER 是 HOUZY 原班人马打造的母带限制器插件（VST3）。一个 AMOUNT 旋钮推高电平，四级处理依次捕捉峰值，每一级只处理自己最擅长的部分：<b>ACR</b> 削波器处理 ~4 kHz 以上的短峰值，<b>T8 / T9</b> 限制器稳住低频、底鼓本体和中频，六个<b>线性相位频段</b>防止低频峰值压低高频，<b>TRUE PEAK</b> 守住采样点之间的上限。</p>
+<h2>整个峰值只用一个增益。</h2>
+<p>普通限制器就是 <span class="code">output = gain × signal</span>，只要有任何峰值过大，增益就被拉下去。所有经典的抱怨都由此而来：</p>
+<ul>
+<li><b>底鼓压低高频</b> — 低频峰值会把踩镲、人声和混响尾音一起拉下去。这是发生在链路最末端的抽吸。</li>
+<li><b>每一下都带毛刺</b> — 增益在低频波形的中间移动，把波形弄弯；在 50 Hz 左右的底鼓上，你会听到脏而发糙的低频。</li>
+<li><b>高频发闷</b> — 生硬的削波器切掉波形；它的误差是宽频的，落在踩镲和空气感上。</li>
+<li><b>采样点间过载</b> — 导出文件显示 −0.1 dBFS，但经过 MP3 或流媒体编码后削波。</li>
+</ul>
+<p class="solves">常见的做法是把削波器和限制器叠在一起，指望它们别打架。<b>ACR LIMITER 把两者做成一条链路</b>，每一级只取自己的那部分：削波器从不接触低频，低频限制器从不在波形中间移动，各频段防止一个峰值把整个混音拉下去。</p>
+<h2>削波器或多频段限制器有帮助，但只解决一半</h2>
+<p>削波器能保住冲击力并提高响度，但它的切削是宽频的：推得狠，低频就会发糙，高频就会发闷。多频段限制器能阻止底鼓压低踩镲，但在每个频段内部，仍有一个增益在波形中间移动。ACR LIMITER 把削波器从低频上移开，并且只在波形过零处移动低频增益。</p>
+<table>
+<thead><tr><th></th><th>普通限制器</th><th>削波器</th><th>多频段限制器</th><th>ACR LIMITER</th></tr></thead>
+<tbody>
+<tr><th scope="row">增益</th><td>整个混音一个</td><td>没有，波形被切掉</td><td>每个频段一个</td><td>短峰值上用脉冲（ACR），低频按半波或包络（T8 / T9），高频段每段一个</td></tr>
+<tr><th scope="row">响亮的底鼓会压低……</th><td>一切</td><td>什么也不压，只切自己的峰值</td><td>它所在的整个频段</td><td>只压自己的频段，一次一个半波</td></tr>
+<tr><th scope="row">低频的形状</th><td>在增益移动处弯曲</td><td>被压扁，发糙</td><td>在低频段内部弯曲</td><td>每个半波保持完整（T8），或平滑的包络（T9）</td></tr>
+<tr><th scope="row">高频</th><td>随底鼓一起下沉</td><td>宽频毛刺</td><td>保持原有电平</td><td>削波误差落在踩镲能够掩蔽的地方</td></tr>
+<tr><th scope="row">采样点间峰值</th><td>取决于插件</td><td>有</td><td>取决于插件</td><td>TRUE PEAK 默认开启</td></tr>
+<tr><th scope="row">延迟</th><td>几 ms</td><td>几乎没有</td><td>很小</td><td>约 0.1 s，由 DAW 补偿</td></tr>
+</tbody>
+</table>
+<h2>更响，却不脏。</h2>
+<p><b>ACR</b> 减去恰好落在峰值上的一个短脉冲，而不是把峰值切掉。它的频谱把失真放在高频，那里的踩镲和起音会将其掩蔽；深度随 AMOUNT 从 0.5 dB 增加到 2 dB。</p>
+<p><b>T8</b> 只在波形过零处改变增益：底鼓和低音的每个半波被整体压低，所以形状与原来完全一样。<b>T9</b> 跟随低频的包络，平滑地放开长音 sub，不会抖动。一个开关，10 ms 交叉淡化，默认 T9。</p>
+<p class="small">其余由 CEILING、CHARACTER（限制器之前的轻度饱和）和 OUTPUT 设定。BYPASS 与延迟对齐，所以你对比的是同一时刻。</p>
+<h2>什么时候别的限制器更合适</h2>
+<p>录音和现场演奏，每一毫秒的延迟都很重要。ACR LIMITER 向前看 0.1 s，专为总线和最终响度而设计。</p>
+<h2>常见问题</h2>
+<h3>ACR LIMITER 会抽吸吗？</h3>
+<p>比单增益限制器少得多：各频段逐个限制，所以低频峰值不会把高频拉下去，低频增益只在过零处移动。</p>
+<h3>T8 还是 T9？</h3>
+<p>两者都稳住低频。T8 保持每个半波完整；T9 跟随包络，对长音 sub 更平滑。播放时切换，用耳朵选择。</p>
+<h3>可以和 HOUZY 一起用吗？</h3>
+<p>可以：先用 HOUZY 做均匀压缩，最后用 ACR LIMITER 决定响度和上限。两个插件，两份许可证。</p>
+<h3>支持哪些格式和 DAW？</h3>
+<p>Windows 10/11 64 位上的 VST3：Ableton Live、FL Studio、Cubase、Reaper、Bitwig 以及其他 VST3 宿主。</p>
+<p class="why-cta"><a class="cta" href="/zh/acr-limiter/#plugin">在浏览器中试用</a><a class="pill" href="/zh/acr-limiter/download/">下载 — 免费 14 天</a></p>
+</section>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/zh/"><img class="logo logo-foot" src="/img/houzy-logo.webp" width="103" height="35" alt="HOUZY by ACRONA AUDIO" decoding="async"></a>
+      <p>ACRONA AUDIO 出品的母带压缩器。<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <p class="foot-langs"><a data-home="plugin.html" href="/zh/plugin.html" data-i18n="106">在浏览器中试用</a><br><a href="/acr-limiter/why/" hreflang="en" lang="en">English</a> · <a href="/ru/acr-limiter/why/" hreflang="ru" lang="ru">Русский</a> · <a href="/es/acr-limiter/why/" hreflang="es" lang="es">Español</a> · <a href="/pt/acr-limiter/why/" hreflang="pt-BR" lang="pt-BR">Português</a> · <a href="/fr/acr-limiter/why/" hreflang="fr" lang="fr">Français</a> · <a href="/it/acr-limiter/why/" hreflang="it" lang="it">Italiano</a> · <a href="/ja/acr-limiter/why/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/acr-limiter/why/" hreflang="de" lang="de">Deutsch</a> · <a href="/pl/acr-limiter/why/" hreflang="pl" lang="pl">Polski</a> · <a href="/zh/acr-limiter/why/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/th/acr-limiter/why/" hreflang="th" lang="th">ไทย</a></p>
+    </div>
+    <div>
+      <h2>法律信息</h2>
+      <ul>
+        <li><a href="/privacy.html">隐私政策（英文）</a></li>
+        <li><a href="/cookies.html">Cookie 政策（英文）</a></li>
+        <li><a href="/terms.html">使用与销售条款（英文）</a></li>
+        <li><a href="/eula.html">许可协议（EULA，英文）</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>ACRONA</h2>
+      <ul>
+        <li><a href="/zh/best-mastering-compressor.html">最佳母带压缩器</a></li>
+        <li><a class="foot-acr" href="/zh/acr-limiter/">ACR LIMITER</a></li>
+        <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 ACRONA AUDIO。VST 是 Steinberg Media Technologies GmbH 的商标。Audio Units、Logic Pro 和 macOS 是 Apple Inc. 的商标。其他名称归各自所有者所有。</p>
+  </div>
+</footer>
+
+<!--/email_off-->
+</body>
+</html>

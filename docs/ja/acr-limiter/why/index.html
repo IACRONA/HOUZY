@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com 'wasm-unsafe-eval' 'sha256-m8rYV/vsNyQFqioYEpi565Ab1idUq6r+YGQDX6tOCR0='; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob: https://download.acronaaudio.shop; connect-src 'self' https://cloudflareinsights.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>なぜACR LIMITERか：ゲイン1つか、クリッパーか、半波ごとか</title>
+<meta name="description" content="ACR LIMITERが通常のリミッター、クリッパー、マルチバンドリミッターとどう違うのか。ポンピングなし、クリーンな低域、輝く高域、トゥルーピークはデフォルトでオン。">
+<meta name="theme-color" content="#e7e7ef">
+<link rel="canonical" href="https://acronaaudio.shop/ja/acr-limiter/why/">
+<link rel="alternate" hreflang="en" href="https://acronaaudio.shop/acr-limiter/why/">
+<link rel="alternate" hreflang="ru" href="https://acronaaudio.shop/ru/acr-limiter/why/">
+<link rel="alternate" hreflang="es" href="https://acronaaudio.shop/es/acr-limiter/why/">
+<link rel="alternate" hreflang="pt-BR" href="https://acronaaudio.shop/pt/acr-limiter/why/">
+<link rel="alternate" hreflang="fr" href="https://acronaaudio.shop/fr/acr-limiter/why/">
+<link rel="alternate" hreflang="it" href="https://acronaaudio.shop/it/acr-limiter/why/">
+<link rel="alternate" hreflang="ja" href="https://acronaaudio.shop/ja/acr-limiter/why/">
+<link rel="alternate" hreflang="de" href="https://acronaaudio.shop/de/acr-limiter/why/">
+<link rel="alternate" hreflang="pl" href="https://acronaaudio.shop/pl/acr-limiter/why/">
+<link rel="alternate" hreflang="zh-Hans" href="https://acronaaudio.shop/zh/acr-limiter/why/">
+<link rel="alternate" hreflang="th" href="https://acronaaudio.shop/th/acr-limiter/why/">
+<link rel="alternate" hreflang="x-default" href="https://acronaaudio.shop/acr-limiter/why/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HOUZY by ACRONA AUDIO">
+<meta property="og:url" content="https://acronaaudio.shop/ja/acr-limiter/why/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="なぜACR LIMITERか：ゲイン1つか、クリッパーか、半波ごとか">
+<meta property="og:description" content="ACR LIMITERが通常のリミッター、クリッパー、マルチバンドリミッターとどう違うのか。ポンピングなし、クリーンな低域、輝く高域、トゥルーピークはデフォルトでオン。">
+<meta property="og:image" content="https://acronaaudio.shop/img/acr-card-20261119.jpg">
+<meta property="og:image:width" content="1640">
+<meta property="og:image:height" content="1099">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="なぜACR LIMITERか：ゲイン1つか、クリッパーか、半波ごとか">
+<meta name="twitter:description" content="ACR LIMITERが通常のリミッター、クリッパー、マルチバンドリミッターとどう違うのか。ポンピングなし、クリーンな低域、輝く高域、トゥルーピークはデフォルトでオン。">
+<meta name="twitter:image" content="https://acronaaudio.shop/img/acr-card-20261119.jpg">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/site.css?v=20261121h">
+<script>document.documentElement.classList.add('pt')</script>
+<script src="/vendor/framer-motion/dom.js" defer></script>
+<script src="/site.js?v=20261121a" defer></script>
+<script src="/buy.js?v=20261119b" defer></script>
+<script src="/i18n.js?v=20261121c" defer></script>
+<link rel="stylesheet" href="/vendor/plyr/plyr.css">
+<script type="application/json" id="i18n-js">{"Loading the ACR LIMITER engine…": "ACR LIMITERエンジンを読み込み中…", "Saved: the first 75 s, processed by ACR LIMITER": "保存しました：最初の75秒を、ACR LIMITERで処理", "Before you continue": "続行する前に", "By using this site and the HOUZY demo you agree to the {terms} and the {eula}. How we handle data is in the {privacy}.": "このサイトとHOUZYのデモを利用すると、{terms}と{eula}に同意したものとみなされます。データの取り扱いは{privacy}をご覧ください。", "Terms of Use & Sale": "利用規約・販売条件", "Licence Agreement (EULA)": "使用許諾契約（EULA）", "Privacy Policy": "プライバシーポリシー", "I agree": "同意する", "Coming soon": "近日公開", "Original": "オリジナル", "Pause": "一時停止", "Play": "再生", "Reading {name}…": "{name}を読み込み中…", "Decoding {name}…": "{name}をデコード中…", "Please choose an MP3 or WAV file": "MP3またはWAVファイルを選んでください", "That file is over {mb} MB": "このファイルは{mb} MBを超えています", "This file could not be decoded": "このファイルはデコードできませんでした", "Could not start: {msg}": "開始できませんでした：{msg}", "this browser has no AudioWorklet": "このブラウザーにはAudioWorkletがありません", "the live demo needs the secure (https) version of this page": "ライブデモには、このページのセキュアな（https）版が必要です", "engine not found": "エンジンが見つかりません", "Track removed from this page. It was never uploaded anywhere.": "このページからトラックを削除しました。どこにもアップロードされていません。", "demo: first 1:15 of {len}": "デモ：{len}のうち最初の1:15", "demo": "デモ", "{what} — only in the full version": "{what} — 製品版のみ", "Only in the full version": "製品版のみ", "Language": "言語"}</script>
+<script type="application/ld+json" id="acr-ld">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "@id": "https://acronaaudio.shop/acr-limiter/#app", "name": "ACR LIMITER", "applicationCategory": "MultimediaApplication", "applicationSubCategory": "Audio limiter plugin (VST3, AU)", "operatingSystem": "Windows 10, Windows 11, macOS", "softwareVersion": "1.0.0", "url": "https://acronaaudio.shop/ja/acr-limiter/", "image": "https://acronaaudio.shop/img/acr-card-20261119.jpg", "description": "ACR LIMITERは、Windows・macOS対応のリミッタープラグイン（VST3、AU）です。音色を保ったまま、音量を上げます。ACRクリッパー、T8 / T9低域リミッター、トゥルーピーク。14日間無料トライアル。", "downloadUrl": "https://acronawar.gumroad.com/l/acr-trialandupdate", "installUrl": "https://acronawar.gumroad.com/l/acr-trialandupdate", "inLanguage": "ja", "dateModified": "2026-11-21", "featureList": ["ACR clipper: a short pulse at the peak instead of a slice", "T8 limiter: gain moves only at zero crossings", "T9 envelope limiter for the low end", "Six linear-phase bands", "TRUE PEAK on by default", "CEILING, CHARACTER, OUTPUT", "Oversampling 4x to 64x", "MIX & MASTER engineers catalogue"], "publisher": {"@type": "Organization", "@id": "https://acronaaudio.shop/#org", "name": "ACRONA AUDIO", "url": "https://acronaaudio.shop/"}, "isRelatedTo": {"@type": "SoftwareApplication", "name": "HOUZY", "url": "https://acronaaudio.shop/ja/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ACRONA AUDIO", "item": "https://acronaaudio.shop/ja/"}, {"@type": "ListItem", "position": 2, "name": "ACR LIMITER", "item": "https://acronaaudio.shop/ja/acr-limiter/"}, {"@type": "ListItem", "position": 3, "name": "なぜACR LIMITERか", "item": "https://acronaaudio.shop/ja/acr-limiter/why/"}]}, {"@type": "WebPage", "@id": "https://acronaaudio.shop/ja/acr-limiter/why/", "url": "https://acronaaudio.shop/ja/acr-limiter/why/", "name": "なぜACR LIMITERか：ゲイン1つか、クリッパーか、半波ごとか", "description": "ACR LIMITERが通常のリミッター、クリッパー、マルチバンドリミッターとどう違うのか。ポンピングなし、クリーンな低域、輝く高域、トゥルーピークはデフォルトでオン。", "inLanguage": "ja", "dateModified": "2026-11-21", "about": {"@id": "https://acronaaudio.shop/acr-limiter/#app"}, "primaryImageOfPage": "https://acronaaudio.shop/img/acr-card-20261119.jpg"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ACR LIMITERはポンピングしますか？", "acceptedAnswer": {"@type": "Answer", "text": "ゲイン1つのリミッターよりはるかに少なくなります。バンドは1つずつリミットされるので、低域のピークが高域を引き下げることはなく、低域のゲインはゼロクロスでしか動きません。"}}, {"@type": "Question", "name": "T8かT9か？", "acceptedAnswer": {"@type": "Answer", "text": "どちらも低域を押さえます。T8はすべての半波を丸ごと保ち、T9はエンベロープに追従して、長いサブノートでより滑らかです。再生中に切り替えて、耳で選んでください。"}}, {"@type": "Question", "name": "HOUZYと一緒に使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。均一な圧縮のためにHOUZYを先に、音量と上限のためにACR LIMITERを最後に。2つのプラグイン、2つのライセンスです。"}}, {"@type": "Question", "name": "対応フォーマットとDAWは？", "acceptedAnswer": {"@type": "Answer", "text": "Windows 10/11（64ビット）のVST3：Ableton Live、FL Studio、Cubase、Reaper、BitwigなどのVST3ホスト。"}}]}]}</script>
+</head>
+<body>
+<!--email_off-->
+<div class="bg" aria-hidden="true">
+  <!-- the same moving background as the home page (site.js starts it) -->
+  <video class="art" autoplay muted playsinline preload="auto" poster="/video/bg-poster.jpg"></video>
+  <video class="art art-b" muted playsinline preload="none"></video>
+</div>
+<div class="veil" aria-hidden="true"></div>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="bar">
+  <a class="brand" data-home="" href="/ja/" aria-label="HOUZYホーム" data-i18n-a="aria-label:91"><img class="logo" src="/img/houzy-logo.webp" width="103" height="35" alt="HOUZY by ACRONA AUDIO" decoding="async"></a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="メニューを開く" data-i18n-a="aria-label:92">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" aria-hidden="true">
+    <svg viewBox="0 0 22 14" aria-hidden="true"><path class="b1" d="M1 1 H21"/><path class="b2" d="M1 7 H21"/><path class="b3" d="M1 13 H21"/></svg>
+  </label>
+  <div class="navpanel">
+    <nav class="menu" aria-label="メイン" data-i18n-a="aria-label:94">
+      <a href="/ja/acr-limiter/#top">テクノロジー</a>
+      <a href="/ja/acr-limiter/why/">なぜACR LIMITER</a>
+      <a href="/ja/acr-limiter/#faq">FAQ</a>
+      <a href="/ja/affiliates.html">パートナー</a>
+      <a href="/ja/acr-limiter/download/">ダウンロード</a>
+      <a class="nav-products" href="/ja/products/">製品</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal dl man why">
+<div class="wrap">
+<div class="glass dl-head" data-reveal>
+<p class="kicker">ACR LIMITER</p>
+<h1>ゲイン1つか、クリッパーか、半波ごとか</h1>
+<p class="man-lead">ACR LIMITERが通常のリミッター、クリッパー、マルチバンドリミッターとどう違うのか。</p>
+<p class="small why-upd"><time datetime="2026-11-19">2026年11月19日</time>更新</p>
+</div>
+<div class="video-stage why-shot" data-reveal><img class="why-duo-shot" src="/img/acr-card-20261119.webp" width="1640" height="1099" alt="マスタリング用リミッタープラグインACR LIMITERのウィンドウ" loading="lazy" decoding="async"></div>
+<section class="glass prose" data-reveal>
+<h2>ACR LIMITERとは？</h2>
+<p>ACR LIMITERは、HOUZYの開発元によるマスタリング用リミッタープラグイン（VST3）です。つまみはAMOUNT1つでレベルを上げ、4つのステージが順番にピークを捉えて、それぞれ最も得意な部分だけを受け持ちます。<b>ACR</b>クリッパーは約4 kHz以上の短いピーク、<b>T8 / T9</b>リミッターは低域・キックの胴・中域、6つの<b>リニアフェーズバンド</b>は低域のピークが高域を押し下げるのを防ぎ、<b>TRUE PEAK</b>はサンプル間の上限を守ります。</p>
+<h2>ピーク全体にゲイン1つ。</h2>
+<p>通常のリミッターは<span class="code">output = gain × signal</span>で、どれかのピークが大きすぎるたびにゲインが引き下げられます。定番の不満はすべてここから生まれます。</p>
+<ul>
+<li><b>キックが高域を押し下げる</b> — 低域のピークがハイハット、ボーカル、リバーブの余韻まで一緒に引き下げます。チェーンの最後で起きるポンピングです。</li>
+<li><b>ヒットごとのザラつき</b> — 低域の波の途中でゲインが動き、波形を歪めます。50 Hzのキックのまわりでは、濁ってざらついた低域として聞こえます。</li>
+<li><b>こもった高域</b> — 硬いクリッパーは波形を削ります。その誤差は広帯域で、ハイハットや空気感にかかります。</li>
+<li><b>サンプル間オーバー</b> — 書き出しでは−0.1 dBFSなのに、MP3やストリーミングのエンコード後にクリップします。</li>
+</ul>
+<p class="solves">よくある答えは、クリッパーとリミッターを重ねて、ぶつからないよう祈ることです。<b>ACR LIMITERは、この2つをひとつのチェーンに組み込みました。</b>各ステージは自分の担当だけを受け持ちます。クリッパーは低域を見ず、低域リミッターは波の途中で動かず、バンドが1つのピークでミックスの残りが引き下げられるのを防ぎます。</p>
+<h2>クリッパーやマルチバンドリミッターは助けになりますが、半分だけです</h2>
+<p>クリッパーはパンチを保って音量を上げますが、削り取りは広帯域です。押し込むと低域が割れ、高域がこもります。マルチバンドリミッターはキックがハイハットを押し下げるのを防ぎますが、各バンドの中では、波の途中で1つのゲインが動いてしまいます。ACR LIMITERは低域からクリッパーを外し、低域のゲインを波がゼロを横切る位置でだけ動かします。</p>
+<table>
+<thead><tr><th></th><th>通常のリミッター</th><th>クリッパー</th><th>マルチバンドリミッター</th><th>ACR LIMITER</th></tr></thead>
+<tbody>
+<tr><th scope="row">ゲイン</th><td>ミックス全体で1つ</td><td>なし（波形を削る）</td><td>バンドごとにひとつ</td><td>短いピークにはパルス（ACR）、低域は半波ごとまたはエンベロープ（T8 / T9）、上のバンドは各1つ</td></tr>
+<tr><th scope="row">大きなキックが押し下げるのは…</th><td>すべて</td><td>何も下げない（自分のピークを削る）</td><td>そのバンド全体</td><td>自分のバンドだけ、半波ごと</td></tr>
+<tr><th scope="row">低域の形</th><td>ゲインが動く場所で歪む</td><td>つぶれて割れる</td><td>低域バンドの中で歪む</td><td>すべての半波が丸ごと保たれる（T8）、またはなめらかなエンベロープ（T9）</td></tr>
+<tr><th scope="row">高域</th><td>キックと一緒に下がる</td><td>広帯域のザラつき</td><td>レベルを保つ</td><td>クリッピングの誤差はハイハットがマスクする場所に置かれる</td></tr>
+<tr><th scope="row">サンプル間ピーク</th><td>プラグインによる</td><td>あり</td><td>プラグインによる</td><td>TRUE PEAKはデフォルトでオン</td></tr>
+<tr><th scope="row">レイテンシー</th><td>数ms</td><td>ほぼなし</td><td>小さい</td><td>約0.1秒、DAWが補正</td></tr>
+</tbody>
+</table>
+<h2>汚さずに、もっと大きく。</h2>
+<p><b>ACR</b>はピークを削る代わりに、ピークのちょうど真上に置いた短いパルスを差し引きます。そのスペクトルは歪みを高域側に置くので、ハイハットやアタックがそれをマスクします。深さはAMOUNTとともに0.5 dBから2 dBまで増えます。</p>
+<p><b>T8</b>は波がゼロを横切る位置でだけゲインを変えます。キックとベースの各半波がひと塊として下がるので、形は元のままです。<b>T9</b>は低域のエンベロープに追従し、長いサブノートをばたつきなく滑らかに放します。スイッチは1つ、クロスフェードは10 ms、デフォルトはT9です。</p>
+<p class="small">残りはCEILING、CHARACTER（リミッター前段の軽いサチュレーション）、OUTPUTで設定します。BYPASSはレイテンシーに合わせてあるので、同じ瞬間どうしで比較できます。</p>
+<h2>別のリミッターのほうが向いているとき</h2>
+<p>レコーディングやライブ演奏のように、1ミリ秒のレイテンシーも重要な場面です。ACR LIMITERは0.1秒先を見るので、マスターバスと最終的な音量のために作られています。</p>
+<h2>よくある質問</h2>
+<h3>ACR LIMITERはポンピングしますか？</h3>
+<p>ゲイン1つのリミッターよりはるかに少なくなります。バンドは1つずつリミットされるので、低域のピークが高域を引き下げることはなく、低域のゲインはゼロクロスでしか動きません。</p>
+<h3>T8かT9か？</h3>
+<p>どちらも低域を押さえます。T8はすべての半波を丸ごと保ち、T9はエンベロープに追従して、長いサブノートでより滑らかです。再生中に切り替えて、耳で選んでください。</p>
+<h3>HOUZYと一緒に使えますか？</h3>
+<p>はい。均一な圧縮のためにHOUZYを先に、音量と上限のためにACR LIMITERを最後に。2つのプラグイン、2つのライセンスです。</p>
+<h3>対応フォーマットとDAWは？</h3>
+<p>Windows 10/11（64ビット）のVST3：Ableton Live、FL Studio、Cubase、Reaper、BitwigなどのVST3ホスト。</p>
+<p class="why-cta"><a class="cta" href="/ja/acr-limiter/#plugin">ブラウザで試す</a><a class="pill" href="/ja/acr-limiter/download/">ダウンロード — 14日間無料</a></p>
+</section>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/ja/"><img class="logo logo-foot" src="/img/houzy-logo.webp" width="103" height="35" alt="HOUZY by ACRONA AUDIO" decoding="async"></a>
+      <p>ACRONA AUDIOのマスタリング・コンプレッサー。<br><a href="mailto:acronaaudio@proton.me">acronaaudio@proton.me</a> · <a href="https://t.me/acronalife" rel="noopener">Telegram</a></p>
+      <p class="foot-langs"><a data-home="plugin.html" href="/ja/plugin.html" data-i18n="106">ブラウザで試す</a><br><a href="/acr-limiter/why/" hreflang="en" lang="en">English</a> · <a href="/ru/acr-limiter/why/" hreflang="ru" lang="ru">Русский</a> · <a href="/es/acr-limiter/why/" hreflang="es" lang="es">Español</a> · <a href="/pt/acr-limiter/why/" hreflang="pt-BR" lang="pt-BR">Português</a> · <a href="/fr/acr-limiter/why/" hreflang="fr" lang="fr">Français</a> · <a href="/it/acr-limiter/why/" hreflang="it" lang="it">Italiano</a> · <a href="/ja/acr-limiter/why/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/acr-limiter/why/" hreflang="de" lang="de">Deutsch</a> · <a href="/pl/acr-limiter/why/" hreflang="pl" lang="pl">Polski</a> · <a href="/zh/acr-limiter/why/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/th/acr-limiter/why/" hreflang="th" lang="th">ไทย</a></p>
+    </div>
+    <div>
+      <h2>法的情報</h2>
+      <ul>
+        <li><a href="/privacy.html">プライバシーポリシー</a></li>
+        <li><a href="/cookies.html">Cookieポリシー</a></li>
+        <li><a href="/terms.html">利用規約・販売条件</a></li>
+        <li><a href="/eula.html">使用許諾契約（EULA）</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>ACRONA</h2>
+      <ul>
+        <li><a href="/ja/best-mastering-compressor.html">マスタリング用コンプレッサーおすすめ</a></li>
+        <li><a class="foot-acr" href="/ja/acr-limiter/">ACR LIMITER</a></li>
+        <li><a href="https://open.spotify.com/artist/7GqbuqTbfmOOr0QVFw1wj7" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.yandex.ru/artist/5852436" rel="noopener">Yandex Music</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 ACRONA AUDIO. VSTはSteinberg Media Technologies GmbHの商標です。Audio Units、Logic Pro、macOSはApple Inc.の商標です。その他の名称は各所有者に帰属します。</p>
+  </div>
+</footer>
+
+<!--/email_off-->
+</body>
+</html>
