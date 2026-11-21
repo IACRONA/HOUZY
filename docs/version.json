@@ -1,9 +1,34 @@
 {
  "version": "5.0.0",
- "version_win": "5.2.0",
- "version_mac": "5.2.0",
+ "version_win": "5.3.0",
+ "version_mac": "5.3.1",
  "url": "https://acronaaudio.shop/download.html",
  "releases": [
+  {
+   "version": "5.3.1",
+   "date": "2026-11-21",
+   "mac": "https://acronawar.gumroad.com/l/houzy-trial",
+   "mac_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
+   "mac_au": "https://acronawar.gumroad.com/l/houzy-trial",
+   "notes": {
+    "en": "Live themes: FLURIK (the new default), WARPIK and AURORIK flow slowly behind the glass; the graphics card draws them, the CPU stays on the sound.\nNew T9 limiter: on bass and kick the gain follows the wave's envelope, almost no added tones. T8 stays the default and is cleaner: its zero-crossing step is now a smooth glide.\nTRUE PEAK is on by default (older projects open as they were saved).\nHOUZY II: the bands follow each other in a chain (bass, kick, mids, highs) and settle over about 5 s, so the highs no longer breathe with the bass. UPWARD now gives exactly what you set; an ALL MIX band knob moves only its own band.\nSeven languages: + Polish, Japanese, German. Clearer tips for BEAT / SMART, T8 and DASH.\nMIX & MASTER: every catalogue track plays at the same loudness, the player keeps its place, Shift+Enter in the chat.\n5.3.1: the orange line of the GR graph now shows the limiter as well.",
+    "ru": "Живые темы: FLURIK (новая по умолчанию), WARPIK и AURORIK медленно текут под стеклом; их рисует видеокарта, процессор занят звуком.\nНовый лимитер T9: на басу и кике громкость идёт по огибающей волны, почти без призвуков. По умолчанию остаётся T8, и он стал чище: шаг в нуле волны теперь плавный.\nTRUE PEAK включён по умолчанию (старые проекты открываются так, как сохранены).\nHOUZY II: полосы держатся цепочкой (бас, кик, середина, верх) и подстраиваются примерно за 5 с, верх больше не дышит вместе с басом. UPWARD даёт ровно столько, сколько поставили; ручка полосы ALL MIX трогает только свою полосу.\nСемь языков: + польский, японский, немецкий. Понятнее подсказки BEAT / SMART, T8 и DASH.\nMIX & MASTER: все треки каталога звучат одинаково громко, плеер не сбрасывается, Shift+Enter в чате.\n5.3.1: оранжевая линия графика GR теперь показывает и лимитер.",
+    "es": "Temas vivos: FLURIK (el nuevo por defecto), WARPIK y AURORIK fluyen lentamente tras el cristal; los dibuja la tarjeta gráfica, la CPU se queda con el sonido.\nNuevo limitador T9: en el bajo y el bombo la ganancia sigue la envolvente de la onda, casi sin tonos añadidos. T8 sigue por defecto y es más limpio: su paso en el cruce por cero ahora es suave.\nTRUE PEAK activado por defecto (los proyectos antiguos se abren tal como se guardaron).\nHOUZY II: las bandas se siguen en cadena (bajo, bombo, medios, agudos) y se ajustan en unos 5 s, los agudos ya no respiran con el bajo. UPWARD da exactamente lo que ajustas; el mando de una banda de ALL MIX mueve solo su banda.\nSiete idiomas: + polaco, japonés, alemán. Consejos más claros para BEAT / SMART, T8 y DASH.\nMIX & MASTER: todas las pistas del catálogo suenan igual de fuerte, el reproductor no pierde su sitio, Shift+Enter en el chat.\n5.3.1: la línea naranja del gráfico GR ahora muestra también el limitador.",
+    "pt": "Temas vivos: FLURIK (o novo padrão), WARPIK e AURORIK fluem devagar atrás do vidro; a placa de vídeo os desenha, a CPU fica com o som.\nNovo limitador T9: no grave e no bumbo o ganho segue o envelope da onda, quase sem tons adicionados. O T8 continua padrão e ficou mais limpo: o passo no cruzamento por zero agora é suave.\nTRUE PEAK ligado por padrão (projetos antigos abrem como foram salvos).\nHOUZY II: as bandas se seguem em cadeia (grave, bumbo, médios, agudos) e se ajustam em cerca de 5 s, os agudos não respiram mais com o grave. UPWARD dá exatamente o que você ajusta; o botão de uma banda do ALL MIX mexe só na sua banda.\nSete idiomas: + polonês, japonês, alemão. Dicas mais claras para BEAT / SMART, T8 e DASH.\nMIX & MASTER: todas as faixas do catálogo tocam no mesmo volume, o player não perde o lugar, Shift+Enter no chat.\n5.3.1: a linha laranja do gráfico GR agora mostra também o limitador."
+   }
+  },
+  {
+   "version": "5.3.0",
+   "date": "2026-11-21",
+   "win": "https://acronawar.gumroad.com/l/houzy-trial",
+   "win_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
+   "notes": {
+    "en": "Windows: everything listed under 5.3.1 except the GR graph line (it comes with the next Windows update).",
+    "ru": "Windows: всё, что перечислено в 5.3.1, кроме линии графика GR (она придёт со следующим обновлением для Windows).",
+    "es": "Windows: todo lo que aparece en 5.3.1 salvo la línea del gráfico GR (llegará con la próxima actualización para Windows).",
+    "pt": "Windows: tudo o que está em 5.3.1, exceto a linha do gráfico GR (vem na próxima atualização para Windows)."
+   }
+  },
   {
    "version": "5.2.0",
    "date": "2026-11-09",
@@ -23,36 +48,6 @@
     "ru": "/ru/houzy-5-2.html",
     "es": "/es/houzy-5-2.html",
     "pt": "/pt/houzy-5-2.html"
-   }
-  },
-  {
-   "version": "5.1.0",
-   "date": "2026-11-02",
-   "win": "https://acronawar.gumroad.com/l/houzy-trial",
-   "win_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
-   "mac": "https://acronawar.gumroad.com/l/houzy-trial",
-   "mac_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
-   "mac_au": "https://acronawar.gumroad.com/l/houzy-trial",
-   "notes": {
-    "en": "New: HOUZY II, a new, more advanced core. New windows start on it; your projects stay on the core they were saved with.\nALL MIX repaired: each knob now works on its own band, the first nudge no longer jumps, and a preset no longer leaves the last preset's bands behind.\nDELTA and GAIN MATCH are more accurate.\nImportant: AUTO GAIN now returns only what the compression took. Old projects play quieter; raise INPUT to get the level back.\nCLASSIC, MODERN and CHARACTER are gone: every project now opens in HOUZY.\nThe plugin's delay is now about 0.39 s. Your DAW compensates for it, but it is not for live monitoring.\nNew preset DEFAULT puts every setting back. The ACRONA AUDIO card is tidier, the licence has its own button.",
-    "ru": "Новое: HOUZY II, новое, более совершенное ядро. Новые окна открываются на нём, проекты остаются на том ядре, с которым сохранены.\nИсправлен ALL MIX: каждая ручка работает на своей полосе, первое движение ручки больше не даёт скачка, пресет не оставляет полосы от прошлого пресета.\nDELTA и GAIN MATCH стали точнее.\nВажно: AUTO GAIN теперь возвращает только то, что сняло сжатие. Старые проекты зазвучат тише, громкость возвращается ручкой INPUT.\nCLASSIC, MODERN и CHARACTER убраны: любой проект открывается в HOUZY.\nЗадержка плагина теперь около 0.39 с. DAW её компенсирует, но для живой игры он не подходит.\nНовый пресет DEFAULT сбрасывает все настройки. Карточка ACRONA AUDIO аккуратнее, у лицензии своя кнопка.",
-    "es": "Nuevo: HOUZY II, un núcleo nuevo y más avanzado. Las ventanas nuevas empiezan en él; tus proyectos siguen en el núcleo con el que se guardaron.\nALL MIX reparado: cada perilla actúa sobre su propia banda, el primer movimiento ya no da un salto y un preset ya no deja las bandas del anterior.\nDELTA y GAIN MATCH son más precisos.\nImportante: AUTO GAIN ahora devuelve solo lo que quitó la compresión. Los proyectos viejos suenan más bajo; recupera el nivel con INPUT.\nCLASSIC, MODERN y CHARACTER ya no están: todo proyecto se abre en HOUZY.\nLa latencia del plugin ahora es de unos 0.39 s. Tu DAW la compensa, pero no sirve para tocar en vivo.\nEl nuevo preset DEFAULT restablece todos los ajustes. La tarjeta ACRONA AUDIO está más ordenada y la licencia tiene su botón.",
-    "pt": "Novo: HOUZY II, um núcleo novo e mais avançado. Janelas novas começam nele; seus projetos ficam no núcleo com que foram salvos.\nALL MIX consertado: cada knob age na sua própria banda, o primeiro movimento não dá mais salto e um preset não deixa mais as bandas do anterior.\nDELTA e GAIN MATCH estão mais precisos.\nImportante: o AUTO GAIN agora devolve só o que a compressão tirou. Projetos antigos soam mais baixo; recupere o nível no INPUT.\nCLASSIC, MODERN e CHARACTER saíram: todo projeto abre no HOUZY.\nA latência do plugin agora é de cerca de 0,39 s. Sua DAW compensa, mas não serve para tocar ao vivo.\nO novo preset DEFAULT volta todos os ajustes. O cartão ACRONA AUDIO ficou mais organizado e a licença tem botão próprio."
-   }
-  },
-  {
-   "version": "5.0.3",
-   "date": "2026-10-26",
-   "win": "https://acronawar.gumroad.com/l/houzy-trial",
-   "win_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
-   "mac": "https://acronawar.gumroad.com/l/houzy-trial",
-   "mac_vst3": "https://acronawar.gumroad.com/l/houzy-trial",
-   "mac_au": "https://acronawar.gumroad.com/l/houzy-trial",
-   "notes": {
-    "en": "New: DELTA button - hear only what HOUZY changes in your sound.\nNew: MIX knob - blend with the original for parallel compression.\nNew: LINEAR / NATURAL - the limiter no longer shifts the low end in time.\nNew: band lock in ALL MIX - turn one band and all six move together.\nT8 is now the default limiter; the limiter's gain reduction number is back.\nNew presets SUSHI and DRUMUZI (acoustic drums), the loaded preset shows on the button.\nOVERSAMPLE no longer changes the tone. Fewer CPU spikes on small buffers.",
-    "ru": "Новое: кнопка DELTA — слышно только то, что HOUZY меняет в звуке.\nНовое: ручка MIX — подмешивает оригинал, параллельная компрессия.\nНовое: LINEAR / NATURAL — лимитер больше не сдвигает бас по времени.\nНовое: замок полос в ALL MIX — крутишь одну, двигаются все шесть.\nЛимитер по умолчанию — T8, вернулась цифра, сколько снимает лимитер.\nНовые пресеты SUSHI и DRUMUZI (акустические ударные), имя пресета видно на кнопке.\nOVERSAMPLE больше не меняет тон. Меньше скачков нагрузки на маленьком буфере.",
-    "es": "Nuevo: botón DELTA - escuchas solo lo que HOUZY cambia en tu sonido.\nNuevo: perilla MIX - mezcla con el original para compresión paralela.\nNuevo: LINEAR / NATURAL - el limitador ya no desplaza los graves en el tiempo.\nNuevo: candado de bandas en ALL MIX - giras una banda y se mueven las seis.\nT8 es ahora el limitador por defecto; vuelve el número de reducción del limitador.\nPresets nuevos SUSHI y DRUMUZI (batería acústica); el preset cargado se ve en el botón.\nOVERSAMPLE ya no cambia el tono. Menos picos de CPU con buffers pequeños.",
-    "pt": "Novo: botão DELTA - você ouve só o que o HOUZY muda no som.\nNovo: knob MIX - mistura com o original para compressão paralela.\nNovo: LINEAR / NATURAL - o limitador não desloca mais os graves no tempo.\nNovo: cadeado das bandas no ALL MIX - gira uma banda e as seis se movem juntas.\nT8 agora é o limitador padrão; o número de redução do limitador voltou.\nPresets novos SUSHI e DRUMUZI (bateria acústica); o preset carregado aparece no botão.\nOVERSAMPLE não muda mais o timbre. Menos picos de CPU com buffers pequenos."
    }
   }
  ]

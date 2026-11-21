@@ -1,0 +1,23 @@
+{
+ "version": "1.0.0",
+ "version_win": "1.0.0",
+ "version_mac": "1.0.0",
+ "url": "https://acronaaudio.shop/acr-limiter/download/",
+ "releases": [
+  {
+   "version": "1.0.0",
+   "date": "2026-11-21",
+   "win": "https://acronawar.gumroad.com/l/acr-trialandupdate",
+   "win_vst3": "https://acronawar.gumroad.com/l/acr-trialandupdate",
+   "mac": "https://acronawar.gumroad.com/l/acr-trialandupdate",
+   "mac_vst3": "https://acronawar.gumroad.com/l/acr-trialandupdate",
+   "mac_au": "https://acronawar.gumroad.com/l/acr-trialandupdate",
+   "notes": {
+    "en": "First release of ACR LIMITER for Windows (VST3) and macOS (VST3, AU, Apple Silicon and Intel).",
+    "ru": "Первый выпуск ACR LIMITER для Windows (VST3) и macOS (VST3, AU, Apple Silicon и Intel).",
+    "es": "Primera versión de ACR LIMITER para Windows (VST3) y macOS (VST3, AU, Apple Silicon e Intel).",
+    "pt": "Primeira versão do ACR LIMITER para Windows (VST3) e macOS (VST3, AU, Apple Silicon e Intel)."
+   }
+  }
+ ]
+}
