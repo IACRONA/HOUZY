@@ -1220,18 +1220,28 @@ html:lang(th) h1,html:lang(th) h2,html:lang(th) h3,html:lang(th) .kicker{letter-
 
 /* ---------- PRICE WINDOW (21.11.2026, pricing.js): Buy opens three Liquid Glass cards over the page, the bundle in the middle ---------- */
 html.pm-lock{overflow:hidden}
-.pm{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px}
+.pm{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;
+  height:100vh;height:100dvh}   /* iPhone Safari (user 28.11.2026): 100vh counts the area under the toolbar -> the window's end was cut off; dvh = what is visible */
 .pm[hidden]{display:none}
 /* order (user 21.11.2026): the page blurs FIRST, then the window grows; closing - the window goes, then the blur */
 .pm-back{opacity:0;transition:opacity .2s ease-out .15s}
 .pm.on .pm-back{opacity:1;transition-delay:0s}
 .pm.on .pm-wrap{transition-delay:.18s}
 .pm-back{position:absolute;inset:0;background:rgba(22,25,31,.28);-webkit-backdrop-filter:blur(8px) saturate(1.2);backdrop-filter:blur(8px) saturate(1.2)}
-.pm-wrap{position:relative;width:min(1040px,100%);max-height:calc(100vh - 32px);overflow:auto;scrollbar-width:none;padding:24px 24px 16px;
+.pm-wrap{position:relative;width:min(1040px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;overscroll-behavior:contain;scrollbar-width:none;
+  padding:24px 24px calc(16px + env(safe-area-inset-bottom));
   opacity:0;transform:scale(.82);transform-origin:50% 55%;transition:transform .55s cubic-bezier(.32,.72,0,1),opacity .35s ease-out}   /* iOS app-open: all three grow together out of transparency (user 21.11.2026) */
 .pm.on .pm-wrap{opacity:1;transform:none}
 .pm-title{width:fit-content;margin:0 auto 32px;padding:8px 24px;border-radius:999px;background:var(--glass-strong);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);
   box-shadow:var(--rim),var(--shadow);color:var(--ink);font-size:clamp(20px,2.2vw,24px);font-variation-settings:'wght' 600;letter-spacing:-.01em;text-align:center}
+/* Subscription | Lifetime switch (user 28.11.2026): one data-m on .pm shows one set of prices / links / notes */
+.pm[data-m=s] .m-l,.pm[data-m=l] .m-s{display:none}
+.pm-pr{display:grid}
+.pm-price small{font-size:18px;color:var(--sub);font-variation-settings:'wght' 500;letter-spacing:0}
+.pm-title{margin-bottom:16px}
+.pm-mode{display:flex;width:fit-content;margin:0 auto 32px;padding:4px;gap:4px;border-radius:999px;background:var(--glass);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);box-shadow:var(--rim)}
+.pm-mode button{min-width:136px;padding:8px 24px;border:0;border-radius:999px;cursor:pointer;font:inherit;font-size:15px;font-variation-settings:'wght' 560;color:var(--sub);background:transparent;transition:background .25s,color .25s,box-shadow .25s}
+.pm-mode button[aria-pressed=true]{color:var(--ink);background:var(--glass-strong);box-shadow:var(--rim),var(--shadow)}
 .pm-x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;border-radius:50%;cursor:pointer;font:inherit;font-size:24px;line-height:1;color:var(--ink);
   background:var(--glass-strong);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);box-shadow:var(--rim)}
 .pm-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(6,auto);column-gap:24px}
