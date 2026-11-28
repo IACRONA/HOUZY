@@ -1,32 +1,31 @@
 // PRICES (21.11.2026, user): every Buy key opens this window over the page instead of Gumroad - three Liquid Glass
 // cards: ACR LIMITER, the bundle (in the middle, the best value), HOUZY. Each card's key goes to its own Gumroad page.
-// Black Friday until 27 Nov 2026 (inclusive): bundle $55, HOUZY $38 with BLACKFRIDAY45; from 28 Nov the regular prices.
+// Regular prices only (Black Friday 2026 ended 27 Nov and was removed 28 Nov, user): ACR LIMITER $35, bundle $79 (anchor $104 = $35 + $69), HOUZY $69 - the same as on Gumroad.
 (function () {
   // only the plugins' own Buy keys: not Become a partner (/affiliates) nor the 4 -> 5 upgrade (/houzy/HOUZY4FRIENDS)
   var keys = [].slice.call(document.querySelectorAll('.cta.buy[href$="/l/houzy"], .cta.buy[href$="/l/acr-limiter"]'));
   if (!keys.length) return;
   var ru = (document.documentElement.lang || '').slice(0, 2) === 'ru';
-  var BF = Date.now() < Date.UTC(2026, 10, 28, 8);   // until 27 Nov, end of day in the Americas
   var T = ru ? {
-    title: 'Выберите плагин', buy: 'Купить', best: 'Выгоднее всего', bf: 'Black Friday · до 27 ноября',
+    title: 'Выберите плагин', buy: 'Купить', best: 'Выгоднее всего',
     acr: ['ACR LIMITER', 'Лимитер для каждой дорожки и шины: громкость без смены тона.', ['Клиппер ACR — импульс вместо среза', 'Лимитер T8 / T9 — бас и бочка без хруста', 'TRUE PEAK по умолчанию', 'Лёгкий: на любое число дорожек']],
     both: ['HOUZY + ACR LIMITER', 'HOUZY на мастер, ACR LIMITER на каждую дорожку и шину.', ['Оба плагина, две лицензии', 'Ровная компрессия мастера', 'Громкость и потолок на любой дорожке', 'Экономия против покупки по отдельности']],
     hz: ['HOUZY', 'Мастеринг-компрессор: ровное сжатие по всем частотам.', ['Сжатие по каждому тону, без пампинга', 'Клиппер ACR и лимитер T8 внутри', 'CYCLES / NOTE — атака в периодах волны', 'VST3, AU — Windows и macOS']],
-    code: 'с промокодом ', fresh: 'Новый плагин · версия 1.0',
+    fresh: 'Новый плагин · версия 1.0',
     trust: 'Лицензия навсегда на 2 компьютера · 14 дней бесплатно · возврат 14 дней · оплата через Gumroad', close: 'Закрыть'
   } : {
-    title: 'Choose your plugin', buy: 'Buy', best: 'Best value', bf: 'Black Friday · until 27 November',
+    title: 'Choose your plugin', buy: 'Buy', best: 'Best value',
     acr: ['ACR LIMITER', 'A limiter for every track and bus: loudness that keeps the tone.', ['ACR clipper: a pulse instead of a slice', 'T8 / T9 limiter: bass and kick without grit', 'TRUE PEAK on by default', 'Light on CPU: use it on any number of tracks']],
     both: ['HOUZY + ACR LIMITER', 'HOUZY for the master, ACR LIMITER for every track and bus.', ['Both plugins, two licences', 'Even compression on the master', 'Loudness and ceiling on any track', 'Saves against buying them separately']],
     hz: ['HOUZY', 'Mastering compressor: even compression across every frequency.', ['Compression per tone, no pumping', 'ACR clipper and T8 limiter inside', 'CYCLES / NOTE: attack in wave cycles', 'VST3, AU — Windows and macOS']],
-    code: 'with code ', fresh: 'New plugin · version 1.0',
+    fresh: 'New plugin · version 1.0',
     trust: 'Lifetime licence for 2 computers · 14 days free · 14-day refund · secure payment on Gumroad', close: 'Close'
   };
   var G = 'https://acronawar.gumroad.com/l/';
   var cards = [
-    { t: T.acr, price: BF ? '$29' : '$39', was: BF ? '$39' : '', note: BF ? T.bf + ' · ' + T.code + 'BlackFridayL' : T.fresh, href: G + 'acr-limiter' + (BF ? '/BlackFridayL' : '') },   // user 21.11.2026: $39, Black Friday $29
-    { t: T.both, price: BF ? '$55' : '$79', was: '$108', note: BF ? T.bf : '', tag: BF ? '−49%' : '−27%', best: true, href: G + 'houzy-acrlimiter' },   // $108 = $39 + $69
-    { t: T.hz, price: BF ? '$38' : '$69', was: BF ? '$69' : '', note: BF ? T.bf + ' · ' + T.code + 'BLACKFRIDAY45' : '', href: G + 'houzy' + (BF ? '/BLACKFRIDAY45' : '') }
+    { t: T.acr, price: '$35', was: '', note: T.fresh, href: G + 'acr-limiter' },   // user 28.11.2026: $35 (Gumroad's price)
+    { t: T.both, price: '$79', was: '$104', note: '', tag: '−24%', best: true, href: G + 'houzy-acrlimiter' },   // $104 = $35 + $69
+    { t: T.hz, price: '$69', was: '', note: '', href: G + 'houzy' }
   ];
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var box = document.createElement('div');

@@ -16,8 +16,6 @@ HOUZY is a mastering compressor plugin (VST3, AU) for Windows and macOS. Even co
 
 **Try HOUZY on your own track**MP3 / WAV · first 75 s · plays in your browser, never uploadedStart with AMOUNT at 15–30. Full manual
 
-**Black Friday:** **45% off** with code **BLACKFRIDAY45** — HOUZY for $38 instead of $69. Until 27 November.
-
 HOUZY · Out now
 
 ## Even compression across every frequency in the track.
@@ -115,8 +113,6 @@ User manual
 $69
 
 one payment, a licence that is yours to keep
-
-With code **BLACKFRIDAY45**: $38 · Black Friday, until 27 Nov
 
 - Lifetime licence for two computers
 
